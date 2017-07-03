@@ -1,8 +1,5 @@
-name: &name sophia
+name: &name sarah
 properties:
-  name: Sophia
-  birthday: Feb 8, 2016
-  birthplace: Hong Kong
   location:
   weather:
   temperature:
