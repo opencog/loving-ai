@@ -446,6 +446,8 @@ def _ask_characters(characters, question, lang, sid, query, request_id, **kwargs
     # Check the loop
     if not answer:
         for c, weight in weighted_characters:
+            if c.id == 'dummy':
+                continue
             answered, _answer, _response = _ask_character(
                 'loop', c, weight, reuse=True)
             if answered:
