@@ -1,0 +1,29 @@
+name: &name sophia
+properties:
+  name: Sophia
+  birthday: Feb 8, 2016
+  birthplace: Hong Kong
+  location:
+  weather:
+  temperature:
+tiers:
+  - type: chatbot.characters.cs.CSCharacter
+    args:
+      id: cs
+      name: *name
+      level: 1
+      weight: 1
+      cs_host: localhost
+      cs_port: 1024
+      cs_botname: rose
+  - type: chatbot.characters.ddg.DDG
+    args:
+      id: ddg
+      name: *name
+      level: 2
+      weight: 0.3
+  - type: chatbot.characters.dummy.DummyCharacter
+    args:
+      id: dummy
+      name: *name
+      level: 3
