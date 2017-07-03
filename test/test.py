@@ -42,7 +42,7 @@ def say(message):
 
 class ChatScriptTest(unittest.TestCase):
 
-    def test_sophia(self):
+    def test(self):
         response = say(':build rose')
         self.assertTrue('Finished compile' in response)
         if 'ERROR' in response:
@@ -51,7 +51,7 @@ class ChatScriptTest(unittest.TestCase):
                                 response.index('Finished compile')])
 
         response = say('what is your name')
-        self.assertTrue('Sophia' in response)
+        self.assertTrue('Sarah' in response)
 
 if __name__ == '__main__':
     unittest.main()
