@@ -1,0 +1,39 @@
+#!/usr/bin/expect
+
+set timeout 10
+log_user 0
+
+spawn ./run.sh --port 1024 --local --users ../users --logs ../logs --topic ../topic --tmp ../tmp
+
+expect "Enter user name:"
+
+send "\n"
+
+expect ">"
+
+set name [lindex $argv 0];
+
+if {$name == ""} {
+    puts "botname is empty"
+    puts "Usage: ./build.exp botname"
+    exit 1
+}
+puts "Building $name"
+
+send ":build 0\n"
+
+expect "Finished compile"
+expect ">"
+
+send ":build $name\n"
+
+expect "Finished compile"
+expect ">"
+
+log_user 1
+send "What is your name\n"
+expect ">"
+
+send \x03
+
+puts "Build CS is done"
