@@ -9,12 +9,14 @@ logger = logging.getLogger('hr.chatbot.ext.gh')
 
 revision = None
 
+BOTNAME = os.environ.get('BOTNAME', None)
+
 def update_repo(name, branch, workspace=None):
     if workspace is None:
         workspace = os.environ.get('LOVING_AI_WORKSPACE', None)
     global revision
     if workspace:
-        cwd = '{}/{}'.format(workspace, name)
+        cwd = workspace
         cmd = ['git', 'pull', 'origin', branch]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd)
         logger.info('Updating {} repository'.format(name))
@@ -30,14 +32,14 @@ def update_repo(name, branch, workspace=None):
 
 def test_repo(repo, branch):
     if repo == 'loving_ai':
-        workspace=os.path.expanduser('~/.hr/loving_ai/test_ws')
+        workspace=os.path.expanduser('~/.loving_ai/test_ws')
         if not os.path.isdir(workspace):
             logger.error("Workspace {} doesn't exist".format(workspace))
             return False
         try:
             update_repo(repo, branch, workspace=workspace)
             cmd = ['python', 'test.py']
-            cwd = os.path.join(workspace, repo, 'test')
+            cwd = os.path.join(workspace, 'test')
             proc = subprocess.Popen(
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd)
             stdout, stderr = proc.communicate()
@@ -51,7 +53,7 @@ def test_repo(repo, branch):
 
 def check_trigger_rebuild(json):
     should_rebuild = False
-    branch = 'update'
+    branch = 'master'
     if 'ref' in json and json['ref'] == 'refs/heads/{}'.format(branch):
         if 'commits' in json:
             commits = json['commits']
@@ -67,7 +69,7 @@ def check_trigger_rebuild(json):
             should_rebuild = True
 
     if should_rebuild and test_repo('loving_ai', branch) and update_repo('loving_ai', branch):
-        threading.Thread(target=rebuild_cs_character, kwargs={'revision': revision, 'botname': 'sophia'}).start()
+        threading.Thread(target=rebuild_cs_character, kwargs={'revision': revision, 'botname': BOTNAME}).start()
         return True
     return False
 

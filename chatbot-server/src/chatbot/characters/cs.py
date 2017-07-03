@@ -13,12 +13,11 @@ from chatbot.client import get_default_username
 from chatbot.utils import shorten
 from chatbot.server.session import Locker
 
-HR_WORKSPACE = os.environ.get('HR_WORKSPACE',
-            os.path.expanduser('~/hansonrobotics'))
-CS_DIR = os.path.join(HR_WORKSPACE, 'ChatScript')
+LOVING_AI_WORKSPACE = os.environ.get('LOVING_AI_WORKSPACE', os.path.expanduser('~/loving_ai'))
+CS_DIR = os.path.join(LOVING_AI_WORKSPACE, 'ChatScript-engine')
 CS_USERS_DIR = os.environ.get('CS_USERS_DIR', os.path.join(CS_DIR, 'USERS'))
 CS_STATE_DIR = os.environ.get('CS_STATE_DIR',
-            os.path.expanduser('~/.hr/chatbot/cs_states'))
+            os.path.expanduser('~/.loving_ai/chatbot/cs_states'))
 variable_pattern = re.compile(""".* variable: .*\$(?P<name>\S+) = (?P<value>.*)""")
 
 class CSCharacter(Character):
