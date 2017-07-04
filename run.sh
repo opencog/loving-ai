@@ -13,6 +13,7 @@ export CS_DIR=$LOVING_AI_WORKSPACE/ChatScript-engine
 export CS_PORT=1025
 export SLACKBOT_API_TOKEN=$LOVING_AI_SLACKBOT_API_TOKEN
 export SLACKTEST_TOKEN=$LOVING_AI_SLACKTEST_TOKEN
+export CHATBOT_LOG_DIR=$HOME/.loving_ai
 
 if [[ ! -d $CS_DIR ]]; then
     git clone git@github.com:hansonrobotics/ChatScript-engine.git $CS_DIR
