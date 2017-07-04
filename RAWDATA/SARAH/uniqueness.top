@@ -1,9 +1,9 @@
-concept: ~dontknow ("don't know" "no idea" "not sure")
+concept: ~dontknow ("not know" "no idea" "not sure")
 
 topic: ~UNIQUENESS (unique)
 
 t: Ok $fname, Imagine for just a moment that you’re living your full potential, giving all your gifts in service of your personal highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
-  a: (~dontknow)
+  a: (~dontknow) hmm, you're not sure...
     $FULLPOT = 30
   a: (_*)
     $FULLPOT = _0
