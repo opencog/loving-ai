@@ -43,20 +43,29 @@ atexit.register(shutdown)
 def say(message):
     to_say = "{username}\0{botname}\0{message}\0".format(
         username=username, botname='', message=message)
-    try:
-        connection = socket.create_connection((host, port))
-    except Exception as ex:
-        return ''
-    connection.send(to_say)
     response =  ""
-    while True:
-        chunk = connection.recv(100)
-        if chunk:
-            response += chunk
-        else:
-            break
-    return response
+    connection = None
+    try:
+        connection = socket.create_connection((host, port), timeout=10)
+        ret = connection.sendall(to_say)
+        try:
+            while True:
+                chunk = connection.recv(4096)
+                if chunk:
+                    response += chunk
+                else:
+                    break
+        except socket.timeout as e:
+            raise e
+    except Exception as ex:
+        pass
+    finally:
+        if connection is not None:
+            connection.close()
 
+    if 'No such bot' in response:
+        response = ''
+    return response
 
 class ChatScriptTest(unittest.TestCase):
 
