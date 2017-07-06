@@ -72,7 +72,7 @@ class ChatScriptTest(unittest.TestCase):
     def test(self):
         response = say(':build 0')
         self.assertTrue('Finished compile' in response)
-        response = say(':build rose')
+        response = say(':build sarah')
         self.assertTrue('Finished compile' in response)
         if 'ERROR' in response:
             self.assertTrue(

@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-if [[ ! -d $HOME/.loving_ai/test_ws ]]; then
-    git clone git@github.com:hansonrobotics/loving_ai.git $HOME/.loving_ai/test_ws
-fi
-
+BASEDIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 export BOTNAME=sarah
 export SLACK_BOTNAME=sarah
-export LOVING_AI_WORKSPACE=$HOME/loving_ai
+export LOVING_AI_WORKSPACE=$BASEDIR
 export HR_CHARACTER_PATH=$LOVING_AI_WORKSPACE/chatbot-server/${BOTNAME}.yaml
 export CHATBOT_SERVER_PORT=8002
 export CS_DIR=$LOVING_AI_WORKSPACE/ChatScript-engine
@@ -20,6 +17,6 @@ if [[ ! -d $CS_DIR ]]; then
 fi
 
 tmux new-session -d -n "Loving AI" "echo $HR_CHARACTER_PATH && cd $LOVING_AI_WORKSPACE/chatbot-server && python run_server.py -p $CHATBOT_SERVER_PORT -v; $SHELL"
-tmux new-window -n "CS" "cd $CS_DIR && ../build.exp rose && ./run.sh --users ../users --logs ../logs --topic ../topic --tmp ../tmp -p $CS_PORT; $SHELL"
+tmux new-window -n "CS" "cd $CS_DIR && ../build.exp Sarah && ./run.sh --users ../users --logs ../logs --topic ../topic --tmp ../tmp -p $CS_PORT; $SHELL"
 tmux new-window -n "Slack" "cd $LOVING_AI_WORKSPACE/chatbot-server && python slack_client.py $SLACK_BOTNAME; $SHELL"
 tmux attach
