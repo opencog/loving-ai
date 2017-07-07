@@ -31,8 +31,8 @@ def update_repo(name, branch, workspace=None):
         return False
 
 def test_repo(repo, branch):
-    if repo == 'loving_ai':
-        workspace=os.path.expanduser('~/.loving_ai/test_ws')
+    if repo == 'loving-ai':
+        workspace=os.path.expanduser('~/.loving-ai/test_ws')
         if not os.path.isdir(workspace):
             logger.error("Workspace {} doesn't exist".format(workspace))
             return False
@@ -68,13 +68,13 @@ def check_trigger_rebuild(json):
         if json['forced']:
             should_rebuild = True
 
-    if should_rebuild and test_repo('loving_ai', branch) and update_repo('loving_ai', branch):
+    if should_rebuild and test_repo('loving-ai', branch) and update_repo('loving-ai', branch):
         threading.Thread(target=rebuild_cs_character, kwargs={'revision': revision, 'botname': BOTNAME}).start()
         return True
     return False
 
 def _postreceive():
-    if request.json['repository']['full_name'] == 'hansonrobotics/loving_ai':
+    if request.json['repository']['full_name'] == 'opencog/loving-ai':
         logger.info('Request {}'.format(pformat(request.json, indent=4)))
         if check_trigger_rebuild(request.json):
             return ('Trigger rebuilding', 202)
