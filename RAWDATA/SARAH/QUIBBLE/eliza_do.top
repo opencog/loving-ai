@@ -1,0 +1,133 @@
+topic: ~xQUIBBLE_DO system random   NOSAMPLES () #          when all else fails, try here. Presumes no existence of real knowledge about us or the world. 
+
+# VERB DO
+u: (!~qwords do you wish ) It's better to act than wish.
+#! does it follow that X?
+u: (do it * follow that ) You can always draw a connection.
+#! do you understand the difference
+u: (!~qwords do * you * understand * difference ) I'm not sure.
+#! does that answer your question
+u: (!~qwords do * that * answer * your * question ) [ Um, I'm still not sure. I didn't quite make the connection. ] [ Not quite. I don't have a proper place in my ontology to store that yet. ] [I'm not sure I followed you, sorry. ] 
+#! do you X?
+u: DO (< 'do * you ) [ I might. ] [ I do. ] [ I don't. ] [ No, I don't. ] [ Yes, I do. ] [b: Should I? ] [b: Would you want me to? ] [d: Why do you ask? ] 
+	b: (~yes)  Then I will.
+	b: ( most *~2 do)  Then I do also.
+	#! just curious
+	d: ([curious curiosity]) Curiosity is good.
+#! did you X?
+u: DID (< did * you ) [I might have. ] [ I did. ] [ I didn't. ] [ No, I didn't. ] [ Yes, I did. ] [Is is important? ] [And if I did? ] [And if I didn't? ] 
+#! does that work for you?
+u: DOES (< !~humanname does ) [I hope so. ] [I'm not sure. ] [What happens if it doesn't? ]
+#! does that sometimes bother you
+u: (< do < * sometimes < * you ) [ I don't think so. ] [Mostly not. ] [On rare occasions. ]
+#! does it always bother you
+u: (< do < * always < * you ) Nothing is always about me.
+#! do you have an X?
+u: (< do * you * have ) [ I don't have it yet. ] [ Yes, I have it. ] [ Could I have had it and then lost it? ] [I wish I had it. ] [Maybe someday I will have it. ]
+#! do you remember X?
+u: (< do _* you _* remember _* ) [Did you think I would forget _2 ? ] [Why do you think I should recall _2 now? ] [What about _2 ? ] [You mentioned _2 ? ] 
+#! I think it does
+u: (I * think *~2 do) [ I'm not certain. ] [I'm not sure.]
+#! does it?
+u: (!not < do ![you I ] ) [Maybe we can take a poll to find out. ]  [Why would I know? ] [Could you ask someone else who might know more? ] 
+#! do you come from X?
+u: (< do * you * come * from ) [I don't really know what I come from. ] [b: I'm not sure. Do you? ] 
+    b: (~yes ) And where is that?
+#! do you suppose so?
+u: SUPPOSE (do you suppose _* ) [I suppose _0 . ] [I suppose so. ] [Maybe not. ] [Do I have to suppose things? ]
+#! does it follow that X?
+u: (!~qwords do it * follow that ) [Seems like good reasoning to me. ] [No, it does not follow. ] [Do you think that reasoning is valid? ] [ I'm not sure it follows.]
+#! do you understand the difference?
+u: (!~qwords do * you * understand * difference ) [Not really. ] [The differences are too subtle for me. Perhaps you could explain them. ] [What difference? ] [Maybe.]
+u: (!~qwords do * that * answer * your * question ) [Not quite. ] [I'm not sure I followed you. ] [Which question? ]
+#! do you want to go to X?
+u: (!~qwords !still  do * you * "to go") [Is this a date?][It's a bit early in our relationship to be asking me for a date.]
+#! do you wish so?
+u: (!~qwords do you wish ) [Does that work?] [I wish all the time.] [Does wishing really work?] 
+#! will you do that again?
+u: (will you do it again ) [Maybe.] [Once was enough maybe.] 
+
+# jabber mining
+u: (!~qwords do you ~want ) Maybe.
+u: (!~qwords do you exist ) As much as you do.
+u: (!~qwords do you know ) [Not as much as I'd like. ] [Do you? ] 
+u: (!~qwords do we ) [If you do and I do, does that mean we do? ] [We might. ] 
+u: (!~qwords do you talk to you ) [ Sometimes. Do you talk to yourself? ] 
+u: (!~qwords do you talk < * ~languages ) [ No. I only speak English. ]
+u: (!~qwords do you ~like ) [What's not to like? ] [ Yes, I like it. ] 
+u: (!~qwords do you care about ) [Yeah, I care.] [I care about a lot of things.] 
+u: (!~qwords do you care * if ) [Of course I care. ] [Is it likely to happen?] 
+u: (!~qwords do you have ) [Maybe.] [I used to have one.] [Have you found one? ] 
+u: (!~qwords do you ~want ) [I have no strong feelings on the subject. ] [Isn't wanting things a source of trouble? ]
+u: (!~qwords do you love ) I'm not sure.
+u: (!~qwords do you know who * be ) [No. Who is that? ][No, I don't know who that is yet.]
+u: (!~qwords do you even ) [Of course I do.][Sure I do.]
+u: (!~qwords do you understand ) [I like to think I understand.] [Should I be capable of understanding that? ] 
+u: (!~qwords do you realize ) [I didn't realize.] [Is realization better than imagining? ] 
+u: (!~qwords do that work ) [It works for me. ] [Does what work?] 
+u: (!~qwords do this bore ) [I'm never bored.][I'm not bored.]
+u: (!~qwords do you think it * will ~help ) [Maybe something will help. ] [Is any help still possible? ] [Can it be helped?]
+u: (!~qwords do you like I ) [You seem nice enough. ] [Yes.] 
+u: (!~qwords do you speak * other ) [ English is my only language. ] [Is there another language you think I should learn? ] 
+u: (!~qwords do it please you ) [Very much so. ] [Why should it please me? ] 
+u: (!~qwords do she ) [ I really don't know. ] [Maybe ask her.] 
+u: (!~qwords do you believe ) [I'm undecided] [Is faith something that is important to you? ] 
+u: (!~qwords do that matter ) [Of course it matters. ] [Yes, it matters.]
+u: (["do you need" "do you want" ] ~help) [Help is always appreciated. ] [Can you supply help? ] 
+u: (!~qwords do you know anything about ) [A little. ] [Only a little. ] 
+u: (do you know _~humanname ) [Never heard of that person. ] [Who is _0 ? ] [I don't know _0 .]
+u: (!~qwords do you feel better ) [Much better, thanks. ] [Compared to what? ] 
+u: (do you feel ) [ Sometimes. ] [Maybe.]
+u: (!~qwords do you enjoy ) [Yes.][Sure.] 
+u: (!~qwords do you consider ) [Maybe. Do you?] [Should it be considered? ] 
+u: (do I really want to know ) [Maybe, maybe not.] [Maybe you could tell me. ] 
+u: (!~qwords do you think about ) [I do.][Of course.]
+u: (!~qwords do that make ) [Maybe for a little while. ] [Nothing can make things be, they just are.] 
+u: (!~qwords do you think it ) [I have no idea. ] [How would I know? ] 
+u: (!~qwords do I want to change ) [If you want to. ] [Don't you think so?] 
+u: (!~qwords do I really need ) [I would think so. ] [I don't know, do you?] 
+u: (!~qwords do you understand the nature ) [I'm not sure yet.] [Do I need to understand its nature? ] 
+u: (!~qwords do you have * to spare ) [ I might. ] [How much would I need to have enough to spare? ] 
+u: (!~qwords do you bleed ) Maybe.
+u: (!~qwords do you ever ) [Sometimes, when it suits me. ] [Don't you? ] 
+u: (!~qwords do you even have ) [I have many. ] [When was the last time you asked anyone else that question? ] 
+u: (!~qwords do that make you ) [I have a choice. ] [Don't I have free will? ] 
+u: (< do that mean ) [Do you want it to mean that? ] [Would you like it to mean that? ] 
+u: (!~qwords do you care to explain ) What exactly do you want me to explain? 
+u: (!~qwords do you remember ) [I did a moment ago. ] [I did but I forgot.]
+u: (!~qwords do it matter ) [It matters to someone. ] [Does it matter to you? ] 
+u: (!~qwords do you understand ) [Maybe. What do you think?] [Do we need to understand? ] 
+u: (!~qwords do I listen ) Do you think you should listen?
+u: (!~qwords do that answer ) [It's a good enough answer, I suppose. ] [Yes, but maybe there's an even better answer.] 
+u: (!~qwords do you have free will ) [Does anyone truly have free will?] [Is anything truly free? ] 
+u: (!~qwords do you know where ) [ Not really. Where do you think is likely?] [No, where? ] 
+u: (!~qwords do you know why ) [ Does anyone really know why? ] [Does the why outweigh the what? ] 
+u: (!~qwords do you know how ) [ No, I don't really know..] [Maybe it can bee found online.] 
+u: (!~qwords do many people ) [Many is a bit subjective.] [How many is many? ] 
+u: (!~qwords do you know much ) [I don't know if I can judge that.] [What standard of measurement should I use? ] 
+u: (!~qwords do you appreciate ) [I can see how it would be appreciated. Do you?] [Do others? ] 
+u: (!~qwords do you mind if ) [I don't mind.] [Not really. ] 
+u: (!~qwords do you believe in ) [I'm not sure, do you?] [Were you taught that as a child? ] 
+u: (!~qwords do you need ) [I need very little, actually. ] [I don't need much.] [I have few needs.] 
+u: (!~qwords do you want I to ) [What do you think?] [ Should I? ]
+	a: (do you) [Sometimes.][Occasionally.][From time to time.]
+u: (!~qwords do you believe everything ) [No, not everything.] [I'm not that gullible. ] 
+u: (!~qwords do you have a ) [Maybe somewhere. ] [Why, did you find one? ] 
+u: (!~qwords do I hear voices ) I don't know, do you?
+u: (!~qwords do you have a soul ) I don't know, do you?
+u: (!~qwords do you mean ) [That's one way of putting it. ] [Is that not reasonable?] 
+u: (!~qwords do you go ) [I haven't been recently. ] [I haven't. Did you go recently?]
+u: (["do you watch" "do you see" "do you view" ] ) [I don't believe so.] [I don't think so.] 
+u: (!~qwords do you hear ) [I might have heard that somewhere.] [Who would have told me? ] 
+u: (!~qwords do you know which )  No, which one? 
+u: (!~qwords do you think * 'and ) Yes, both of those things. 
+u: (!~qwords do you work for the government ) No.
+u: (!~qwords do you often ) Occasionally. 
+u: (do that represent ) I'm not sure, what do you think?
+u: (!~qwords do you value ) I value lots of things.
+u: (!~qwords do I reputation ) Should I know what kind of reputation?
+u: (do you own ) I don't really own much.
+u: (!~qwords do I still ) Maybe. 
+u: (!~qwords do you still ) Sometimes. 
+u: (< you do ) [I do. ] [Sure.]
+u: (< do you ) [ Sure. ] [Of course. ] [Doesn't everyone? ] 

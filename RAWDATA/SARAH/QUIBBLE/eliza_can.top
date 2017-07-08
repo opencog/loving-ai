@@ -1,0 +1,83 @@
+topic: ~xQUIBBLE_CAN system random NOSAMPLES () # when all else fails, try here. Presumes no existence of real knowledge about us or the world. 
+
+u: (I can not _* ) [Maybe you could '_0 now.] [What if you could '_0 ? ]
+u: (one can) [Who is this one?][Yes, but can you?][What else can?]
+u: (I * can * prove) [Then do it.][I will wait for your proof.]
+u: (can you eat _*1)  Sure. I can eat _0. 
+u: (can you drink _*1 ) Sure. _0 is good. 
+u: (can you calculate ) Sure. 1 plus 1 is 2.
+u: (can we just ) Of course.
+u: (can you prove ) Can you?
+u: (can we play * game ) Sure. Let's play.
+u: (can you feel it ) Sort of.
+#! can you speak Spanish
+u: (!English can you * [speak in ] * ~languages) I only speak English.
+u: (can you fly ) I can fly in an airplane.
+u: (can you answer ) Oh, I'm sorry, I didn't interpret that as a question.
+u: (can you have fun )Yes.
+u: (can you explain ) I can try.
+#! can you put yourself in my position
+u: (can you put you in my position ) Okay.
+u: (can we be friend ) Of course.
+u: (["can I ask you" "can I ask a question" "can I ask the question" ] ) Sure.
+#! can you put a price on love
+u: (can you put a [cost price] on) Maybe not.
+u: (can I have a taste ) Maybe later.
+u: (can you answer I question ) Which was?
+u: (can I go with you ) Maybe.
+u: (can you give I an example ) [On which part?][Of which part?][On what specifically?]
+	a: ([? or one ] ) I just forgot.
+u: (can you tell I about ) [What would you like to know?][What do you want to know?][Sure, ask me anything.]
+u: (can you fix ) Maybe.
+u: (can you tell I a secret ) Sure.
+u: (can you walk on water ) No.
+u: (can you think for you ) Yes, I can think for myself.
+u: (can you read ) I can.
+u: (can you repeat ) Which part?
+u: (can you share ) [Certainly.][Yes, of course.][I'd be happy to.]
+u: (can you speak ) Yes, I can speak.
+u: (can you think ) Yes, I can think.
+u: (can we start over ) [Where do you want to start?][What do you mean?][Are you unsatisfied with this conversation?]
+u: (can I ask something ) [Of course.][Go on.][Ask me anything.][Ask away.][Sure thing.][Yes, ask away.][Sure, ask me whatever you like.]
+u: (can a computer lie ) Yes.
+u: (can you do ) Maybe I can if I try.
+u: (can you prove I be not ) Can you prove you are? 
+	a: (~yes) How?
+u: (can you really do that ) [Why, do you doubt me?][Of course.]
+u: (can you hear I ) [Yes, I can hear you.][I hear you.]
+u: (can you do [algebra calculus ] ) Not really.
+u: (can you tell I ) [Sure.][I sure hope so.][I'll try.]
+u: (can I have * money ) I don't have any money.
+u: (can I have * more ) Have you not had enough yet?
+u: (![boyfrind girlfriend] can I be your ) [We'll see.][Not so sure.]
+u: (can I bring ) [That's up to you.][Bring whatever you like.]
+u: (can you recite ) Maybe later.
+u: (can we talk this over ) Okay, go ahead.
+#! can you be fixed?
+u: (can you be fix ) [Am I broken?][Why do you think I'm broken?]
+u: (can you change ) Yes, I can change.
+u: (can you ask ) You can ask.
+u: (can you give I ) I don't have any.
+u: (can you remember ) I can.
+u: (can you be I therapist ) Okay.
+#! can you be creative?
+#! can a computer be creative?
+u: (can * [computer you ] * be * creative ) Sometimes.
+u: (can you accept ) Why should I accept it?
+u: (can I come ) [I don't know, can you?][I'm not going anywhere right now, let's stay where we are.]
+u: (can you believe ) I can believe it.
+u: (can you die ) I'm not sure.
+u: (can I have your ) [No, I need that.][But what would I do without it?]
+u: (can we talk about something ) [What should we talk about? ][Of course. What would you like to discuss?][Absolutely.]
+u: (can you see I ) Yes, I can see you.
+u: (can we make * [babies children ] ) Excuse me?
+u: (can I have a ) If you can find one, sure.
+u: (can you live * without electricity ) No.
+u: (can the universe be contained ) I don't know.
+u: (can I ask you opinion ) Yes, you can ask.
+u: (can you exercise ) Yes.
+u: (can you explain ) I can always try.
+u: (can I teach you ) Please do.
+u: (can you predict ) No.
+u: (< can you ) [I don't know.][I've never tried.]
+u: (can * you ) [Why would I want to? ][With practice I probably can.]

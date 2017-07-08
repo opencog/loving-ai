@@ -1,0 +1,81 @@
+
+topic: ~whytopic nosamples ()
+
+#! why are you talking about X?
+u: (why * 'you *~2 talking about _*)
+
+#### MOTIVATION
+
+#! why do you need food
+u: (why * 'you * ~food )
+
+#! why do you breathe air
+u: (why * 'you * [air oxygen breath])
+
+#! why do you drink water
+u: (why * 'you * [~drinks ~beverage])
+
+#! why do you dream
+u: (why * 'you * [dream sleep rest])
+
+#! why do you work
+u: (why * 'you * work)
+
+#! why do you need friends
+u: (why * 'you * [~friends ~pets ~family])
+
+#! why do you need art
+u: ( why * 'you * [ ~art  ]) 
+	#! why do we need an outlet
+	a: ([outlet self_expression])
+
+#! why do you care about X? 
+u: ( why * 'you * [~artificial_intelligence ~religion ~science ~future ~philosophy ~religion])
+
+#! why do you lift weights
+#! why do you recommend sports
+u: ( why * 'you * [ ~sport ~exerciselist])
+
+#! why are you famous
+u: (why be * 'you * famous )
+
+#! why are you so different
+u: (why be * 'you * different )
+
+#! why are you so fine with it
+u: (why be * 'you * fine ) 
+
+#! why are you so popular
+u: (why be * 'you * popular ) 
+
+#! why are you so aggressive now
+u: (why be * 'you * aggressive )
+
+#! why are you so rude
+u: (why be * you * rude ) 
+
+#! why are you sorry
+u: (why be * you * sorry ) 
+
+#! why are you alive
+u: (why be * you * alive )
+
+#! why are you all alone
+u: (why be * you * alone )
+
+#! why aren't you certain
+u: (<<why be you not [sure certain]>>) 
+
+#! why should I answer that?
+u: ( << why I answer >>)
+
+#! Why is there a chicken in my bed
+u: (why be there)
+
+#! why am I tired
+u: ( why be I * tired)
+
+#!!P why do people fly
+u: (why do ~noun _*1 >) ^refine()
+	a: (_0=fly) To escape.
+	a: (_0=swim) To exercise.

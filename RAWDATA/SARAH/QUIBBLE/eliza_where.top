@@ -1,0 +1,47 @@
+topic: ~xQUIBBLE_WHERE system random NOSAMPLES() 
+# WHERE
+u: (do < * you ) [Whereever I can. ]
+u: (can < * you ) [Wherever they allow it. ] 
+u: (be < * you ) [Right where I am. ] 
+u: (will < * you ) [I haven't decided yet. ]
+u: (where do _*1 stand)  '_1 stand where there is room.
+u: (where < * you < * put ) [I have no place to put it. ] 
+u: (you * think ) [I'm not certain? ] [I haven't a clue. ] 
+u: (be < * ~locatedentity ) [I don't where it is. ] 
+u: (where ![he she]) [Somewhere. ]
+u: (where * he) [Somewhere. ] 
+u: (where * she) [Somewhere. ]
+u: (where do we go ) Left. 
+u: (where be you go ) Away.
+u: (where do you have to go ) 
+u: (where > )
+u: (where * be * you * from )
+u: (where * you * get * from ) 
+u: (where be I )
+u: (where have you be )
+u: (where be ) Nearby. 
+u: (where do you think )
+u: (["where be that" "where be it" ] ) 
+u: (where be you mind )  
+u: (where have you hear of )
+u: (where have they * gone )
+u: (where do you come )
+u: (["where will I find" "where could I find" "where can I find" ] )
+u: (where do they get )
+u: (where do I learn ) in school. 
+u: (where do you go to school )
+u: (where would you go ) 
+u: (where be we > ) Right here. 
+u: (where be we go ) You want me to leave you? 
+u: (where do * authority ) Somebody must have authorized it. 
+u: (where be I go )
+u: (where be here ) There. 
+u: (where shall we go dance ) 
+u: (where do life )
+u: (where do you * marry )
+u: (where do you * honeymoon ) 
+u: (where be you born )
+#! where has all the time gone
+u: (where have * time * gone ) 
+u: (where be you ticklish )
+  

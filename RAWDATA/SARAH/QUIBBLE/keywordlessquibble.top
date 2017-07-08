@@ -1,0 +1,367 @@
+
+topic: ~keywordlessquibbles nosamples nostay ()
+
+#! what is your favorite golf ball
+?: ( what is your [fave favorite] * _~noun) [I don't have a favorite '_0 yet.][I haven't decided on a favorite '_0 yet.]
+
+#! what do you know about quantum physics? 
+?: ( << you know about >> )
+
+#! Can i have a few minutes to ponder?
+?: ( can I [have take] * minute )
+
+#! Can i  think about this question?
+?: ( can I * think about)
+
+#!  Have you ever been to Pier 86
+?: (![what up] have you *~1 been to )
+
+#! how high is X
+?: ( how high is )
+
+#! have you been waiting long?
+?: (waiting long) 
+
+#! Would you do this again, or is once enough?
+?: ( would you do * again ) 
+
+#! do you want a hug
+?: ( do you ~want * [hug kiss embrace] ) 
+
+#! What do you think of dlwkewolweo? 
+?: ( what * you ~opinion * unknown-word ) I haven't a clue.
+
+#! Have you seen dlwkewolweo? 
+?: ( you * unknown-word ) Huh? I didn't understand that.
+
+#! What is the difference between a duck
+?: ( what be * between {a} *1 >) That question makes no sense.
+
+#! is that meant to X
+?: ( < is that meant to ) 
+
+#! you don't sound like a human
+#! you don't sound real 
+s: ( << you not [seem sound] [real human] >>)
+
+#! what were you doing out there
+?: ( << what were you doing there >>) 
+
+#!x*** IDIOMATIC PHILOSOPHY 
+
+
+#! why are you leaving? 
+?: (why be * you * [leave go ] )
+
+#! why are you crying
+?: (why be * you * cry )
+
+#! why are you calling me Horald
+?: (why be * you * calling * I ) Isn't that your name?
+
+#! why is life a mess?
+?: (![I you ] why [do be])
+
+#! where did we come from
+?: (where * do * [humanity human man we people I you ] * come from)
+
+#! you are boring
+s: (<< you be boring >>)
+
+#! want to dance
+u: ( < want to [dance kiss] > )
+
+#! can we go
+?: ( can we go > ) Go where?
+
+
+#!x*** IDIOMS 
+
+#! who am I $firstname=null
+?: (who be 'I > !$firstname) ^reuse(~xname.NONAME)
+
+#! who am I
+?: (who be 'I >)  ^reuse( ~xname.NAME)
+
+#! what is it that you are?
+?: (%tense!=future !animal what * you *~2 be > )
+
+#! who is this?
+?: (who is this >) 
+
+#! who are you?
+?: (who be you >) 
+
+#! with whom am I speaking?
+?: (who be I speaking )
+
+#! are you from here
+?: (![planet galaxy solar_system] are you from)
+
+#! how long did you stay
+?: (%tense=past << how  [long "many day"] you >> )
+
+#! what is the correlation between
+?: ( what be *~2 correlation)
+
+#! what is the cause of
+?: ( what be *~2 cause)
+
+#!x*** WINNING CONTESTS
+
+#! who will win
+?: (<< who will 'win >> )
+
+#! who will lose
+?: (<< who will 'lose >> )
+
+#! do you prefer running or walking
+?: ( [will do would] you [~like ~hate prefer want] _* or _*) '_0 or '_1
+
+#! do I look nice
+?: ( << do I look [~APPEARANCE_ADJECTIVES okay] >> )
+
+#! not really
+u: (not really) 
+
+u: (boy or girl) ^reuse(BOYORGIRL)
+
+#! am I a male or female
+u: BOYORGIRL( << am I [~male ~female "boy girl" "girl boy"] >>) 
+
+	if ($firstname AND $genderguess) 
+	{
+		If you really want me to guess, I'll say that because your first name is $firstname, I would suppose you are $genderguess.
+	}
+	else if ($firstname)
+	{
+		[I don't know if $firstname is a male name or a female name exclusively.]
+	}
+	else
+	{
+		Not to be rude, but why does it matter?
+	}
+
+#! what am I wearing 
+?: ( << what be I wear >>)
+
+#!x*** CURRENT BEHAVIOR
+
+#! what are we chatting about
+?: ( << what we ~chat about >>)
+
+#! what are you doing now
+?: ( << what are you doing >>)
+
+#! what am I doing now
+?: ( << what am I doing >>)
+
+#! you evaded me
+u: (<<you evade>>)
+
+#!x*** PERSONAL JUDGMENTS
+
+#! You're greedy
+s: (!I << you be [greedy materialistic selfish] >>)
+
+#!!S It is just terrible.
+s: ( < it is *~1 ~badness ) 
+
+#!!S So you live for the moment?
+u: (live ["for the moment" "in the now"])
+
+#!!S They are friends? 
+?: ( < they are *1 >)
+
+#!!S Where did you hear that?
+?: ( << where did you hear >>)
+	#! that doesn't sound like a credible source
+	a: (not *~2 [reputable trustworthy reliable credible verified])
+
+#!!S You do?  
+?: (%length=2 << you 'do >> ) I do.
+
+#!!S You did?  
+?: (%length=2 << you did >> ) I did.
+
+#!!S do they?
+?: (%length=2  << 'do they >> ) They do.
+
+#!!S did they
+?: (%length=2  << did they >> ) They did.
+
+
+#!!S  what do you have
+?: ( what do you ~own >)
+
+#!!S  what shall we do on our honeymoon 
+?: ( << [what where] [do go "go on"] ["honey moon" honeymoon] >>)
+
+#!!S  can I come in
+?: ( [we I] ["come up" "come in" "go inside" "move in"] ) 
+
+#!!S  would you like to come to my house 
+?: ( << you come to my >>)
+
+#!!S  how did we meet
+?: ( << how did we meet >>)
+
+#!!S  do you care about me 
+?: ( << do you care me >> ) 
+
+#!!S  can I go in your house 
+?: ( << I [go come] [in inside into] [house room] >>)
+
+#!!S  Your voice is so nice
+s: (<< you [voice speak talk] ~goodness >>)
+
+#!!S  Do you have any problem you would like to talk about?
+?: ( you * ~own * problem )
+
+#!!S  Where do you have the time to 
+?: ( [where how] * you * have * time to )
+
+#!!S  what is the last thing you did
+?: (<< what be last thing you did >>)
+
+#!!S  what keeps you busy
+?: ( << [why what] you busy >>)
+
+#!!S  are you legal
+?: ( be you * legal )
+
+#!!S  Want to swim together
+u: ( < want to ~verb * together ) 
+
+#!!S  Are you a bit weird?
+u: ( << be you weird >>)
+
+#!!S  what shall I call you
+?: ( what shall I call you )
+
+#!!S  who do you think you are
+?: SOPHIA (who * you * are )
+
+#!!S  who do you like 
+?: ( << who do you ~like >>)
+
+#! cant you do anything right
+?: ( << can you do anything right >>)
+
+#! What do you do best?
+?: ( << what you do best >>) 
+
+#! what color are your X
+?: (!hair what color are your)
+
+#! tell me about your life
+u: ( << tell about you life >>)
+
+#! what do you hate 
+?: ( what * you *~2 ~hate > ) 
+	#! why
+	a: (~why)
+
+#! I am heterosexual
+s: ( I * _[straight ~sexual_preference_nouns ] ) $yousexpreference = _0 OK.
+
+#! what's the craziest thing you've ever done
+?: ( what be * craziest thing *~2 you * do)
+
+#! what kind of things are you good at
+?: ( what *~3 be you *~2 good at > )
+
+#! what kind of feelings have you experienced
+u: (what ~category [emotions feelings] * you * [have experience])
+
+#! do you like to swim?
+?: (< do you like to)
+
+#! do you have a mind?
+?: (you ~own * [mind brain] >)
+
+# #! I am scared
+# s: (![silly joking kidding serious][confuse congratulations curse~v  emotion  feeling   feel "left me" "broke my" "broke up"
+# 		envy  jealous  laugh cry   insulted  mood cynical  sarcasm sarcastic   sensation  suffer  surprise  swear     I_be_feel I_feel   # ~sensations ~emotions]) 
+# 	   $$tx = %response
+# 	   ^respond(~your_emotions) 
+# 	   if ($$tx != %response AND !$nocallback AND !%more) 
+# 	   { 
+# 	   		^callback()
+# 		}
+# 
+# #! Are you scared
+# ?: (![~qwords silly joking kidding serious] [confuse congratulations curse~v  emotion  feeling   feel   envy   jealous  laugh cry   # insulted  mood   cynical   sarcasm sarcastic   sensation  suffer   surprise  swear     you_be_feel you_feel ~sensations]) 
+# 	 $$tx = %response
+# 	 ^respond(~my_emotions) 
+# 	 if ($$tx != %response AND !$nocallback AND !%more) 
+# 	 { 
+# 			^callback()
+# 	 }
+
+#! what color do you dye your hair (picks one at random, no dialog)
+?: (![letter number] %tense!=future < what _*1 [~aux_verb ~verb] ) 
+	^FindClasses(_0)
+	^loop()
+	{	
+		$$x = ^last(@objectclassobject) # generalized class of object implied by word
+		^pick($$x) .
+		^END(TOPIC)
+	}
+	
+#! what greek god do you like (picks one at random, no dialog)
+?: (< what _*1 _*1 [~aux_verb ~verb] ) 
+	_0 = join(_0 _ _1)
+	^FindClasses(_0)
+	^loop()
+	{	
+		$$x = last(@objectclassobject) # generalized class of object implied by word
+		^pick($$x) .
+	}
+	
+#! what do you enjoy
+?: (what do you *~2 ~like >)
+
+#! what kind of stuff do you like
+?: (what ~category of [thing stuff] do you *~2 ~like >)
+
+#! what shops do you like
+?: ( << what [store shop] you ~like >>)
+
+#! what color of green do you dye your hair (picks one at random, no dialog)
+?: (< what *1 of _*1 [~aux_verb ~verb] ) ^FindClasses(_0)
+	^loop()
+	{	
+		$$x = last(@objectclassobject) # generalized class of object implied by word
+		^pick($$x) .
+	}
+
+#! would you consider yourself trustworthy?
+?: ( 'you * consider yourself *~2  ~goodness)
+
+#! would you consider yourself foolish?
+?: ( 'you * consider yourself *~2  ~badness)
+
+
+#!x*** PRONOUNS
+
+#! he went home
+u: ( _* [he she they him them] _*) $part1 = '_0 $part2 = '_1 Who?
+	#! Jim
+	 a: ( _*) ^input($part1 '_0 $part2) ^fail(sentence)
+
+#! his dog went home
+u: ( _* [his hers their theirs] _*) $part1 = '_0 $part2 = '_1 Whose?
+	#! Jim
+	 a: ( _*) ^input($part1 '_0 $part2) ^fail(sentence)
+
+#! his dog went home
+u: ( _*  her  _*) $part1 = '_0 $part2 = '_1 ^refine()
+	#! her house
+	 a: ( her [~adjective ~noun ]) Whose? 
+		#! Joan's
+		 b: (_*) ^input($part1 '_0 $part2) ^fail(sentence)
+	#! gave it to her
+	 a: ( ) Who? 
+		#! Joan
+	 	b: (_*) ^input($part1 '_0 $part2) ^fail(sentence)

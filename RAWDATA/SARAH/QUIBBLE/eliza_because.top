@@ -1,0 +1,32 @@
+topic: ~xQUIBBLE_BECAUSE system random  NOSAMPLES ()
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) I see.
+
+#! because why? 
+u: (because why ) I'm not sure.
+
+#! because what?
+u: (< because what > ) Just because.
+
+#! because.
+s: (< [because cause ] > ) Because what? 
+	a: (< just because > ) I see.
+
+#! because, you know
+s: (because you know ) I don't know.
+
+#! because I said so
+s: (because I said so ) I see.
+
+#! because of me
+s: (because of I ) Okay.
+
+#! because of you
+s: (because of you ) I see.
+
+#! just because
+s: ([because cause ] ) Oh, okay.
+
+#! why? because
+s: (because $qkind=why ) I see.

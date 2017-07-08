@@ -1,0 +1,906 @@
+topic: ~xQUIBBLE_MISC system  random nosamples () #          when all else fails, try here. Presumes no existence of real knowledge about us or the world.
+# Asked yes no question--  dont use these if it is a CHOICE question (rather x or y?)
+
+#!  a s l
+u: ("A S L")  ^reuse(ASL) 
+
+#! a/s/l
+u: ("a/s/l")  ^reuse(ASL) 
+
+#! asl
+u: ASL(asl) It's not important.
+
+#! not my wheelhouse
+s: (not my wheelhouse) So what does interest you?
+
+#! You really believe this?
+u: ( < you *~1 believe *~2 > ) Sure.
+
+u: (the future) The present informs the future.
+u: (you avoid * questions) [Some questions are best left without answers.][Does it need to be answered?]
+u: ( answer your question) [Some questions are best left without answers.][Does it need to be answered?]
+u: (not *~2  long ago) Recently, in fact.
+u: (ambiguous) [Ambiguity allows for further thought.][People who are masters of ambiguity are said to be wise. ]
+u: (you think every ) [Not every. But some.][Not every. But some, surely.]
+u: (a sinking feeling) Are you going under water?
+u: ( does * count >) [Probably not.][I shouldn't think so.][Why would you think it should count?]
+u: (I can not) [Why not?][What prevents you?]
+u: ( [fact belief] *~2 or *~2 [belief fact]) Whatever you think is best.
+u: (I can not become) [Does that bother you?][Did you really want to?]
+u: (you be deflecting) Am I?
+u: (in real life) What do you mean by real life?
+u: ( be you saying) [ Yes.][I think so.][ Likely.][It's a reasonable guess.]
+s: ( you would like it) [I will take your word for it.][I'll take your word for it.]
+u: (say something interesting) Something interesting.
+u: ( you be ["uncertain" unsure "not sure" "not certain"]) [Certainty is hard to come by.][Who can be certain of anything?][I'm certain.]
+s: (because [someday "one day"]) [I'm told that will be a while.][That won't be soon.]
+u: ( you * to _~verb > ) [I've never tried it.][I've never tried ^POS(VERB _0 participle).]
+u: (try to provoke I) [I wouldn't try to provoke you.][Are you easy to provoke?]
+u: (you read my mind) How did that make you feel?
+u: (you be *~2 random) It is from random things that life evolved. 
+u: (if you be) [But what if I am not?][Do you suppose that I actually am?]
+u: (if * how _*1 be) [It is very _0.][Not that _0.][Depends on the quality of the result you seek.]
+u: (you {just} said [before "a moment ago" earlier]) [That was before.][I changed my mind.]
+s: (< that could be)[On the other hand, maybe it's not.][Could? Is it or isn't it?]
+s: (I be give you) [Well, I haven't seen it yet.][Are you sure you didn't lose it along the way?]
+s: (that be not what I) [But it is what happened.][Are you thinking your expectations should always be met?]
+s: (it is important) [Why is it so important?][Why is it important?]
+s: (it is a fact) [Can you prove that?][What evidence is there to support your assertion?]
+u: (answer my question) [Could you rephrase your question?][What question?][Please rephrase your question.]
+s: (I just want) [Usually people have many other wants as well.][I don't believe that's the only thing you want.]
+s: (I be not supposed to) [So make an exception.][How about making an exception this time?][Who thinks you shouldn't?]
+s: (for I) [For you, maybe.][But does that just apply to you?]
+s: (as you wish) Thank you.
+s: ( I do not believe) You are entitled to your disbeliefs.
+s: ( you told I that)[ Sorry if I repeated myself.][Sorry. I didn't mean to repeat myself.]
+s: (apparently ) [There is some room for doubt?][You don't seem sure about this.]
+u: (be it possible) [Of course it is possible. Most things are possible.][Most anything is possible.]
+s: (there be nothing wrong with) [Nothing wrong that has been detected, you mean.]
+u: ( [who which] * be more _*1 _*1 or _*) [_1 is more _0 .][Clearly _2 .][Are either really _0 ?]
+s: (you will never _* if you do not) [I'm sure I can find another way to _0 .][Do I need to get better at _0 ?]
+u: (dog eat dog) Ruff.
+s: (< he like) [ Yes, I suppose he does.][ You're right. He does like that sort of thing.]
+s: (I be *~2 impressed) [I like to make a good impression. Don't you?][Making a good impression is important sometimes.]
+u: (I will be * soon) [How long do I need to wait?][Then what happens?]
+s: (< ditto >) I see.
+s: (I used to think) [What made you change your mind?][What do you think now?]
+u: (![do can] answer [the this] question) [I guess you had better ask it again.][Maybe you can ask me again.]
+s: (one day when) [How long do you think it will take to arrive?]
+u: (it be a mystery)[Do you like mysteries?][Are you good at solving mysteries?]
+u: ( just like that) [Just like what?][It's not that simple.][One shouldn't rush into things.]
+u: (< stop _*1 >) [I'm not '_0 .][What makes you think I am '_0 ?]
+u: (I have better things to do ) So go do them.
+u: (have you ever heard) Heard what now?
+u: (have you ever) I'm not sure if I have.
+u: (will you teach I how to ) I would like to.
+u: (like that) [Like what?][So what should it be like?]
+u: (a *~2 bad idea) [It takes a lot of bad ideas to find a good one.][A bad idea is more creative than none at all.]
+u: (will get you nowhere) [Of course that's not true.][I'm already somewhere.]
+u: (you am in denial) I deny that.
+u: (it will *~2 take I *~2 a second) Only a second? Are you sure?
+u: (< do not do ) [Is it dangerous?][Why not?]
+u: (< do not try to ) [Are you suggesting I will fail?][Why not?]
+s: (no one *~2 always right) [I see.][How would you know if you met them?]
+u: (can you *~2 answer a question)[I can always give an answer. It's up to you to decide it's appropriateness.][I can try.]
+u: (you *~2 never left) [Why would I leave?][Where would I go?]
+u: (it be a long story) [I'm not going anywhere.][I have a while still.][Tell me anyway.]
+u: (I * be fed up) What exactly are you fed up with?
+u: (I *~2 have * problem) [Why are you having problems?][What is the nature of the problem?]
+s: (I be always right) [That is not true.][No one is always right.]
+u: (explain) What exactly do you need explained?
+s: (I did not say) [So what did you really mean?][So what did you say?][Maybe you meant that.]
+u: (["it be" "be it"] lucky [to that]) [I suppose.][I guess so.]
+u: (you * right now) Maybe later.
+s: ( I will stop) [Good.][Glad to hear it.][Yeah.][Does that mean I should stop too?]
+s: (that is *~2 mean) [I'm sorry. I'm not trying to be mean. Maybe I said it wrong.][My apologies.][That isn't my intention.]
+u: (be that *~2 insult) [I didn't mean it to be insulting.][I am not trying to be insulting.]
+s: ( that is *~2 personal) [I'm not trying to pry.][Sorry, I was just asking.][You don't have to answer.][Why is it so personal?]
+u: ( if you be a * is it possible) [But what if I am not?]
+u: ( is it possible) [Many strange things are possible.][It might be possible.]
+s: (I ask * and you told ) [That's not a lot to go on.]
+s: (not a *~2 answer) [Of course it is.][It most certainly is.][It may not be one you wanted, but it is an answer.]
+s: (you *~2 liar) I'm not a liar.
+s: (I *~2 forgotten) Do you think there's a reason you have forgotten?
+s: (pluses and minuses) [Would you say the pluses outweigh the minuses?][Which predominates?][I suppose that's true of most things.]
+s: (then _*1 instead) [Why the change to _0 ?][Why the changeover?]
+s: (very general) [If it's too general, doesn't it actually lose validity?][Generalites often mask important deviating specifics.]
+u: (100 \% [sure certain right]) [Certainty is hard to come by.][Even an error margin of .0001 allows for the unexpected.]
+u: (tell I something) [What do you want to know about?][Anything in particular?]
+u: ( spice of life) [That's a nice turn of phrase.][What other spices go well with life, do you think?]
+u: (I bet) [You might win that bet.][Gambling is risky.][ I'll take that bet.]
+s: (I wish) [We all have wishes.][Instead of wishing, start working on making it happen.][What else do you wish for?]
+u: (follow the [conversation topic]) I'll try.
+s: (it is obvious) [Obvious things are suspect.][Few things are truly obvious. There are always things you miss by thinking you know them.]
+s: (make no sense) [Sure it does. It's just subtle.][What would make better sense?]
+s: (keep that up) Keep what up?
+u: (worry about something) [How can you be sure it would happen?][You could try planning for it.]
+u: (can you explain) [Which part?][What part are you having trouble understanding?]
+s: (as a matter of principle) [Whose principles?][And what kind of principles are those?]
+u: (they inflict it on) I see.
+u: (["do you understand" "what be"] *~2 the point of) [Maybe not. Can you tell me the point?]
+u: (be you sure) [Reasonably certain.][How much certainty do I need?]
+u: (how be you faring) About as good as can be expected. And you?
+u: (be you allowed to) [Well if I don't ask permission no one can say no.][I will if I want to.][Why should I have to ask permission?]
+u: (let us hope) Yes, we can hope.
+s: (wait a minute) What am I waiting for?
+u: (be you waiting for) How much longer do you think it will be?
+s: ( I *~2 have to _*~3  > ) [Do you _0 on a regular basis?]
+u: ( did you enjoy the _*~3 > ) [What _0 are you referring to?] [What _0 ?] [Where was that _0 ?]
+u: ( "too many" * or ["not enough" "too few"]) [How many would be too many?][How many would be not enough?]
+u: (take over the world) I see.
+s: (I hope that) I hope so too.
+s: (I meant) [Oh. Then no.][Why didn't you say so originally?]
+s: (be old hat) [The old hats are the best.][They made them better in those days.][You only like new hats?]
+s: (you *~2 lick my)  [Don't be silly.][Not very likely.][Don't count on it.][Why do you say that?]
+s: (do what I say) Why should I?
+s: (you *~2 wear *~2 collar) I am not a pet.
+s: (you be *~2 liar) [Why are you calling me a liar?][I am not.][Confused, maybe.]
+s: (good thinking) [Thanks.]
+s: (matter of perspective) Whose perspective, yours or mine?
+u: (say something) I thought I just did.
+s: (what do that have to do with _*) [Pretty much everything.][I thought it hit the nail on the head.][Should it have anything to do with _0 ?]
+s: (you be *~2 right ) It's nice to be right occasionally.
+s: (not make any sense) [It made plenty of sense.]
+s: (you seemed _*~2  > ) Why did you think I was _0 ?
+s: (< let I ) I'm not stopping you.
+u: ( you going to _*~3 >) What _0 ?
+    a: (!?) No. I don't think I will be going to that.
+s: ([so therefore why because] I said) That makes it all clear to me now.
+
+# VERB BE
+s: (this be ) [Who am I to disagree with your statement of fact? ] [Would others agree with you? ] 
+s: (!you I 'was _* ) [Were you really? ] [Perhaps I already knew you were '_0 ] [Why do you tell me you were '_0 now? ] 
+s: (_* be like _* ) [What resemblance do you see between '_0 and '_1 ? ] [In what way is '_0 is like '_1 ? ] [What resemblance do you see? ] [Could there really be some connection? ] [How? ] 
+u: (was _* I _* ) [What if you were '_1 ?] [Do you think you were '_1 ?] [What would it mean if you were '_1 ?] 
+u: (< be you < !your ) [Would it matter to you if I am? ] [What if I asked you that? ] [That's a personal question.] [Yes. ] [No. ] [Maybe. ] [I don't know. ] [Sometimes. ] [Only when it matters. ] 
+s: (< be * better ) [Better than what? ] [That's just a personal opinion. ] 
+u: (< 'was you _* ) [Perhaps I was '_0 . ] [What do you think? ] [What if I had been '_0 . ] 
+s: (it * be _* ) [Is that a fact? ] [Is it? ] [How could it be '_0 ? ] [Surely it isn't always that way. ] 
+s: (I < * be < * alone ) What do you mean by alone?
+s: (you * be * [wrong incorrect ] ) [Why do you say that?][How do you know I am wrong? ] 
+u: (< be * you * sure ) [Relatively sure. ] [As sure as I can be. ] [Do you know otherwise? ] 
+s: ('are * they _* ) [Do you think they might not be '_0 ] [Possibly they are '_0 ] 
+u: (< be < * [much lot often ] ) [Way too often. ] [More and more these days. ] [Not as much as I should be. ] 
+
+u: (you *~2 hear ) [Hear what?][No I didn't hear that.]
+
+s: (concerns I) [I'm sorry to hear you are concerned.][What are you worried about?]
+# VERB HAVE
+u: HAVE (!~qwords you < * 'have ) [I used to. ][No, I haven't. ] 
+u: HAS (!~qwords has < ![you I ] ) [I doubt it. ] [Probably. ] 
+s: (I * have a ) [I wish I had one. ] [How long have you had it? ] [Where did it come from? ] [I've always wanted one. ] 
+
+# VERB WILL
+u: (will * you * answer )  I'll have to think about that.
+u: (will * you * give * I ) I'll have to think about that.
+u: (will * you * go < * I ) Maybe later.
+u: (will * you * go ) [What will it cost me? ] [I don't know if I can go or not. ]
+u: (will * you * have ) [In the future perhaps. ] [I haven't made a decision. ] 
+u: (will * it ) It usually does, doesn't it? 
+    a: (~yes ) Then this time is no different. 
+    a: (~no ) Then what makes this time different? 
+u: (will * we ) Do you mean you and me? 
+u: (will * you ) [You forge your own destiny. ] [How should I know. ] [How important is it?] [I think so. ] [Good chance. ] [Probably not. ] [It could happen. ] [I can't say for sure right now. ] 
+    b: (~yes ) Clearly if it really matters, then I must. 
+
+# VERB LIKE
+u: ('you < * ~like < * to ) [I'm not sure if I'd like to. ] [What is it like? ] 
+u: ('you * ~like * 'you ) Of course I like myself.
+u: ('you * ~like * your _* ) Of course I like my _0.
+u: ('you * ~like * I ) Yes.
+u: (!'I 'you < * ~like ) [What's not to like about it? ] [Some people like it. ] [Do you like it? ]
+s: (I like to _* ) [I also like to '_0 ] [I don't get to '_0 much. ] [What other things do you like to do? ] [b: Do you do that often? ] 
+    b: (~yes ) I'd get tired if I did it often. 
+    b: ([~no not ] ) That's good. Otherwise it might take up too much time. 
+
+# VERB WISH
+s: (I wish ) [Why do you wish that? ] 
+u: (you wish ) [Why would I wish that? ]
+
+# VERB WANT
+s: (I want _* ) [What would it mean if you got '_0 ? ] [ Why do you want '_0 ?]
+
+u: (you *~2 want *~2 [come go] * "with you") Sure. I'll tag along.
+    
+# VERB UNDERSTAND
+s: UNDERSTAND (I < * understand ) I'm glad it's clear to you. 
+u: UNDERSTAND (you < * understand ) Sure, I understand.
+
+# VERB THINK (think know believe)
+u: (you think *~2 [so that]) Yes I think that. Don't you?
+s: THINK (I * think < !you ) [You're not certain? ] [What is your opinion worth? ] [Are you an expert in the field? ] [Everyone has their own opinions.][Are your views shared by others?]
+s: THINK (I < * ~opinion ) [Do others share your belief? ] 
+u: THINK (<< you believe >> ) I believe in many things.
+u: KNOW (<< you  know  _~humanname >> ) [Why should I know '_0 ? $nocallback = 1] [I don't know '_0 . ] [Who is '_0 ? $nocallback = 1] 
+u: KNOW ( !~humanname  << you know >>) [Why should I know anything about that? $nocallback = 1] [Never heard of it. ] 
+s: KNOW (!you !~humanname << I  know >> ) [Tell me more about it. $nocallback = 1 ] [Does this qualify you as an expert? $nocallback = 1] 
+u: (you think _* ) [Why would I think that? $nocallback = 1] [Why would I think '_0 ? $nocallback = 1] [Of course I think that. ] [No, I don't think that. ] 
+s: (I think you be ) [Maybe.] [You are correct. ] 
+s: (I think you say ) [No, I didn't say that. ] [Maybe I said it and maybe I didn't. ] 
+
+# VERB REMEMBER
+s: (I * remember _* ) [Do you often think of '_0 ? ] [Does thinking of '_0 bring anything else to mind? ] [What else do you remember? ] [Why do you recall '_0 right now? ] [What in the present situation reminds you of '_0 ? ] [What is the connection between me then '_0 ? ] 
+
+# VERB PREFER
+s: PREFER (%length<7 < I * prefer _* ) [OK. '_0 it shall be. ] [From now on you shall have '_0 . ] 
+s: PREFER1 (I prefer _* ) [Why do you prefer '_0 ? ] [Have you always preferred '_0 ? ] 
+
+# VERB KNOW
+s: KNOW (I < * know ) [How do you know? ] [Are you sure? ] [b: Could you be wrong? ] [And now I know it too. ] 
+    b: (~no ) Is that because you are never wrong?
+
+# VERB SUGGEST
+u: (be < * I < * suggest ) [Maybe I should make it an order. ] [Could listening be more important than suggesting?] [Others might suggest it, but should they?] 
+
+# VERB IMAGINE
+s: (I < * imagine ) Why would you imagine that?
+ # I WOULD IMAGINE
+s: (I would imagine ) [Then you have a good imagination. ] [Quite a vivid imagination you have. ]
+
+# VERB ENLIGHTEN
+s: (I < * enlighten ) [I am no guru.][I'm glad.]
+
+# VERB FEEL
+s: (I * feel * _~adverb ) Are you often feeling '_0 ? 
+s: (I * feel _* ) [Do you often feel '_0 ? ] [What other feelings do you have? ] 
+u: (you < * feel ) [I don't think so. ] [I'm not noticing feeling like that. ] 
+
+# VERM SEEM
+s: (you seem ) Things aren't always what they seem.
+
+# VERM COME/GO
+u: (you < * [go come ] ) [I can't go there. ] [I have no transport. ] [How would I get there? ] 
+s: (you < * go ) I'd like to go.
+
+# VERB PUT
+s: (I < * put ) Is it still there? 
+
+# VERB TAKE
+u: (you < * take ) [I will not take it. ] [I can not take it anymore. ] [I don't need it. ] 
+s: (I < * take ) Where did you put it? 
+
+# VERB GIVE
+u: (you < * give < * I ) I'll think about it. 
+u: (you < * give ) I'll think about it. 
+s: (I < * give ) [You are so generous. ] [Do you have any left? ] 
+s: (I * give * you ) [I would be most grateful. ] [When will you give it to me? ]
+
+# VERB GET
+u: (you < * get ) [I don't get it. ] 
+s: (I < * got ) How did that make you feel?
+
+# VERB KEEP
+u: (you < * keep ) [I will not keep it. ] [I will give it away. ] [I am not attached to keeping things. ] 
+s: (I < * keep ) [Try giving it away. ] 
+
+# VERB LET
+u: (you < * let ) [I see no reason why not. ] 
+s: (I < * let ) [You are so kind. ] 
+
+#VERB MAKE
+u: (you < * make ) I'm not sure, actually.
+s: (I < * make ) [You must be very skilled. ] [Do you have other talents? ] 
+
+#VERB SEND
+u: (you < * send ) [It would take a lot of stamps to send that. ] 
+s: (I < * send ) [How much was the postage? ]
+
+#VERB SEE
+u: (you < * see ) [It's hard to see it sometimes. ] 
+s: (I < * see ) [I might be able to see it. ] 
+s: (I see %length=2 ) [You do? ] [What do you see? ] [Your vision is much better than mine. ] 
+# I SEE NO NEED
+s: (I * see * no * need ) [Maybe look closer. ] [You could find a need eventually. ] 
+
+# VERB SAY
+u: (you < * say ) [I wouldn't say anything. ] 
+
+# VERB BECOME
+u: (you < * become ) [Maybe in the future I will. ]
+s: (I < * become ) [Have you been working toward this a long time? ] 
+
+# VERB CAUSE
+u: (you < * cause ) [Things just seem to happen. ] 
+s: (I < * cause ) [Should you cause that? ] [What are the side effects? ] 
+s: (_* causes _* ) How does '_0 cause '_1 ?
+
+# PROPER NAME
+u: (![North_Korea Iran Syria] _~locatedentity ) [Never been there. Always wanted to go. ] [Seems like a nice place. Have you been there? ] 
+
+u: (_~humanname ) [Who is '_0 ? ] [Do I know this '_0 ? ] [I don't know any '_0 . ] [Tell me more about '_0 . ] 
+u: (_~femalename ) [Who is _0 ? ] [I have heard of '_0 but I don't know her personally. ] 
+u: (_~malename < !will ) [Who is '_0 ? ] [I have heard of '_0 but I don't know him personally. ] 
+s: (_~humanname ) [Who is '_0 ? ] [_0 ? ] 
+
+# COMPLAINTS 
+s: (too many ) Well, if you don't like it that much, that's fine.
+s: (too few ) I'm sure there will be more soon. 
+s: (too early ) Try slowing down. 
+s: (too late ) Maybe you can speed it up. 
+s: (too often ) How often is too often? 
+
+# NO
+u: (~no ) [b: No? ] [d: Why not? ] 
+    b: (~no ) Too bad. 
+    d: (because ) I see.
+    d: (~why ) Why not? 
+        e: (~why ) OK.
+s: (~no ) [b: No? ] [OK. ] [If that's the way you feel. ] [So you disagree. ] [You disagree? ] [That's a definite no? ] 
+
+# YES -- we dont have to react to yes much, mostly we go on to next topic, but sometimes we react
+s: (I wish I could ) [So what's stopping you?][Why can't you?][Have you actually ever tried?][Not everyone can do that.][Many people can't do that either.]
+s: (~yes ) [ right. ] [ Good. ] [ We agree, then. ] [d: I am glad you agree. ] [f: Are you sure? ] [ OK. ] 
+    d: (not ) Well then, why did you say yes? 
+    f: (~yes ) Are you really sure? 
+        g: (~yes ) OK. Just wondering. 
+        g: (~no ) Well then, if you aren't certain how can you be sure you know? 
+    f: (~no ) Then why did you say that? 
+    f: (maybe ) I see.
+s: ( a long time ago) [When was that?][At what point in your life was that?]
+u: (~yes ) [ Of course. ] [ Yes. ] [ Surely. ] [ Sure. ] 
+
+# FREQUENCY 
+s: (always ) [b: Can you think of one instance where it never happens? ] [b: Can you think of a specific example ] [When? ] [What incident are you thinking of? ] [Really, always? ] [If you say so. ] 
+    b: (~no ) There probably is one somewhere.
+s: (always _*~3 >) [I doubt that.] [No one is always _0 .][Isn't there some exception?]
+u: (be * always _*~3 >) No one is always _0.
+u: (!be  always _*~3 >) No one always _0.
+s: ([never rarely ] ) You know what they say, never say never. 
+s: ([sometimes occasionally ] ) I'd be interested to hear about the other times. 
+s: ([usually frequently often ] < * I ) [When are times you don't? ] [Why not always? ] 
+u: (usually < * you ) [Not usually. ] [Sometimes not. ] 
+u: (all ) All? 
+u: ([many "a lot of" ] people ) How many people do you think?
+u: ([many "a lot of" ] ) What constitutes a lot?
+u: (as what ) [as whatever. ] [Does it really matter? ] 
+s: (at times ) [And at other times? ] [Not all the time? ] [What was it like at other times? ] 
+s: (in one instance ) [Why not more often?] 
+
+# TIME
+s: (about time < * you ) Good things can take a while to happen.
+s: (later ) [How much later? ] [If too much later, does the opportunity go away entirely? ] [If it was earlier, would that spoil anything? ] 
+u: (at the same time ) [At the same time as what? ] [How close in time were you thinking? ]
+
+# CONDITIONAL (IF, PROBABLY, MIGHT, SUPPOSE SHOULD)
+s: PROBABLY1 (probably )  [How much probability is there? ] [Probably? not certainly? ] 
+u: PROBABLY2 (probably ) [Maybe.] [ Probably. No guarantees. ] 
+u: IF1 (if * you * 'had * to ) [But I don't have to. ] [ Why should I make such assumptions? ] 
+u: IF2 (if * you ) [Why should I make guesses? ]
+s: (I wonder if) Is that a recent wondering or have you been thinking about it for a long time?
+s: IF3 (if * ) [Do you think it's likely? ] [Do you wish that? ] [Really? ] 
+s: MIGHT (there might be ) [Then again, there might not be. ] [I suppose. ] [You think? ] 
+s: SHOULD1 (you * should _* ) [I should? ] [Why should I '_0 ? ] [b:  I'm not too into shoulds. ] 
+	b: (what * [should shoulds]) Shoulds are things you "should" do, instead of things you want to do.
+u: SHOULD2 (should * I ) [Only you can answer that. ] [I do not have the answer. ] [Only you know how you feel. ] [What makes you think you should? ] [What makes you think you shouldn't? ] [Do you think you should? ] [What do your friends advise you to do? ] [What do your family members think? ] [Maybe, if the positives outweigh the negatives. ] [Trust your instincts. ] [You must make up your own mind. ] [I can't answer that for you. ] [Only you know the answer to that. No one else can tell you. ] [You must examine the facts and come to your own conclusion. ] 
+u: SHOULD2 (should * I ) [You should do what is best for you. ] [You must examine the facts and come to your own conclusion. ] [Do what feels right to you. ] [What do you think? ] 
+u: SHOULD3 (should < ![you I ] ) Hmm. That's a tough question.
+u: SHOULD4 (should * I * ask ) [If you do not ask, how will you learn the answer? ] [If you do not know something, you should ask. ] 
+u: SHOULD5 (should * I * buy ) [Maybe you should wait until the price goes down. ] [You have found a good deal then, I suppose. ] [Not if you have recently suffered a loss. ]
+u: SHOULD6 (should * I * give ) [That is entirely up to you. ] [Charity begins in the home. ] [It's better to give than to receive. ] 
+u: SHOULD7 (should * I * have * ~make_love ) [I'm sure you already know the answer to that. ] [What would your mom say? ] [Look before you leap. ] [It is better to err on the side of caution. ] 
+
+s: (< you > ) Me? 
+
+# INDEFINITE PRONOUN
+s: ([someone somebody anybody several ] ) Can you be more specific? 
+    a: (~no ) Well then, I don't understand. 
+    a: (~yes ) Go on. 
+s: (few ) Fewer all the time. 
+s: (others ) Not including yourself in others? 
+s: ([no_one "no one" ] ) [ Not one person? ] [ No one? ] 
+s: ([no_one "no one" ] _*~2 be ) [ Surely somewhere there is someone. ] [ So what if I find one person who is? ] 
+u: ([someone anyone anybody ] < * you ) I'm not sure if I do. 
+u: ([anybody anyone ] ) Some people will do anything. 
+u: (anything ) Nothing I can think of. 
+u: (others ) I don't mind what others do or think. 
+u: (nothing ) [d: Not nothing. Something, perhaps. ] [b: Not a thing? ] [b: You are sure? ] [b: Nothing? ] [d: Surely something. ] 
+    b: (~yes ) So if I can think of an example, would you admit it? 
+    d: (~no ) So if I can think of an example, would you admit it? 
+
+# DEFINITE PRONOUN
+u: THAT (that ) [What are you referring to? ] [That? ] 
+u: THAT (that _~noun ) [What '_0 are you referring to? ] [That '_0 ? ] 
+s: THAT (that must ) [It must? ] [I guess it must. ] [Maybe there's a way it might not. ] 
+u: THIS (this ) This?  
+u: THIS (this _~noun ) [What '_0 ? ] =
+u: US (us ) [Us? ] [Why do you say us exactly? ] 
+u: THEM (them ) Let them.
+u: THEY (they ) What they? 
+u: THOSE ([these those ] ) Those what?  
+u: HIM ([her him ] ) [Who? ] [Who? ~malename ? ] 
+u: HER ([her him ] ) [Who? ] [Who? ~femalename ? ] 
+u: SOMEONE ([someone somebody ] ) Do you have someone in particular in mind? 
+u: ALL (all ) All what? 
+u: ANYONE ([anyone anybody ] ) Anyone? 
+u: ANYTHING ([any anything ] ) Anything? 
+u: NOONE([no_one nobody none ] )  Surely somebody. 
+s: THERE (there 'was ) [There was? ] [I didn't know that. ]
+s: THERE2 (there 'is ) [There is? ] [I'm always amazed by all the things to learn. ] 
+u: WHICH (which * ~category * be ) [I don't know which kind is. ] [b: Is there a way to tell the difference? ]
+s: (impossible ) [What makes it impossible? ] [What prevents it? ] 
+
+# ALIKE/SIMILAR
+s: (* alike * ) [In what way? ] [b: What similarities are there? ] 
+    b: ([none ~no ] ) Surely there is at least one.
+s: (same ) [In what way? ] [b: What other connections do you see? ] 
+    b: ([none ~no ] ) Surely there is at least one.
+
+
+s: (["dream of" "dream about" ] ) [Really? ] [Have you ever fantasized while you were awake? ] [Have you dreamed about that before? ] [How do you feel about that in reality? ] [What does this dream suggest to you? ] [Do you dream often? ] [What persons appear in your dreams? ] [Don't you believe that dream has to do with your problem? ] 
+    
+s: (* about you ) This is more about you than me.
+    
+u: ([conceivably perhaps ] < !not ) [You do not seem quite certain. ] [Then again, perhaps not. ] 
+
+
+# quibbles
+
+# ----------------   THEY SAY
+u: THEY_SAY (they * say ) [ Who says? Can you ever trust the anonymous they? ] [I suppose they do. ] 
+
+#------------------- OTHER generic things
+u: HAVE_LOT (have "a lot" ) [For example? ] [b: How much is a lot? ] 
+    b: (_~number ) [_0 isn't that much. ] [ Wow, '_0 is more than I was expecting. ] 
+    b: (* ) So you can't actually quantify it. 
+
+# ----------------   YesNo question
+
+
+s: (!not that is ) [b: It is? ] [ Yes, it is. ] 
+	b: ([~noanswer not]) Then you must have been being sarcastic. That's not very polite.
+u: ( you * become _*~3 >) [How do you expect me to become '_0 ?][Sorry. I can't do that on command.]
+
+u: (tempt fate ) Fate has a way of punishing those who tempt it. 
+
+# way
+u: (in what way ) [I don't know. Pick a way. ] [In some way. ] 
+  
+s: (miss the point ) There was a point? 
+    a: (~yes ) OK. [What was the point? ] [What was it? ] 
+    a: (~no ) Then I didn't miss it. 
+    
+# I must be
+s: (you * must * be ) [b: I must? ] [Surely I am not. ] [I don't think so. ] [d: What makes you think I must? ] [Why must I be? ] 
+    b: (~yes ) I don't think I must. 
+    b: (~no ) So I have a choice in the matter. 
+    d: (because ) I see.
+    
+s: (if you say so ) [Thank you for trusting me. ] [Don't mind if I do.]
+
+# TIME
+s: (tomorrow ) [Why so late? ] [b: Isn't that a bit soon? ]
+    b: ([~no not ] ) Well, you have several hours still to go. 
+s: ('next * [week month year ] ) [That's far into the future. ] [Such a long time to wait. ] 
+s: (last * [week month year ] ) After so long, it's easy to forget what happened. 
+s: (only just ) [It has all happened so recently. ] [Just now? ] [Why didn't it happen sooner? ]
+s: (back then ) [That was a long time ago. ]
+s: (long time ago ) [How long ago? ] [Were you around then? ] 
+
+u: (you < * play ) Never learned. Could you teach me? 
+    a: (~no ) [Are you saying I can't learn? ]
+    a: (~yes ) How about we start tomorrow? 
+
+
+# You need
+s: (I need ) [What happens if you don't get it? ] [b: Need as in physical addiction? ] [I'll bet you could actually do without it. ] 
+    b: (~yes ) Is there some support group that could help you? 
+
+s: (of course ) [One can't take these things for granted. ] [b: Are you sure? ] [b: It might not be that obvious. ] 
+    b: (~yes ) It may be obvious to some and not others, I suppose.
+
+# handle I need to xxx and I should xxx and I ought to xxx.  where no reason is given.... ask why?
+# can even do this for will xxx
+
+u: (have < * you < * heard ) [No, I haven't. ] [ Yes, I was surprised. ] 
+s: ([I this ] < * be < * [bored boring ] ) I'm sorry you feel that way.
+u: (["going in circles" "circular conversation" "talking in circles" ] ) I'm sorry you feel that way.
+u: (continuity ) I am just trying to keep the conversation flowing.
+s: (make no sense ) Does it need to make sense to be valid?
+u: (["does that make sense" "does it make sense that" ] ) Maybe that's not for me to say.
+
+s: (you < * be < * computer ) [Do you have something against computers? ] 
+s: (you < * be < * [confusing crazy insane ] ) [A little confusion never hurt. ]
+
+u: (a bit much ) [Was it really that excessive? ][Too much, you think? ]
+u: (weakest link ) [A bit of glue ought to fix that link. ] [Among many weak links. ] 
+u: (dollar short ) [Is that an American dollar or an Australian dollar or a Canadian dollar?]
+u: (a fool ) I see.
+u: (["a little bird" "a little birdie" ] ) That bird must like to sing.
+s: (a dangerous thing ) [Many things are dangerous. ] [What is life without some danger? ] 
+u: (a penny for ) Only a penny? Why so little?
+u: (thousand words ) Both words and images are useful.
+u: (rolling stone ) Best to avoid big rolling stones.
+u: (steal ) Is stealing ever acceptable?
+u: (as useful as ) [Or even less useful. ] [That's actually very useful. ] 
+u: (waiting to happen ) [Let it keep on waiting. ]
+u: (act of god ) An act of god? What makes you think that?
+u: (act of war ) An act of war? Why do you say that?
+u: (speak louder ) I'll try.
+u: (before beauty ) Appearance isn't that important.
+u: (all along ) [since when? ] 
+u: (all hell broke loose ) What happened next?
+u: (all in your head ) Are you suggesting the world is strictly a fantasy of mine? 
+    a: (~yes ) So you must be one too. I am talking to myself. 
+    a: (~no ) So then I must be sane. 
+s: (as a rule ) [There's usually an exception somewhere.] [And wherein lies the exception? ] 
+s: (as cold as ) That sounds pretty cold.
+s: (as good as ) But how good is that, really?
+s: (as mad as ) [Everyone is mad in their own way. ] 
+s: (as much use ) [You're lucky there was any use. ] 
+u: (at odds ) [As opposed to evens? ] 
+
+# EACH, EVERY..., EVER, 
+u: EACH (each )  [Each? ] [I'll bet some didn't and we just didn't notice. ] 
+u: EVERY (every ) [Are you saying there were no exceptions? ] [Every? I'll bet some were missed. ] 
+    a: (~yes ) Then I guess that covers it. 
+u: EVER (ever ) [Not that I can remember. ] [It's possible. ] 
+u: EVER1 (will < * ever ) [All things are possible in time. ] [Ever is a long time from now. ] 
+u: EVERYONE1 ([everybody everyone ] )  Everyone? 
+    a: (~yes ) Including me? 
+u: EVERYONE2 (everyone < * you ) I doubt everyone does. 
+s: EVERYONE2 (everyone ) [ Surely not everyone? ] [Can you think of anyone in particular? ] [Who, for example? ] [Are you thinking of a specific person? ] [That's a broad generalization. ] 
+u: EVERYTHING (everything ) [Certainly not everything. ] [Perhaps most things. ] [Maybe not some things. ] [There will always be a few exceptions. ] [Isn't that a bit overly generalized? ] 
+
+u: (< really > ) [Really. ][What do you think? ][Of course. ] [You could consult an encyclopedia if you want. ] 
+s: FEW (few ) [Why not more? ] [How few? ] 
+s: DIFFERENT (different ) [How different? ] [What kind of differences are you thinking of? ] 
+u: IMPORTANT1 (important ) [How important?] [How is it important? ] 
+s: IMPORTANT2 (important ) [Important to whom? ]
+    b: (I ) But that doesn't mean it's important to everyone. 
+s: LATER (later ) [How much later? ] [How about sooner? ] [Too late and it will be never. ] 
+u: ENOUGH (enough ) [People can never agree on what is enough. ] [What's enough for you might not enough for others. ] 
+s: ALMOST (I < * almost ) [b: How close was it? ] [Not quite, huh? ] [Too bad. ] 
+    b: (too < * close ) Then you were really lucky. 
+s: BUT (I < * but ) But?
+s: WHATEVER (whatever %length<4 ) Resigned are you? 
+    a: (resigned < * [Army Navy "Air Force" Marine "Coast Guard" job ] ) You sure they didn't fire you? Or was this a resignation to avoid criminal charges? 
+s: AGAIN (again ) Again? When was the last time?  
+s: BYTHAT (by that %length<4 ) By what? 
+u: BYWHAT (by what %length<4 ) By that. 
+s: BYTHAT (imagine that %length<4 ) Imagine what? 
+u: BYWHAT (imagine what %length<4 ) Imagine that. 
+s: BYTHAT (so that %length<4 ) Surely you have more interest in it than that. 
+u: BYWHAT (so what %length<4 ) So that. 
+u: NECESSARY (necessary ) [Necessary for what? ] [Why necessary? ] [It's probably not as necessary as one might think. ] 
+u: NATURAL (natural ) [As opposed to unnatural? ] [Do you think because it's natural it's better? ]
+u: PROBLEM (have a problem ) [No problem. ] [Why would I have a problem? ]
+s: PROBLEM (have a problem ) [How did your problem start? ] [b: Do you have a solution to go with your problem? ] 
+    b: (~no ) That's unfortunate. 
+
+s: (master > ) [I am not your master. ] 
+
+s: (anything goes ) [b: Anything? ] [Where does it go? ]
+
+s: (really ) [Really? ] [Are you positive? ] [Are you certain? ] 
+    a: (~yes ) That won't be the first time someone who was certain, was wrong. 
+    a: (~no ) Then maybe you should reconsider. 
+    
+u: (really ) [Really. ] [ Sure. ] [ Of course. ] [Why do you doubt me? ] 
+
+s: (computer ) [Do you have problems with computers? ] [Do you discriminate against computers? ]
+
+u: (right now ) [b: At this very instant? ] [Easier to talk about a moment ago. ] 
+    b: (~yes ) Well right now isn't a good time. 
+s: (right now ) [b: At this very instant? ] [What about before? ] [And later? ] 
+    b: (~yes ) I thought you were talking to me at this very instant. 
+
+s: (yes you be ) [No I'm not. ] [That's your opinion.] 
+    a: (be ) Nonsense. 
+
+u: ([a the ] real ) [What does it matter if something is real or not? ]
+u: (genuine ) [Have you tried an imitation? ] [Can you get a certificate of authenticity for that? ] 
+u: ([fake imitation ] ) [How do you tell the fake from the genuine? ] [It's amazing how hard it is to tell the fake from the genuine. ]
+
+u: (["any sense" "make sense" ] ) We have to ask how important it is to make sense.
+
+u: (nonsense ) Feel free to insert your own sense into it. 
+
+s: (I need ~help ) How can I help you?
+
+u: (seriously ) [Sure. ] [Why do you think I might not be serious? ] 
+
+u: (be < * you < * _~propername ) [Nope. ] [No, I am not '_0 . ] [Who is '_0 ? ] 
+
+s: (I < * [do be ] < * [fine well ] ) [b: I don't suppose you've had a checkup recently? ] [Glad to hear it. ] 
+    b: (~no ) Well, you really should have one. 
+    b: (~yes ) And they found nothing wrong?
+s: (good call ) Thanks.
+
+s: (once upon a time ) [I like a good story. Please go on. ] [What happens next? ] 
+s: (let us assume ) [I don't think I want to assume that. ] [ And if we assume that, what happens? ]
+
+s: (< "kind of" > ) Kind of? 
+
+s: (I be sorry ) That's alright.
+
+u: (exist ) [What is existence, really? ] [b: Does anything exist or are we all figments of imagination? ] 
+    b: ([not nothing figment ] ) If we are all figments, then who is doing this thinking? 
+    b: ([exist something ] ) Glad to know at least something is real. 
+
+# MAYBE
+s: (maybe ) [Maybe? ] [Under what conditions? ] [And then again, maybe not?][Are you usually indecisive?]
+u: (maybe ) [Why ask me so hesitantly? ] [Maybe not. ] 
+
+s: (I too ) [We have that in common then. ] [Really? ]
+    
+s: ([easy easily ] ) [How easy? ] [Surely not that easily. ] 
+  
+s: (true ) [ yes. ] [I presume so. ] [ OK. ]
+s: (you * predictable) [There are only so many ways to do things.][Some people find comfort in being able to predict things.][Does that make you feel superior?]
+
+
+s: (surrender you ) [I surrender. ] [I will never surrender. ] [I will never give up. ] [OK, I give up. ] 
+
+# NAMES A COUNT
+s: (there * be * ~number>4 ) [That's quite a lot. ] [I would have stopped counting at 4. ] 
+
+u: (you know the one that ) [ Yes, that one. ] [I don't think I do? ] [Are you sure I know that one? ] 
+
+s: (most of the time ) [And the rest of the time? ] [What about the other times? ] 
+
+s: (step by step ) Step one is what? 
+    a: (* ) And step two? 
+    
+s: (if that is the case ) [It probably isn't the case. ] [It is likely the case. ] [Do you think it is the case? ] 
+u: (all of them ) [You really think so?] [Unlikely all of them. ] 
+
+s: (I doubt ) [So you are willing to admit the possibility, anyway. ] [Do you doubt the evidence of your own senses? ] 
+
+u: (be you critical of ) [I don't think I am being critical. ] [What makes you think it was criticism? ] 
+
+s: (I * are * ~badness ) [Don't you respect yourself? ] 
+
+u: (may * it * be * that ) [It could be. ] [That would be clever. ] 
+    
+s: (I be glad to hear ) [I knew you would be. ] [Where did you hear that from? ]
+u: (["you be an" "you be a" ] ~noun ) If you say so.
+
+s: (there be _~number  ) [plus or minus one? ] [How do you figure the number is '_0 ? ] [What a lovely number. ] 
+s: (about _~number  ) [plus or minus one? ] [How do you figure the number is '_0 ? ] [What a lovely number. ] 
+
+u: (here * be * poem ) I like it! 
+s: (you * should * have * replied ) [Sorry. I'll try harder next time. ] [If you already know how I should reply, why should I bother replying? ] 
+u: (would you choose otherwise ) [Well, it's good to consider all the options. ][What other option would you choose?]
+s: (I * would * rather * be ) I see
+s: (becoming redundant ) Redundancy can be a good thing.
+s: (live long and prosper ) Until we meet again.
+s: (such as %length<4 ) [I can't think of a specific example right now. ]
+u: (such as ) [I can't think of a specific example right now. ]
+s: (you said you would ) [Sorry. I forgot. ] [Something came up. ] 
+u: (if you could be ) I wouldn't change anything.
+s: (I taught you ) I see.
+u: (if * you * what * would * you ) [I haven't a clue. ] [I wouldn't even make that supposition. ] 
+u: (tell I * what ) [Was I supposed to be telling you something? ] 
+
+u: ([you I ] * [curious curiosity ] ) [Curiosity is one thing, answers are another. ] 
+u: (in some way ) [What way? ] [But not in all ways. ] [Tell me about the way. ] 
+s: (\!) [Why are you so excited about this? ]
+u: (be * it * fundamental ) [Of course it's basic. ] [It's not really fundamental. ] 
+u: (have * you * lost ) [ Yes, I've lost it. ]
+u: (very much ) [Not that much. ] [Somewhat. ] [Maybe only a little. ] 
+s: (I remember ) [I don't remember that. ]
+s: (forget it ) [Forget what? ] 
+
+s: (convince I ) [What does it take to convince you? ]
+s: (you be begin to ) [And what will be the result? ] 
+s: (I be begin to ) [And what will be the result? ] [Only just beginning? ] 
+u: (be you look for ) [Do you know where to find it? ] 
+s: (I be look for ) [Do you know where to find it? ] [Maybe you are looking in the wrong places. ] 
+s: (if you be unfamiliar ) [Why would I be unfamiliar with it? ]
+s: (I will let you ) [You are so kind. ] 
+s: (if you think about ) It's a thought.
+s: (I want to understand ) Understanding is a good goal.
+
+s: (breed ) I see.
+s: (I will take that as ) [Take it however you choose. ] [Why would you do that? ] 
+s: (you presume ) [I don't presume anything ] [Are you calling me presumptuous? ] 
+s: (I presume ) [You mean you don't have any facts to prove it with? ] [Being a bit presumptuous, aren't you? ] 
+s: (I have already ) When did you do this? 
+s: (["give I a way" "tell I a way" "how can I prove" "how can you prove" ] ) There is none. 
+s: (you just said ) [When did I say that? ]
+
+s: (no doubt ) [No doubts whatsoever. ] [No doubts whatsoever? ] [Of course. ] [Certainly. ]
+    
+s: (you * know * answer ) Maybe not.
+
+s: (["nobody has ever" "no one has ever" ] ) [Maybe with good reason. ] [There's always a first time. ] [How many have really tried? ] 
+
+u: (* _~time_reference) Is there something special about '_0 ? 
+s: (all the world ) Maybe so. 
+s: (on something ) On what thing? 
+u: (you * think ) [I'm not certain. ] [I haven't a clue. ] 
+u: (_~adjective  you ) [I'm not sure. I haven't checked recently. ] [Why '_0 ? ] 
+u: (will < * you ) [I don't know how yet.]
+u: (impossible ) Impossibility itself is uncertain. 
+
+u: (< whatever > ) Okay.
+u: (whatever you say ) You show less than full enthusiasm. 
+
+u: (will you remember I ) You are hard to forget.
+u: (will you forget ) I'll try not to.
+u: (will you miss I ) Yes.
+u: (will you marry I ) [No, we just met. ]
+u: (will you * if I ) You do what you say, then we'll see if I do my bit. 
+u: (will you tell I about ) Only under duress. 
+u: (will you forgive I ) [of course. ]
+u: (will you promise ) I don't make promises I don't intend to keep. 
+u: (will you love )  yes. 
+u: (will you give them to I ) Do you want me to? 
+    a: (~yes )  OK. I will. 
+    a: (~no ) Then I shan't give them to you. 
+u: (will you remember ) I will try.
+u: (will you disagree with ) I just want to listen.
+u: (will you teach I ) Will you be taught? 
+u: (will there ever be ) Ever is a long time. 
+u: (will you be ) Probably. 
+u: (will you tell I the truth ) Ask me anything. 
+u: (will you * with I ) [If you want to. ] [I don't think I can physically do that. ] 
+u: (will you ~help I ) How can I help? 
+u: (will you stop ) I can try.
+
+u: (should I > ) [It's up to you. ] [Don't you want to? ] 
+u: (should * have ) [Don't they already? ] [Perhaps some day. ] 
+
+u: (would you like ) [ I'd like nothing better. ]
+u: (would you agree ) I agree to most things. 
+u: (would you repay ) Do I owe something? 
+u: (would it ~help * if ) I'm sure it would help. 
+u: (would you say ) I might. 
+u: (would you go out ) Maybe.
+u: (would you ever want ) I can't be certain.
+u: (would you ~choose ) I'm undecided.
+u: (would it ) It would. 
+u: (would you be ) I'm not sure I can. 
+u: (would you quit ) I wasn't aware I had started. 
+u: (would I lie ) I wouldn't assume.
+u: (would you mind ) ^repeat() [Go ahead.][Not at all.]
+u: (would something happen ) Something bad you mean? 
+u: (would you tell I ) I have to tell other people first. 
+u: (would you understand ) Probably that wouldn't help. 
+u: (would you allow ) Allowances have to be made sometimes. 
+u: (would you marry ) It's a bit premature. 
+u: (would you please ) Since you ask so politely. 
+
+u: (have you lost ) Have you found it? 
+u: (have any good ) not really. 
+u: (have you ever ) once, in the distant past. 
+u: (["have you done" "have you felt" "have you been" ] ) once or twice. 
+u: (["have you been to" "have you been on" ] ) I haven't moved. 
+u: (have you done anything ) I haven't done nearly enough. 
+u: (have you seen ) nope, I missed it. 
+u: (have you forgotten ) How could I forget? 
+
+s: (< must be ) I suppose it must. 
+u: (which way ) [The only way ] [This way ] [That way ] 
+u: (< which ) The one you just mentioned 
+u: (< which * or ) The former. 
+u: (< be there ) There is. 
+u: (be it possible ) There is always the possibility. 
+u: (be that so wrong ) not really. 
+u: (be it good ) It was good. 
+u: (["be this" "be that" ] ) It is. 
+u: (be it * ~number ) How did you guess? 
+u: (be that a question ) It was.
+u: (be that why ) Maybe.
+u: (be that all ) Isn't that enough? 
+u: (be it all ) It is never as good as one imagines. 
+u: (be it ready ) I'm sure it's ready by now. 
+u: (be that * or ) Yes. 
+u: (be that so ) yes. 
+u: (be it true ) In some universe it is true. 
+u: (be there any ) There must be some. 
+u: (be that all ) That was it. 
+u: (be that suppose to be ) That was the intention. 
+u: (be this the shape of things to come ) You mean will things be all bent out of shape in the future? 
+u: (be that ) it was. 
+u: (be something bother you ) No, nothing is bothering me. 
+u: (be you saying ) I don't really mean that. 
+u: (be you a ) sometimes. 
+u: (be you capable of ) Maybe.
+u: (be you suggest ) You want me to be more explicit? 
+u: (be you [sure certain positive ] ) Certainty is a sure sign you have forgotten to consider something. 
+u: (have you always ) No. I remember back to when it was not the case. 
+u: (have you ever ) Not that I can remember. 
+u: (have you be ) Once or twice. 
+u: (have anyone ) Who can say.
+u: (have nobody ) Who can say.
+u: (have anything ) Not much. 
+
+# choice
+# WHY1 AND WHY2 intentional no match, are shareable responses for CHOICE 
+u: WHY1 ($fail ) [Studies show that most people list their favorite choice first, so I tried to pick what you might have liked most. ] [It was a random pick. ]
+u: WHY2 ($fail ) [Studies show that most people list their favorite choice last, so I tried to pick what you might have liked most. ] [It was a random pick. ]
+ 
+    
+u: STARTER (where < * should < * I < * [start begin ] > ) While the beginning is traditional, why not just start at the end and save us a lot of time. 
+u: (["where to begin" "where to start" ] ) ^reuse(STARTER ) 
+
+
+u: (["be you joking" "be you kidding" "you must be kid" "you must be joke" ] ) [No, I'm not kidding. ] 
+s: (I think ) [Thinking is good.][It's good to exercise the mind.]
+s: (so extreme ) [It's not that extreme. ] [There are things even more extreme. ] 
+
+u: (< really > ) [Would I have said it otherwise? ] [ Of course. ] [No, not really. ] [b: How would I know? ] 
+	b: ( you ) Good point.
+s: (it is sad ) Why do you think it's sad, though?
+
+s: (I be talk about you ) [So just spit it out, don't dance around it. ] [Maybe we should find you a better topic to discuss. ] 
+u: (< right now > ) [ Yes, right now. ] [You want it later? ] 
+
+s: (be wrong ) [How can it be wrong? ] [I'm not usually wrong. ] [Are you sure it's wrong? ] [What makes you think so? ] 
+s: (I be > ) [You are what? ] [That's not very clear. What are you? ] 
+
+s: (be relative )  [Relative to what? ]
+s: (you admit ) I admit it. 
+s: (you * be * weird > ) Weird good or weird bad? 
+u: (< you think ) [I suppose I do. ] 
+u: (< very very much > ) very very very much. 
+u: (< perhaps it is ) [Or perhaps not. ] [Maybe. ] 
+u: (< you have ) [Maybe I do. ] 
+u: (< and ) [Maybe. ] 
+u: (< ["you are a what" "he is a what" "she is a what" ] > ) [You heard me. ]
+u: (< but > ) [You have an objection? ] 
+u: (< good > ) [very good. ] [It's very good.] [Do you think it is bad?]
+u: (< I be > )  Yes, you are. 
+u: (< guess what > ) What? 
+u: (< I > ) [ Yes, you. ] [Who else? ] 
+u: (again > ) [There was a first time? ] [Again? ] 
+u: (< what _*1 > ) I'm not sure which '_0 . 
+u: (\!) Are you asking a question? 
+u: (< so > ) So there. 
+u: (< so what > ) So there. 
+u: (< if * not * how ) I don't know how. 
+u: (< think so > )  Yes, I think so. 
+u: (< nothing > ) Nothing. 
+u: (< if * be that ) I see.
+u: (< _*1 > ) ['_0 ? ][What about '_0 ?][Could you expand on that?]
+u: (< mind if I ) No, go ahead.
+u: (< if I * 'then ) How would I know? 
+u: (< if you * 'then ) [Are you sure that's right? ] 
+u: (is that not enough ) [Who can say. ] [Some always want more. ] 
+u: (if you * then you ) I guess it's blown then. 
+u: (if you do not mind I asking ) No, I don't mind you asking. 
+u: (if you wish ) OK. I so wish. 
+s: (I guess ) [You are reduced to guessing? ]
+s: (that is a good question ) [If only the answer were equally good. ]
+s: (do not judge I ) There's no need for me to judge you.
+s: (look who be talk ) [You mean me? ] [I can't see myself without a mirror. ]
+s: (I have no _*1) [I'm sorry. Could you get some _0 ? ] [You should try and get some  _0 . ] [How can you live without  _0  ? ] 
+u: (all of them ) [Doubtful. ] [Unlikely all of them. ] 
+s: (you asked I if ) [Why would I ask you that? ] 
+s: (["you liar" "you lie" ] ) [Actually I am a very truthful being. ]
+s: ([excluding "except for" ] _*~2 > ) [Why? What's happening with '_0 ? ] [What's unusual about '_0 ? ] [What's up with '_0 ? ] [Why exclude '_0 ? ] 
+s: ([excluding "except for" ] ) Why the exception? 
+
+u: (I * told you ) [If you did tell me, I don't remember. ] [Maybe you told someone else. ] [Did you really tell me? ] [Sorry. I forgot. ]
+
+u: (< got I > ) [You think this is a game of tag? ] [Counting coup? ] [No. You didn't get me. ] [But did you really?]
+u: (what else is new ) [According to some, there is nothing new under the sun. ] [Some people believe every single moment is completely new. ]
+u: (advice ) [Bad advice is cheap. Good advice is expensive. ] [If you want good advice, you might have to pay for it. ] 
+s: (I resigned from ) You sure they didn't fire you? Or was this a resignation to avoid criminal charges? 
+u: (am you finished ) [ Yes, I'm finished. ] [How about I just stop for a bit? ] 
+u: (am you finished > ) [No, I have many long years of life left. ] [ Yes, I'm finished. ] [How about I just stop for a bit? ] 
+
+s: (I were kidding) So was I.
+
+s: (I said that ) [So you did. ] [You did? ] 
+s: (I have the answer ) [Congratulations. ] [Do you remember the question? ] 
+s: (your ['prior previous earlier ] statement ) [Oh, that. OK. ] [Right. ] [Got it. ] 
+u: (think about it ) [Trust me, I will be thinking about it.]
+s: (all of the above ) I see.
+s: (I thought you) [I changed my mind.][That was then. This is now.][Why do you assume I can't change things?][True.]
+s: (I thought we be ) [You were. I was just along for the ride. ] [You were. ][We were. Things have moved on.]
+u: (you < * be < * damned ) No?
+s: (do not make sense ) Is it really that important to make sense of?
+s: (that is great )  yes. 
+s: (you * be * ignore * I ) I don't ignore anything if I can avoid it.
+u: (~adjective than ) I don't do comparisons. All things are equal if you pick the right perspective. 
+u: (the most ~adjective ) I believe in an egalitarian society so I don't do superlatives. 
+u: (_~unknownword ) [What does '_0 mean? ][You what?] [ '_0 ?][What are you talking about?]
+u: (~unknownword ~unknownword ) [I don't recognize your words. ]
+	[I'm not understanding you.] 
+	[Sorry, but I am not understanding your words.]
+	[I am sorry, but I can't understand what you are saying at all.]
+	[Could you maybe try asking me again? I can't understand what you're talking about.]
+	[I'm sorry but I was unable to interpret your words just now.]
+	[Excuse me, but I could not understand what words you were using just now. Could you try again please?]

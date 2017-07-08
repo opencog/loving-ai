@@ -1,0 +1,102 @@
+
+concept: ~common_noun (~noun_singular ~noun_plural) 
+
+topic: ~HONEST1 () # use up these
+u: () $nocallback = 1
+
+#! How do you feel about x?
+?: (<< how 'you "feel about" >> )
+
+#! what do you think about x?
+?: (<< what 'you ["think about" opinion] >> )
+
+#! but why?
+u: (why)
+
+#! how?
+u: (![often much] how)
+
+#! who would you choose
+#! who is your favorite
+u: (<< $$intent==who [pick choose favorite best ~want ] >>) Oh, it's so hard to choose. Why don't you tell me who you'd pick.
+	#! 
+	a: (!?)
+
+u: () $nocallback = null
+
+topic: ~xquibble_ALL system NOSAMPLES ()  # quibbles not tied to bot personality
+
+u: () ^respond(~honest1)
+
+# Quibbles are smart-alecky replies generally.
+# Honest responses are just that.
+
+u: (%length==0) ^END(TOPIC)	# no quibble on no input
+
+# high priority quibbles
+
+u: () ^respond(~xquibble_pre ) 
+
+#! should I light my fire with a match.
+u: (< should I )
+
+u: () ^respond(~XINTENT)	# compute the intent of user input
+
+# sentence classes for quibbling
+
+u: ([never not ]) ^respond(~xquibble_not ) 
+
+u: (who) ^respond(~xquibble_who ) 
+
+u: (what) ^respond(~xquibble_what ) 
+
+u: (when) ^respond(~xquibble_when ) 
+
+u: (where) ^respond(~xquibble_where ) 
+
+u: (why) ^respond(~xquibble_why ) 
+
+u: (how much ) ^respond(~xquibble_howmuch ) 
+
+u: ( how) ^respond(~xquibble_how ) 
+
+u: ([because cause ] ) ^respond(~xquibble_because ) 
+
+u: (will ) ^respond(~xquibble_will ) 
+
+u: (can ) ^respond(~xquibble_can ) 
+
+u: (do ) ^respond(~xquibble_do ) 
+
+
+# low priority quibbles
+
+u: () ^respond(~xquibble_post ) 
+
+# honest responses based on discourse act of user
+
+u: () ^respond(~HONEST_RESPONSE ) 
+
+
+topic: ~xquibble_PRE system   NOSAMPLES  () #  generic priority before split up by kind
+
+#! tell me about it
+u: ( < tell me about )
+
+#! This is probably the last time 
+s: ( this be * last time )
+
+
+topic: ~xquibble_post system  NOSAMPLES  ()
+
+#! I wish I were a donkey
+u: (I wish)
+
+#! but ...
+u: ( < but {... } > )
+
+#! did I ask you that
+?: ( did I ask you )
+
+#! you ask a lot of questions
+s: ( << you ask ~much questions >>)

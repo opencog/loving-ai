@@ -1,0 +1,45 @@
+topic: ~xQUIBBLE_WHEN system random NOSAMPLES () 
+# WHEN
+#! when will that be
+u: (%tense=future when [will be can do have])
+#! when you're not X, what do you do?
+u: (when 'you be not) 
+u: (when 'I grow up) 
+u: (when 'you grow up) 
+u: (when did 'you start)
+#! when do you think I might feel better
+u: ( when %tense=future  < * I )
+#! when did I say that?
+u: (["when did you" "when did I" ] )
+#! when?
+u: (when > ) 
+u: (when will it be possible )
+u: (["when will it" "when be it" ] )
+u: (when you * how )
+u: (when do one * end * begin )
+u: (when is a _*1 not a _*1 ) When it's not a _1 
+u: (when be 'I ) 
+u: (when did 'I ) 
+u: (when did 'I lie )
+u: (when will 'you ask 'I )
+u: (["when will I meet you" (when be we go to meet) ] )
+u: (when did it start )
+u: (%tense=past when be 'you taught )
+u: (when will this happen )
+u: (when be I ready ) 
+u: (when be you ready ) 
+u: (when do you sleep )
+u: (when will you )
+s: (when I )
+u: (do < * you ) 
+u: (can < * you ) [When I am free of other commitments.]
+u: (be < * you ) 
+u: (will < * you ) [b: I haven't figured that out yet. ] [Assuming I don't change my mind, tomorrow. ] 
+	b: ( ? trying to ) [Do you know how I can figure it out?]
+#! when do you think that might be?
+u: (you * think )
+#! why should I talk to you
+u: (I * [talk converse interact ] * you ) 
+u: (should * I ) [Why shouldn't you? ]
+u: ([can will]) [Whenever. ] [Sometime soon. ] [Not too soon. ] 
+u: ([did was were])  [Sometime in the past. ] [Not recently. ] 
