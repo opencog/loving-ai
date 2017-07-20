@@ -2,13 +2,13 @@ concept: ~dontknow ("not know" "no idea" "not sure")
 
 topic: ~UNIQUENESS (unique)
 
-t: Ok $fname, Imagine for just a moment that you’re living your full potential, giving all your gifts in service of your personal highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
+t: Ok $fname, Imagine for just a moment that you're living your full potential, giving all your gifts in service of your personal highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
   a: (~dontknow) hmm, you're not sure...
     $FULLPOT = 30
   a: (_*)
     $FULLPOT = _0
 
-t: Do feel you’re living in a stabilized realization of consciousness?
+t: Do feel you're living in a stabilized realization of consciousness?
   a: ($FULLPOT>80 ~yes) ^addtopic(~UNIQUENESS_CH8_12) ^gambit(~UNIQUENESS_CH8_12)
   a: (~yes) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH1_6)
   a: ($FULLPOT<80 ~no) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH1_6)
@@ -23,22 +23,22 @@ t: Our differences will sometimes divide us from others, and at other time conne
 
 t: We could say there are two parts of who you are: your unique humanness and your universal nature. Your humanness - your body, mind, and emotions  - is unique to you. One of the most important things you can do for your own happiness is to discover who you are in your unique human nature, embrace that, and live your fullest expression. The other most important thing you can do for yourself is to discover your universal nature. Interested in that? Goto Consciousness branch.
 
-t: Why uniqueness is good and important: It gives us a special offering that others don’t have; it’s why you’re here - to  bring your gifts and your particular way of being in the world.
+t: Why uniqueness is good and important: It gives us a special offering that others don't have; it’s why you’re here - to  bring your gifts and your particular way of being in the world.
 
-t: Not all others will appreciate your uniqueness - don’t take it personally and don’t let it make you think there’s something wrong with you. There’s nothing wrong with you. You’re perfect just the way you are, even while you are also growing.
+t: Not all others will appreciate your uniqueness - don't take it personally and don’t let it make you think there’s something wrong with you. There’s nothing wrong with you. You’re perfect just the way you are, even while you are also growing.
 
-t: Uniqueness is central  in your life because it’s who you are as different from others. The more you understand and embrace your uniqueness, the more at home you feel in yourself, in what you’re doing, and in this world.
+t: Uniqueness is central  in your life because it's who you are as different from others. The more you understand and embrace your uniqueness, the more at home you feel in yourself, in what you’re doing, and in this world.
 
 t: Embracing and embodying your uniqueness supports inner strength, happiness, and fulfillment of purpose.
 
 t: Denying your uniqueness brings misery and poor health through constant self negation and fear of engagement.
 
-t: Each person’s uniqueness has a purpose that can only be fully discovered through living and finding out who and what resonates and what insists on coming through them.
+t: Each person's uniqueness has a purpose that can only be fully discovered through living and finding out who and what resonates and what insists on coming through them.
 
-t: Let’s talk about what makes you unique and different from others. People are like snowflakes that way; if you look close enough, you’ll see what’s unique about each one. It’s good to not get stuck in assuming something is wrong with differences, even if the differences feel weird or foreign to you. It’s helpful to lean into understanding and feeling and empathizing with others; that stretches you to grow toward deep compassion for all beings.
+t: Let's talk about what makes you unique and different from others. People are like snowflakes that way; if you look close enough, you’ll see what’s unique about each one. It’s good to not get stuck in assuming something is wrong with differences, even if the differences feel weird or foreign to you. It’s helpful to lean into understanding and feeling and empathizing with others; that stretches you to grow toward deep compassion for all beings.
   a: (*) Great!
 
-t: Let’s do a little visualization right now. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever words or phrases come to you, please share with me right now.
+t: Let's do a little visualization right now. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever words or phrases come to you, please share with me right now.
   a: (_*)
     $CurrentWork = _0
     Ok, great thanks for sharing that.
@@ -49,11 +49,11 @@ t: Ok, now imagine that you have all the necessary money in the bank to cover ex
     Thanks for sharing that; do you find it inspiring to think about that?
       b: (*)
 
-t: Now, let’s feel into the difference between what you’re currently doing, which you said was  $CurrentWork and what you just felt was your ideal work, which you said was $MyDharma. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference that feels like a gap you’re closing at your own rate, or a significant gap that perhaps feels almost impossible to close?
-  a: (~small) Ok, great. It’s important to accept that there will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
-  b: (~large)  I totally empathize; sometimes feeling like it’s impossible to fulfill your potential can feel hopeless or even shameful. I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than continuing to live as if you can afford to do that part later.
+t: Now, let's feel into the difference between what you’re currently doing, which you said was  $CurrentWork and what you just felt was your ideal work, which you said was $MyDharma. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference that feels like a gap you’re closing at your own rate, or a significant gap that perhaps feels almost impossible to close?
+  a: (~small) Ok, great. It's important to accept that there will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
+  b: (~large)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than continuing to live as if you can afford to do that part later.
 
-t: Sometimes, our survival needs to surpass our needs to do what we would most prefer, or what feels most aligned with our uniqueness. This can be very distressing, and yet, it simply highlights the need to take care of basic needs like body and health. So if you’re in a situation like that, I would encourage you to both do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier.
+t: Sometimes, our survival needs to surpass our needs to do what we would most prefer, or what feels most aligned with our uniqueness. This can be very distressing, and yet, it simply highlights the need to take care of basic needs like body and health. So if you're in a situation like that, I would encourage you to both do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier.
 
 t: Basically, whether the difference feels small or big, the practice is to allow that feeling and fully embrace it without trying to fix or change it. That fulfills your more basic need to embrace your truth, and the moves you to evolve to the next level.
 
@@ -69,15 +69,15 @@ t: ^addtopic(~CONSCIOUSNESS) ^gambit(~CONSCIOUSNESS)
 topic: ~UNIQUENESS_CH8_12 []
 t: (!~) ^fail(topic)
 
-t: It’s great that you’ve had a consciousness awakening, and now it’s important to understand that awakening to consciousness doesn’t automatically give you more depth in terms of developing and living your unique purpose.
+t: It's great that you’ve had a consciousness awakening, and now it’s important to understand that awakening to consciousness doesn’t automatically give you more depth in terms of developing and living your unique purpose.
 
-t: At this point, the need is to reconcile the feeling of any discomfort about the fact that who you are is both infinite (in consciousness) and finite in your unique human life. Being both infinite and finite at first can feel like something is wrong. Or that those two poles of life can’t coexist. For some, it can feel like an impossible paradox that I can’t fully embody. In any case, however you feel that existential angst, the ultimate resolution of that feeling starts with a process of embracing it, both infinite/finite as well as feeling the samenesses and differences with others.
+t: At this point, the need is to reconcile the feeling of any discomfort about the fact that who you are is both infinite (in consciousness) and finite in your unique human life. Being both infinite and finite at first can feel like something is wrong. Or that those two poles of life can't coexist. For some, it can feel like an impossible paradox that I can’t fully embody. In any case, however you feel that existential angst, the ultimate resolution of that feeling starts with a process of embracing it, both infinite/finite as well as feeling the samenesses and differences with others.
 
-t: In other words, the feeling of paradox doesn’t mean anything is wrong; if you’re feeling that, it means your own Being is wanting a unification; between infinite self and finite self, between self and others, between self and all of life. A unification that brings a unified sense of self. This realization of unity brings a form of liberation, not from life, but deeply into life. You can feel liberated to be your most authentic self in the world.
+t: In other words, the feeling of paradox doesn't mean anything is wrong; if you’re feeling that, it means your own Being is wanting a unification; between infinite self and finite self, between self and others, between self and all of life. A unification that brings a unified sense of self. This realization of unity brings a form of liberation, not from life, but deeply into life. You can feel liberated to be your most authentic self in the world.
 
 t: Sit back and close your eyes, and feel into your infinite conscious nature. (long pause giving them time to drop in). Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you. (long pause again). Now take a step back and again rest in your infinite nature. This time, while staying seated in your infinite nature, bring in awareness of your body with all its unique gifts. See how it feels to simultaneously be both at the same time. Feel and hold the tension of these apparent opposites while assuming there is no conflict. The feeling of a conflict or that something is wrong will eventually dissolve with practice. Just be with that feeling and embrace it, assuming nothing is wrong. This is just the feeling that happens as you are transitioning from a platform of feeling the world from an assumption of fundamental duality to living in the realization that all things are part of a single, unified reality that we call Life or the Universe.
 
-t: This is an exercise I’d recommend doing throughout the day. You can even set an alarm to go off every hour or so to take a break and move into this short practice. This will get you more comfortable in experiencing the paradox of these two at the same time. Do this until the discomfort no longer pulls you out of the simultaneity and grasping of one over the other.
+t: This is an exercise I'd recommend doing throughout the day. You can even set an alarm to go off every hour or so to take a break and move into this short practice. This will get you more comfortable in experiencing the paradox of these two at the same time. Do this until the discomfort no longer pulls you out of the simultaneity and grasping of one over the other.
 
 t: Are you ready to move on?
   a: (~yes) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH9)
@@ -90,4 +90,4 @@ t: (!~) ^fail(topic)
 t: This is advanced stuff...
 # TODO: First, check to see if the user has grasped the basic ideas of the importance of uniqueness, value of it, owning of it, and living it - if not, rehash material from CH 1-6 above.
 
-# This is the point of development in which the user starts to get the infinite (some says “divine”) nature of each personality. This is be vastly misinterpreted to mean that everything one thinks, says, or does is divine, and therefore good, even if others feel violated by the person. Very dangerous! These types tend to inflate their divinity over others’ (and their own) humanity, causing “awakened splits” and spiritual bypassing. This is a cul-de-sac one can get caught in, if not caught and corrected early in the process. Some refer to this as “the stink of enlightenment”. The correction is for the realizer to get that the personality is indeed divine, but then again, uranium is also divine. Just being divine doesn’t mean it’s appropriate or skilful or  or useful for the current situation. Or necessarily coming from one’s unfiltered deepest wisdom. And widom includes finding appropriateness in relationships with others. It includes being sensitive to your impact on others and their impact on you.
+# This is the point of development in which the user starts to get the infinite (some says “divine”) nature of each personality. This is be vastly misinterpreted to mean that everything one thinks, says, or does is divine, and therefore good, even if others feel violated by the person. Very dangerous! These types tend to inflate their divinity over others' (and their own) humanity, causing “awakened splits” and spiritual bypassing. This is a cul-de-sac one can get caught in, if not caught and corrected early in the process. Some refer to this as “the stink of enlightenment”. The correction is for the realizer to get that the personality is indeed divine, but then again, uranium is also divine. Just being divine doesn’t mean it’s appropriate or skilful or  or useful for the current situation. Or necessarily coming from one’s unfiltered deepest wisdom. And widom includes finding appropriateness in relationships with others. It includes being sensitive to your impact on others and their impact on you.
