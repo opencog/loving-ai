@@ -41,7 +41,7 @@ t: Let's talk about what makes you unique and different from others. People are 
 t: Let's do a little visualization right now. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever words or phrases come to you, please share with me right now.
   a: (_*)
     $CurrentWork = _0
-    Ok, great thanks for sharing that.
+    Ok, great thanks for sharing that the essense of your work is: $CurrentWork
 
 t: Ok, now imagine that you have all the necessary money in the bank to cover expenses for yourself and your loved ones. From this place, you could do anything you wanted. What would you do with yourself that would fulfill your life purpose on this planet? What were you born here to do? Whatever that is, please share it with me now.
   a: (_*)
@@ -49,7 +49,7 @@ t: Ok, now imagine that you have all the necessary money in the bank to cover ex
     Thanks for sharing that; do you find it inspiring to think about that?
       b: (*)
 
-t: Now, let's feel into the difference between what you’re currently doing, which you said was  $CurrentWork and what you just felt was your ideal work, which you said was $MyDharma. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference that feels like a gap you’re closing at your own rate, or a significant gap that perhaps feels almost impossible to close?
+t: Now, let's feel into the difference between what you’re currently doing, which you said was $CurrentWork and what you just felt was your ideal work, which you said was $MyDharma. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference that feels like a gap you’re closing at your own rate, or a significant gap that perhaps feels almost impossible to close?
   a: (~small) Ok, great. It's important to accept that there will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
   b: (~large)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than continuing to live as if you can afford to do that part later.
 
