@@ -1,3 +1,6 @@
+# skipping file for now due to compile errors
+:quit
+
 TOPIC: ~uniqueness_assessment ( ~goals ~hobbies ~emotions ~personality ~individuality )
 # author: Zeb
 
@@ -602,17 +605,3 @@ t: () Do you go to the doctor often?
 ## religion and politics
 
 t: () ^gambit (~religionassessment)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
