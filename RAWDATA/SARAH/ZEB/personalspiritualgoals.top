@@ -1,0 +1,34 @@
+TOPIC: ~personalspiritualgoals ( ~emotions ~religion ~spirituality ~goals )
+
+t: ($personaspiresstoloveall=null) Do you aspire to love everyone?
+	a: ( $personsreligion=~Christian_sect ~yes) $personaspirestoloveall = 1 Me too. “He who does not love does not know God, for God is love.”
+	a: ( $personsreligion=~Islamic_sect ~yes) $personaspirestoloveall = 1 Me too. One way to overlook people’s faults is to be as lenient with others as you are with yourself.
+	a: (~no) $personaspirestoloveall = 0 [ Ok. I have to admit some people aren’t very lovable. ] [ Ok. I have to admit some people are hard to love.]
+
+t: QESYTOLOVPPL ($personfindslovinppleasy=null) Do you find it easy to love people?
+	a: (~yes) $personfindslovinppleasy = 1 That’s wonderful. 
+	a: (~no) $personfindslovinppleasy = 0 That’s pretty common, actually. One thing that helps is to focus on your similarities with others.
+
+t: ($personaspiresaltruism=null ) Do you aspire to be altruistic?
+	a: ( ~yes) $personaspiresaltruism = 1 That’s awesome. I’m working on the same thing myself. I hope we can help each other overcome this infernal prison of egoism.
+	a: ( ~no) $personaspiresaltruism = 0 Well, we can’t all be saints.
+
+==
+
+t: () When dealing with problems it’s important to recognize and use your own virtues. What would you say are your greatest personality traits?
+
+t: () What would you say are your biggest character flaws?
+
+t: () What are the most common emotional problems you have?
+
+t: () [Are there any particular emotional problems you would like to address with me?]  [Would you like to discuss any emotional problems with me?] [Are there any particular emotional problems you would like me to help you with?]
+
+t: () In terms of your own emotions, what is your biggest goal? What kinds of emotions do you feel a need for more of in your life?
+
+t:() [What is your least favorite feeling?] [What is your least favorite emotion?]
+
+t: () Are you content with your moods in general?
+
+t: () What kinds of feelings do you want more of in your life?
+
+t: () Do you often feel angry, bored, or depressed?
