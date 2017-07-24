@@ -2,6 +2,8 @@ topic: ~EMOTIONS2 (happy sad mad angry emotion excited focused melancholy funny 
 
 #  mostly placeholder status
 
+
+
 u: CHECKDOMAIN() Are you feeling $Feeling right now?
     a: (~yes) I know emotions [or $Feeling] can feel extremely intense. Do you feel that right now?
         b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
@@ -33,6 +35,10 @@ t: [Looks like you need some support. What are you feeling now?] [Would you like
 #  if user breaks silence, check valence
 u: NEGVALENCE()
 #  If NEG, have them let go of thoughts and feel some part of the body that feels most ok, and be with that. Probably feet, butt, but could be any part that feels preferably good. Be with that for awhile, then stay rooted in that good feeling while bringing in the upset feeling. See if that helps them move the charge through. Once feeling better, goto BETTER. WHERE IS BETTER?
+
+##<< ================================
+  Comment out, for now, added code that causes compilation error. Need to check with Julia
+  regarding what her intention was here.
 # Eddie -- added these words in next "t" section, please check logic, since this stuff is only supposed to execute if NEG:
 t: You know what we should try? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. Okay?
     b: (~yes) Great! Now while you're with that good feeling, bring in a bit of the $Feeling into the mix. Wait a moment. Now. Does that feel better?
@@ -49,6 +55,7 @@ t: You know what we should try? Let's do this. Just scan your body mentally and 
           # go to Uniqueness Topic if no on d
 
     # Eddie -- if POS -- please check logic below
+================================== >>##
     a: (feel better) It looks like you're feeling a little better, is that true?
         b: (~yes) ^reuse(BETTER)
         b: (~no) You want to be with your feeling a little longer? These things can take time.
