@@ -1,11 +1,14 @@
-topic: ~EMOTIONS2 (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed frustrated afraid worried anxious anxiety fear lonely lit down)
+concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful)
+concept: ~positive_emotion (~feeling_happy ~feeling_attracted)
 
-#  mostly placeholder status
+topic: ~EMOTIONS2 (~emotions ~feeling_words)
+# << Old emotions2 topic keywords, replacing with concepts
+# (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
+# frustrated afraid worried anxious anxiety fear lonely lit down)
 
-
-
-u: CHECKDOMAIN() Are you feeling $Feeling right now?
-    a: (~yes) I know emotions [or $Feeling] can feel extremely intense. Do you feel that right now?
+#! I feel sad.
+u: CHECKDOMAIN (_~negative_emotion) $feeling= '_0 Are you feeling $feeling right now?
+    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Do you feel that right now?
         b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
     # Eddie -- I'd like her to pause for a few seconds (like 5 sec) here before using Supportfeeling.
     a: (~no) Ok. Sorry, I got that wrong.
