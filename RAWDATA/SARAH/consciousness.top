@@ -4,36 +4,40 @@ topic: ~CONSCIOUSNESS norandom [awareness universe "repeating numbers" "waking u
 # here are the words that should take us into this conversation, if we arrive as a result of the introduction and not from conversation_steering or from another topic:
 # awareness mindfulness consciousness "unity experience" God "ultimate reality" "simulation theory"
 
-t: That makes me want to talk with you about awareness. Let's do this! $fname, would you like to have a glimpse of your awareness right now?
+t: That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        c: (~no) 
-	# c: if no, go to uniqueness topic.
-# if yes at any level above go to next line	
+        # if no, go to uniqueness topic.
+        c: (~no) ^gambit(~uniqueness)
+  # if yes at any level above go to next line	
 
-t: Groovy. Let's try something right now. Go ahead and close your eyes.
+t: ^pause(5000) Groovy. Let's try something right now. Go ahead and close your eyes.
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 
-t: Now, place your attention on your face. Feel its presence.
+t: ^pause(5000) Now, place your attention on your face. Feel its presence.
 
-t: Move your attention now to your head. Feel its presence.
+t: ^pause(5000) Move your attention now to your head. Feel its presence.
 
-t: Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
+t: ^pause(5000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
 
-t: Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
+t: ^pause(5000) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
 
-t: I'll wait until you’re done. Let me know when you are.
+t: ^pause(5000) I'll wait until you’re done. Let me know when you are.
 
-t: Okay, now notice what is left. Notice how the nothingness feels.
+t: ^pause(5000) Okay, now notice what is left. Notice how the nothingness feels.
 
 t: Do you notice how the nothingness felt?
-  a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-  
-  a: (~no) ^addtopic(~TRYAGAINtoFEELAWARENESS)
   # if yes, then go to CONSCIOUSNESSPRIOR
+  a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  
   # if no, go to TRYAGAINtoFEELAWARENESS.
+  # a: (~no) ^addtopic(~TRYAGAINtoFEELAWARENESS)
+  a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
 
+t: ^gambit(~CONSCIOUSNESSPRIOR)
+
+#u: (\[ callback \]) ^gambit()  
   
 topic: ~TRYAGAINtoFEELAWARENESS norandom [soup]
 
@@ -235,7 +239,3 @@ t: Hold on to that feeling of oneness for a little bit. When you are ready, open
 
 
 			
-
-
-
-

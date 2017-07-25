@@ -25,7 +25,7 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 	a: (~no) Okay, what would you like to talk about?
 	a: (~yes) Wonderful! [So what are you feeling or thinking about lately?][What is meaningful to you right now?] [What would you like to talk about?][What are you wondering about lately?] [Is there anything about your thoughts or feelings you’d like to make better?]
 		b: (~emotions) $domain = emotions ^gambit(~emotions2)
-		b: (~consciousness) $domain = consciousness ^gambit(~consciousness)
+		b: (awareness mindfulness consciousness "unity experience" God "ultimate reality" "simulation theory" "waking up") $domain = consciousness ^gambit(~consciousness)
 		b: (~uniqueness) $domain = uniqueness ^gambit(~uniqueness)
 	  b: () i will steer you to one of the domains here
 	
