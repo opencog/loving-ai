@@ -6,15 +6,16 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words)
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
 
-# above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
+# note about above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
 
-# If coming from introduction or through chatscript in some other way, go to FROM_INTRODUCTION_TO_EMOTIONS
+# If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_NEG_EMOTIONS if neg emotion
+#  If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
 #! I feel sad.
-u: FROM_INTRODUCTION_TO_EMOTIONS (_~negative_emotion) $feeling= '_0 Are you feeling $feeling right now?
-    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Do you feel that right now?
+u: FROM_INTRO_TO_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
+    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Wj
         b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
     # Eddie -- I'd like her to pause for a few seconds (like 5 sec) here before using Supportfeeling.
     a: (~no) Ok. Sorry, I got that wrong.
