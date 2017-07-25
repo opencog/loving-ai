@@ -22,7 +22,7 @@ u: ( %input<%userfirstline)
 u: (< shut up >) $shutup = 1
 u: (< talk  >) $shutup = null
 
-u: (\[ callback \]) Callback seen.
+# u: (\[ callback \]) Callback seen.
 u: (\[ loopback \]) Loopback seen.
 u: (\[ alarm \]) Alarm seen.
 u: (< loopback test) \[ loopback=1000 \] Loopback requested.
