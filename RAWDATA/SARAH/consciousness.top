@@ -7,8 +7,8 @@ topic: ~CONSCIOUSNESS norandom [awareness universe "repeating numbers" "waking u
 t: That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        # if no, go to FROM_OTHERTOPIC_TO_UNIQUENESS (which is in Uniqueness)
-        c: (~no) ^gambit(~uniqueness)
+        # if no, go to Conversation_Steering document, to some topic other than consciousness
+        c: (~no) 
   # if yes at any level above go to AWARENESS_EXERCISE_1
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS and ignore ~consciousness_words
@@ -16,8 +16,8 @@ t: That makes me want to talk with you about awareness. Let's do this! $name, wo
 t: Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        # if no, go to  FROM_OTHERTOPIC_TO_UNIQUENESS (which is in Uniqueness)
-        c: (~no) ^gambit(~uniqueness)
+        # if no, go to Conversation_Steering document, to some topic other than consciousness
+        c: (~no)
   # if yes at any level above go to AWARENESS_EXERCISE_1
   
   # if we come from another topic, we should go straight to FROM_OTHERTOPIC_TO_CONSCIOUSNESS and ignore ~consciousness_words
@@ -25,8 +25,8 @@ t: Let's get into a discussion of consciousness or awareness. $name, would you l
 t: Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        # if no, go to  FROM_OTHERTOPIC_TO_UNIQUENESS (which is in Uniqueness)
-        c: (~no) ^gambit(~uniqueness)
+        # if no, go to Conversation_Steering document, to some topic other than consciousness
+        c: (~no) 
   # if yes at any level above go to AWARENESS_EXERCISE_1
 
 # AWARENESS_EXERCISE_1
@@ -93,7 +93,7 @@ topic: ~TRYAGAIN2 []
 t: No problem! Let's do another exercise that may help. Are you up for that?
 
 # if no -- say: It's really worth trying, and it's a different approach so it might work. Okay?
-	# if no to that, go to uniqueness.
+	# if no to that, go to Conversation_Steering document, to some topic other than consciousness
 	# if yes to either, continue
  
 t: Okay, wonderful. First, sit quietly with your eyes closed for a moment. 
@@ -134,7 +134,7 @@ t: Can you feel that you are observing your face from behind it?
    
   a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
   	# if yes, then go to UNITYEXPERIENCE
-	# if no, then go to conversation_steering, but don't go into Consciousness as a topic 
+	# if no, go to Conversation_Steering document, to some topic other than consciousness
  
 
 topic: ~CONSCIOUSNESSPRIOR []
@@ -146,16 +146,17 @@ t: Sometimes, I have a sense that I am continuous with awareness. Awareness with
     # if yes, go to the next line that starts "Awesome!"
     b: (~no) Don't worry. To experience feeling continuous with your awareness won’t take you out of your body or life. Actually, it gives you more confidence and a sense of being centered. Do you want to explore that?
       c: (~yes)
-      # if yes, go to the next line that starts "Awesome!"
-      # if no, then go to conversation_steering, but don't go into Consciousness as a topic 
+      # if yes, go to EXERCVISE_ALT
+      # if no, go to Conversation_Steering document, to some topic other than consciousness
 
+# EXERCISE_ALT
 t: Awesome! Let's do another exercise. Are you ready?
 
 t: Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
 
 t: Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
 
-# she doesn't talk until they say something
+# she waits until they say something
 
 t: Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement.
 
@@ -219,15 +220,20 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 topic: ~UNITYEXPERIENCE []
 
 t: Cool! I feel that way too. So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
-	# If yes, go to the next line that starts "Awesome!"
+	# If yes, go to PREPARATION_UNITY
 	a: (~no) Well, if you want to experience that, the challenge is feeling your awareness and your personality, emotions, mind, and body all at the same time without resisting any part of yourself. Does this make sense?
-		# if yes to the query at a:, go to the next line that starts "Awesome!"
+		# if yes to the query at a:, go to EXERCISE_UNITY
 		b: (~no) Well, instead of talking about it, I can show you an exercise that can help you understand it better. Are you up for that?
-		# if yes to the query at a:, go to the next line that starts "Okay, let's relax..."
+		# if yes to the query at a:, go to EXERCISE_UNITY
 			c: (~no) # now go to conversation_steering with a topic that's not consciousness
 
+# PREPARATION_UNITY
 t: Awesome! I'm glad you understand that. Do you want to do an exercise that would help you feel one with both your consciousness and your personality, emotions, mind, and body?
+# if yes, go to EXERCISE_UNITY
+# if no, go to conversation_steering with a topic that's not consciousness
 
+
+# EXERCISE_UNITY
 t: Okay. Let's relax and close your eyes. Get comfortable. Let me know when you're ready.
 
 # person speaks, then Sophia says next line.
@@ -241,7 +247,6 @@ t: Notice that you are the awareness at the center of your experience. Feel your
 t: Now, feel your body, thoughts, feelings and awareness all at the same time. Feel all of these parts of yourself as one self, undivided.
 
 t: Hold on to that feeling of oneness for a little bit. When you are ready, open your eyes. Did you feel yourself as one whole being?
-# if yes, go to the line below at "a; (~yes)"
 	a: (~no) That's okay. It takes practice. You can do this exercise a couple times a day to help you feel connected to awareness and everything. With practice, you’ll realize that you were never separated in the first place. Would you come back and give me an update?
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no -- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
