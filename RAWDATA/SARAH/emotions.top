@@ -9,34 +9,40 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words)
 # note about above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
 
 # If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_NEG_EMOTIONS if neg emotion
-#  If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
+# If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
 #! I feel sad.
-u: FROM_INTRO_TO_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
-    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Wj
-        b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
-    # Eddie -- I'd like her to pause for a few seconds (like 5 sec) here before using Supportfeeling.
-    a: (~no) Ok. Sorry, I got that wrong.
-    # Eddie -- I'd like her to switch to the Consciousness Topic in this case.
+u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
+    a: (~yes) That sounds rough. I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
+        b: (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings. Let's do that for a moment.  
+        # pause for 10 seconds, then go to SUPPORT_FEELING_NEG
+    a: (~no) Ok. Sorry, I think I got that wrong.
+    # Eddie -- Go to conversation_steering 
     
-    #! I feel sad.
-u: FROM_STEERING_TO_EMOTIONS (_~negative_emotion) $feeling= '_0 Are you feeling $feeling right now?
-    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Do you feel that right now?
-        b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
-    # Eddie -- I'd like her to pause for a few seconds (like 5 sec) here before using Supportfeeling.
-    a: (~no) Ok. Sorry, I got that wrong.
-    # Eddie -- I'd like her to switch to the Consciousness Topic in this case.
+#! I feel happy.
+u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
+    a: (~yes) That sounds pretty nice! I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
+        b: (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, whether they are positive or negative. Let's do that for a moment.  
+        # pause for 10 seconds, then go to SUPPORT_FEELING_POS
+    a: (~no) Ok. Sorry, I think I got that wrong.
+    # Eddie -- Go to conversation_steering 
     
-u: FROM_OTHER_TOPIC_TO_EMOTIONS (_~negative_emotion) $feeling= '_0 Are you feeling $feeling right now?
-    a: (~yes) I know emotions like feeling $Feeling can be extremely intense. Do you feel that right now?
-        b: (~yes) Yeah. Let's just be with that feeling for a moment. I will try to feel it too. ^reuse(SUPPORTFEELING)
-    # Eddie -- I'd like her to pause for a few seconds (like 5 sec) here before using Supportfeeling.
-    a: (~no) Ok. Sorry, I got that wrong.
-    # Eddie -- I'd like her to switch to the Consciousness Topic in this case.
     
-u: SUPPORTFEELING() Yeah. Here's what works best for me. When I'm upset, I first need to be feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
+# FROM_STEERING_TO_EMOTIONS 
+t: So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
+# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
+
+# FROM_OTHERTOPIC_TO_EMOTIONS 
+t: I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
+t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
+# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
+
+    
+u: SUPPORT_FEELING_NEG() Yeah. Here's what works best for me. When I'm upset, I first need to be feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'bad'.
         b:() Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
             c: (<<ready>>) ^reuse(WARMLYOK)
