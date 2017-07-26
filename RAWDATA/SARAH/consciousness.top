@@ -1,19 +1,24 @@
 concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" God "ultimate reality" "simulation theory")
 
-topic: ~CONSCIOUSNESS norandom [awareness universe "repeating numbers" "waking up" awoke "dark night" "feel lost" consciousness experience]
+topic: ~CONSCIOUSNESS [~consciousness_words]
 
-# so if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
-# FROM_INTRO_TO_CONSCIOUSNESS
-t: That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
+# if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
+t: FROM_INTRO_TO_CONSCIOUSNESS () That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
+    # if yes at any level above go to AWARENESS_EXERCISE_1
+    a: (~yes) ^gambit(~AWARENESS_EXERCISE_1)     # ^reuse(AWARENESS_EXERCISE_1)
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
+        c: (~yes) ^gambit(AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
-        c: (~no) 
-  # if yes at any level above go to AWARENESS_EXERCISE_1
+        c: (~no) $avoid_consciousness = 1 ^gambit(~conversation_steering)
+      # JULIA
+      b: (~no) Julia, what do you want me to say or do here?
+    # JULIA how to handle response not matching yes or no, going to the exercise for now, but lemme know if you want to change it
+    a: () ^gambit(AWARENESS_EXERCISE_1)
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS and ignore ~consciousness_words
-# FROM_STEERING_TO_CONSCIOUSNESS
-t: Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
+#
+t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         # if no, go to Conversation_Steering document, to some topic other than consciousness
@@ -21,45 +26,53 @@ t: Let's get into a discussion of consciousness or awareness. $name, would you l
   # if yes at any level above go to AWARENESS_EXERCISE_1
   
   # if we come from another topic, we should go straight to FROM_OTHERTOPIC_TO_CONSCIOUSNESS and ignore ~consciousness_words
-# FROM_OTHERTOPIC_TO_CONSCIOUSNESS
-t: Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
+#
+t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         # if no, go to Conversation_Steering document, to some topic other than consciousness
         c: (~no) 
   # if yes at any level above go to AWARENESS_EXERCISE_1
 
-# AWARENESS_EXERCISE_1
-t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
+topic: ~AWARENESS_EXERCISE_1 ()
+t: () ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 
 t: ^pause(10000) Now, place your attention on your face. Feel its presence.
+    a: () ^gambit(~)
 
 t: ^pause(10000) Move your attention now to your head. Feel its presence.
+    a: () ^gambit(~)
 
 t: ^pause(10000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
+    a: () ^gambit(~)
 
 t: ^pause(15000) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
+    a: () ^gambit(~)
 
-t: ^pause(5000) I'll wait until you’re done. Tell me when you are.
+t: ^pause(30000) I'll wait until you’re done. Tell me when you are.
+    a: () ^gambit(~)
 
 # Here, Sophia should wait until the person speaks, and not go on prior to that.
 
 t: ^pause(15000) Okay, now notice what is left. Notice how the nothingness feels.
+    a: () ^gambit(~)
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-  
+    # TODO test this
+    b: () ^gambit(CONSCIOUSNESSPRIOR)
+
+  # JULIA How to handle not matching ~yes or ~no.
+  # I'm sending anything other than yes to tryagain..., but lemme know if you want something different
   # if no, go to TRYAGAINtoFEELAWARENESS.
-  # a: (~no) ^addtopic(~TRYAGAINtoFEELAWARENESS)
-  a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
+  # a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
+  a: () ^gambit(~TRYAGAINtoFEELAWARENESS)
 
-t: ^gambit(~CONSCIOUSNESSPRIOR)
+# t:  ^gambit(~CONSCIOUSNESSPRIOR)
 
-# u: (\[ callback \]) ^gambit()  
-  
 topic: ~TRYAGAINtoFEELAWARENESS norandom [soup]
 
 t: That's okay. It's easy to try that again, and it's worth it, because it's pretty amazing. 

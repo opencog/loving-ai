@@ -31,9 +31,10 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 	# if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
 	# if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
 	# if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
-	a: (~yes) Wonderful! [So what are you feeling or thinking about lately?][What is meaningful to you right now?] [What would you like to talk about?][What are you wondering about lately?] [Is there anything about your thoughts or feelings you’d like to make better?]
+	#! anything but ~no
+	a: () Wonderful! [So what are you feeling or thinking about lately?][What is meaningful to you right now?] [What would you like to talk about?][What are you wondering about lately?] [Is there anything about your thoughts or feelings you’d like to make better?]
 		b: (~emotions) $domain = emotions ^gambit(~emotions2)
-		b: (awareness mindfulness consciousness "unity experience" God "ultimate reality" "simulation theory" "waking up") $domain = consciousness ^gambit(~consciousness)
+		b: (~consciousness_words) $domain = consciousness ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
 		b: (~uniqueness) $domain = uniqueness ^gambit(~uniqueness)
 	  b: () i will steer you to one of the domains here
 	
@@ -49,9 +50,8 @@ u: ( what is your name ) My name is Sarah.
 	
 
 # TODO move these to a functions file	
-topic: ~functions system ()
-u: (\[ callback \]) ^gambit()
-u: RESET (reset) :reset resetting!
+# topic: ~functions system ()
+#u: RESET (reset) :reset resetting!
 
 outputmacro: ^pause(^ms)
   \[ ^join(callback= ^ms) \]
