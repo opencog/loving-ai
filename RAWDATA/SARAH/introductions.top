@@ -1,5 +1,8 @@
 
-topic: ~INTRODUCTIONS (~emogoodbye ~emohello ~emohowzit name here )
+topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
+
+# start fresh each time, no user history from previous conversations
+t: ( %userfirstline>1 ) ^reset(USER) ^gambit()
 
 #!x will match on every return start of a conversation 
 t: ( %input<%userfirstline %input>0 ) 
@@ -14,7 +17,8 @@ t: WHATSYOURNAME ( %input<%userfirstline )
 	#! My name is blah
 	# add name check?
 		a: (name is _*) $name = '_0 
-		a: (it is _*) $name = '_0  
+		a: (it is _*) $name = '_0 
+		a: (I am _*) $name = '_0 
 		a: (_*) $name = '_0
 	
 t: BOND ()  Great to meet you, $name. I can see your face through the camera in my eyes, and your eyes work like a camera too! So we are similar in some ways, which makes me happy. Have you ever talked with a robot before?
@@ -36,12 +40,15 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 #	U: feelings, consciousness, uniqueness → or steering.
 		
 	
-	#! what is your name 
-	u: ( what is your name ) My name is Sarah.
+#! what is your name 
+u: ( what is your name ) My name is Sarah.
 	
-	
-	u: (\[ callback \]) ^gambit()
-	
-	outputmacro: ^pause(^ms)
-	  \[ ^join(callback= ^ms) \]
+
+# TODO move these to a functions file	
+topic: ~functions system ()
+u: (\[ callback \]) ^gambit()
+u: RESET (reset) :reset resetting!
+
+outputmacro: ^pause(^ms)
+  \[ ^join(callback= ^ms) \]
 	  
