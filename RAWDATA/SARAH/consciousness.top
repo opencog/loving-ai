@@ -8,13 +8,13 @@ t: FROM_INTRO_TO_CONSCIOUSNESS () That makes me want to talk with you about awar
     a: (~yes) ^gambit(~AWARENESS_EXERCISE_1)     # ^reuse(AWARENESS_EXERCISE_1)
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        c: (~yes) ^gambit(AWARENESS_EXERCISE_1)
+        c: (~yes) ^gambit(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
         c: (~no) $avoid_consciousness = 1 ^gambit(~conversation_steering)
       # JULIA
       b: (~no) Julia, what do you want me to say or do here?
     # JULIA how to handle response not matching yes or no, going to the exercise for now, but lemme know if you want to change it
-    a: () ^gambit(AWARENESS_EXERCISE_1)
+    a: (*) ^gambit(~AWARENESS_EXERCISE_1)
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS and ignore ~consciousness_words
 #
@@ -35,9 +35,10 @@ t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk a
   # if yes at any level above go to AWARENESS_EXERCISE_1
 
 topic: ~AWARENESS_EXERCISE_1 ()
-t: () ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
+t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
+    a: () ^gambit(~)
 
 t: ^pause(10000) Now, place your attention on your face. Feel its presence.
     a: () ^gambit(~)
