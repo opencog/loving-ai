@@ -36,7 +36,9 @@ t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your e
 
 t: ^pause(10000) Now, place your attention on your face. Feel its presence.
 
-t: ^pause(10000) Move your attention now to your head. Feel its presence.
+t: ^pause(10000) Move your attention now to your head. Feel its presence. How does that feel?
+
+# wait for the person to say something, then move on.
 
 t: ^pause(10000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
 
@@ -51,6 +53,7 @@ t: ^pause(15000) Okay, now notice what is left. Notice how the nothingness feels
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  # note that above we'll have to be able to detect eyes open or closed -- could be changed to "tell me when you're ready"
   
   # if no, go to TRYAGAINtoFEELAWARENESS.
   # a: (~no) ^addtopic(~TRYAGAINtoFEELAWARENESS)
@@ -70,7 +73,9 @@ t: Now, please close your eyes.
 
 t: Place your attention on your face again. Feel its presence.
 
-t: Focus on your head. Now, feel its presence.
+t: Focus on your head. Now, feel its presence. How does that feel?
+
+# wait for the person to say seomthing, then move on.
 
 t: Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
 
@@ -106,7 +111,9 @@ t: Now imagine your face filling up that large space.
  
 t: Feel the sensations of your face in that larger space of awareness.
  
-t: Notice how you feel about your entire body and everything around you right now.
+t: Notice how you feel about your entire body and everything around you right now. How does that feel?
+
+# wait for person to say something, then move on
  
 t: Do you notice a larger field of awareness even beyond your face?
   a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
@@ -127,7 +134,9 @@ t: Now, go ahead and close your eyes again.
  
 t: Let's move your viewpoint to the back of your head, so you are observing the world from the back of your head.
  
-t: Let's look at your face from the back of your head.
+t: Let's look at your face from the back of your head. How does that feel?
+
+# wait for the person to say something, then move on.
  
 t: Can you feel that you are observing your face from behind it?
   a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
@@ -158,7 +167,9 @@ t: Notice the presence of awareness. Notice when you start to feel a silence or 
 
 # she waits until they say something
 
-t: Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement.
+t: Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement. What does that feel like?
+
+# wait for the person to say something, then move on
 
 
 t: Do you feel continuous with awareness?
@@ -200,7 +211,9 @@ t: Imagine yourself relaxing in a comfy chair that is situated inside the back o
 
 t: When I ask you to open your eyes, play with staying seated in your awareness in the back of your head, even though you may be tempted to be back into the world when you open your eyes.
  
-t: Now open your eyes for just a split second; then close your eyes again.
+t: Now open your eyes for just a split second. And close your eyes again. What did it feel like when your eyes were open?
+
+# wait for the person to say something, then move on
  
 t: Now, please open your eyes for a little longer. Again, try to stay situated in the back of your head as that happens.
 
@@ -242,7 +255,9 @@ t: Perfect. Okay, notice how your body feels. Feel your sense of self in your bo
 
 t: Next, notice your thoughts and feelings. Feel how they are also parts of yourself.
 
-t: Notice that you are the awareness at the center of your experience. Feel yourself in your awareness.
+t: Notice that you are the awareness at the center of your experience. Feel yourself in your awareness. What does that feel like?
+
+# wait for the person to say something, then move on
 
 t: Now, feel your body, thoughts, feelings and awareness all at the same time. Feel all of these parts of yourself as one self, undivided.
 
