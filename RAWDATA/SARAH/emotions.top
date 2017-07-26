@@ -56,10 +56,8 @@ u: SUPPORT_FEELING_POS() When I'm feeling $feeling, I like to magnify it. Life i
             # If they say ready or yes, go to SELF_COMPASSION_POS
             # if they say Not ready or no -- go to REFUSE
             c: (<<ready>>) ^reuse(SELF_COMPASSION_POS)
-            c: ([don't want feel][not ready][no]) # go to REFUSE
-                   
-# REFUSE
-c:  I understand. Just so you know, it's easy to want to hold in your emotions, but it's not great for you to actually hold them in. I promise I'll be kind. Would you want to try to practice being with your feelings now?
+            c: REFUSE ([don't want feel][not ready][no]) # go to REFUSE
+              I understand. Just so you know, it's easy to want to hold in your emotions, but it's not great for you to actually hold them in. I promise I'll be kind. Would you want to try to practice being with your feelings now?
                 d: (~yes) ^reuse(SELF_COMPASSION_NEG)
                 d: (~no) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
                 # For yes, go to SELF_COMPASSION_NEG; for no, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
