@@ -15,6 +15,9 @@ harry
 
 topic: ~control system ()
 
+#! resetmenow to reset the conversational history of the user
+u: (resetmenow) ^reset(USER)
+
 # on startup, do introduction
 u: ( %input<%userfirstline) 
 	gambit(~introductions)
