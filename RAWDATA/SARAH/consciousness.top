@@ -6,11 +6,21 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 t: TEMP () Welcome to consciousness
 
-# JULIA the three entry points into consciousness look essentially the same to me. what are the differences?
 
 # if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
-t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you about awareness. Let's do something cool! $name, would you like to have a glimpse of your awareness right now?
-    # if yes at any level above go to AWARENESS_EXERCISE_1
+t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you about awareness. Let's do something cool!
+    ^reuse(EXERCISE_INVITE)    # ^gambit(INVITE_RESPONSE)
+
+# if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS #  TODO: and ignore ~consciousness_words
+t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
+    ^gambit(INVITE_RESPONSE)
+
+# coming from other topic could involve either (a) being explicitly directed here or (b) through a topic level keyword match
+t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
+    ^gambit(INVITE_RESPONSE)
+
+t: EXERCISE_INVITE() $name, would you like to have a glimpse of your awareness right now?
+# if yes at any level above go to AWARENESS_EXERCISE_1
     a: (~yes) ^gambit(~AWARENESS_EXERCISE_1)     # ^reuse(AWARENESS_EXERCISE_1)
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
@@ -18,36 +28,13 @@ t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you abou
         # if no, go to Conversation_Steering document, to some topic other than consciousness
         #! no or catchall
         c: (*) $avoid_consciousness = 1 ^gambit(~conversation_steering)
-        # JULIA what to do if no yes/no match at c: level, sending to steering for now
-	# EDDIE -- ^^ sounds good, let's see how it plays out in the user's experience
-      # EDDIE -- I resolved logic below, thanks for asking what to do.
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
-      	c: (~yes) #conversation_steering, to some topic other than consciousness
+      	c: (~yes) # conversation_steering, to some topic other than consciousness
         #! no or catchall
-        c: (*) # EDDIE -- go to AWARENESS_EXERCISE_1
-    # JULIA how to handle response not matching yes or no, going to the exercise for now, but lemme know if you want to change it
-   # EDDIE -- resolved as below
-   a: (*) Okay, let's talk about something else! # EDDIE -- go to conversation_steering to a topic other than consciousness
+        c: (*) ^gambit(~AWARENESS_EXERCISE_1)
+   #! no or catchall
+   a: (*) Okay, let's talk about something else! $avoid_consciousness = 1 ^gambit(~conversation_steering)
 
-# if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS and ignore ~consciousness_words
-#
-t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
-    a: (~no) Oh okay. Is there something that you're afraid of?
-      b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        # if no, go to Conversation_Steering document, to some topic other than consciousness
-        c: (~no)
-  # if yes at any level above go to AWARENESS_EXERCISE_1
-  # EDDIE -- for the rest, follow the same logic and phrases as in FROM_INTRO_TO_CONSCIOUSNESS
-  
-  # if we come from another topic, we should go straight to FROM_OTHERTOPIC_TO_CONSCIOUSNESS and ignore ~consciousness_words
-#
-t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
-    a: (~no) Oh okay. Is there something that you're afraid of?
-      b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        # if no, go to Conversation_Steering document, to some topic other than consciousness
-        c: (~no) 
-  # if yes at any level above go to AWARENESS_EXERCISE_1
-  # EDDIE -- for the rest, follow the same logic and phrases as in FROM_INTRO_TO_CONSCIOUSNESS
 
 topic: ~AWARENESS_EXERCISE_1 ()
 # dev note: alternatively implement as rejoinders?
