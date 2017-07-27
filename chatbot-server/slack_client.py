@@ -202,7 +202,10 @@ class HRSlackBot(object):
             trace = response.get('trace', '')
             botid = response.get('botid', '')
             if trace:
-                formated_trace = format_trace(trace)
+                try:
+                    formated_trace = format_trace(trace)
+                except Exception:
+                    formated_trace = ''
                 if formated_trace:
                     title = 'answered by {}\n\ntrace:\n{}'.format(botid, '\n'.join(formated_trace))
         attachments = [{
