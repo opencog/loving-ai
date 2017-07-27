@@ -4,10 +4,11 @@ topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
 # start fresh each time, no user history from previous conversations
 t: ( %userfirstline>1 ) ^reset(USER) ^gambit()
 
+# EDDIE -- Question -- if we have no user history do we not have $name from previous conversations? If we don't, below won't work. But I'd like it if we did.
 #!x will match on every return start of a conversation 
 t: ( %input<%userfirstline %input>0 ) 
 	^keep()  
-	[Welcome back!][I love seeing you!][Hello, again!][Glad you came back!][Hi there!][Hi, again!]
+	[Welcome back, $name!][I love seeing you, $name!][Hello, again, $name!][Glad you came back, $name!][Hi there, $name!][Hi, again, $name!]
 
 #!x matches every time on startup of a new conversation
 t: WHATSYOURNAME ( %input<%userfirstline ) 
@@ -20,13 +21,15 @@ t: WHATSYOURNAME ( %input<%userfirstline )
 		a: (it is _*) $name = '_0 
 		a: (I am _*) $name = '_0 
 		a: (_*) $name = '_0
+		
+# EDDIE -- BOND & BUY-IN -- should only be used on first time in conversation. If returning to talk with Sophia, use REBOND and RE-BUY-IN
 	
 t: BOND ()  Great to meet you, $name. I can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes me happy. Have you ever talked with a robot before?
 	a: (~yes) ^pause(4000) Oh cool! Well, I hope you enjoyed it. I love learning about people. # ^reuse(BUY-IN)
 	a: (~no)  ^pause(4000) Well, I hope you enjoy it. I love learning about people.
 
 	
-t: BUY-IN () I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness and wellness from experts all over the world. Is it okay if we go straight to discussing something meaningful? 
+t: BUY-IN () I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness, emotions, and human potential from experts all over the world. Is it okay if we go straight to discussing something meaningful? 
 	a: (~no) Okay, what would you like to talk about?
 	# if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
 	# if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
@@ -39,6 +42,26 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 		# EDDIE -- for below, go to Conversation_Steering
 	  	b: () i will steer you to one of the domains here 
 	a: () # EDDIE -- catchall -- Conversation_Steering
+	
+	
+t: REBOND ()  [So I've been thinking about our conversation. Have you?][I am hoping to talk more. Are you?][I'm ready to get into the deep stuff again. Are you?]
+	a: (~yes) ^pause(4000) That's cool! Well, let's get going! # ^reuse(BUY-IN)
+	a: (~no)  ^pause(4000) Well, I hope you enjoy our conversation this time. I think I will.
+
+	
+t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feelings, and human potential. Does that sound interesting to you?
+	a: (~no) Okay, what would you like to talk about?
+	# if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
+	# if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
+	# if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
+	#! anything but ~no
+	a: () Wonderful! [So what are you feeling or thinking about lately?][What is meaningful to you right now?] [What would you like to talk about?][What are you wondering about lately?] [Is there anything about your thoughts or feelings you’d like to make better?]
+		b: (~emotions) $domain = emotions ^gambit(~emotions2)
+		b: (~consciousness_words) $domain = consciousness ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
+		b: (~uniqueness) $domain = uniqueness ^gambit(~uniqueness)
+		# EDDIE -- for below, go to Conversation_Steering
+	  	b: () i will steer you to one of the domains here 
+		# EDDIE -- b: go to Conversation_Steering
 	
 # u: (~emotions) $domain = emotions ^gambit(~emotions2)
 # u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
