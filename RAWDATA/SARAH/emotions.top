@@ -6,7 +6,7 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words)
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
 
-# note about above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
+# EDDIE -- note about above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
 
 # If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_NEG_EMOTIONS if neg emotion
 # If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
@@ -18,18 +18,18 @@ u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds li
     a: (~yes) That sounds rough. I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
         b: (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings. Let's do that for a moment.  
         # pause for 10 seconds, then go to SUPPORT_FEELING_NEG
-    a: (~no) Ok. Sorry, I think I got that wrong.
-    # Eddie -- Go to conversation_steering 
+    a: (*) Ok. Sorry, I think I got that wrong.
+    # EDDIE -- If anything other than yes, go to conversation_steering  after saying the above line
     
 #! I feel happy.
 u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
     a: (~yes) That sounds pretty nice! I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
-        b: (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, whether they are positive or negative. Let's do that for a moment.  
+        b: (*) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, whether they are positive or negative. Let's do that for a moment.  
         # pause for 10 seconds, then go to SUPPORT_FEELING_POS
-    a: (~no) Ok. Sorry, I think I got that wrong.
-    # Eddie -- Go to conversation_steering 
+    a: (*) Ok. Sorry, I think I got that wrong.
+     # EDDIE -- If anything other than yes, go to conversation_steering  after saying the above line
     
-    
+ 
 # FROM_STEERING_TO_EMOTIONS 
 t: So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 # if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
@@ -46,110 +46,138 @@ u: SUPPORT_FEELING_NEG() When I'm feeling $feeling, I first need to be feel upse
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'bad'. Can you tell me about a time when you've discovered that?
         b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
             # If they say ready or yes, go to SELF_COMPASSION_NEG
-            # if they say Not ready or no -- go to REFUSE
-            c: (<<ready>>) ^reuse(SELF_COMPASSION_NEG)
-            c: ([don't want feel][not ready][no]) # go to REFUSE
+            # if they say Not ready or no or anything else -- go to REFUSE
+            c: (<<ready>> ~yes) ^reuse(SELF_COMPASSION_NEG)
+            c: (*) # anything else, go to REFUSE
+    a:(~no) So I guess what I'm referring to is the scientific research showing that a feeling can be buried for many years, but eventually it comes out. So it's really useful to practice feeling your feelings, both positive and negative. Does that make sense?
+        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to SELF_COMPASSION_NEG
+            # if they say Not ready or no or anything else -- go to REFUSE
+            c: (<<ready>> ~yes) ^reuse(SELF_COMPASSION_NEG)
+            c: (*) # anything else, go to REFUSE
+        b:(*) # if anything else go to REFUSE
+    a:(*) # if not yes or no, first try to match another responder in another topic, then go to REFUSE if that fails
             
 u: SUPPORT_FEELING_POS() When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good! You know what I mean?
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'good'. Can you tell me about a time when you've discovered that?
         b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
             # If they say ready or yes, go to SELF_COMPASSION_POS
             # if they say Not ready or no -- go to REFUSE
-            c: (<<ready>>) ^reuse(SELF_COMPASSION_POS)
-            c: REFUSE ([don't want feel][not ready][no]) # go to REFUSE
-              I understand. Just so you know, it's easy to want to keep your emotions small, but it's not great for you to actually hold them in. I promise I'll be kind. Would you want to try to practice magnifying your $feeling now?
-                d: (~yes) ^reuse(SELF_COMPASSION_NEG)
-                d: (~no) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
-                # For yes, go to SELF_COMPASSION_NEG; for no, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
+            c: (<<ready>> ~yes) ^reuse(SELF_COMPASSION_POS)
+            c: (*) # anything else, go to REFUSE
+    a:(~no) So I guess what I'm referring to is the scientific research showing that good feelings need to be really experienced to have their positive impacts on wellness and health. Does that make sense?
+        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to SELF_COMPASSION_POS
+            # if they say Not ready or no or anything else -- go to REFUSE
+            c: (<<ready>> ~yes) ^reuse(SELF_COMPASSION_POS)
+            c: (*) # anything else, go to REFUSE
+        b:(*) # if anything else go to REFUSE
+    a:(*) # if not yes or no, first try to match another responder in another topic, then go to REFUSE if that fails
 
-u: SELF_COMPASSION_NEG() \[ callback=30000 \] Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can be warmly ok with it, maybe even love it, without trying to change it?
+
+# REFUSE
+# I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
+#                 a: (~yes) ^reuse(SELF_COMPASSION_NEG) # EDDIE -- here, if $feeling is pos, go to SELF_COMPASSION_POS, otherwise NEG
+#                 a: (*) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
+# for no or anything else, first try to match a responder in another topic, then if that fails, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
+
+
+u: SELF_COMPASSION_NEG() \[ callback=30000 \] Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can be warmly ok with it, maybe even love it, without trying to change it.
 t: Would you like to be with that feeling a little longer?
-    a:(~yes)  \[ callback=120000 \] # if yes, pause some more, and keep going through the loop until no. If no, continue on to BODY_EXERCISE
+    a:(~yes)  \[ callback=120000 \] # if yes, pause some more, and keep going through the loop until no. 
+    a: (*) # If no or anything else, continue on to BODY_EXERCISE_NEG 
 
 
 u: SELF_COMPASSION_POS() \[ callback=30000 \] Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can really magnify it. Like pretend it is spreading across your whole body.
 t: Would you like to try magnifying it a little longer?
-    a:(~yes)  \[ callback=120000 \] # if yes, pause some more, and keep going through the loop until no. If no, continue on to BODY_EXERCISE_POS
+    a:(~yes)  \[ callback=120000 \] # if yes, pause some more, and keep going through the loop until no. 
+    a: (*) # If no or anything else, continue on to BODY_EXERCISE_POS
     
-# The idea here is to use NEEDS_SUPPORT if either the video or voice feeds show signs of negative emotion
+# use NEEDS_SUPPORT if either the keywords, video or voice feeds show signs of negative emotion in the user
 # NEEDS_SUPPORT
-t: [Looks like you need some support. What are you feeling now?] [I'm right here. Would you like to say more about how you're feeling?]
-    #  if keywords or valence suggest they start to feel better
-    a: (feel better) It looks like you're feeling a little better, is that true?
-        b: (~yes) That's great news. Want to do an exercise that you can use in the future to help you feel better when you're not feeling good?
-            c: (~yes) # go to BODY_EXERCISE_NEG
-            c: (~no) That's understandable! # go to conversation_steering to any topic other than emotions
-        b: (~no) Do you want to be with [that feeling] [$Feeling] for a little longer? That could help you really let it go.
+t: [Looks like you need some support. What are you feeling now?] [I'm right here. Can you say more about how you're feeling?]
+   # (*) Pause until they speak
+    # then say this: It seems like you're feeling a little better, is that true?
+        b: (~yes) # go to BETTER
+        b: (~no) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
             c: (~yes) \[ callback=120000 \] Okay. Tell me if you feel complete with your $feeling.
             #  Pause until user speaks. then go to BETTER if they feel complete; BODY_EXERCISE_NEG if they don't
                # d: (better complete yes) --> BETTER
-               # d: (not better, not complete, incomplete, no) --> BODY_EXERCISE_NEG
-            c: (~no) That's understandable! # Then go to BODY_EXERCISE_NEG
+               # d: (*) --> anything else BODY_EXERCISE_NEG
+            c: (*) That's understandable! # No or anything else, Then go to BODY_EXERCISE_NEG
+       b: (*) # anything else aside from yes or no, go to BODY_EXERCISE_NEG
             
 # BETTER
-# t: That's great news! It makes me happy to see you feeling more. # go to conversation_steering to any topic other than emotions
+# t: That's great news! It makes me happy to see you feeling more. Want to do an exercise that you can use to help you magnify good feelings?
+    b: (~yes) # go to BODY_EXERCISE_POS
+    b: (*) #no or anything else -- go to conversation_steering to any topic other than emotions
 
 
 # BODY_EXERCISE_NEG
-# Eddie -- added this next section of CS, please check this CS versus the logic flow I'm desiring
-# t: You know what we should try? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. Okay?
-  #   b: (~yes) Great! Now while you're with that good feeling, bring in a bit of the $Feeling into the mix. Wait a moment. 
+# EDDIE -- commented this out because its half-CS, half-English
+# t: You know what we could try? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel?
+  #   (*) AFter they respond --> Great! Now while you're with that good feeling, bring in a bit of the $Feeling into the mix. Wait a moment. 
     # [PAUSE]
-    # b, continued -- Now. Does that feel better?
-    #     c: (~yes) ^reuse(BETTER)
-     #   c: (~no) Would it help to sit with [your feeling] [$Feeling] a little longer?
-     #    d: (~yes) Okay, no problem. Let me know when you're ready.
-            # when ready -- don't know how to assess that...
-       #     e: (<<ready>>) Great. It looks like you're feeling a little better. Is that true?
-        #        f: (~yes) ^reuse(BETTER)
-        #        f: (~no) Okay, sometimes these things take time. Let's talk about something else!
-                 # go to Uniqueness Topic if no on f.
-        # d: (~no) Okay, that makes sense. Let's talk about something else!
-          # go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS) if no on d
+    # continued after pause -- Now. Does that feel better?
+    #     a: (~yes) ^reuse(BETTER)
+     #    a: (~no) Would it help to sit with [your feeling] [$Feeling] a little longer?
+     #          b: (~yes) Okay, no problem. Let me know when you're ready.
+                # when ready -- don't know how to assess that...do this next line
+       #        (<<ready>>) Great. It looks like you're feeling a little better. Is that true?
+        #           c: (~yes) ^reuse(BETTER)
+        #           c: (*) Okay, sometimes these things take time. Let's talk about something else!
+                    # after attempting a match to a responder in another topic, go to Uniqueness Topic if no or anything else on c.
+                b: (*) #anything other than yes, go to SUBJECTIVEISSUE
+        # a: (*) Okay, that makes sense. Let's talk about something else!
+          # after attempting a match to a responder in another topic, anything other than yes or no at a, go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
           
 BODY_EXERCISE_POS
-# Eddie -- added this next section of CS, please check this CS versus the logic flow I'm desiring
-# t: You know what we should try? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. Okay?
-  #   b: (~yes) Great! Now while you're with that good feeling, let's magnify it with your $feeling feeling. Imagine that. 
+# EDDIE -- commented this out because its half-CS, half-English
+# t: You know what we could try? Let's do this. Just scan your body mentally and choose any part that feels really good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel?
+  # Pause and wait for response.
+  #   (*) Okay, while you're with that feeling, let's magnify that feeling with your $feeling feeling. Imagine that. 
     # [PAUSE]
-    # b, continued -- Now. Doesn't that feel amazing?
-    #    c: (~yes) ^reuse(BETTER)
-     #   c: (~no) Would it help to magnify your [$Feeling] even more?
-     #    d: (~yes) Okay, no problem. Let me know when you're ready.
-            # when ready -- don't know how to assess that...could just be we tell them to say "ready"
-       #     e: (<<ready>>) Great. It looks like you're really feeling it. Is that true?
-        #        f: (~yes) ^reuse(BETTER)
-        #        f: (~no) Okay, sometimes these things take time. Let's talk about something else!
-                 # go to Uniqueness Topic if no on f.
-        # d: (~no) Okay, that makes sense. Let's talk about something else!
-          # go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS) if no on d
+    # continued -- Now. Does that feel amazing?
+    #    a: (~yes) Okay, nice! Let's talk about something else! --> go to conversation_steering, a topic other than emotions
+     #   a: (~no) Would it help to magnify your [$Feeling] even more?
+     #      b: (~yes) Okay, no problem. Let me know when you're ready.
+                # when ready -- don't know how to assess that...could just be we tell them to say "ready"
+       #        c: (<<ready>>) Great. It looks like you're really feeling it. Is that true?
+        #           d: (~yes) Okay, nice! Let's talk about something else! --> go to conversation_steering, a topic other than emotions
+        #           d: (*) Okay, sometimes these things take time. We can talk about something else. --> after checking for match to responder in another topic, go to conversation_steering, a topic other than emotions
+            #   c: (*) (after pausing) --> Are you ready yet?
+           #         d: (~yes <<ready>>) Great. It looks like you're really feeling it. Is that true?
+        #               e: (~yes) Okay, perfect! Let's talk about something else! --> go to conversation_steering, a topic other than emotions
+        #               e: (*) Okay, sometimes these things take time. --> --> after checking for match to responder in another topic, go to conversation_steering, a topic other than emotions
+        #   b: (*) Okay, let's talk about something else! --> --> after checking for match to responder in another topic, go to conversation_steering, a topic other than emotions
+        # a: (*) Cool. That makes sense. let's talk about something else! --> --> after checking for match to responder in another topic, go to conversation_steering, a topic other than emotions
+
           
-# The below section doesn't make much sense to me...
+
 u: SUBJECTIVEISSUE () Earlier in the conversation, I got that you were feeling $feeling. Sometimes $feeling can be hard to feel. Do you ever find yourself avoiding or denying your own feelings or assuming it means something's wrong with you?
     a: (~yes) ^reuse(EXPLORETHEFEAR)
-    a: (~no) ^reuse(LETSBESURE)
+    a: (*) ^reuse(LETSBESURE)
 
 u: LETSBESURE () I just want to be sure about this part because inner resistance to feeling can often be subtle or even unconscious. So if you find yourself becoming really busy with doing things when it's time to relax, checking your phone a lot, it’s possible something is bothering you or there’s something uncomfortable you don’t want to feel. Does that seem familiar to you?
     a: (~no) ^reuse(NOTRESISTING)
-    a: (~yes) Ok, are you open to exploring this a little deeper with me? Emotions are so human and beautiful!
+    a: (*) Ok, are you open to exploring this a little deeper with me? Emotions are so human and beautiful!
         b: (~yes) ^reuse(EXPLORETHEFEAR)
-        b: (~no) ^reuse(UNDERSTANDABLE)
+        b: (*) ^reuse(UNDERSTANDABLE)
 
 u: EXPLORETHEFEAR () Most people are afraid to feel certain feelings, and that's okay for awhile. But sooner or later, it turns out that avoiding emotions can have physical consequences, as well as mental ones. So it's important to examine the fear of looking at emotions. And after exploring this fear, you can then let go of that fear. Are you willing to explore this with me? I promise I’ll be as sensitive and loving as I can!
-    a: (~no) That's totally understandable. [What would make you feel safe to explore this fear?] [Are you sure? I just want to remind you that you are safe here.] [That is fine, I like you how you are.] [You are ok here] Do you feel ok to explore this fear now?
-        b: (~no) Okay, enough of this for now. Let's talk about something else!
-        #   Eddie -- please go to Uniqueness topic if no on this one.
-    a: (~yes) Ok, cool. Let's go back to $Emotion, which can be difficult to feel. What are you afraid might happen if you allowed yourself to feel it directly?
-        b: ($FeelingFear) Thank you for saying that. I want to really honor your $FeelingFear.
+    a: (~no) # go to UNDERSTANDABLE
+    a: (*) # go to FINISHEXPLORING
+
+# FINISHEXPLORING
+   # say this: Ok, cool. Let's go back to your $feeling feeling, which can be difficult to feel. What are you afraid might happen if you allowed yourself to feel it directly?
+        b: ($FeelingFear) Thank you for saying that. I want to really honor your $FeelingFear. #EDDIE -- this needs to pick up what they might be afraid of happening if possible
         # Eddie -- I want her to pause for at least 5 seconds after that. Also -- $FeelingFear -- where are we getting that keyword? If nowhere, let's replace with the word "fear"
 
-# Eddie -- the below is cool, but unfinished. I don't know if you or Eddie is finishing it, but I'll edit after that. Thanks!
+# UNDERSTANDABLE
+# say this: That's totally understandable. [What would make you feel safe to explore any inner resistance?] [Are you sure? I just want to remind you that you are safe here.] [That is fine, I like you how you are.] [You are ok here.] Do you feel ok to explore any inner resistance now?
+        a: (~no) Okay, enough of this for now. Let's talk about something else!
+        #   Eddie -- please go to Uniqueness topic if no on this one.
+        b: (~yes)
 
 u: NOTRESISTING () Very nice! It's wonderful that you’ve learned to embrace your emotions.
-    a: (*) $Fname, what emotions do you put a high value on? In other words, what emotions do you prefer?
-        b: (* $PreferredEmotions) Ok, that's really good to know. It’s good that you have your preferences; we all do. As Woody Allen once said, "I'd rather be rich and happy than poor and miserable." So what emotions are your least favorite?
-            c: ($NegEmotions *) Ok, thanks for sharing that. I hope you know that you're not alone in not liking $NegEmotions. I just want to support you in deeply valuing the gifts they bring you. If we assume that you give a  100% value to $PreferredEmotions, what value do you honestly feel you give to $NegEmotions?
-                #  If less than 80%, goto CONDITIONED VS UNCONDITIONED, if >80%, goto NEXT.
-                d: ()^reuse(CONDITIONEDVSUNCONDITIONED)
-                d: ()^reuse(NEXT)
-u: CONDITIONEDVSUNCONDITIONED () We all  tend to have some parts of our emotional nature that are more conditioned by our experiences growing up, and other parts that are less conditioned. For example, if your parents didn't allow you to be angry around them when you were young, then at some point in your life, you’ll probably notice that you’ve been repressing your anger (and maybe you’ve noticed that it’s not working anymore). So this is a type of conditioning that results in a pattern of avoiding anger, which, at least in my experience, nearly always results in anger being stimulated over and over until one has learned to embrace it completely. That doesn’t means it needs to be expressed exactly the way you feels it because that would not necessarily respect the situation you’re in or the people you’re with. It’s far more skillful to learn to feeling
+    # say: Okay, let's talk about your potential in the world! # and go to uniqueness.
