@@ -15,7 +15,7 @@ t: Ok $fname, let's try this. Imagine for just a moment that you're living your 
     # here, if $FULLPOT <100, say this:
   a: (_*) Okay, great! Want to see if you can do some work to try to increase that? # go to MORE_QUESTIONS
     $FULLPOT = _0
-    #and if $FULLPOT > 100, say this:
+    # and if $FULLPOT > 100, say this:
     a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
  
 # FROM_OTHER_TOPIC_TO_UNIQUENESS
@@ -26,7 +26,7 @@ t: Ok $fname, let's try this. Imagine for just a moment that you're living your 
     # here, if $FULLPOT <100, say this:
   a: (_*) Okay, great! Want to see if you can do some work to try to increase that?
     $FULLPOT = _0
-    #and if $FULLPOT > 100, say this:
+    # and if $FULLPOT > 100, say this:
     a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
     
 # FROM_STEERING_TO_UNIQUENESS
@@ -37,7 +37,7 @@ t: Ok $fname, let's try this. Imagine for just a moment that you're living your 
     # here, if $FULLPOT <100, say this:
   a: (_*) Okay, great! Want to see if you can do some work to try to increase that?
     $FULLPOT = _0
-    #and if $FULLPOT > 100, say this:
+    # and if $FULLPOT > 100, say this:
     a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
 
 

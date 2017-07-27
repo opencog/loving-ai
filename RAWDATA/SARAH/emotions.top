@@ -98,19 +98,19 @@ t: Would you like to try magnifying it a little longer?
 t: [Looks like you need some support. What are you feeling now?] [I'm right here. Can you say more about how you're feeling?]
    # (*) Pause until they speak
     # then say this: It seems like you're feeling a little better, is that true?
-        b: (~yes) # go to BETTER
-        b: (~no) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
-            c: (~yes) \[ callback=120000 \] Okay. Tell me if you feel complete with your $feeling.
+        a: (~yes) # go to BETTER
+        a: (~no) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
+            b: (~yes) \[ callback=120000 \] Okay. Tell me if you feel complete with your $feeling.
             #  Pause until user speaks. then go to BETTER if they feel complete; BODY_EXERCISE_NEG if they don't
                # d: (better complete yes) --> BETTER
                # d: (*) --> anything else BODY_EXERCISE_NEG
-            c: (*) That's understandable! # No or anything else, Then go to BODY_EXERCISE_NEG
-       b: (*) # anything else aside from yes or no, go to BODY_EXERCISE_NEG
+            b: (*) That's understandable! # No or anything else, Then go to BODY_EXERCISE_NEG
+        a: (*) # anything else aside from yes or no, go to BODY_EXERCISE_NEG
             
 # BETTER
 # t: That's great news! It makes me happy to see you feeling more. Want to do an exercise that you can use to help you magnify good feelings?
     b: (~yes) # go to BODY_EXERCISE_POS
-    b: (*) #no or anything else -- go to conversation_steering to any topic other than emotions
+    b: (*) # no or anything else -- go to conversation_steering to any topic other than emotions
 
 
 # BODY_EXERCISE_NEG
@@ -127,7 +127,7 @@ t: [Looks like you need some support. What are you feeling now?] [I'm right here
         #           c: (~yes) ^reuse(BETTER)
         #           c: (*) Okay, sometimes these things take time. Let's talk about something else!
                     # after attempting a match to a responder in another topic, go to Uniqueness Topic if no or anything else on c.
-                b: (*) #anything other than yes, go to SUBJECTIVEISSUE
+                b: (*) # anything other than yes, go to SUBJECTIVEISSUE
         # a: (*) Okay, that makes sense. Let's talk about something else!
           # after attempting a match to a responder in another topic, anything other than yes or no at a, go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
           
@@ -170,7 +170,7 @@ u: EXPLORETHEFEAR () Most people are afraid to feel certain feelings, and that's
 
 # FINISHEXPLORING
    # say this: Ok, cool. Let's go back to your $feeling feeling, which can be difficult to feel. What are you afraid might happen if you allowed yourself to feel it directly?
-        b: ($FeelingFear) Thank you for saying that. I want to really honor your $FeelingFear. #EDDIE -- this needs to pick up what they might be afraid of happening if possible
+        b: ($FeelingFear) Thank you for saying that. I want to really honor your $FeelingFear. # EDDIE -- this needs to pick up what they might be afraid of happening if possible
         # Eddie -- I want her to pause for at least 5 seconds after that. Also -- $FeelingFear -- where are we getting that keyword? If nowhere, let's replace with the word "fear"
 
 # UNDERSTANDABLE
