@@ -2,6 +2,10 @@ concept: ~consciousness_words (awareness universe "repeating numbers" "waking up
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
 
+# This is for dev purposes, workaround needed to reset the rejoinder placeholder
+# variable when manually jumping here from another topic.
+t: TEMP () Welcome to consciousness
+
 # if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
 t: FROM_INTRO_TO_CONSCIOUSNESS () That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
@@ -10,11 +14,13 @@ t: FROM_INTRO_TO_CONSCIOUSNESS () That makes me want to talk with you about awar
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         c: (~yes) ^gambit(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
-        c: (~no) $avoid_consciousness = 1 ^gambit(~conversation_steering)
+        #! no or catchall
+        c: (*) $avoid_consciousness = 1 ^gambit(~conversation_steering)
+        # JULIA what to do if no yes/no match at c: level, sending to steering for now
       # JULIA
       b: (~no) Julia, what do you want me to say or do here?
     # JULIA how to handle response not matching yes or no, going to the exercise for now, but lemme know if you want to change it
-    a: (*) ^gambit(~AWARENESS_EXERCISE_1)
+    a: (*) ^respond() ^gambit(~AWARENESS_EXERCISE_1)
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS and ignore ~consciousness_words
 #
@@ -35,6 +41,7 @@ t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk a
   # if yes at any level above go to AWARENESS_EXERCISE_1
 
 topic: ~AWARENESS_EXERCISE_1 ()
+# dev note: alternatively implement as rejoinders?
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
