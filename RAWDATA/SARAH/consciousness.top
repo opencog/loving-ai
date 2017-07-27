@@ -6,6 +6,8 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 t: TEMP () Welcome to consciousness
 
+# JULIA the three entry points into consciousness look essentially the same to me. what are the differences?
+
 # if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
 t: FROM_INTRO_TO_CONSCIOUSNESS () That makes me want to talk with you about awareness. Let's do this! $name, would you like to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
