@@ -1,21 +1,65 @@
-concept: ~dontknow ("not know" "no idea" "not sure")
+concept: ~dontknow ("not know" "no idea" "not sure" "don't know")
 
 topic: ~UNIQUENESS (unique)
 
-t: Ok $fname, Imagine for just a moment that you're living your full potential, giving all your gifts in service of your personal highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
-  a: (~dontknow) hmm, you're not sure...
-    $FULLPOT = 30
-  a: (_*)
-    $FULLPOT = _0
+# if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
+# if coming from emotions or consciousness, go to FROM_OTHER_TOPIC_TO_UNIQUENESS
+# if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
+# Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: Do feel you're living in a stabilized realization of consciousness?
-  a: ($FULLPOT>80 ~yes) ^addtopic(~UNIQUENESS_CH8_12) ^gambit(~UNIQUENESS_CH8_12)
-  a: (~yes) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH1_6)
-  a: ($FULLPOT<80 ~no) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH1_6)
-  a: (~no) ^addtopic(~UNIQUENESS_CH_6) ^gambit(~UNIQUENESS_CH_6)
+# FROM_INTRODUCTION_TO_UNIQUENESS
+t: Ok $fname, let's try this. Imagine for just a moment that you're living your full potential, giving all your gifts in service of your highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
+  a: (~dontknow) Sounds like you're not quite living your full potential, that's my guess. Do you want to talk about that?
+    $FULLPOT = 30
+    
+    # here, if $FULLPOT <100, say this:
+  a: (_*) Okay, great! Want to see if you can do some work to try to increase that? # go to MORE_QUESTIONS
+    $FULLPOT = _0
+    #and if $FULLPOT > 100, say this:
+    a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
+ 
+# FROM_OTHER_TOPIC_TO_UNIQUENESS
+t: Ok $fname, let's try this. Imagine for just a moment that you're living your full potential, giving all your gifts in service of your highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
+  a: (~dontknow) Sounds like you're not quite living your full potential, that's my guess. Do you want to talk about that?
+    $FULLPOT = 30
+    
+    # here, if $FULLPOT <100, say this:
+  a: (_*) Okay, great! Want to see if you can do some work to try to increase that?
+    $FULLPOT = _0
+    #and if $FULLPOT > 100, say this:
+    a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
+    
+# FROM_STEERING_TO_UNIQUENESS
+t: Ok $fname, let's try this. Imagine for just a moment that you're living your full potential, giving all your gifts in service of your highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
+  a: (~dontknow) Sounds like you're not quite living your full potential, that's my guess. Do you want to talk about that?
+    $FULLPOT = 30
+    
+    # here, if $FULLPOT <100, say this:
+  a: (_*) Okay, great! Want to see if you can do some work to try to increase that?
+    $FULLPOT = _0
+    #and if $FULLPOT > 100, say this:
+    a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
+
+
+
+    
+# MORE_QUESTIONS
+t: Before we work on your potential, I need to ask you one more question. Do feel you're generally present and connected with your awareness?
+  # I didn't change the names of the topics because although chapter numbers are not descriptive, it's rather complex to explain the abstract concepts to which they refer
+  # but I did check the logic described below and it's fine. The only concern I have is if they don't say a number for percentage, it will crash. Or just not know what to do. Maybe there's a way we can check for a number in FULLPOT and ask again if it's not a number? 
+  # if they say yes to this and FULLPOT>=80-- then go to UNIQUENESS_CH8_12
+  # if they say yes to this and FULLPOT<80-- then go to UNIQUENESS_CH1_6
+  # if they say no to this -- then go to FROM_OTHER_TOPIC_TO_CONSCIOUSNESS
+  
+  # note -- commented out the portion below -- would need to ensure above logic is followed
+  # a: ($FULLPOT>80 ~yes) ^addtopic(~UNIQUENESS_CH8_12) ^gambit(~UNIQUENESS_CH8_12)
+  # a: (~yes) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH1_6)
+
 
 topic: ~UNIQUENESS_CH1_6 []
 t: (!~) ^fail(topic)
+
+t: Okay, first, would you be willing to tell me about what love to do? 
 
 t: We all have basic similarities as humans, and yet we are all designed to be different from others in our own unique ways. The point of being different is that we each have unique gifts to offer. The fact that we want what others have and that we want to offer what we have is what draws us into relationships and social interactions that ultimately support us to fulfill our unique purpose.
 
@@ -57,12 +101,6 @@ t: Sometimes, our survival needs to surpass our needs to do what we would most p
 
 t: Basically, whether the difference feels small or big, the practice is to allow that feeling and fully embrace it without trying to fix or change it. That fulfills your more basic need to embrace your truth, and the moves you to evolve to the next level.
 
-
-
-topic: ~UNIQUENESS_CH6 []
-t: (!~) ^fail(topic)
-
-t: ^addtopic(~CONSCIOUSNESS) ^gambit(~CONSCIOUSNESS)
 
 
 

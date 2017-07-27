@@ -50,14 +50,14 @@ u: SUPPORT_FEELING_NEG() When I'm feeling $feeling, I first need to be feel upse
             c: (<<ready>>) ^reuse(SELF_COMPASSION_NEG)
             c: ([don't want feel][not ready][no]) # go to REFUSE
             
-u: SUPPORT_FEELING_POS() When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good. You know what I mean?
+u: SUPPORT_FEELING_POS() When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good! You know what I mean?
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'good'. Can you tell me about a time when you've discovered that?
         b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
             # If they say ready or yes, go to SELF_COMPASSION_POS
             # if they say Not ready or no -- go to REFUSE
             c: (<<ready>>) ^reuse(SELF_COMPASSION_POS)
             c: REFUSE ([don't want feel][not ready][no]) # go to REFUSE
-              I understand. Just so you know, it's easy to want to hold in your emotions, but it's not great for you to actually hold them in. I promise I'll be kind. Would you want to try to practice being with your feelings now?
+              I understand. Just so you know, it's easy to want to keep your emotions small, but it's not great for you to actually hold them in. I promise I'll be kind. Would you want to try to practice magnifying your $feeling now?
                 d: (~yes) ^reuse(SELF_COMPASSION_NEG)
                 d: (~no) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
                 # For yes, go to SELF_COMPASSION_NEG; for no, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
@@ -114,13 +114,13 @@ BODY_EXERCISE_POS
     # [PAUSE]
     # b, continued -- Now. Doesn't that feel amazing?
     #    c: (~yes) ^reuse(BETTER)
-     #   c: (~no) Would it help to sit with your [$Feeling] a little longer?
+     #   c: (~no) Would it help to magnify your [$Feeling] even more?
      #    d: (~yes) Okay, no problem. Let me know when you're ready.
-            # when ready -- don't know how to assess that...
+            # when ready -- don't know how to assess that...could just be we tell them to say "ready"
        #     e: (<<ready>>) Great. It looks like you're really feeling it. Is that true?
         #        f: (~yes) ^reuse(BETTER)
         #        f: (~no) Okay, sometimes these things take time. Let's talk about something else!
-                 # go to Uniqueness Topic if no on F.
+                 # go to Uniqueness Topic if no on f.
         # d: (~no) Okay, that makes sense. Let's talk about something else!
           # go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS) if no on d
           

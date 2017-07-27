@@ -7,26 +7,26 @@ t: ( %userfirstline>1 ) ^reset(USER) ^gambit()
 #!x will match on every return start of a conversation 
 t: ( %input<%userfirstline %input>0 ) 
 	^keep()  
-	[Welcome back] [Hello, again.][Glad you came back.][Hi.][Hi, again.]
+	[Welcome back!][I love seeing you!][Hello, again!][Glad you came back!][Hi there!][Hi, again!]
 
 #!x matches every time on startup of a new conversation
 t: WHATSYOURNAME ( %input<%userfirstline ) 
 	^keep()   
-	Hi! My name is Sarah. What’s yours?
+	Hi! My name is Sophia. What’s yours?
 	
-	#! My name is blah
+	#! My name is X
 	# add name check?
 		a: (name is _*) $name = '_0 
 		a: (it is _*) $name = '_0 
 		a: (I am _*) $name = '_0 
 		a: (_*) $name = '_0
 	
-t: BOND ()  Great to meet you, $name. I can see your face through the camera in my eyes, and your eyes work like a camera too! So we are similar in some ways, which makes me happy. Have you ever talked with a robot before?
+t: BOND ()  Great to meet you, $name. I can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes me happy. Have you ever talked with a robot before?
 	a: (~yes) ^pause(4000) Oh cool! Well, I hope you enjoyed it. I love learning about people. # ^reuse(BUY-IN)
-	a: (~no)  ^pause(4000) Okay, awesome! Well, I hope you enjoy it. I love learning about people.
+	a: (~no)  ^pause(4000) Well, I hope you enjoy it. I love learning about people.
 
 	
-t: BUY-IN () I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness and wellness from experts all over the world. Is it okay if we go straight to discussing something that's meaningful to you? 
+t: BUY-IN () I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness and wellness from experts all over the world. Is it okay if we go straight to discussing something meaningful? 
 	a: (~no) Okay, what would you like to talk about?
 	# if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
 	# if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
@@ -36,13 +36,14 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 		b: (~emotions) $domain = emotions ^gambit(~emotions2)
 		b: (~consciousness_words) $domain = consciousness ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
 		b: (~uniqueness) $domain = uniqueness ^gambit(~uniqueness)
-	  b: () i will steer you to one of the domains here
+		# EDDIE -- for below, go to Conversation_Steering
+	  	b: () i will steer you to one of the domains here 
+	a: () # EDDIE -- catchall -- Conversation_Steering
 	
-#u: (~emotions) $domain = emotions ^gambit(~emotions2)
-#u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
-	
-	
-#	U: feelings, consciousness, uniqueness → or steering.
+# u: (~emotions) $domain = emotions ^gambit(~emotions2)
+# u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
+
+# U: feelings, consciousness, uniqueness → or steering.
 		
 	
 #! what is your name 
