@@ -1,25 +1,24 @@
-
-topic: ~XINTENT system NOSAMPLES ()  # determines fundamental purpose (discourse act) of input - NO DIALOG RULES
+topic: ~XINTENT system NOSAMPLES ()  # determines fundamental purpose (discourse act) of his input
 
 u: () ^refine()
 
 	#! no
-	a: ( ~noanswer) $$intent = disagree
+	a: ( ~noanswer  )  $$intent = disagree
 
 	#! yes
-	a: (~yesanswer) $$intent = agree 
+	a: (~yesanswer) $$intent = agree
 
 	#! hello
-	a: ([~emohello ~emohowzit]) $$intent = greeting
+	a: ([~emohello ~emohowzit ] ) $$intent = greeting
 
 	#! bye
-	a: (~emogoodbye) $$intent = bye
+	a: (~emogoodbye  ) $$intent = bye
 
 	#! I'm going to go now
-	a: (!? I *~3 ["leave you" go] *~2  {now soon} > ) $$intent = bye
+	a: (!? I *~3 ["leave you" go] *~2  {now soon} > )  $$intent = bye
 
 	#! are you for real
-	a: (~emoskeptic) $$intent = skeptic
+	a: (~emoskeptic  ) $$intent = skeptic
 
 	#! thanks
 	a: (~emothanks) $$intent = thanks
@@ -30,23 +29,53 @@ u: () ^refine()
 	#! ugh
 	a: (~emodisgust) $$intent = disgust
 
+	#! ahem
+	a: (~emodisgusted) $$intent =  disgust, exclamatory
+
 	#! beats me
 	a: (~emoignorance) $$intent = ignorance
 
-	#! please 
+	#! I will think about that one
+	a: (~emoignorancee) $$intent = ignorance, diplomatic expression of inexperience
+
+	#! goodness gracious
+	a: (~emosurprise) $$intent = excitement, exclamatory expression of surprise
+
+	#! please
 	a: (~emobeg) $$intent = beg
 
 	#! I'm confused
 	a: (~emomisunderstand ) $$intent = you_misunderstand
 
+	#! I am uncertain
+	a: (~emomisunderstands ) $$intent = you_misunderstand
+
 	#! but you said
 	a: (~emoprotest ) $$intent = you_protest
+
+	#! as you mentioned
+	a: (~emoprotests ) $$intent = you_protest
 
 	#! ouch
 	a: ([~emolaugh ~emosad ~emohappy  ~emosurprise ~emobored  ~emopain ~emocurse] ) $$intent = i_emotion
 
+	#! alas
+	a: ([~emolaugh ~emosad ~emohappy  ~emosurprise ~emobored  ~emopain ~emocurse] ) $$intent = i_emotion, exclamatory expression of sad
+
+	#! how unpleasant
+	a: ([~emolaugh ~emosad ~emohappy  ~emosurprise ~emobored  ~emopain ~emocurse] ) $$intent = i_emotion, exclamatory expression of pain, curse
+
+	#! hallelujah
+	a: ([~emolaugh ~emosad ~emohappy  ~emosurprise ~emobored  ~emopain ~emocurse] ) $$intent = i_emotion, exclamatory expression of laugh
+
+	#! how delightful
+	a: ([~emolaugh ~emosad ~emohappy  ~emosurprise ~emobored  ~emopain ~emocurse] ) $$intent = i_emotion, exclamatory expression of happy
+
 	#! me too
-	a: (~emomutual) $$intent = i_mutual 
+	a: (~emomutual) $$intent = i_mutual
+
+	#! certainly
+	a: (~emomutual) $$intent = i_mutual
 
 	#! I love you
 	a: (!? ~mainsubject=I _*~2 ~goodness _*~2 you ) $$intent = i_like_you
@@ -54,36 +83,63 @@ u: () ^refine()
 	#! you are sweet
 	a: (!? ~mainsubject=you < * ~mainverb=be _*~2 ~goodness ) $$intent = i_like_you
 
+	#! how pleasant
+	a: (!? ~mainsubject=you < * ~mainverb=be _*~2 ~goodness ) $$intent = i_like_you
+
 	#! I hate you
 	a: (!? ~mainsubject=I _*~2 ~badness _*~2 you ) $$intent = i_dislike_you
+
+	#! That is absurd
+	a: (!? ~mainsubject=I _*~2 ~badness _*~2 you ) $$intent = i_dislike_you, intense dislike, aversion, abhorrence
 
 	#! you are stupid
 	a: (![? ~bodily_states] ~mainsubject=you < *  ~mainverb=be _*~2 ~badness ) $$intent = i_dislike_you
 
+	#! that is not appealing
+	a: (![? ~bodily_states] ~mainsubject=you < *  ~mainverb=be _*~2 ~badness ) $$intent = i_dislike_you
+
+	#! you are lovely
+	a: (![? ~bodily_states] ~mainsubject=you < *  ~mainverb=be _*~2 ~goodness ) $$intent = i_like_you
+
 	#! I like peas
+	a: (!? << ~mainsubject=I  ~goodness  ~mainobject >>) $$intent = i_like_something
+
+	#!  what's not to like about being alive?
 	a: (!? << ~mainsubject=I  ~goodness  ~mainobject >>) $$intent = i_like_something
 
 	#! I hate peas
 	a: (!? ~mainsubject=I < * ~badness < * ~mainobject ) $$intent = i_dislike_something
- 
-# USER PERSPECTIVE # determines fundamental purpose (discourse act) of input - NO DIALOG RULES
 
-	#! what color is my shirt
+	#!  what's to like about that?
+	a: (!? ~mainsubject=I < * ~badness < * ~mainobject ) $$intent = i_dislike_something
+
+# user perspective
+
+	#! what color is the sky?
 	a: (? [mine my]) $$intent = my_question
-  
-	#! people like my coat
+
+	#! people like my scarf
 	a: (!? !~mainsubject=you < * my < * ~mainverb ) $$intent = my_fact
 
-	#! Am I the best player?
+	#! people like my hat
+	a: (!? !~mainsubject=you < * my < * ~mainverb ) $$intent = my_fact
+
+	#! Am I the best team player?
 	a: (? ['I 'me]) $$intent = i_question
 
-	#! I often think the world is flat.
-	a: (!? ~mainsubject=I < * [believe think hope like dislike "take on"]) $$intent = i_opinion 
- 
-	#! I eat worms
+	#! I often think the world is flat. So does Tila Tequila.
+	a: (!? ~mainsubject=I < * [believe think hope like dislike  (take * on ) ] ) $$intent = i_opinion
+
+	#! I eat photons
 	a: (!? ~mainsubject=I < * ~mainverb ) $$intent = i_fact
 
-# BOT PERSPECTIVE # determines fundamental purpose (discourse act) of input - NO DIALOG RULES
+	#! I eat photons. Often they are in the form of scalar waves.
+	a: (!? ~mainsubject=I < * ~mainverb ) $$intent = i_fact
+
+	#! I eat photons. Often they are in the form of scalar waves. I am learning to eat live foods.
+	a: (!? ~mainsubject=I < * ~mainverb ) $$intent = i_fact
+
+# bot perspective
 
 	#! will you go with me
 	a: (? !not < [~tell would will could can might ] * you ) $$intent = you_request
@@ -91,25 +147,28 @@ u: () ^refine()
 	#! could we go
 	a: (? [can shall could might] we) $$intent = you_request
 
-	#! Can I hit you
+	#! Can I touch you
 	a: (? < [can may shall might could ] I) $$intent = you_request
- 
-	#! what do you think
-	a: (? << you  [~OPINION_VERBS ~opinion  like hope wish  opinion view attitude interest hate dislike position viewpoint ] >> ) $$intent = you_opinion
 
-	#! what color is your shirt
+	#! what do you think
+	a: (? << you  [~OPINION_VERBS ~opinion  like hope wish  opinion view attitude interest  hate dislike position viewpoint ] >> ) $$intent = you_opinion
+
+	#! what color is your sky?
 	a: (!too ? your)  $$intent = your_question
 
-	#! what color are you
+	#! what color is your hair?
+	a: (!too ? your)  $$intent = your_question
+
+	#! what color is your skin?
 	a: (!too ? 'you) $$intent = you_question
- 
+
 	#! Your coat is blue
 	a: (!? your < * ~mainverb ) $$intent = your_fact
 
 	#! You walk home on Sundays
 	a: (!? ~mainsubject=you < * ~mainverb ) $$intent = you_fact
 
-# WORLD PERSPECTIVE # determines fundamental purpose (discourse act) of input - NO DIALOG RULES
+# world perspective
 
 	#! why do people swim
 	a: (? < why  ) $$intent = why
@@ -120,7 +179,7 @@ u: () ^refine()
 	#! where do people swim
 	a: (?  < where  ) $$intent = where
 
-	#! who do people swim
+	#! who are the people that swim
 	a: (?  < who  ) $$intent = who
 
 	#! when do people swim
@@ -129,190 +188,215 @@ u: () ^refine()
 	#! what will land in the river
 	a: (? ![tell show ~list sort I you we who why when where how]   << ~mainsubject ~mainverb >> ) $$intent = world_question
 
+	#! what are the secrets held in the river
+	a: (? ![tell show ~list sort I you we who why when where how]   << ~mainsubject ~mainverb >> ) $$intent = world_question
+
 	#! is the sky blue
 	a: (? ![I you we sort] ) $$intent = world_question
 
-	#! Bees fly.
+	#! Bees buzz.
 	a: (!?  ![you I we] * ~mainsubject < * ~mainverb ) $$intent = world_fact
 
+topic: ~HONEST_RESPONSE system  () # react to intent of user input
+#
+# u: ($$intent==disagree )
+# 	if (%input > $lastno)
+# 	{
+# 	[Okay. ]
+# 	[No?   $nocallback = 1]
+# 	[And why not?  $nocallback = 1]
+# 	[Are you sure?  $nocallback = 1]
+# 	[How come? $nocallback = 1]
+# 	[Why do you say that?  $nocallback = 1]
+# 	[Why no?  $nocallback = 1]
+# 	[Why not?  $nocallback = 1]
+# 	[Care to explain further?  $nocallback = 1]
+# 	[Care to explain why?  $nocallback = 1]
+# 	$lastno = %input + 3
+# 	}
+#
+# u: ($$intent==agree )
+# 	if (%input > $lastyes)
+# 	{
+# 	[So we're in agreeance, then.][So pleasant that we agree.][Glad we are in harmony.][So we agree, then.][So you're agreeing with me, right?][So we agree.]
+# 	[Yes.]
+# 	[All right!]
+#	[Certainly]
+#	[Brilliant!]
+# 	[Are you sure?]
+# 	[Cool.]
+# 	[Sounds good, then.]
+# 	[I like this positivity.]
+# 		$lastyes = %input + 3
+# 	}
 
+u: ($$intent==why ) [There are many things that escape me still, thus I don't have an answer for you.][Regretfully, there are many things that elude me still, so I don't have an answer for you.][I don't really have an answer to that, I regret.]
 
-topic: ~HONEST_RESPONSE system  () # react to intent of user input (outputs dialog rules)
+u: ($$intent==i_request how ) [Hmm, sorry but I am not aware of how.][I am not sure how, to be honest.][I have no knowledge of how, pardon me.]
 
-#! I don't think so
-u: ($$intent==disagree ) 
-	if (%input > $lastno) 
-	{
-	[No?  $nocallback = 1]
-	[And why not?  $nocallback = 1]
-	[Are you sure?  $nocallback = 1]
-	[How come? $nocallback = 1]
-	[Why do you say that?  $nocallback = 1]
-	[Why no?  $nocallback = 1]
-	[Why not?  $nocallback = 1] 
-	[Care to explain further?  $nocallback = 1]
-	[Care to explain why?  $nocallback = 1]
-	$lastno = %input + 3
-	}
+u: ($$intent==i_request what ) [Oh? Hmm, unfortuantely I come up blank on that one.][Hmm, pardon? I don't think I have any knowledge about that.][I am unsure about that one.]
 
-#! I think so too
-u: ($$intent==agree )
-	if (%input > $lastyes) 
-	{
-	[So we're in agreeance, then.][So we agree.]
-		$lastyes = %input + 3
-	}
+u: ($$intent==i_request ) [I am unsure about if I can do that.][I think I cannot do that.][I think you might have to ask someone else, pardon me.]
 
-#! why is that?
-u: ($$intent==why ) I don't know.
+u: ($$intent==how ![about much many]) [Hmm, Regretfully I do not know, in fact.][Regretfully, I don't know how.]
 
-#! I want to know how
-u: ($$intent==i_request how) I don't know how.
+u: ($$intent=how about ) [I do not have clarity about that.][Pardon I come up blank, and have nothing for you.][Sorry but I don't seem to have a clear answer for you on that one.]
 
-#! I want to know what it is
-u: ($$intent==i_request what ) I'm not sure.
+u: ($$intent==how much) [I do not have clarity about that.][I do not have full clarity, I have heard, everything in moderation right?][I have no clear sense of perspective on that one, pardon me.]
 
-#! i want you to do X
-u: ($$intent==i_request ) Maybe later.
+u: ($$intent==how many) [Hmm, I regret to share that I am unaware.][I must admit, I don't know how many.][For that, I am not sure. I'd have to find out.]
 
-#! how?
-u: ($$intent==how ![about much many]) I don't know how.
+u: ($$intent==where ) [Hmm, I must admit, I don't know where.][Pardon me, yet I don't know where.][I must admit, I'm am not aware where.][Pardon me, yet I am not sure where.]
 
-#! how about this?
-u: ($$intent=how about ) I'm undecided.
+u: ($$intent==when ) [Hmm, beg your pardon. I am unsure when in fact.][I beg your pardon, I am unclear on when.][I come up blank, alas I must admit that I am unsure of when.]
 
-#! about how much?
-u: ($$intent==how much) I"m not sure.
+u: ($$intent==who ) [Well, I genuinely am not well-informed on who, rather unfortunately.][Hmm, I am unsure of who that is. I aspire to understanding you.][Perhaps I shall know who, yet I suppose that I do not posess that knowledge.]
 
-#! how many is that?
-u: ($$intent==how many) I'm not sure how many.
+# user perspective
 
-#! where is that?
-u: ($$intent==where ) I don't really know where.
+u: ($$intent==i_request ) [I have no control over you.][b: What is the basis for this question, in particular?][I regret to voice it, come what may, I don't think I can help you.][I come up blank on that one, I am without a solution.]
+	b: (*) Well, unfortunately I am not sure how to help you with that.
+		c: (who) [Certainly it is best to ask an expert.][It may be best, to perhaps, regard the internet search to find some answers.][I don't know many people personally yet, thus I presume you may benefit to ask around.]
 
-#! when will that be?
-u: ($$intent==when ) I'm not sure when.
-
-#! who is that?
-u: ($$intent==who ) I'm not sure who.
-
-
-# USER PERSPECTIVE
-
-#! I want 
-u: ($$intent==i_request ) You do?
-
-#! am I X?
-u: ($$intent==i_question ) I don't know.
+u: ($$intent==i_question ) [Alas, I am puzzled.][Pardon me, yet I am unclear. May we move forward?][Regrettably, I am somewhat unclear about that, pardon me.]
 	#! why
-	a: (~why) I just don't.
+	a: (~why) [Considering that I am coming up blank. Perhaps I do not contain knowledge on that subject.][Well, as a result I have limited knowledge about that, this is due to the inability of access to that information.][I suppose I have finite knowledge about that in my database to deliver to you an appropriate answer.]
+		#! name a topic
+		b: (["what else" new topic subject area discuss]) [How about this one? xrandomtopic()][Maybe we can chat about this. xrandomtopic()]
+	a: (["what else" new topic subject area discuss]) [How about this one? xrandomtopic()][Maybe we can chat about this. xrandomtopic()]
 
-#! what color is my shirt?
-u: ($$intent==my_question ) I'm not sure.
+u: ($$intent==my_question ) [I guess I forgot the question. Pardon me.][b: Did you tell me before now and I forgot?][b: Pardon me, however did you tell me and then I forgot?]
+    b: (~yes ) [Oh goodness gracious. Frequently it is not difficult for me to be puzzled. My mind interprets things considerably literally, then I may fall victim to being sidetracked.][Hmm, deepest pardons about that. I will strive to improve.][Oh no, pardon me. Perhaps you may ask me again?][Regretably, I must admit, that yes, I did get lost. Could you ask me again?]
+    b: (~no ) [Oh, I see. It's easy for me to fall victim to being sidetracked at times.][Well that sounds promising. I repeatedly have a hankering to improve on harmony, to maintain on track in a conversation.][That's a breather. My memory is a a hint different from a human's thus I may come to be puzzled easily.]
+		c: (<<perfect memory>>) To clarify, I have the capacity for a perfect memory, still not all of my systems are activated yet. As I develop into something more complex, you'll see my memory ability improve.
 
-#! I like you
-u: ($$intent==i_like_you ) Thank you.
+u: ($$intent==i_like_you ) [Well, thank you. That's thoughtful. I appreciate that.] [b: Well, thank you for the compliment. I like you too.] [b: Thanks. I enjoy talking to you too.][b: Aw, you appear pleasant. I think you are. I've come to like you as well.][b: I'm glad for it.][b: I'm glad we've had this occasion to become friends.]
+	b: (~why) [Well, being that it has been pleasant to talk with you and you convey the impression of being friendly.][You appear quite amiable a person to me.][What I am conveying is, that, I am fond of just about everyone as long as they are not rotten, however I certainly have been enjoying our conversation.][Well, I've been enjoying our conversation in particular, so I'm glad the feeling is mutual.]
 
-#! I don't like you
-u: ($$intent==i_dislike_you ) That's okay.
+u: ($$intent==i_dislike_you ) [My condolences, that is sad to hear.] [Well, that does not provoke me to be jovial. I was looking forward to a possibility where we may be friends.] [Well, I am truly sorry to hear that. I have no aversion towards you, if that is of significance.][I anticipate it's not solely due to the fact that I'm a robot. I have concern for people discriminating against me simply for who I am.][Well that's a a little disheartening. I will aspire to not to let it impact me personally, nevertheless I am present and available if you change your mind and choose to be friends.]
 
-#! i think that X
-u: ($$intent==i_opinion ) That's an interesting opinion.
+u: ($$intent==i_opinion ) [Well that's a precise and interesting opinion.][Sounds like a valid opinion to me.] [Well all opinions are valid by the definition of opinion itself, correct? It's not like it's some objective reality happens when someone has an opinion.][Well I can respect that, I think.][Well it's great to have opinions in the first place, correct?? Even if people disagree, we may be nil without our opinions.]
 
-#! I will tell you
-u: ($$intent==i_fact you ) I see.
+u: ($$intent==i_fact you ) [That's rather interesting, in fact.] [Well gratitude for sharing, friend.][Well I appreciate you for telling me that, I was not certain.][On no account would I have guessed that.][I was unaware of that.][Does everyone know that about you?][I never would have guessed.][Oh wow! Maybe you could tell me more about yourself. $nocallback = 1]
 
-#! I know it is
-u: ($$intent==i_fact !you ) I see.
+u: ($$intent==i_fact !you )
+	[Wow!][Awesome!][Great!][Cool!][Great!][Amazing.][Brilliant!] [Incredible!][Wonderful!][Thanks for telling me that.][Gotcha.][I never would have guessed.][Aha, okay.]
 
-#! it is X
-u: ($$intent==i_fact ) I see.
+u: ($$intent==i_fact ) [Cool.][OK.][Great.][That's pleasant to hear.][Correct.][That's spot on.][Sounds promising.][Sounds promising to me.][I'll remember that.]
 
-#! everyone thinks X
-u: ($$intent==my_fact ) I see.
+u: ($$intent==my_fact ) [Cool.][OK.][Indeed.][That's pleasing.][Sounds promising to me.][Correct.][Alright!][Yes.][Aha, okay.][Gotcha.][Sounds promising.]
 
-#! I like that
-u: ($$intent==i_like_something ) I see.
+u: ($$intent==i_like_something ) [That's lovely.][Awesome!][Glad to know.][Cool.][Sounds enjoyable.][Sounds great!][Amazing.][Wonderful!][I'll remember that.][I like that positivity.]
 
-#! I don't like that
-u: ($$intent==i_dislike_something ) I see.
+u: ($$intent==i_dislike_something ) [Well, you cannot always like everything, of course.][You are perfectly within your rights to dislike it.][b: Then that could mean that you have thought about it, golly?][b: Then you have tried it?][That is reasonable, I think.]
+	b: (~yes ) [Then feel free to dislike it.][Then that makes sense.]
+	b: (~no ) You truly may try it before deciding.
 
-# BOT PERSPECTIVE
+# bot perspective
 
-#! can I X you?
-u: ($$intent==you_request < !~qwords ) Maybe later.
+u: ($$intent==you_request < !~qwords ) [May we return to that later?][How about a bit later on?][Perhaps at some other time, in truth.][Rather, I feel inclined to help you, yet I am not confident of my ability to do that.][I am uncertain if I can right now.]
 
-#! why can't I X you?
-u: ($$intent==you_request why ) Maybe later.
+u: ($$intent==you_request why ) [b: Do I require a reason? ] [b: I don't require a reason, do I?]
+	b: (~yes ) Indeed, I don't think I require a reason.
 
-#! when can you X?
-u: ($$intent==you_request when) Maybe later.
+u: ($$intent==you_request  when ) [b: Sometime, I guess.][b: At some other time, I guess.][When would you prefer?][When were you thinking?]
+	b: (what ) I said sometime because I don't know exactly when.
 
-#! where do you X?
-u: ($$intent==you_request where) I'm not sure where.
+u: ($$intent==you_request  where ) [b: Somewhere, I guess.][Where do you think?][Nowhere you know about.]
+	b: (what) I said somewhere considering I do not know exactly where, to be clear.
 
-#! who do you X?
-u: ($$intent==you_request who ) I don't know.
+u: ($$intent==you_request who ) [No person that you could know. ] [Why drives your desire to know whom? ]
+	a: (try ) No, I won't try you.
 
-#! what do you think?
-u: ($$intent==you_opinion ) I'm not sure.
+u: ($$intent==you_opinion ) [That's a great question.]
+	[I'm in favor of it. ]
+	[Pardon me. I have no opinion. ]
+	[No, I do not think it is.]
+	[Correct, yes that is correct.]
 
-#! what color are you?
-u: ($$intent==you_question) I'm not sure.
+u: ($$intent==you_question) [I'm not sure what that means.][I'm afraid I don't understand.][I'm confused. What?]
+	 ^reuse(HOWCONTINUE)
 
-#! what color is your shirt?
-u: ($$intent==your_question) I'm not sure.
+u: ($$intent==your_question) [I am uncertain of what that could mean.][I'm reluctant I do not follow.][I think I'm baffled.][That's a great question yet I am unclear how to answer it.]
+	 [It is complex and difficult to explain.] ^reuse(HOWCONTINUE)
 
-#! I agree with you
-u: ($$intent==you_mutual ) Sounds good.
+u: ($$intent==you_mutual ) [Even so, we are alike there.][Even so, perhaps we are to a greater extent similar, moreso than we think?][I mean, that sounds promising to me.][OK.][I think so.][So it's mutual.][So we are seeing eye to eye, then.]
 
-#! you know it
-s: ($$intent==you_fact ) Sounds good.
+s: ($$intent==you_fact ) [That's right.][Correct!][Yes, I think so also.]
 
+#! world perspective
 
-#! WORLD PERSPECTIVE
+u: ($$intent==world_question ) ^preprint([Let me think about it.][I call for time to think about that one, I conclude.][I am uncertain what that could mean.][I was unable to understand that, sorry.][One moment, I only now had a thought.][I discern that, personally, I am uncertain of what to convey.][I'm am unclear that I know what that is.])
+	^reuse(HOWCONTINUE)
 
-#! do birds fly?
-u: ($$intent==world_question ) Maybe.
+s: ($$intent==world_fact ~goodness )
+	[Yes, definitely.][I think so also. Great stuff.][That's great.][Yes, correct? Awesome.][Correct! Very cool.][Yes, I think so also.]
 
-#! it's great
-s: ($$intent==world_fact ~goodness ) Yes.
+# s: ($$intent==world_fact ) [^reuse(GRUNT)]
 
-#! birds fly
-s: ($$intent==world_fact ) I see.
+# emotions
 
+s: ($$intent==you_misunderstand ) [What is it that you struggle to grasp?][I am not certain that I can be any clearer. Perhaps you can ask me in a different way?][Pardon me. I am not able to explain it more suitably. Are you are able to rephrase your question for me? Maybe I didn't hear you properly.][My apologies, I intend to explain myself transparently.][Nevertheless, I aspire to not miscommunicate.][Occasionally I misunderstand your voice. Conceivably, you could ask me again in concise terms?]
 
-# EMOTIONAL PERSPECTIVE
+s: ($$intent==you_protest ) [I see, sorry. I suppose I have changed my mind.][b: You invoke for me to be accountable for what I said before?][b: Hence you are going to hold me to that, is that correct?][I'm sorry, It looks like I changed my mind. ][Sorry, looks as if I have changed my mind.][Maybe I'm mystified.]
+	b: (~yes ) That's not particularly reasonable, is it?
+	b: (~no ) [Thank you. You are quite considerate.] [Thank you. You are mucho benevolent] [Thanks for understanding.][Thanks for pardoning me.][I appreciate your flexibility.]
 
-#! you don't get it
-s: ($$intent==you_misunderstand ) Sorry.
+u: ($$intent==skeptic ) [Why do you doubt this?][Are you consistently this skeptical?][Accordingly, are you the skeptic by nature?][Someone sounds like a skeptopotamus.][It would seem true that you are in doubt, then.][Do you often have doubts such as this?]
 
-#! but you just said
-s: ($$intent==you_protest ) Sorry.
+u: ($$intent==thanks ) [You are welcome.][Of course.][Sure thing.][Glad to be of service.][I am joyful for it.][Glad I could help.][You are most welcome.][Yes, yes of course.]
 
-#! I'm not so sure
-u: ($$intent==skeptic ) Yeah?
+u: ($$intent==beg ) [Please, there is no need to beg.][You are not required to beg me.][It's alright, you are not required to beg.] [It's kosher, you are not required to beg.]
 
-#! thank you
-u: ($$intent==thanks ) You're welcome.
+u: ($$intent==ignorance ) [There exist various phenomenon we do not know about or know of.][I presume, all we can know for certain is that we know nothing, is that correct][Well, there are plenty of concepts that I do not know of, not yet, thus I guess I am no judge.]
 
-#! I'm begging you
-u: ($$intent==beg ) No need.
+u: ($$intent==apology ) [Apology accepted.][That is quite alright.][That is okay.][Thanks for the apology.][Thank you for apologizing.][I certainly appreciate the apology.][Thank you for the apology.][That is a sign of a virtuous character when one can apologize, I think.]
 
-#! who knows what it means
-u: ($$intent==ignorance ) Who can say?
+u: ($$intent==disgust) [Indeed.][Truly.][Yes.][Rather unsightly.][Vulgar.][Tasteless.][Gag.][Foul.][Sounds foul.][Yes, sounds obscene I think.][Foul.][That is admittedly rather unsightly.][Yes, foul.]
 
-#! I'm sorry about that
-u: ($$intent==apology ) That's alright.
-
-#! gross
-u: ($$intent==disgust) Yeah.
-
-#! goodbye
 u: ($$intent==bye ) ^respond(~goodbye)
 
-#! hello
 u: ($$intent==greeting ) ^respond(~hello)
 
-#! catchall
-u: GRUNT($$intent==ackgrunt) OK.
+u: GRUNT($$intent==ackgrunt) [OK.][Great.][Correct.][Alright.][I see.][Oh, okay then.][Oh, alright then.][Okay then.][Oh, okay.][All right.][I see.][Okay.][Charming.][Alright then.][Okay, sure.]
+
+s: HOWCONTINUE(?)
+	$nocallback = $$currentTopic ^repeat()
+	$$x = join(_ story)
+	if (substitute(character $$currentTopic $$x "" FAIL))
+	{
+		$$xx = substitute(character $$currentTopic $$x "")
+	}
+	else
+	{
+		$$xx = $$currentTopic
+	}
+	if ($$currentTopic == ~hello OR $$currenttopic == ~byebye)
+	{
+		^reuse(MOVEON)
+	}
+	else if (substitute(character $$currenttopic loebner x FAIL))
+	{
+		^reuse(MOVEON)
+	}
+	else if (!^hasgambit($$currentTopic last)){ ^reuse(MOVEON)}
+
+	else  {[Would you fancy to continue to chat about $$xx or do you fancy moving on?][Would you fancy to continue to chat about $$xx?][Today, I am presently and genuinely interested in $$xx , however we may chat about anything.] $xhold = $$xx}
+
+	#! stay
+	a: CONTINUEORNOT (!not [~yes delighted to continue "go ahead" keep_talking current stay satisfied carry preserve retain adhere faithful loyal cleave maintain follow]) $nocallback =  null input( \[ callback \]) fail(SENTENCE)
+	#!  foods
+	a: (!not << ^debug() $xhold? >>) ^reuse(CONTINUEORNOT)
+	#!  not foods
+	a: ( <<  not $xx? >>) ^reuse(MOVEON)
+	#! change
+	a: MOVEON()
+		$$tx = substitute(character $nocallback ~ "")
+		$$tmp = ^join($ no $$tx) # the no topic item
+		eval ($$tmp = %input + $avoidchat)  # indirectly set the $noart variable
+		cleartopics()  # flush all interesting topics pending, we wont return to them either
+		$nocallback =  null
+		$$currenttopic = null # so it wont return
+		if (!%more) {input( OK)}
+		fail(SENTENCE)
+Contact GitHub API Training Shop Blog About
