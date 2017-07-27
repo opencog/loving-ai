@@ -12,28 +12,37 @@ t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you abou
     ^reuse(EXERCISE_INVITE)    # ^gambit(INVITE_RESPONSE)
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS #  TODO: and ignore ~consciousness_words
-t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
-    ^gambit(INVITE_RESPONSE)
+t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness.
+    ^reuse(EXERCISE_INVITE)
 
 # coming from other topic could involve either (a) being explicitly directed here or (b) through a topic level keyword match
-t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness. $name, would you like to have a glimpse of your awareness right now?
-    ^gambit(INVITE_RESPONSE)
+t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
+    ^reuse(EXERCISE_INVITE)
 
 t: EXERCISE_INVITE() $name, would you like to have a glimpse of your awareness right now?
-# if yes at any level above go to AWARENESS_EXERCISE_1
-    a: (~yes) ^gambit(~AWARENESS_EXERCISE_1)     # ^reuse(AWARENESS_EXERCISE_1)
+    # if yes at any level above go to AWARENESS_EXERCISE_1
+    #! great   # ~yes does not match this btw
+    a: ([~yes ~verbal_agree great "why not"])
+       ^gambit(~AWARENESS_EXERCISE_1)
+    # TODO: use [~yes + others] in other places? create super category for affirmative answers to consent questions? replace great, why not, words with categories?
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         c: (~yes) ^gambit(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
-        #! no or catchall
-        c: (*) $avoid_consciousness = 1 ^gambit(~conversation_steering)
+        c: (~no) ^steer_to_different_domain("consciousness")
+        # JULIA what do you think of this?:
+        #! catchall
+        c: (*) Is that a yes?
+          d:(~yes) ^gambit(~AWARENESS_EXERCISE_1)
+          d:(~no) ^steer_to_different_domain(consciousness)
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
-      	c: (~yes) # conversation_steering, to some topic other than consciousness
+      # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
+      	c: (~yes) ^steer_to_different_domain(consciousness)
         #! no or catchall
         c: (*) ^gambit(~AWARENESS_EXERCISE_1)
-   #! no or catchall
-   a: (*) Okay, let's talk about something else! $avoid_consciousness = 1 ^gambit(~conversation_steering)
+   # JULIA put in a "Is that a yes?" check here instead of assuming that catchall is a no answer?
+   # catchall
+   a: (*) Okay, let's talk about something else! ^steer_to_different_domain(consciousness)
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
@@ -48,7 +57,7 @@ t: ^pause(10000) Now, place your attention on your face. Feel its presence.
 
 t: ^pause(10000) Move your attention now to your head. Feel its presence. How does that feel?
     a: () ^gambit(~)
-    # TODO # wait for the person to say something, then move on.
+    # wait for the person to say something, then move on.
 
 t: ^pause(10000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
     a: () ^gambit(~)
@@ -66,53 +75,61 @@ t: ^pause(15000) Okay, now notice what is left. See if you can notice how that f
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-   # EDDIE -- after this, it should go to CONSCIOUSNESSPRIOR -- but currently it goes to ~TRYAGAINtoFEELAWARENESS -- is that because there's no tilde prior to consciousness prior below?
-   # TODO test this
-    b: () ^gambit(CONSCIOUSNESSPRIOR)
-    # TODO note that above we'll have to be able to detect eyes open or closed -- could be changed to "tell me when you're ready"
-  
-  # if no, go to TRYAGAINtoFEELAWARENESS.
-  # a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
-  a: () ^gambit(~TRYAGAINtoFEELAWARENESS)
-  
-  # EDDIE -- ^^ if anything but yes or no, first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
+  a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
+  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "lease open your eyes when you’re ready."
+    b: () ^gambit(~CONSCIOUSNESSPRIOR)
 
-# t:  ^gambit(~CONSCIOUSNESSPRIOR)
+  !# no or catchall # go to TRYAGAINtoFEELAWARENESS.
+  a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
+  
+  # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
+  !# catchall # go to TRYAGAINtoFEELAWARENESS.
+  a: (*) ^gambit(~TRYAGAINtoFEELAWARENESS)
+
 
 topic: ~TRYAGAINtoFEELAWARENESS norandom [soup]
 
-t: That's okay. It's easy to try that again, and it's worth it, because it's pretty amazing. 
+t: ^pause(7000) That's okay. It's easy to try that again, and it's worth it, because it's pretty amazing.
+    a: () ^gambit(~)
 
-t: So allow your experience to be what it is. Don’t try to force it. And relax.
+t: ^pause(7000) So allow your experience to be what it is. Don’t try to force it. And relax.
+    a: () ^gambit(~)
 
-t: Now, please close your eyes.
+t: ^pause(7000) Now, please close your eyes.
+    a: () ^gambit(~)
 
-t: Place your attention on your face again. Feel its presence.
+t: ^pause(10000) Place your attention on your face again. Feel its presence.
+    a: () ^gambit(~)
 
-t: Focus on your head. Now, feel its presence. How does that feel?
-
+t: ^pause(10000) Focus on your head. Now, feel its presence. How does that feel?
+    a: () ^gambit(~)
 # wait for the person to say seomthing, then move on.
 
-t: Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
+t: ^pause(10000) Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
+    a: () ^gambit(~)
 
-t: Awesome. Let's now try to use the magic eraser. 
+t: ^pause(10000) Awesome. Let's now try to use the magic eraser.
+    a: () ^gambit(~)
 
-t: Gently use it to erase your face, your head, your legs and your entire body.
+t: ^pause(15000) Gently use it to erase your face, your head, your legs and your entire body.
+    a: () ^gambit(~)
 
-t: After you are done, notice what is left. Notice how you feel about the emptiness.
+t: ^pause(30000) After you are done, notice what is left. Notice how you feel about the emptiness.
+    a: () ^gambit(~)
 
 t: Do you notice how you felt this time?
-  a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-  
-  a: (~no) ^addtopic(~TRYAGAIN2)
   # if yes, then go to CONSCIOUSNESSPRIOR
+  a: (~yes) ^pause(15000) (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  # TODO: come back to this when we have eye opened/closed detection
+    b: () ^gambit(CONSCIOUSNESSPRIOR)
   # if no, go to TRYAGAIN2
-  # if anything but yes or no...first try to attempt responder match in another topic, then go to ~TRYAGAIN2
+  a: (~no) ^gambit(~TRYAGAIN2)
+  # if anything but yes or no...# TODO first try to attempt responder match in another topic, then go to ~TRYAGAIN2
+  a: (*) (~TRYAGAIN2)
   
 topic: ~TRYAGAIN2 []
 
-t: No problem! Let's do another exercise that may help. Are you up for that?
+t: No problem! Let's do a different exercise that may help. Are you up for that?
 
 # if no -- say: It's really worth trying, and it's a different approach so it might work. Okay?
 	# if no to that, go to Conversation_Steering document, to some topic other than consciousness

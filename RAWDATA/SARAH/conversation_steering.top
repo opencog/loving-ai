@@ -23,3 +23,9 @@ t: This is the part where I steer you to a particular domain.
 # then use catchall of S: Okay! Here’s a final thought. I’ll guide you in a conversation about  <another one>. I promise, I’ll take care of you!
 
 
+outputmacro: ^steer_to_different_domain(^avoid)
+  if (^avoid=consciousness) { $avoid_consciousness = 1 }
+  if (^avoid=emotions) { $avoid_emotions = 1 }
+  if (^avoid=uniqueness) { $avoid_uniqueness = 1 }
+
+  ^gambit(~CONVERSATION_STEERING)
