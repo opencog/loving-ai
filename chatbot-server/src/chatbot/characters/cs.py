@@ -126,7 +126,10 @@ class CSCharacter(Character):
                 self.logger.info("Set continue={}".format(res))
 
             if self.is_command(question):
-                ret['text'] = ''
+                if question == ':reset':
+                    ret['text'] = 'Hi there'
+                else:
+                    ret['text'] = ''
             else:
                 ret['text'] = answer
 
