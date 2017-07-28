@@ -1,10 +1,10 @@
-concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" God "ultimate reality" "simulation theory")
+concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory")
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
 
 # This is for dev purposes, workaround needed to reset the rejoinder placeholder
 # variable when manually jumping here from another topic.
-t: TEMP () Welcome to consciousness
+# t: TEMP () Welcome to consciousness
 
 
 # if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS

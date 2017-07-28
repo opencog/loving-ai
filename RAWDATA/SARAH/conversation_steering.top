@@ -17,9 +17,9 @@ s:  STEER_TO_DOMAIN (?)
 
     How does that sound?
 
-    # TODO: what if they have visited consciousness before, and they come back
-    # and $avoid_consciousness has not been set, then they would be repeating content in consciousness i think
+    # TODO: add $visited_consciousness, etc vars
     # add ~verbal_agree ?
+        a: ($avoid_all_domains) # Todo add additional round of trying
         a: ([~yes ~good_quality_adjectives])
            if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
