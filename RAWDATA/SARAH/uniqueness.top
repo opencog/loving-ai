@@ -71,7 +71,7 @@ t: Okay, I have an idea. Let's explore the difference between what you’re curr
 
 t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
   a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?
-    b: (~thinkso) # go to emotions (from other topic) 
+    b: (~thinkso) # go to emotions , even if you've already been there 
     b: (~dontknow) # go to LIVINGFULLPOTENTIAL
     b: (*) # attempt to match with a responder anywhere, if not, go to LIVINGFULLPOTENTIAL
     
@@ -88,12 +88,12 @@ t: Having a sense of your purpose is great, and a big part of who you are. But l
 # topic: ~INDEPTHPOTENTIAL
 t: Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
     a: (*) You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. At first it can feel like something is wrong. In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. Would you like to do an exericse related to that?
-        b: (~thinkso) Great! # pause, then go to emotions domain, from another topic
+        b: (~thinkso) Great! # pause, then go to emotions , even if you've already been there 
         b: (~dontknow) Okay, no worries. Let's keep exploring this. 
             c: Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
                 d: (~thinkso) So what was that like?
                 d: (*) Yes. It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
-                   e: (*) # even if no response after 10 seconds -- no matter what, go to emotions
+                   e: (*) # even if no response after 10 seconds -- no matter what, go to emotions , even if you've already been there 
         b: (*) Let's do something else. I've got an exercise to help you feel yourself as a unified whole. You up for that? It'll be cool!
             c:  (~thinkso) Great! # go to UNIFIEDWHOLE
             c: (*) Okay, no worries. #  try to match a responder in any topic, if that fails, go to conversation_steering but not to Uniqueness
