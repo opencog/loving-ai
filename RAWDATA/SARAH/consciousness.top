@@ -77,13 +77,13 @@ t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "lease open your eyes when you’re ready."
-    b: () ^gambit(~CONSCIOUSNESSPRIOR)
+      b: () ^gambit(~CONSCIOUSNESSPRIOR)
 
-  !# no or catchall # go to TRYAGAINtoFEELAWARENESS.
+  # no - go to TRYAGAINtoFEELAWARENESS.
   a: (~no) ^gambit(~TRYAGAINtoFEELAWARENESS)
   
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
-  !# catchall # go to TRYAGAINtoFEELAWARENESS.
+  #! catchall # go to TRYAGAINtoFEELAWARENESS.
   a: (*) ^gambit(~TRYAGAINtoFEELAWARENESS)
 
 
@@ -119,13 +119,13 @@ t: ^pause(30000) After you are done, notice what is left. Notice how you feel ab
 
 t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (~yes) ^pause(15000) (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (~yes) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () ^gambit(CONSCIOUSNESSPRIOR)
+    b: () ^gambit(~CONSCIOUSNESSPRIOR)
   # if no, go to TRYAGAIN2
   a: (~no) ^gambit(~TRYAGAIN2)
-  # if anything but yes or no...# TODO first try to attempt responder match in another topic, then go to ~TRYAGAIN2
-  a: (*) (~TRYAGAIN2)
+  # if anything but yes or no... TODO first try to attempt responder match in another topic, then go to ~TRYAGAIN2
+  a: (*) ^gambit(~TRYAGAIN2)
   
 topic: ~TRYAGAIN2 []
 
@@ -184,50 +184,75 @@ t: Can you feel that you are observing your face from behind it?
 topic: ~CONSCIOUSNESSPRIOR []
 
 t: So you just experienced awareness! Isn't it COOL???
-
 # wait for response
     
 t: Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
+  # if yes, go to EXERCISE_ALT
+  a: (~yes) ^reuse(EXERCISE_ALT)
+
   a: (~no) Well, your awareness is a deep part of who you are will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
-    # if yes, go to EXERCISE_ALT
-    b: (~no) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
-      c: (~yes)
-      # c: if yes, go to EXERCISE_ALT
-      # c: if no, go to Conversation_Steering document, to some topic other than consciousness
-      # c: if something other than no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
-    # b: if something other than no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
-# a: if something other than no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
+      b: (~yes) ^reuse(EXERCISE_ALT)
+      b: (~no) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
+          c: (~yes) ^reuse(EXERCISE_ALT)
+          c: (~no) ^steer_to_different_domain(consciousness)
+          # something other than yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
+          c: (*) ^steer_to_different_domain(consciousness)
+      # if not yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
+      b: (*) (*) ^steer_to_different_domain(consciousness)
+
+  # JULIA i don't think auto to steering to another domain is good here. Eg, what about response "Once when I was skydiving"
+  # not yes or no, (Todo first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
+  a: (*)
 
 # EXERCISE_ALT
-t: Awesome! Let's do another exercise. Are you ready?
+topic: ~EXERCISE_ALT ()
 
+t:  ^pause(7000) () Awesome! Let's do another exercise. Are you ready?
 # wait for response
 
-t: Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
+t: ^pause(15000) Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
 
-t: Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
-
-# she waits until they say something
+t: ^pause(30000) Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
+    # she waits until they say something
+    a: (*) ^gambit(~)
 
 t: Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement. What does that feel like?
+    # wait for the person to say something, then move on
+    a: (*) ^gambit(~)
 
-# wait for the person to say something, then move on
-
+# JULIA, I'm unclear what the logic is supposed to be here.
+##<<  Your original description
 t: Do you feel continuous with awareness?
   a: (~no) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
   b: (*) Are you feeling that you are the awareness that registers your face?
     # if no, go to PRACTICEatHOME.
     # if yes or anything else, go to CONFIDENCE
 
+and my best guess next  >>##
+t: Do you feel continuous with awareness?
+  a: (~no) ^pause(15000) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
+    b: (*) Are you feeling that you are the awareness that registers your face?
+      # if no, go to PRACTICEatHOME.
+      c: (~no) ^gambit(~PRACTICEatHOME)
+      # if yes or anything else, go to CONFIDENCE
+      c: (*) ^gambit(~CONFIDENCE)
+
+
+
+
 # PRACTICEatHOME
+topic: ~PRACTICEatHOME []
 t: No problem.  You can practice this exercise at home.
+  a: (*) ^gambit(~)
 
 t: The more you practice, the more you will be aware of your awareness. Would you come back one day and tell me your progress?
-
-# If yes, say: Thank you! -- then go to conversation_steering and go to a topic that's not consciousness
-# If no, say: I'm sorry, I will miss talking with you. But I understand. Some things are private, and we might not have a chanc -- then go to conversation_steering and go to a topic that's not consciousnesse 
-# If anything else, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
-
+  a: (~yes) Thank you!
+     ^steer_to_different_domain(consciousness)
+  a: (~no) I'm sorry, I will miss talking with you. But I understand. Some things are private, and we might not have a chance.
+     ^steer_to_different_domain(consciousness)
+  a: (*)
+     # Todo first try to attempt responder match in another topic and then steer
+     ^steer_to_different_domain(consciousness)
 
 topic: ~CONFIDENCE []
 
