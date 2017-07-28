@@ -1,6 +1,5 @@
 concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful)
 concept: ~positive_emotion (~feeling_happy ~feeling_attracted)
-
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
@@ -108,7 +107,7 @@ t: [Looks like you need some support. What are you feeling now?] [I'm right here
         a: (*) # anything else aside from yes or no, go to BODY_EXERCISE_NEG
             
 # BETTER
-# t: That's great news! It makes me happy to see you feeling more. Want to do an exercise that you can use to help you magnify good feelings?
+# t: Cool! It makes me happy to see you feeling your feelings. Want to do an exercise that you can use to help you magnify good feelings?
     b: (~yes) # go to BODY_EXERCISE_POS
     b: (*) # no or anything else -- go to conversation_steering to any topic other than emotions
 
