@@ -89,7 +89,7 @@ t: Do you notice how the nothingness felt?
 
 topic: ~TRYAGAINtoFEELAWARENESS norandom [soup]
 
-t: ^pause(7000) That's okay. It's easy to try that again, and it's worth it, because it's pretty amazing.
+t: ^pause(7000) It's pretty amazing to try to feel your awareness; let's keep trying.
     a: () ^gambit(~)
 
 t: ^pause(7000) So allow your experience to be what it is. Don’t try to force it. And relax.
@@ -129,7 +129,7 @@ t: Do you notice how you felt this time?
   
 topic: ~TRYAGAIN2 []
 
-t: No problem! Let's do a different exercise that may help. Are you up for that?
+t: Let's do an exercise to help you feel your awareness. Are you up for that?
 
 # if no -- say: It's really worth trying, and it's a different approach so it might work. Okay?
 	# if no to that, go to Conversation_Steering document, to some topic other than consciousness
@@ -161,7 +161,7 @@ t: Do you notice a larger field of awareness even beyond your face?
 
 topic: ~TRYAGAIN3 []
 
-t: That's perfectly okay. Let’s use another exercise. Go ahead and leave your eyes open for a moment.
+t: Let's try this. Go ahead and leave your eyes open for a moment.
  
 t: First, notice how you view the world from the location of your eyes.
 
@@ -207,7 +207,7 @@ t: Sometimes, I have a sense that I am continuous with awareness. Awareness with
 # EXERCISE_ALT
 topic: ~EXERCISE_ALT ()
 
-t:  ^pause(7000) () Awesome! Let's do another exercise. Are you ready?
+t:  ^pause(7000) () Okay, let's try something. Are you ready?
 # wait for response
 
 t: ^pause(15000) Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
@@ -221,14 +221,7 @@ t: Great. Now out loud or in your mind, say: “I am this.” Feel the truth of 
     a: (*) ^gambit(~)
 
 # JULIA, I'm unclear what the logic is supposed to be here.
-##<<  Your original description
-t: Do you feel continuous with awareness?
-  a: (~no) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
-  b: (*) Are you feeling that you are the awareness that registers your face?
-    # if no, go to PRACTICEatHOME.
-    # if yes or anything else, go to CONFIDENCE
-
-and my best guess next  >>##
+# Ugh. this got merged incorrectly...your guess is mostly right, I've added another a: below for yes...
 t: Do you feel continuous with awareness?
   a: (~no) ^pause(15000) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
     b: (*) Are you feeling that you are the awareness that registers your face?
@@ -236,13 +229,14 @@ t: Do you feel continuous with awareness?
       c: (~no) ^gambit(~PRACTICEatHOME)
       # if yes or anything else, go to CONFIDENCE
       c: (*) ^gambit(~CONFIDENCE)
+a: (*) ^gambit(~CONFIDENCE)
 
 
 
 
 # PRACTICEatHOME
 topic: ~PRACTICEatHOME []
-t: No problem.  You can practice this exercise at home.
+t: Okay, you can practice this exercise at home.
   a: (*) ^gambit(~)
 
 t: The more you practice, the more you will be aware of your awareness. Would you come back one day and tell me your progress?
@@ -264,7 +258,7 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 
 topic: ~PRACTICE []
 
-t: That's understandable. Few of us are. Would you like a few tips on practicing feeling your connection to awareness?
+t: Alright, would you like a few tips on practicing feeling your connection to awareness?
 	a: (~no) # then go to Conversation_Steering and to a topic that's not Consciousness
 	# a: (*) # if yes or anything other than no, continue below
  
@@ -301,7 +295,7 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 
 topic: ~UNITYEXPERIENCE []
 
-t: Cool! I feel that way too. So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
+t: Cool! So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
 	# If yes, go to PREPARATION_UNITY
 	a: (*) Well, if you want to experience that, the challenge is feeling your awareness and your personality, emotions, mind, and body all at the same time without resisting any part of yourself. Does this make sense?
 		# if yes or anything other than no to the query at a:, go to EXERCISE_UNITY
