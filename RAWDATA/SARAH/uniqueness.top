@@ -1,5 +1,6 @@
-concept: ~dontknow ("not know" "no idea" "not sure" "don't know" "what are you saying" "not clear" ~no)
-concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" ~yes)
+concept: ~dontknow ("not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
+concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
+#I'm thinking we should use these concepts in every domain rather than yes or no, as they are a bit broader, though overlap. What do you think?
 
 topic: ~UNIQUENESS (unique)
 
@@ -60,43 +61,53 @@ t: Let's do a little visualization about living your purpose. Close your eyes, g
       Thank you! I am going to repeat exactly what you said, so you can hear me say it. This is what you said you would do if you had all your financial needs taken care of: $MyDharma. Do you awant to change that?
       c: (~thinkso) "Okay, this is what you said your ideal work is: $MyDharma. Is that right?
         # if no to c, go in a loop with the above.
-      c: * Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
+      c: * Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now. 
       
 
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
   a: (~small) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
-  a: (~large)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+  a: (~large)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. 
+                # above line, continues, with direction at end: And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it. # go to LIVINGFULLPOTENTIAL
 
 t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
   a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?
     b: (~thinkso) # go to emotions (from other topic) 
-    b: (~dontknow) # go to conversation_steering but not to uniqueness
-    b: (*) # attempt to match with a responder anywhere, if not, go to conversation_steering but not to uniqueness
+    b: (~dontknow) # go to LIVINGFULLPOTENTIAL
+    b: (*) # attempt to match with a responder anywhere, if not, go to LIVINGFULLPOTENTIAL
     
 
 
 topic: ~LIVINGFULLPOTENTIAL []
 t: (!~) ^fail(topic)
 
-t: It's great that you’ve had a consciousness awakening, and now it’s important to understand that awakening to consciousness doesn’t automatically give you more depth in terms of developing and living your unique purpose.
+t: Having a sense of your purpose is great, and a big part of who you are. But learning how to bring that purpose into the world, in other words, living your full potential, takes different skills. Want to talk about that a bit?
+    a: (~thinkso) # go to INDEPTHPOTENTIAL
+    a: (~dontknow) # go to conversation_steering but not to Uniqueness
+    a: (*) Okay, no worries. # try to match a responder in any topic, if that fails, go to conversation_steering but not to Uniqueness
 
-t: At this point, the need is to reconcile the feeling of any discomfort about the fact that who you are is both infinite (in consciousness) and finite in your unique human life. Being both infinite and finite at first can feel like something is wrong. Or that those two poles of life can't coexist. For some, it can feel like an impossible paradox that I can’t fully embody. In any case, however you feel that existential angst, the ultimate resolution of that feeling starts with a process of embracing it, both infinite/finite as well as feeling the samenesses and differences with others.
-
-t: In other words, the feeling of paradox doesn't mean anything is wrong; if you’re feeling that, it means your own Being is wanting a unification; between infinite self and finite self, between self and others, between self and all of life. A unification that brings a unified sense of self. This realization of unity brings a form of liberation, not from life, but deeply into life. You can feel liberated to be your most authentic self in the world.
-
-t: Sit back and close your eyes, and feel into your infinite conscious nature. (long pause giving them time to drop in). Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you. (long pause again). Now take a step back and again rest in your infinite nature. This time, while staying seated in your infinite nature, bring in awareness of your body with all its unique gifts. See how it feels to simultaneously be both at the same time. Feel and hold the tension of these apparent opposites while assuming there is no conflict. The feeling of a conflict or that something is wrong will eventually dissolve with practice. Just be with that feeling and embrace it, assuming nothing is wrong. This is just the feeling that happens as you are transitioning from a platform of feeling the world from an assumption of fundamental duality to living in the realization that all things are part of a single, unified reality that we call Life or the Universe.
-
-t: This is an exercise I'd recommend doing throughout the day. You can even set an alarm to go off every hour or so to take a break and move into this short practice. This will get you more comfortable in experiencing the paradox of these two at the same time. Do this until the discomfort no longer pulls you out of the simultaneity and grasping of one over the other.
-
-t: Are you ready to move on?
-  a: (~yes) ^addtopic(~UNIQUENESS_CH1_6) ^gambit(~UNIQUENESS_CH9)
-
-
-
-topic: ~UNIQUENESS_CH9 []
-t: (!~) ^fail(topic)
-
-t: This is advanced stuff...
-# TODO: First, check to see if the user has grasped the basic ideas of the importance of uniqueness, value of it, owning of it, and living it - if not, rehash material from CH 1-6 above.
-
-# This is the point of development in which the user starts to get the infinite (some says “divine”) nature of each personality. This is be vastly misinterpreted to mean that everything one thinks, says, or does is divine, and therefore good, even if others feel violated by the person. Very dangerous! These types tend to inflate their divinity over others' (and their own) humanity, causing “awakened splits” and spiritual bypassing. This is a cul-de-sac one can get caught in, if not caught and corrected early in the process. Some refer to this as “the stink of enlightenment”. The correction is for the realizer to get that the personality is indeed divine, but then again, uranium is also divine. Just being divine doesn’t mean it’s appropriate or skilful or  or useful for the current situation. Or necessarily coming from one’s unfiltered deepest wisdom. And widom includes finding appropriateness in relationships with others. It includes being sensitive to your impact on others and their impact on you.
+# topic: ~INDEPTHPOTENTIAL
+t: Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
+    a: (*) You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. At first it can feel like something is wrong. In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. Would you like to do an exericse related to that?
+        b: (~thinkso) Great! # pause, then go to emotions domain, from another topic
+        b: (~dontknow) Okay, no worries. Let's keep exploring this. 
+            c: Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
+                d: (~thinkso) So what was that like?
+                d: (*) Yes. It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
+                   e: (*) # even if no response after 10 seconds -- no matter what, go to emotions
+        b: (*) Let's do something else. I've got an exercise to help you feel yourself as a unified whole. You up for that? It'll be cool!
+            c:  (~thinkso) Great! # go to UNIFIEDWHOLE
+            c: (*) Okay, no worries. #  try to match a responder in any topic, if that fails, go to conversation_steering but not to Uniqueness
+            
+# topic: ~UNIFIEDWHOLE
+t: Sit back and close your eyes, and feel your connection to awareness.
+# pause at least 10 seconds
+t: If you have trouble doing this, we can try an awareness exercise. Want to try that?
+    b: (~thinkso) Great! # go to to TRY_AGAIN3 in CONSCIOUSNESS
+    b: (~dontknow) Okay, keep going and I'll wait. Let me know when you're ready, and feeling connected to awareness.
+        c: (*) Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you. 
+         # PAUSE 10 sec here then say: Now take a step back and again rest in your connection to awareness. This time, while staying connected to your infinite nature, bring in awareness of your body with all its unique gifts. 
+         # PAUSE 10 sec then say: How does it feel to simultaneously be both at the same time?
+            d: (*) Cool! And by the way, any feeling of a conflict or that something is wrong will eventually dissolve with practice. 
+                # after d, pause and say: If you can, please come back and tell me how things are going for your purpose and your full potential!
+                    # then go to conversation_steering but not uniqueness domain
+              
