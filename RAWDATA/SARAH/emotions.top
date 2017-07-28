@@ -1,7 +1,7 @@
 concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful)
 concept: ~positive_emotion (~feeling_happy ~feeling_attracted)
 
-topic: ~EMOTIONS2 (~emotions ~feeling_words)
+topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
@@ -31,7 +31,7 @@ u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds li
     
  
 # FROM_STEERING_TO_EMOTIONS 
-t: So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 # if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
 # if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 

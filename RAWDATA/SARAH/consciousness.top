@@ -1,4 +1,4 @@
-concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" God "ultimate reality" "simulation theory")
+concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" God "ultimate reality" "simulation theory")
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
 
@@ -12,14 +12,14 @@ t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you abou
     ^reuse(EXERCISE_INVITE)    # ^gambit(INVITE_RESPONSE)
 
 # if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS #  TODO: and ignore ~consciousness_words
-t: FROM_STEERING_TO_CONSCIOUSNESS () Let's get into a discussion of consciousness or awareness.
+t: FROM_STEERING_TO_CONSCIOUSNESS () Great, a discussion about consciousness and awareness.
     ^reuse(EXERCISE_INVITE)
 
 # coming from other topic could involve either (a) being explicitly directed here or (b) through a topic level keyword match
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
     ^reuse(EXERCISE_INVITE)
 
-t: EXERCISE_INVITE() $name, would you like to have a glimpse of your awareness right now?
+t: EXERCISE_INVITE() [$name $name,] would you like to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
     #! great   # ~yes does not match this btw
     a: ([~yes ~verbal_agree great "why not"])

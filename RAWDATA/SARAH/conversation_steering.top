@@ -1,6 +1,47 @@
-topic: ~conversation_steering []
+  topic: ~conversation_steering []
 
-t: This is the part where I steer you to a particular domain.
+# t: This is the part where I steer you to a particular domain.
+
+s:  STEER_TO_DOMAIN (?)
+    Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
+    Let’s
+
+    [!$avoid_consciousness talk about consciousness. $domain = consciousness]
+
+    [!$avoid_uniqueness discuss what you bring to the world as a unique human. $domain = uniqueness]
+
+    [!$avoid_emotions do some exercises about mindfulness and feeling your feelings. $domain = emotions]
+
+    # if all domains have been avoided
+    [talk about whatever you want. $avoid_all_domains = 1]
+
+    How does that sound?
+
+    # TODO: what if they have visited consciousness before, and they come back and $avoid_consciousness has not been set, then they would be repeating content in consciousness i think
+# add ~verbal_agree ?
+        a: ([~yes ~good_quality_adjectives])
+           if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
+           else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
+           else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
+
+           ##<<  not working
+            ^refine()
+                 a: ($domain=consciousness) ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS)
+                 a: ($domain=uniqueness) ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS)
+                 a: ($domain=emotions) ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
+           ##>>
+
+        a: ([~no ~bad_quality_adjectives]) Totally fine.
+            if ($domain=consciousness) { $avoid_consciousness = 1 }
+            else if ($domain=uniqueness) { $avoid_uniqueness = 1 }
+            else if ($domain=emotions) { $avoid_emotions = 1 }
+
+            ^reuse(~conversation_steering.STEER_TO_DOMAIN)
+
+# alt approach
+#  refine()
+#    a: (!avoid_consciousness)
+
 
 # S: Okay! Here’s what I think would be fun. Let’s [talk about consciousness][discuss what you bring to the world as a unique human][do some exercises about mindfulness and feeling your feelings]. How does that sound?
 #	U: Yes -- go to topic file according to whichever item was selected
@@ -28,4 +69,5 @@ outputmacro: ^steer_to_different_domain(^avoid)
   if (^avoid=emotions) { $avoid_emotions = 1 }
   if (^avoid=uniqueness) { $avoid_uniqueness = 1 }
 
-  ^gambit(~CONVERSATION_STEERING)
+  # ^gambit(~CONVERSATION_STEERING)
+  ^reuse(conversation_steering.STEER_TO_DOMAIN)

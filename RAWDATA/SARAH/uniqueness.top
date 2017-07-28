@@ -30,7 +30,7 @@ t: Ok $fname, let's try this. Imagine for just a moment that you're living your 
     a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
     
 # FROM_STEERING_TO_UNIQUENESS
-t: Ok $fname, let's try this. Imagine for just a moment that you're living your full potential, giving all your gifts in service of your highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
+t: FROM_STEERING_TO_UNIQUENESS () Ok $name, let's try this. Imagine for just a moment that you're living your full potential, giving all your gifts in service of your highest purpose. Just picture that for a moment. Now, what percent of that potential do you honestly feel you are currently living?
   a: (~dontknow) Sounds like you're not quite living your full potential, that's my guess. Do you want to talk about that?
     $FULLPOT = 30
     
