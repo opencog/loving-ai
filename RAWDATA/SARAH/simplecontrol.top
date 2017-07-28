@@ -2,6 +2,8 @@
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
 
+$version = popcorn
+
 ^addtopic(~introductions)
 $cs_control_main = ~control
 #  $cs_control_post = ~XPOSTPROCESS  # uncomment to enable talk
@@ -17,6 +19,7 @@ topic: ~control system ()
 
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) ^reset(USER)
+u: (whatversion) $version
 
 # on startup, do introduction
 u: ( %input<%userfirstline) 
