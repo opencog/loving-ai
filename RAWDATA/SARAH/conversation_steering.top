@@ -6,6 +6,16 @@ s:  STEER_TO_DOMAIN (?)
     Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
     Let’s
 
+		if (!$avoid_consciousness)
+			{ talk about consciousness. $domain = consciousness }
+    	else if (!$avoid_emotions)
+    		{ do some exercises about mindfulness and feeling your feelings. $domain = emotions }
+    	else if (!$avoid_consciousness)
+    		{ discuss what you bring to the world as a unique human. $domain = uniqueness }
+    	else
+    	 	{ talk about whatever you want. $all_domains_avoided = 1 }
+
+##<<
     [!$avoid_consciousness talk about consciousness. $domain = consciousness]
 
     [!$avoid_uniqueness discuss what you bring to the world as a unique human. $domain = uniqueness]
@@ -14,7 +24,14 @@ s:  STEER_TO_DOMAIN (?)
 
     # if all domains have been avoided
     [talk about whatever you want. $avoid_all_domains = 1]
-
+##>>
+##<<
+    refine():
+    	a: (!$avoid_consciousness) talk about consciousness. $domain = consciousness
+    	a: (!$avoid_emotions) do some exercises about mindfulness and feeling your feelings. $domain = emotions
+    	a: (!$avoid_consciousness) discuss what you bring to the world as a unique human. $domain = uniqueness
+    	a: () talk about whatever you want. $all_domains_avoided = 1
+##>>
     How does that sound?
 
     # TODO: add $visited_consciousness, etc vars

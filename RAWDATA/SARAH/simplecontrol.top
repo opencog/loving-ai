@@ -164,16 +164,16 @@ outputmacro: ^pause(^ms)
 
 
 # ^goto(^topic)
-#  adds ^addTopic for topics that block accidental access
+# adds ^addTopic for topics that block accidental access
+# actually now i'm thinking this might not be needed if the topic does not have keywords
 outputmacro: ^goto(^topic)
 	# == going to ^topic ==
-
+	# failed attempts to reset the inputrejoinder when using this function for debugging
 	# %inputrejoinder = null #doesn't reset the var
 	#^end(RULE) # nope this stops the function apparently
 
 	^addTopic(^topic)
 	^gambit(^topic)
-	%inputrejoinder = null
 
 # dev macro to jump to topic, but clear rejoinder first
 outputmacro: ^g(^topic)

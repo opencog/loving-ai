@@ -42,6 +42,7 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 	      [What are you wondering about lately?]
 	      [Is there anything about your thoughts or feelings you’d like to make better?]
 		b: (~negative_emotion) $domain = emotions ^respond(~emotions2.FROM_INTRO_TO_NEG_EMOTIONS)
+		b: (~positive_emotion) $domain = emotions ^respond(~emotions2.FROM_INTRO_TO_POS_EMOTIONS)
 		b: (~consciousness_words) $domain = consciousness ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
 		b: (~uniqueness) $domain = uniqueness ^gambit(~uniqueness)
 	  	b: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
