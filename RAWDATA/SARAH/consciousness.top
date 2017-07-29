@@ -165,7 +165,7 @@ t: Do you notice a larger field of awareness even beyond your face?
 # if neither yes nor no, first try to attempt responder match in another topic, then go to TRYAGAIN3
   
 
-
+# TODO
 topic: ~TRYAGAIN3 []
 t: (!~) ^fail(topic) # block topic from accidental access
 
@@ -262,6 +262,7 @@ t: The more you practice, the more you will be aware of your awareness. Would yo
      # Todo first try to attempt responder match in another topic and then steer
      ^steer_to_different_domain(consciousness)
 
+
 topic: ~CONFIDENCE []
 t: (!~) ^fail(topic) # block topic from accidental access
 
@@ -270,6 +271,7 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 	   ^steer_to_different_domain(consciousness)
 	#! no or anything else
 	a: (*) ^goto(~PRACTICE)
+
 
 topic: ~PRACTICE []
 t: ($blocking !~) ^fail(topic) # block topic from accidental access
@@ -314,7 +316,7 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway.
 			c: (*) ^steer_to_different_domain(consciousness)
 
-
+# TODO
 topic: ~UNITYEXPERIENCE []
 
 t: Cool! So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
@@ -325,12 +327,13 @@ t: Cool! So have you previously experienced a shift from feeling separated from 
 			# if yes to the query at b:, go to EXERCISE_UNITY
 			c: (*) # no or anything else, go to conversation_steering with a topic that's not consciousness
 
+# TODO
 # PREPARATION_UNITY
 t: Awesome! I'm glad you understand that. Do you want to do an exercise that would help you feel one with both your consciousness and your personality, emotions, mind, and body?
 # if yes, go to EXERCISE_UNITY
 # if no or anything else, go to conversation_steering with a topic that's not consciousness
 
-
+# TODO
 # EXERCISE_UNITY
 t: Okay. Let's relax and close our eyes. Get comfortable. Let me know when you're ready.
 # EDDIE -- Can sophia close her eyes too every time she gives this suggestion? Would be good to mirror that.
@@ -357,12 +360,3 @@ t: Hold on to that feeling of oneness for a little bit. When you are ready, open
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no or anything else-- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
 	a: (*) # if anything else -- say: Thank you for doing this with me. I think it's really cool too. --> then go to conversation steering to a topic not consciousness
-
-
-
-
-
-
-
-
-			

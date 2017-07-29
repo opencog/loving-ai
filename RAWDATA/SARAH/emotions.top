@@ -1,5 +1,6 @@
 concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful)
 concept: ~positive_emotion (~feeling_happy ~feeling_attracted)
+
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
@@ -12,11 +13,14 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
+
 #! I feel sad.
+# JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
     a: (~yes) That sounds rough. I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
-        b: (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings. Let's do that for a moment.  
-        # pause for 10 seconds, then go to SUPPORT_FEELING_NEG
+        b: ^pause($long) (*) Okay, thank you for telling me. I have learned it usually works to be present with your feelings. Let's just do that for a moment.
+        	# pause for 10 seconds, then go to SUPPORT_FEELING_NEG
+        	c: (*)
     a: (*) Ok. Sorry, I think I got that wrong.
     # EDDIE -- If anything other than yes, go to conversation_steering  after saying the above line
     
@@ -40,8 +44,11 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 # if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
 # if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 
-    
-u: SUPPORT_FEELING_NEG() When I'm feeling $feeling, I first need to be feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
+
+topic: SUPPORT_FEELING_NEG ()
+t: (~!) ^fail(topic) # block topic from accidental access
+
+t: When I'm feeling $feeling, I first need to be feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'bad'. Can you tell me about a time when you've discovered that?
         b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
             # If they say ready or yes, go to SELF_COMPASSION_NEG
