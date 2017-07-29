@@ -75,11 +75,3 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 #! what is your name 
 u: ( what is your name ) My name is Sarah.
 	
-
-# TODO move these to a functions file	
-# topic: ~functions system ()
-#u: RESET (reset) :reset resetting!
-
-outputmacro: ^pause(^ms)
-  \[ ^join(callback= ^ms) \]
-	  

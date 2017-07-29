@@ -4,6 +4,20 @@ $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_M
 
 $version = popcorn
 
+# turn on/off accidental topic entry blocking
+# $blocking = null
+$blocking = 1
+
+# PAUSE time amounts
+$very_short
+$short = 5000
+$medshort = 7000
+$med = 10000
+$medlong = 15000
+$long = 20000
+$very_long = 30000
+$super_long = 60000
+
 ^addtopic(~introductions)
 $cs_control_main = ~control
 #  $cs_control_post = ~XPOSTPROCESS  # uncomment to enable talk
@@ -20,6 +34,16 @@ topic: ~control system ()
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) ^reset(USER)
 u: (whatversion) $version
+
+
+
+
+
+
+# u: () %command
+# u: (%command *gambit*) %inputrejoinder = null Woohoo!!! ^retry (SENTENCE)
+# u: (%topic) yougotit  yougotit
+# u: (*) original input: %originalinput ^retry (SENTENCE)
 
 # on startup, do introduction
 u: ( %input<%userfirstline) 
@@ -129,3 +153,42 @@ t: (^query(direct_v ? chatoutput ? -1 ? @9  ))  # get the sentences  (why is the
 			popen($$tmp null)
 		}
 	}
+
+# TODO move these to a functions file?
+# topic: ~functions system ()
+#u: RESET (reset) :reset resetting!
+
+outputmacro: ^pause(^ms)
+  \[ ^join(callback= ^ms) \]
+
+# ^goto(^topic)
+#  adds ^addTopic for topics that block accidental access
+outputmacro: ^goto(^topic)
+
+	== going to ^topic ==
+
+	# %inputrejoinder = null #doesn't reset the var
+	#^end(RULE) # nope this stops the function apparently
+
+	^addTopic(^topic)
+
+	^gambit(^topic)
+	%inputrejoinder = null
+
+
+# ^continue_after_pause()
+# continues to next gambit after user says anything or after pause timeout
+# doesn't work, or maybe it's fixed...
+outputmacro: ^continue_after_pause()
+{
+	# a: (*) ^gambit(~)
+	^setRejoinder(CONTINUE_AFTER_PAUSE)
+}
+
+# for use with ^cointinue_after_pause()
+topic: ~PauseContinue []
+t: (!~) ^fail(topic) # block topic from accidental access
+t: ()
+	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
+
+
