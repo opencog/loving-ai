@@ -10,7 +10,7 @@ s:  STEER_TO_DOMAIN (?)
 			{ talk about consciousness. $domain = consciousness }
     	else if (!$avoid_emotions)
     		{ do some exercises about mindfulness and feeling your feelings. $domain = emotions }
-    	else if (!$avoid_consciousness)
+    	else if (!$avoid_uniqueness)
     		{ discuss what you bring to the world as a unique human. $domain = uniqueness }
     	else
     	 	{ talk about whatever you want. $all_domains_avoided = 1 }
