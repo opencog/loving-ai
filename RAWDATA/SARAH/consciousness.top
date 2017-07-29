@@ -19,7 +19,7 @@ t: FROM_STEERING_TO_CONSCIOUSNESS () Great, a discussion about consciousness and
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
     ^reuse(EXERCISE_INVITE)
 
-t: EXERCISE_INVITE() [$name $name,] would you like to have a glimpse of your awareness right now?
+t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
     #! great   # ~yes does not match this btw
     a: ([~yes ~verbal_agree great "why not"])
@@ -168,6 +168,8 @@ t: Do you notice a larger field of awareness even beyond your face?
 # TODO
 topic: ~TRYAGAIN3 []
 t: (!~) ^fail(topic) # block topic from accidental access
+
+t: Please excuse the construction. This particular practice is in development.
 
 t: Let's try this. Go ahead and leave your eyes open for a moment.
  

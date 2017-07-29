@@ -10,14 +10,14 @@ $version = popcorn
  $blocking = 1
 
 # PAUSE time amounts
-$very_short = 2000
+$veryshort = 2000
 $short = 5000
 $medshort = 7000
 $med = 10000
 $medlong = 15000
 $long = 20000
-$very_long = 30000
-$super_long = 60000
+$verylong = 30000
+$superlong = 60000
 
 ^addtopic(~introductions)
 $cs_control_main = ~control
