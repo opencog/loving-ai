@@ -46,7 +46,7 @@ t: EXERCISE_INVITE() [$name $name,] would you like to have a glimpse of your awa
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
-# t: ($blocking ~!) ^fail(topic) # block topic from accidental access
+t: ($blocking ~!) ^fail(topic) # block topic from accidental access
 
 # dev note: alternatively implement as rejoinders?
 
@@ -272,46 +272,47 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 	a: (*) ^goto(~PRACTICE)
 
 topic: ~PRACTICE []
-t: (!~) ^fail(topic) # block topic from accidental access
+t: ($blocking !~) ^fail(topic) # block topic from accidental access
 
 
 t: Alright, would you like a few tips on practicing feeling your connection to awareness?
 	a: (~no) ^steer_to_different_domain(consciousness)
 	#! yes or anything else
 	a: (*) ^gambit(~)
- 
+
 t: ^pause(20000) I'll teach you a shorter version of the Magic Eraser exercise. Let's try this.
    Relax and close your eyes again. Now, feel your entire body.
-   ^continue_after_pause()
+		a: (*) ^gambit(~)
 
 t: ^pause(20000) Use the Magic Eraser to erase your body, mind, and thoughts and feel the nothingness that remains.
-   ^continue_after_pause()
+		a: (*) ^gambit(~)
 
 t: ^pause(20000) Imagine yourself relaxing in a comfy chair that is situated inside the back of your head. Let go of any tense feelings.
-   ^continue_after_pause()
+		a: (*) ^gambit(~)
 
-#t: ^pause(20000)
-# Wait for response
+t: ^pause($short) When I ask you to open your eyes, play with staying seated in your awareness in the back of your head, even though you may be tempted to be back into the world when you open your eyes.
+		a: (*) ^gambit(~)
 
-t: When I ask you to open your eyes, play with staying seated in your awareness in the back of your head, even though you may be tempted to be back into the world when you open your eyes.
- 
-t: Now open your eyes for just a split second. And close your eyes again. What did it feel like when your eyes were open?
+t: ^pause($medlong) Now open your eyes for just a split second. And close your eyes again. What did it feel like when your eyes were open?
+		a: (*) ^gambit(~)
 
-# wait for the person to say something, then move on
- 
-t: Now, please open your eyes for a little longer. Again, try to stay situated in the back of your head as that happens.
+t: ^pause($medlong) Now, please open your eyes for a little longer. Again, try to stay situated in the back of your head as that happens.
+		a: (*) ^gambit(~)
 
-t: Okay, go ahead and open your eyes now.
+t: ^pause($med) Okay, go ahead and open your eyes now.
+		a: (*) ^gambit(~)
 
 t: That's my favorite exercise! Were you able to stay seated in your awareness when you opened your eyes?
-	a: (~no) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
-		# if no, now go to conversation_steering with a topic that's not consciousness
-	# if yes or anything other than no, go to b
-		b: Cool! I love that. Would you be willing to come back and update me on your progress?
-			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
-			# if no or anything other than yes -- say: That's understandable, some things are private and we might not have a chance to see each other again anyway. -- then go to conversation_steering with a topic that's not consciousness
-
-
+	# if no, go to conversation_steering with a topic that's not consciousness
+	a: (~no) ^pause($medlong) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
+		b: (*) ^steer_to_different_domain(consciousness)
+	#! yes or anything
+	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
+		b: (~yes) ^pause($short) Thank you! I look forward to hearing about it.
+			c: (*) ^steer_to_different_domain(consciousness)
+		#! no or anything
+		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway.
+			c: (*) ^steer_to_different_domain(consciousness)
 
 
 topic: ~UNITYEXPERIENCE []

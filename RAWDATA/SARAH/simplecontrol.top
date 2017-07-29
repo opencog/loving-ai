@@ -1,3 +1,4 @@
+
 # this function is executed once for every new user chatting with harry
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
@@ -6,10 +7,10 @@ $version = popcorn
 
 # turn on/off accidental topic entry blocking
 # $blocking = null
-$blocking = 1
+ $blocking = 1
 
 # PAUSE time amounts
-$very_short
+$very_short = 2000
 $short = 5000
 $medshort = 7000
 $med = 10000
@@ -161,28 +162,32 @@ t: (^query(direct_v ? chatoutput ? -1 ? @9  ))  # get the sentences  (why is the
 outputmacro: ^pause(^ms)
   \[ ^join(callback= ^ms) \]
 
+
 # ^goto(^topic)
 #  adds ^addTopic for topics that block accidental access
 outputmacro: ^goto(^topic)
-
-	== going to ^topic ==
+	# == going to ^topic ==
 
 	# %inputrejoinder = null #doesn't reset the var
 	#^end(RULE) # nope this stops the function apparently
 
 	^addTopic(^topic)
-
 	^gambit(^topic)
 	%inputrejoinder = null
+
+# dev macro to jump to topic, but clear rejoinder first
+outputmacro: ^g(^topic)
+	^gambit(~clearRej)
+	^goto(^topic)
 
 
 # ^continue_after_pause()
 # continues to next gambit after user says anything or after pause timeout
-# doesn't work, or maybe it's fixed...
+# doesn't work, ^setRejoinder() is failing
 outputmacro: ^continue_after_pause()
 {
 	# a: (*) ^gambit(~)
-	^setRejoinder(CONTINUE_AFTER_PAUSE)
+	^setRejoinder(Pause_Continue.CONTINUE_AFTER_PAUSE)
 }
 
 # for use with ^cointinue_after_pause()
@@ -190,5 +195,11 @@ topic: ~PauseContinue []
 t: (!~) ^fail(topic) # block topic from accidental access
 t: ()
 	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
+
+topic: ~clearRej system keep []
+t: () $nothing = nothing
+
+
+
 
 

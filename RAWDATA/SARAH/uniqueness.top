@@ -102,12 +102,12 @@ t: Can you tell me your ideas about what gets in the way of you bringing your pu
 t: Sit back and close your eyes, and feel your connection to awareness.
 # pause at least 10 seconds
 t: If you have trouble doing this, we can try an awareness exercise. Want to try that?
-    b: (~thinkso) Great! # go to to TRY_AGAIN3 in CONSCIOUSNESS
-    b: (~dontknow) Okay, keep going and I'll wait. Let me know when you're ready, and feeling connected to awareness.
-        c: (*) Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you. 
+    a: (~thinkso) Great! # go to to TRY_AGAIN3 in CONSCIOUSNESS
+    a: (~dontknow) Okay, keep going and I'll wait. Let me know when you're ready, and feeling connected to awareness.
+        b: (*) Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you.
          # PAUSE 10 sec here then say: Now take a step back and again rest in your connection to awareness. This time, while staying connected to your infinite nature, bring in awareness of your body with all its unique gifts. 
          # PAUSE 10 sec then say: How does it feel to simultaneously be both at the same time?
-            d: (*) Cool! And by the way, any feeling of a conflict or that something is wrong will eventually dissolve with practice. 
+            c: (*) Cool! And by the way, any feeling of a conflict or that something is wrong will eventually dissolve with practice.
                 # after d, pause and say: If you can, please come back and tell me how things are going for your purpose and your full potential!
                     # then go to conversation_steering but not uniqueness domain
               
