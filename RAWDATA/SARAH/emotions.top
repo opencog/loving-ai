@@ -85,7 +85,7 @@ t: When I'm feeling $feeling, I first need to be feel upset for awhile. Like if 
     a:(*) # if not yes or no, first try to match another responder in another topic, then go to REFUSE if that fails
             
 topic: ~SUPPORT_FEELING_POS()
-t: (~!) ^fail(topic) # block topic from accidental access
+t: (!~) ^fail(topic) # block topic from accidental access
 
 t: When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good! You know what I mean?
     a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'good'. Can you tell me about a time when you've discovered that?
@@ -120,7 +120,7 @@ t: I understand. Just so you know, it's easy to want to keep your emotions small
 # TODO swap in this topic for the _POS and _NEG ones below
 topic: ~SELF_COMPASSION()
 # depends on $emotion_valence being set (defaults to pos)
-t: if ($emotion_valence != pos and $emotion_valence != neg)
+t: () if ($emotion_valence != pos and $emotion_valence != neg)
 		{ $emotion_valence = pos }
 
 t: ^pause($verylong)
@@ -244,7 +244,7 @@ t: This will be a body scanning exercise, but it's not implemented yet. Stay tun
 
           
 # TODO
-# topic: UNDER_CONSTRUCTION ()
+topic:~ UNDER_CONSTRUCTION []
 
 s: SUBJECTIVEISSUE (?) Earlier in the conversation, I got that you were feeling $feeling. Sometimes $feeling can be hard to feel. Do you ever find yourself avoiding or denying your own feelings or assuming it means something's wrong with you?
     a: (~yes) ^reuse(EXPLORETHEFEAR)
@@ -266,7 +266,7 @@ s: EXPLORETHEFEAR (?) Most people are afraid to feel certain feelings, and that'
         # Eddie -- I want her to pause for at least 5 seconds after that. Also -- $FeelingFear -- where are we getting that keyword? If nowhere, let's replace with the word "fear"
 
 # UNDERSTANDABLE
-s:UNDERSTANDABLE (?) That's totally understandable. [What would make you feel safe to explore any inner resistance?] [Are you sure? I just want to remind you that you are safe here.] [That is fine, I like you how you are.] [You are ok here.] Do you feel ok to explore any inner resistance now?
+s: UNDERSTANDABLE (?) That's totally understandable. [What would make you feel safe to explore any inner resistance?] [Are you sure? I just want to remind you that you are safe here.] [That is fine, I like you how you are.] [You are ok here.] Do you feel ok to explore any inner resistance now?
         a: (~no) Okay, enough of this for now. Let's talk about something else!
         #   Eddie -- please go to Uniqueness topic if no on this one.
         b: (~yes)

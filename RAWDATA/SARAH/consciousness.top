@@ -46,7 +46,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
-t: (~!) ^fail(topic) # block topic from accidental access
+t: (!~) ^fail(topic) # block topic from accidental access
 
 # dev note: alternatively implement as rejoinders?
 
