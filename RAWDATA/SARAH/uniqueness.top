@@ -2,39 +2,55 @@ concept: ~dontknow ("not know" "no idea" "doubt it" "doubt so" "not sure" "don't
 concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
 #I'm thinking we should use these concepts in every domain rather than yes or no, as they are a bit broader, though overlap. What do you think?
 
-topic: ~UNIQUENESS (unique)
+topic: ~UNIQUENESS (unique ) # possibilities: ~character_trait_adjectives ~uniqueness
+# TODO topic name conflict with concept?
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
 # if coming from emotions or consciousness, go to FROM_OTHER_TOPIC_TO_UNIQUENESS
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-# FROM_INTRODUCTION_TO_UNIQUENESS
-# FROM_OTHER_TOPIC_TO_UNIQUENESS
-# FROM_OTHER_TOPIC_TO_UNIQUENESS
-t: Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
+t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
+t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 
-a: (~dontknow) My guess is you may not know what your potential is, or how to live it fully. Let's explore that. # go to MORE_QUESTIONS
-    $FULLPOT = 30
-    # here, if $FULLPOT <100, say this:
-  a: (_*) Okay, great! # go to MORE_QUESTIONS
-    $FULLPOT = _0
-     # $FULLPOT = _0 <-- FULLPOT has to equal their percentage response as a number. Do we have a way to check if they've correctly responded with a number?
-    # and if $FULLPOT >= 100, say this:
-    a: (_*) Wow, that's wonderful! # got to conversation_steering but not to uniqueness as a topic
- 
+t: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
-    
+  a: (_~number) $FULLPOT = _0
+   if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
+   if ($FULLPOT < 100) { $FULLPOT percent. Okay, great!] ^reuse(MORE_QUESTIONS) }
+
+  #! I don't know
+  a: (~dontknow) ^reuse(DONT_KNOW)
+
+  # JULIA what do you want to do if they don't say a number or don't know?
+  # am using DONT_KNOW for this for now
+  a: (*) ^reuse(DONT_KNOW)
+
+s: DONT_KNOW (?) My guess is you may not know what your potential is, or how to live it fully. Let's explore that.
+                 $FULLPOT = 30 ^reuse(MORE_QUESTIONS)
+
 # MORE_QUESTIONS
-t: Before we talk more about human potential and yours in particular, I'd like to ask you one more question. Do feel you're generally present and connected with your awareness?
-  # if they say yes to this and FULLPOT>=80-- then go to LIVINGFULLPOTENTIAL
-  # if they say yes to this and FULLPOT<80-- then go to SENSEOFPURPOSE
-  # if they say no to this -- then go to FROM_OTHER_TOPIC_TO_CONSCIOUSNESS, then return to the logic above for "yes to this"
+t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you one more question. Do feel you're generally present and connected with your awareness?
+    ^keep() ^repeat()  # so we can return here from another topic, e.g., if we get directed to consciousness below. This needs some work to make sure the flow is working optimally
+
+  # if no go to FROM_OTHER_TOPIC_TO_CONSCIOUSNESS, (TODO then return to the logic for "yes to this") JULIA: we'll have more control over this in OpenCog
+  a: (~no) ^reuse(~consciousness.FROM_OTHER_TOPIC_TO_CONSCIOUSNESS)
+  a: (~yes) ^reuse(IM_AWARE)
+  # JULIA defaulting to yes response for now
+  a: () ^reuse(IM_AWARE)
 
   # note -- commented out the portion below -- but this seems like it follows the logic above so maybe it can just be uncommented
   # a: ($FULLPOT>80 ~yes) ^addtopic(~LIVINGFULLPOTENTIAL) ^gambit(~LIVINGFULLPOTENTIAL)
   # a: (~yes) ^addtopic(~SENSEOFPURPOSE) ^gambit(~SENSEOFPURPOSE)
 
+s: IM_AWARE (?)
+    if ($FULLPOT >= 80) { ^goto(~LIVINGFULLPOTENTIAL) }
+    else if ($FULLPOT < 80) { ^goto(~SENSEOFPURPOSE) }
+    # catching if $FULLPOT not set to a number
+    else { ^goto(~SENSEOFPURPOSE) }
+
+# #################################################################33
 
 topic: ~SENSEOFPURPOSE []
 t: (!~) ^fail(topic)

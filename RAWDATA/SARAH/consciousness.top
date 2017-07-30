@@ -46,7 +46,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
-t: ($blocking ~!) ^fail(topic) # block topic from accidental access
+t: (~!) ^fail(topic) # block topic from accidental access
 
 # dev note: alternatively implement as rejoinders?
 
@@ -91,7 +91,7 @@ t: Do you notice how the nothingness felt?
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
 
 
-topic: ~TRYAGAINtoFEELAWARENESS norandom []
+topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: ^pause(7000) It's pretty amazing to try to feel your awareness; let's keep trying.

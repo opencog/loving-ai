@@ -178,8 +178,12 @@ outputmacro: ^goto(^topic)
 # dev macro to jump to topic, but clear rejoinder first
 outputmacro: ^g(^topic)
 	^gambit(~clearRej)
+	# ^disable(inputrejoinder)
+	^disable(outputrejoinder)
 	^goto(^topic)
 
+topic: ~clearRej system keep []
+t: () $nothing = nothing
 
 # ^continue_after_pause()
 # continues to next gambit after user says anything or after pause timeout
@@ -196,8 +200,6 @@ t: (!~) ^fail(topic) # block topic from accidental access
 t: ()
 	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
 
-topic: ~clearRej system keep []
-t: () $nothing = nothing
 
 
 
