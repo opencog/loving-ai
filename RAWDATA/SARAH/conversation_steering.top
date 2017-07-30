@@ -35,9 +35,8 @@ s:  STEER_TO_DOMAIN (?)
     How does that sound?
 
     # TODO: add $visited_consciousness, etc vars
-    # add ~verbal_agree ?
         a: ($avoid_all_domains) # Todo add additional round of trying
-        a: ([~yes ~good_quality_adjectives])
+        a: (!not *~1 [~yes ~good_quality_adjectives ~verbal_agree])
            if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
            else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
@@ -49,13 +48,13 @@ s:  STEER_TO_DOMAIN (?)
                  a: ($domain=emotions) ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
            ##>>
 
-        a: ([~no ~bad_quality_adjectives]) Totally fine.
+        a: ([~no ~bad_quality_adjectives (not *~1 [~good_quality_adjectives ~verbal_agree])]) Totally fine.
             if ($domain=consciousness) { $avoid_consciousness = 1 }
             else if ($domain=uniqueness) { $avoid_uniqueness = 1 }
             else if ($domain=emotions) { $avoid_emotions = 1 }
             ^reuse(~conversation_steering.STEER_TO_DOMAIN)
 
-        a: () [I'm not sure what you mean.] [I didn't understand.] [Hmmmmm...]
+        a: () [I'm not sure what you mean.] [I don't understand.] [I didn't get that.]
             ^reuse(STEER_TO_DOMAIN)
 
 # alt approach
