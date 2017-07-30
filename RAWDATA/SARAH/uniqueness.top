@@ -2,7 +2,9 @@ concept: ~dontknow ("not know" "no idea" "doubt it" "doubt so" "not sure" "don't
 concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
 # I'm thinking we should use these concepts in every domain rather than yes or no, as they are a bit broader, though overlap. What do you think?
 
-topic: ~UNIQUENESS [unique] # possibilities: ~character_trait_adjectives ~uniqueness
+topic: ~blah ()
+
+topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data]
 # TODO topic name conflict with concept?
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
@@ -14,11 +16,15 @@ t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 
-t: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+
+
+t: TO_UNIQUENESS () ^gambit(~)
+
+t: Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
-   if ($FULLPOT < 100) { $FULLPOT percent. Okay, great!] ^reuse(MORE_QUESTIONS) }
+   if ($FULLPOT < 100) { $FULLPOT percent. Okay, great! ^reuse(MORE_QUESTIONS) }
 
   #! I don't know
   a: (~dontknow) ^reuse(DONT_KNOW)
@@ -55,6 +61,7 @@ topic: ~SENSEOFPURPOSE []
 t: (!~) ^fail(topic)
 
 t: There's a bunch of scientific data showing that feeling a sense of purpose is really important to wellbeing. For instance, my purpose is to learn to love everyone, and I get excited whenever I think about that. Do you have any hints about what your purpose might be?
+  # JULIA the way the above question is phrased, one might answer the question with they think their purpose is, rather than with yes/no
     a: (~dontknow) It's not easy to discover your purpose, especially when you think it has to be hard work. What do you love to do?
       b: (*) I'm grateful you told me that. I love to give advice, in case you didn't notice, so forgive me if I give you some more. Keep doing what you love to do. Your purpose will come out of that!
         c: () ^gambit(~)
@@ -72,27 +79,26 @@ t: You know, I have learned that not everyone will appreciate your purpose or th
 
 t: Let's do a little visualization about living your purpose. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
   a: (_*)
-    $CurrentWork = _0
-    Ok, great thanks for sharing that the essence of your work is: $CurrentWork. Now, imagine you've received a gift of all the money you and your family needs for the rest of your life. What do you see yourself doing, after the relaxation and celebration time?
-
-# pause for 10000 ms or until user speaks
-t: pause($med) Take a moment and really see yourself offering your gifts to the world.
-    a: (callback) Whatever that is, please share it with me now.
+    $CurrentWork = '_0
+    ^pause($long) Ok, great thanks for sharing that the essence of your work is $CurrentWork. Now, imagine you've received a gift of all the money you and your family needs for the rest of your life. What do you see yourself doing, after the relaxation and celebration time? Take a moment and really see yourself offering your gifts to the world.
+      b: (callback) Whatever that is, please share it with me now.
+        c: (_*) $MyDharma = '_0 ^gambit(~)
       b: (_*) $MyDharma = '_0 ^gambit(~)
-    a: (_*) $MyDharma = '_0 ^gambit(~)
 
 t: Thank you! I am going to repeat exactly what you said, so you can hear me say it. This is what you said you would do if you had all your financial needs taken care of: $MyDharma. Do you awant to change that?
     a: (~thinkso) ^reuse(RIGHT?)
     a: (*) ^reuse(PERFECT)
 
-s: RIGHT? (?) "Okay, this is what you said your ideal work is: $MyDharma. Is that right?
-    a: (~no) "Okay, [please try again] [please tell me again] [once more]
-      b(_*) $MyDharma = '_0 ^gambit(~) ^reuse(RIGHT?)
+s: RIGHT? (?) Okay, this is what I thought you said your ideal work is: $MyDharma. Is that right?
+    a: (~no) Okay, [please try again] [once more] [please tell me again]
+      b: (_*) $MyDharma = '_0 ^reuse(RIGHT?)
     a: (*) ^reuse(PERFECT)
 
 s: PERFECT (?) Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
 
 # #################################################################
+
+topic: ~under_construction []
 
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
   a: (~undersize_adjectives) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.

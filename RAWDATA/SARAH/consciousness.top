@@ -132,17 +132,19 @@ t: Do you notice how you felt this time?
   # if anything but yes or no... TODO first try to attempt responder match in another topic, then go to ~TRYAGAIN2
   a: (*) ^goto(~TRYAGAIN2)
 
-
+# TODO
 topic: ~TRYAGAIN2 []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: Let's do an exercise to help you feel your awareness. Are you up for that?
-
-# if no -- say: It's really worth trying, and it's a different approach so it might work. Okay?
-	# if no to that, go to Conversation_Steering document, to some topic other than consciousness
-	# if yes to either, continue
+t: Let's try a different exercise to help you feel your awareness. Are you up for that?
+	a: (~no) It's really worth trying, and it's a different approach so it might work. Okay?
+	  b: (~no) ^steer_to_different_domain(consciousness)
+	  b: () ^gambit(~)
+	a: () ^gambit(~)
  
-t: Okay, wonderful. First, sit quietly with your eyes closed for a moment. 
+t: Okay, wonderful. First, sit quietly with your eyes closed for a moment.
+
+t: Need to add the automatic progression to this exercise but you can keep pushing enter to go on through in the meantime. (Ignore the man behind the curtain.)
 
 t: Now, feel your face.
  

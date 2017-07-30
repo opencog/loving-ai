@@ -1,5 +1,5 @@
-concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful)
-concept: ~positive_emotion (~feeling_happy ~feeling_attracted)
+concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives)
+concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
@@ -44,7 +44,7 @@ u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds li
 # could use u: xxx (?), but then loose potential use as a gambit
 t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
-	a: (~positive_emotion) ^respond(FROM_INTRO_TO_POS_EMOTIONS)
+	a: (~positive_emotion) ^respond(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 	a: (~negative_emotion) ^respond(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
@@ -57,7 +57,7 @@ t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) I am trained to discuss emotion
 
 t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
-	a: (~positive_emotion) ^respond(FROM_INTRO_TO_POS_EMOTIONS)
+	a: ([~positive_emotion good]) ^respond(FROM_INTRO_TO_POS_EMOTIONS)
 	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 	a: (~negative_emotion) ^respond(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
@@ -108,7 +108,6 @@ t: When I'm feeling $feeling, I like to magnify it. Life is too short to ignore 
 
 topic: ~REFUSE ()
 t: I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
-	# TODO # EDDIE -- here, if $feeling is pos, go to ~SELF_COMPASSION_POS, otherwise NEG
 	a: ([~yes ~verbal_agree]) [$emotion_valence=pos ^gambit(~SELF_COMPASSION_POS) ]
 							  [$emotion_valence=neg ^gambit(~SELF_COMPASSION_NEG) ]
 							  [ ^gambit(~SELF_COMPASSION_POS) ]
@@ -220,10 +219,10 @@ t: This will be  a body scanning exercise, but it's not implemented yet. Stay tu
           # after attempting a match to a responder in another topic, anything other than yes or no at a, go to Uniqueness Topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
 # Todo
 topic: ~BODY_EXERCISE_POS ()
-t: This will be a body scanning exercise, but it's not implemented yet. Stay tuned!
 
 # EDDIE -- commented this out because its half-CS, half-English
-# t: You know what we could try? Let's do this. Just scan your body mentally and choose any part that feels really good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel?
+t: You know what we could try? Let's do this. Just scan your body mentally and choose any part that feels really good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel?
+t: This will continue the body scanning exercise, but it's not implemented yet. Stay tuned!
   # Pause and wait for response.
   #   (*) Okay, while you're with that feeling, let's magnify that feeling with your $feeling feeling. Imagine that. 
     # [PAUSE]
@@ -244,7 +243,7 @@ t: This will be a body scanning exercise, but it's not implemented yet. Stay tun
 
           
 # TODO
-topic:~ UNDER_CONSTRUCTION []
+# topic: ~UNDER_CONSTRUCTION []
 
 s: SUBJECTIVEISSUE (?) Earlier in the conversation, I got that you were feeling $feeling. Sometimes $feeling can be hard to feel. Do you ever find yourself avoiding or denying your own feelings or assuming it means something's wrong with you?
     a: (~yes) ^reuse(EXPLORETHEFEAR)
@@ -273,3 +272,6 @@ s: UNDERSTANDABLE (?) That's totally understandable. [What would make you feel s
 
 s: NOTRESISTING (?) Very nice! It's wonderful that you’ve learned to embrace your emotions.
     # say: Okay, let's talk about your potential in the world! # and go to uniqueness.
+
+# TODO "wonderful" (by itself) gets substitued with ~yes as an introjection, so doesn't get picked up as postive emotion in answer to "how are you feeling?"
+# see ^removeinternalflag ( word value ) for potential solution
