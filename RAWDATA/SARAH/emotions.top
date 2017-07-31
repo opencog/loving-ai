@@ -16,28 +16,31 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 
 #! I feel sad.
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
-u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
-    a: (~yes) That sounds rough. I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
+# I think I resolved this. See what you think!
+u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are generally noticing some negative feelings? Is that right?
+    a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$emotion_valence = neg
-        b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings. Let's just do that for a moment.
+        b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
         	# pause for 10 seconds, then go to ~SUPPORT_FEELING_NEG
         	c: (*) ^goto(~SUPPORT_FEELING_NEG)
     # If anything other than yes, go to conversation_steering  after saying the above line
     # JULIA, wondering what else we can do here. E.g., response "I've been really pissed off" would send them to different domain
-    a: (*) Ok. Sorry, I think I got that wrong. ^steer_to_different_domain(emotions)
+    # Okay, good point -- what about "I get the sense it would be useful to talk some more about your feelings, is that right?" then if yes go to SUPPORT_FEELING_NEG and if no go to another domain
+    a: (*) Ok. Sorry, I think I got that wrong.  ^steer_to_different_domain(emotions)
 
 
 #! I'm mostly pretty joyful.
-# JULIA I changed the respons below, but see what you think. same issue as above with "right now"
-# u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are feeling $feeling right now?
-u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you've been feeling $feeling?
-    a: (!not [~yes ~feeling_happy]) That sounds pretty nice! I'm curious if this is a common feeling for you? Also where you might feel $feeling in your body?
+# JULIA I changed the respons belowe, but see what you think. same issue as above with "right now"
+# okay, see my fix and let me know what you think
+u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are generally noticing some positive feelings?
+    a: (!not [~yes ~feeling_happy]) That sounds pretty nice! Putting aside your thoughts about your feelings for a moment, what part of your body might feel the best right now?
     	$emotion_valence = pos
-        b: BE_PRESENT_WITH_FEELING (*) ^pause($medlong) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, whether they are positive or negative. Let's do that for a moment.
+        b: BE_PRESENT_WITH_FEELING (*) ^pause($medlong) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, and it can help your whole body feel great. Let's do that for a moment.
         	# pause for 10 seconds, then go to SUPPORT_FEELING_POS
 			c: (*) ^goto(~SUPPORT_FEELING_POS)
     # JULIA, same as above, wondering what else we can do here. E.g., response "I've just been overjoyed all the time" would send them to different domain
-    a: (*) Ok. Sorry, I think I got that wrong. ^steer_to_different_domain(emotions)
+     # Okay, good point -- what about "I get the sense it would serve you to magnify your positive feelings, do you want to try?" then if yes go to SUPPORT_FEELING_POS and if no go to another domain
+ 	a: (*) Ok. Sorry, I think I got that wrong. ^steer_to_different_domain(emotions)
 
 
 # FROM_STEERING_TO_EMOTIONS
@@ -64,6 +67,7 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 	a: (*) ^rejoinder(BE_PRESENT_WITH_FEELING)
 
 #JULIA - let's talk about the best way to deal with repeating dialogue with variations sometime soon. i think the sections below would have taken me a lot less time to do if you had written out the logic in english rather that CS code, or in coding style using an $emotion-valence variable to indicate positive or neg emotion
+# EDDIE -- Sure, let me know what works for you and that will be what I do
 topic: ~SUPPORT_FEELING_NEG ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
