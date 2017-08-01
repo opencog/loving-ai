@@ -166,7 +166,7 @@ u: (about computer) That's quite a broad subject. What do you want to know about
 u: (_~computer_scientist ^queryforsubject(_0 exemplar @0 ) ) ^keep() [that's a name I love _0 as pretty much the progenitor of A I and computer science. ] [_0 is one of the greatest mathematicians, and founders of computer science, and Artificial Intelligence in many ways. ] [Did _0 invent the computer? I would say so ] ^sexed(_0 wasn't wasn't weren't ) ^sexed(_0 he she they ) known as ^POS(DETERMINER @0subject)? 
 
 u: (_~computer_scientist ) ^keep() [I know that name _0 a great founder of computer science. ] [_0 in many ways the first computer scientist. ] [ _0 one of the inventors of artificial intellgence and computers, a true hero, right? ] 
-
+F
 table: ^favetable(~computers )
  _ [URL site website] "Slashdot.com because it good tech stories."
  _ OS "Linux is the best operating system because it's free and open source."

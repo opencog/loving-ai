@@ -32,7 +32,7 @@ s:  STEER_TO_DOMAIN (?)
     	a: () talk about whatever you want. $all_domains_avoided = 1
 ##>>
 
-    [!$all_domains_avoided How does that sound?]
+    [!$all_domains_avoided How does that sound?] [!$all_domains_avoided  What do you think?] [ ]
 
     # TODO: add $visited_consciousness, etc vars
         a: ($all_domains_avoided) # Todo add additional round of trying
@@ -41,7 +41,7 @@ s:  STEER_TO_DOMAIN (?)
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
            else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
 
-           ##<<  not working
+           ##<<  doesn't work
             ^refine()
                  a: ($domain=consciousness) ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS)
                  a: ($domain=uniqueness) ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS)

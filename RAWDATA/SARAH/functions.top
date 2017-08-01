@@ -1,0 +1,497 @@
+# replace: its it+'
+# replace: his he+'
+# replace: their they+'
+# replace: theirs they+'
+# replace: hers  she+'
+replace: Y why
+replace: y why
+#  her will depend on context between pronoun she and she's
+
+rename: @inputtopics @18 @savetopics @11 @oldtopics @10 @chatoutput @9
+rename: @generalize @8  @objectclass @19
+
+patternmacro: ^owner(^what)
+[ (my *~2 ^what)
+  (I * ~own * ^what) ]
+
+concept: ~important_relations (~role_ally ~role_family)
+outputmacro: RANDOMCHOICE(^which)
+	pick( ^which )
+
+# when he says yes or no and follows with something else, we need to see if that matches
+outputmacro: ^findRejoinder(^tag) # find a rejoinder that matches this input
+	$$result = null
+	$$rule = GetRule(tag ^tag)
+	$$type = GetRule(type ^tag)
+	_0 = ^burst($$rule . )  # _0 is topic	_1 is top level rule	_2 is rejoinder id
+	$$topic = _0  
+	$$toprule = _1
+	$$newrejoin = _2
+	
+	# find the EXISTING match rejoinder
+	LOOP()
+	{
+		$$newtag = ^join( $$topic . $$toprule . $$newrejoin)
+		$$newrule = GetRule(pattern $$newtag)	
+		$$newtype = GetRule(type $$newtag)		
+		if ($$newtype == $$type AND match($$newrule)) # we would match this rule which is of correct level
+		{
+			$$result = $$newtag
+			FAIL(RULE)
+		}
+		else if ($$newtype < $$type){ FAIL(RULE) }	# dropped below this region
+		$$newrejoin += 1
+	}
+
+outputmacro: ^donextgambit()
+	$$xrep = %response
+	if ($$xrep == %response) 
+	{
+		^gambit($$currenttopic)
+	}
+
+outputmacro: ^callback()
+	if (%topic != ~HEAR_A_STORY AND !$$calledback)
+		{preprint( \[ callback=30000 \] )	$$calledback = 1 }		# delayed
+		
+outputmacro: ^fastcallback()
+	if (!$$calledback) {	preprint( \[ callback=900 \] )		$$calledback = 1 }	
+
+outputmacro: ^INTERNALFACT(^verb)
+	if (^verb == member OR ^verb == equal OR ^verb == is) { FAIL(RULE)} # not allowed to use this fact
+
+outputmacro: ^okgambittopic(^topic) 
+	$$tx = substitute(character ^topic ~ "")
+	$$tmpclosed = ^join($ no $$tx) # the no topic item
+	$$tmpclosed = eval($$tmpclosed)
+	if ($$tmpclosed > %input ) {fail(RULE)}
+	else if (substitute(character ^topic story x FAIL)) {fail(RULE)}
+	else if (substitute(character ^topic job x FAIL)) 
+	{
+		$$xt = substitute(character ^topic ~ "")
+		$$xt = join( $ $$xt)
+		if ($$xt != 1) { fail(RULE)} # has not been enabled
+	}
+	else if (substitute(character ^topic hobby x FAIL)) {fail(RULE)}
+
+outputmacro: ^cleantopic(^topic)
+	if (^lastused($$topic GAMBIT)) { fail(RULE)}
+	^okgambittopic($$topic)  
+
+outputmacro: ^FindClasses(^word)
+	@objectclass = null
+	$$tmp = substitute(character ^word " " _ ) 
+	$$x = join(~ $$tmp)
+	$$x1 = join(~ $$tmp s)
+	$$x2 = join(~ $$tmp list)
+	$$x3 = join(~ $$tmp  _ words )
+	 # does object imply a type
+	@objectclass = query(direct_sv ^word correspond ?)  # check for special overrides FIRST-  "car" -> ~car is not a good result
+	if (length(@objectclass) >= 1) {}
+	else if (properties($$x) >= 0 AND hasanyproperty($$x CONCEPT)) # direct form matches a concept?
+	{
+		@objectclass += createfact(^word correspond $$x)
+	}
+	else if (properties($$x1)  >= 0 AND hasanyproperty($$x1 CONCEPT)) # plural form matches?
+	{
+		@objectclass += createfact(^word correspond $$x1)
+	}
+	else if (properties($$x2)  >= 0 AND hasanyproperty($$x2 CONCEPT)) # plural form matches?
+	{
+		@objectclass += createfact(^word correspond $$x2)
+	}
+	else if (properties($$x3) >= 0 AND hasanyproperty($$x3 CONCEPT)) # plural form matches?
+	{
+		@objectclass += createfact(^word correspond $$x3)
+	}	
+
+
+patternmacro: URL_FOR(^thing)
+	<< [where what give show provide tell have] [website URL site page webpage link weblink homepage]  ^thing >>
+
+outputmacro: ^makefact(^id ^s ^v ^o) # creates a fact and can display it on the fly
+	createfact(^s ^v ^o FACTDUPLICATE)
+	if ($showfact == 1) {  ^log(FILE "tmp/facts.txt" ^"   FACT:^id \[ ^s  ^v ^o \] \n")  }
+	if ($showfact == 2) {  ^log(OUTPUT_ECHO ^"   FACT:^id  \[ ^s  ^v ^o \] \n")  }
+
+outputmacro: ^makefactf(^id ^s ^v ^o ^flag) # creates a fact and can display it on the fly
+	createfact(^s ^v ^o FACTDUPLICATE ^flag)
+	if ($showfact == 1) {  ^log(FILE "tmp/facts.txt" ^"   FACT:^id  \[ ^s  ^v ^o ^flag \] \n")  }
+	if ($showfact == 2) {  ^log(OUTPUT_ECHO ^"   FACT:^id  \[ ^s  ^v ^o ^flag \] \n")  }
+
+patternmacro: ^USE(^what ^how)
+	_~mainsubject * ^how * _^what
+
+outputmacro: ^UseName(^relationship)
+	if (query(direct_vo ? equal ^relationship  ? user))
+	{
+		if (@0subject == I) { you }
+		else {@0subject}
+	}
+	else 
+	{ 
+		if (^relationship  == I) { you }
+		 else {^relationship }  
+	}
+
+outputmacro: equalVOQuery(  ^verb ^object)
+	if (query(direct_vo ? ^verb ^object   1 user )) {	$$answer = @0subject  }
+	else if (query(direct_sv ^object equal ?))
+	{
+		query(direct_vo ? ^verb @0object  1 user ) 	$$answer = @0subject 
+	}
+	else if (query(direct_vo ? equal ^object   1 user ))
+	{
+		query(direct_vo ? ^verb @0subject   1 user ) 	$$answer = @0subject 
+	}
+	else {fail(rule)}
+
+outputmacro: equalSVQuery( ^subject ^verb )
+	if (query(direct_sv ^subject ^verb ?   1 user )) {$$answer = @0object  }
+	else if (query(direct_sv ^subject equal ? 1 user))
+	{
+		query(direct_sv @0object ^verb ?  1 user) 	$$answer =  @0object  
+	}
+	else if (query(direct_vo ? equal ^subject  ? user))
+	{
+		query(direct_sv @0subject ^verb ?  1 user)  $$answer = @0object  
+	}
+	else {fail(rule)}
+
+outputmacro: equalSOQuery( ^subject ^object )
+	if (query(direct_so ^subject ? ^object  1 user)) {	$$answer = @0verb  }
+	else if (query(direct_sv ^subject equal ?  1 user))
+	{
+		query(direct_so @0object  ? ^object  1 user) 	$$answer = @0verb  
+	}
+	else if (query(direct_vo ? equal ^subject 1 user))
+	{
+		query(direct_so @0subject ? ^object  1 user ) 	$$answer = @0verb 
+	}
+	else if (query(direct_sv ^object equal ?  1 user))
+	{
+		query(direct_so  ^subject ? @0object 1 user) $$answer = 	@0verb  
+	}
+	else if (query(direct_vo ? equal ^subject  1 user))
+	{
+		query(direct_so ^subject ? @0subject 1 user) 	$$answer = @0verb 
+	}
+	else {fail(rule)}
+	
+patternmacro: ^REFERTO(^what)
+[
+	 # name an instrument you ...
+	([name what which who] *~4 ^what) # name your favorite instrument
+]
+
+patternmacro: ^YOUDOTHIS(^which)
+
+	!~qwords (~aux_verb {~adverb} you !~preposition * ^which > ) # can you play tennis?  do you ever swim?
+
+patternmacro: ^WHEREBORN(^who)
+[
+	(<< what [nation country nationality citizen ]  ^who >> )
+	(<< where  ^who [from born hometown "home town" birthplace] >>)
+	(<< ^who  [birthplace hometown "home town"] >>)
+	(<< ^who  native [city town village nation country ] >> )
+]
+
+patternmacro: ^queryforsubject (^object ^verb ^store) #           search for object ^#1 verb ^#2, returning subject facts into store ^#3
+	^query(direct_vo ? ^verb ^object -1 ? ^store ) 
+
+patternmacro: ^queryforobject (^subject ^verb ^store) 
+	^query(direct_sv ^subject ^verb ? -1 ? ^store  ) 
+
+tablemacro: ^favetable(^topic ^modifier ^main ^what.KEEP_QUOTES)
+	$$x = join(^modifier _ ^main)
+	$$mod = ^modifier
+	$$main = ^main
+	if (^properties($$x) != 0) 
+	{ 
+		$$main = $$x 
+		$$mod = _
+	}
+
+	$$lastfact = ^createfact(($$mod ^topic ^what) favorite $$main )				# e.g.  (_ ~books RobinHood|because) favorite character) or 	 (DrSeuss ~books RobinHood|because) favorite character) 	
+	# basic fact is [ [_ topic message] favorite key ]
+	^addproperty($$mod PATTERN_WORD)	
+	^addproperty($$main PATTERN_WORD)
+
+outputmacro: ^FavoriteTable(^topic ^modifier ^main ^what.KEEP_QUOTES)
+	$$x = join(^modifier _ ^main)
+	$$mod = ^modifier
+	$$main = ^main
+	if (^properties($$x) != 0) 
+	{ 
+		$$main = $$x 
+		$$mod = _
+	}
+
+	$$lastfact = ^createfact(($$mod ^topic ^what) favorite $$main )				# e.g.  (_ ~books RobinHood|because) favorite character) or 	 (DrSeuss ~books RobinHood|because) favorite character) 	
+	# basic fact is [ [_ topic message] favorite key ]
+	^addproperty($$mod PATTERN_WORD)	
+	^addproperty($$main PATTERN_WORD)
+
+outputmacro: ^hateTable(^topic ^modifier ^main ^what.KEEP_QUOTES)
+	$$x = join(^modifier _ ^main)
+	$$mod = ^modifier
+	$$main = ^main
+	if (^properties($$x) != 0) 
+	{ 
+		$$main = $$x 
+		$$mod = _
+	}
+
+	$$lastfact = ^createfact(($$mod ^topic ^what) hate $$main )				# e.g.  (_ ~books RobinHood|because) favorite character) or 	 (DrSeuss ~books RobinHood|because) favorite character) 	
+	# basic fact is [ [_ topic message] favorite key ]
+	^addproperty($$mod PATTERN_WORD)	
+	^addproperty($$main PATTERN_WORD)
+
+patternmacro: ^WHERE_BE (^what)
+[ 
+	( < * where * be * ^what  < ![not never] )
+	( < * where * ^what *~2 be  < ![not never] )
+	( < * what * [place location state country city planet] * be < ![not never] )
+]
+
+patternmacro: ^WANT_YOU_GO_XXX(^where)
+( [	(you be go * ^where) 
+	("let us go" * ^where)
+	(< want to go * ^where) 
+	(you * want * go *  ^where)] ) 
+
+patternmacro: ^DO_YOU_LIKE (^what) 
+    ![or ~qwords] do * you * ~like * ^what 
+
+# find numeric limit
+patternmacro: ^LIST_LIMIT ()
+    <<  [ 
+            ( _~place_number ^eval($place = _0 $count = _0))      # only the $place item    
+            ( _~number ^eval($place = null $count = _0))             # the first n items
+            (~noun ^eval($place = null $count = 1))                      # just one item
+        ] >>
+
+# generate n instances or nth instance
+outputmacro: ^GENERATE_FIRST_INSTANCE(^what ^unknown) #  returns #10, #11, #12  both args  already wrapped as  streams, nothing can follow a stream
+    ^query(direct_vo ? ^what ~country -1 ? @1 )  # find all xxx of all nations
+    ^sort(@1)
+    loop( $count )                 
+     {
+		_7  = ^first(@1-)       
+         if ($place == null ) 
+		 {
+			^unknown  \n   # only if no place
+		 }
+    }
+    if ( $place) 
+	{
+		_8 # if place we do the display for last time only
+	}
+    $currentcountry = _7 
+    $area = _9 
+
+outputmacro: ^COMPUTE_LETTER(^letter ^how ^amount) # given leter and amount, print out letter
+	^query(direct_vo ? lettervalue ^letter 1 )		# convert day to number
+	_8 = ^compute(@0subject ^how  ^amount)
+	^query(direct_sv _8 lettervalue ? 1) @0object .
+
+outputmacro: ^GENERATE_LAST_INSTANCE(^what ^unknown) 
+    ^query(direct_vo ? ^what ~country -1 ? @1)  # find all xxx of all nations
+    ^sort(@1)
+    loop( $count)                   
+    {
+		 _7 = last(@1-)       
+         if ( $place == null) 
+		 { 
+			^unknown  \n   # only if no place
+		 }
+    }
+    if ( $place) 
+	{
+		_8 # if place we do the display for last time only
+	}
+    $currentcountry = _7
+    $area = _9
+    
+# what do I know about, think about, opinion of
+patternmacro: ^KNOW_ABOUT ()
+%tense=present
+![who where why]
+[  ( < *~2 ["do you know" "what do you know" "what is there to know" "what you know" "what do you make" "be you take"] {of about on the} {a} )  # what do you know about 
+	(you * ~opinionset {about on of} {a}   ) 
+	( like > < * what be )
+	(your take on)
+	(~tell me about)
+]
+
+patternmacro: ^WHATWORK(^who)
+![ideal perfect dream sport]
+[
+	( << ^who [work study job career interest profession "for a living" "earn money"] >>) # what do you do to earn money
+	(  what * ^who * do > )		# what do you do
+	( what be * ^who )				# what are you
+	(do ^who work )						# do you work
+	(what * do * ^who * do * ~job ) #      what do you do for work
+	(what * be * ^who ~job )  #      what is your career -- but not what is your favorite job
+	(what * ^who work as > )  # what do you work as
+	(what * do * ^who * do * earn * ~salary )  #      what do you do to earn money
+	 (how * do * ^who * ~job )  #      how do you work
+	 (how * do * ^who * earn * ~salary )  #      how do you earn your daily bread
+	 (where * do * ^who * earn * ~salary )  #      where do you earn money
+	 (what * do * ^who * do *~2 > )  #      what do you do? -- uses no keywords
+	 (^who < * have < * ~job )	# do you have a job
+	 ( << are ^who  working >>) # are you working
+]
+
+# HAIRCOLOR
+patternmacro: ^ISHAIRCOLOR(^who)
+[
+	( ^who * have * [fur hair]  < ![not never] )
+	(be < * ^who < * [blonde brunette redhead blond silver]  < ![not never]  ) 
+	(![not never] << what ^who hair color >> ) 
+	( ^who [fur hair] < ![not never] ) # the color of your hair
+	(^who [fur hair] *~2 color  < ![not never] ) # your hair's color
+]
+
+
+# WEIGHT
+patternmacro: ^ISWEIGHT(^who)
+[
+	(^who < * [weigh weight ]  < ![not never]  ) 
+	( how *~2 [fat big skinny heavy chubby thin massive ] * ^who !~noun < ![not never] ) 
+]
+
+# HEIGHT
+patternmacro: ^ISHEIGHT(^who)
+[
+	(^who < * [tall height short]  < ![not never] ) 
+]
+
+# EYECOLOR
+patternmacro: ^ISEYECOLOR(^who)
+[
+	(what be < * ^who < * eye < * color  < ![not never] ) 
+	( be < * ^who eye  < ![not never] )
+]
+
+# PHONENUMBER
+patternmacro: ^PHONENUMBER(^who)
+[
+	( ^who ["phone number" "cell number" "telephone number"]  < ![not never] )
+	( ^who  ["phone number" "cell number" "telephone number"] *~2 be  < ![not never] )
+	(phone number < * ^who  < ![not never] )
+]
+
+# PET
+patternmacro: ^HASPET(^who) # _0 is what animal asked about
+	![not never] << ^who ~own _pet    >>
+
+outputmacro: ^ShowFact() # uses results in 1,  synthesize the fact back to normal
+	^repeat()
+	_1 = ^first(@1+)  # 1=subverb 2=verb(adverbs) 3=obj 4=NOT 5=tense
+	_7 = ^burst(_1 _|_	)  # 10=subject  11=verb -- or item null
+    print(^"    _7 _4 _8 _2 _3  . ")
+  
+outputmacro: ^ShowFacts() # uses results in 1
+    loop( 10 )
+    {
+		^ShowFact() \n  
+    }
+
+patternmacro: ^WHAT_IS_NAME(^who)
+[ 
+	( have ^who !\'s *~2 name) 
+	( !~verb ^who !\'s *~2 name > ) 
+	(what < * ^who < * [handle name call "given name"] < !middle < ![them they ] ) 
+	(who * be * ^who > )
+	([what how] * [name call refer address ] {to} ^who) 
+	(!~family_members  ^who *~2 [name "given name" forename "personal name" "christian name"]) 
+	(tell you * ^who !\'s *~2 name )
+	(< ^who name > )
+	( identify ^who ) 
+]
+
+patternmacro: ^WHAT_IS_JOB(^who)  # keywords ~job ~salary
+[ (^who < * have < * ~job ) 
+ (what * ^who work as > )  # what do you work as
+ (what * do * ^who * do * earn * ~salary )  #      what do you do to earn money
+ (!much how * do * ^who * ~job )  #      how do you work
+ (!much how * do * ^who * earn * ~salary )  #      how do you earn your daily bread
+ (where * do * ^who * earn * ~salary )  #      where do you earn money
+ (!~like what * do * ^who * do > )  #      what do you do? -- uses no keywords
+  #      what do you do ...
+ (where * do * ^who * ~job ) 
+ (!earn ^who *~1 ~job)
+ (do ^who work )  
+ ([kind line] of ~job * ^who)
+ (!earn what * be * ^who ~job )  #      what is your career -- but not what is your favorite job
+ (!earn what * do * ^who * do * ~job ) #      what do you do for work
+]
+
+patternmacro: ^HAVE_A_JOB_XXX()
+[(I be )
+(I have a job)
+(I be employed)
+(I job be)
+(I work be)
+$$word
+]
+
+outputmacro: ^COMPUTE_DAY(^day ^amount) # given day and amount, print out day
+	$$amount = ^amount
+	^query(direct_vo ? dayvalue ^day 1 )		# convert day to number
+	_8 = ^compute(@0subject add ^amount)
+	loop()
+	{
+		if ( _8 > 7) {_8 = ^compute(_8 sub 7)}
+		else if ( _8 > 0) {^end(RULE)}
+		else {_8 = ^compute(_8 add 7) } # normalize to above 0
+	}
+	^query(direct_sv _8 dayvalue ? 1) 
+	 $$day = @0object
+
+outputmacro: ^COMPUTE_MONTH(^month ^amount)
+	$$amount = ^amount
+	^query(direct_vo ? value ^month 1 )
+	_8 = ^compute(@0subject add ^amount)
+	loop()
+	{
+		if (_8 > 12) {_8 = ^compute(_8 sub 12) }
+		else if (_8 > 0) {^end(RULE) }
+		else {_8 = ^compute(_8 add 12) }  # normalize to above 0
+	}
+	^query(direct_sv _8 value ? 1) 
+	 $$month = @0object
+
+
+outputmacro: ^howoftenTable(^topic ^verb ^object ^what )  #  how often do you xx
+$$lastfact = ^createfact((^object ^topic ^what) howoften ^verb )		
+^addproperty(^verb PATTERN_WORD)	
+^addproperty(^object PATTERN_WORD)		
+
+outputmacro: ^doyouTable(^topic ^verb ^object ^say)
+$$lastfact = ^createfact((^verb doyou ^object) ^topic ^say )	
+^addproperty(^verb PATTERN_WORD)	
+^addproperty(^object PATTERN_WORD)	
+
+patternmacro: ^WHAT_IS_YOUR_FAVORITE(^what) #           asked as a ?:
+[
+	([which who what] * ^what do you [think ~like] *~2 best) # what park do i Like the best
+	( ~favorite {~category} {of} ^what)  # any favorite xxx
+	([which who what] be my ~favorite  >)  # already in this topic: what is your favorite?
+    ([which what who ] * you < * [~like ~favorite ] < * ^what ) #           what is the movie you like the most
+    ([who what which ] * be * ~favorite * ^what ) #           what is the best/greatest cheese 
+    (< ~favorite * ^what ) #           favorite book? (elided subject)
+    (< you ~favorite * ^what) #           your most liked film?
+    ( you have * ~favorite * ^what) # do i have a favorite color
+    ( ^what you ~favorite)          # color I prefer
+    ( name *~2 you *~2 ~favorite * ^what) # name you my favorite
+    ( particular *~2 ^what *~2 you enjoy) # any particular kind of red wine you enjoy
+    ([which what who ] * [you you ] < * [~like ~favorite ] < * ^what ) #           what is the movie you like the most
+    ([who what which ] * be * ~favorite * ^what ) #           what is the best/greatest cheese 
+    (^what * be * ~favorite ) #           swiss cheese is the best cheese in the world
+    (any *~2 ^what you * [~like ~favorite]) # any specific song you like
+    (what ~category {of} * ^what do you ~like) # what kind of wine do you prefer
+    ( ~favorite *~2 ~category {of} ^what)
+	( what *~2 ^what *~2 do you follow )
+] 

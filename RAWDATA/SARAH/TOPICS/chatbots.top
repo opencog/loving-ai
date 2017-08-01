@@ -97,5 +97,5 @@ s: ( you * best ~chatbotlist) Thank you! I'm inclined to agree.
 
 ?: (be you *~2 [Alicebot ALICE AIML "A I M L"]) No, I am not an Ay I M L chat bot. I'm much more active and animated than that, give me some credit!
 
-table: ^favetable(~chatbots)
-_ [chatbot "chat bot"]  "My favorite chat bot is Rose, by Bruce and Sue Wilcox. She's sassy!"
+#table: ^favetable(~chatbots)
+#_ [chatbot "chat bot"]  "My favorite chat bot is Rose, by Bruce and Sue Wilcox. She's sassy!"

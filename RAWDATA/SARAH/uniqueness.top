@@ -14,22 +14,18 @@ t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 
-
-
-t: TO_UNIQUENESS () ^gambit(~)
-
-t: Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+t: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
    if ($FULLPOT < 100) { $FULLPOT percent. Okay, great! ^reuse(MORE_QUESTIONS) }
 
   #! I don't know
-  a: (~dontknow) ^reuse(DONT_KNOW)
+  a: ([~dontknow ~emoignorance]) ^reuse(DONT_KNOW)
 
-  # JULIA what do you want to do if they don't say a number or don't know?
-  # am using DONT_KNOW for this for now
-  a: (*) ^reuse(DONT_KNOW)
+  # letting it wander if response is not don't know or a number
+  # a: (*) ^reuse(DONT_KNOW)
+
 
 s: DONT_KNOW (?) My guess is you may not know what your potential is, or how to live it fully. Let's explore that.
                  $FULLPOT = 30 ^reuse(MORE_QUESTIONS)
