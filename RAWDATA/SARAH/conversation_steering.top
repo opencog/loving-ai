@@ -4,16 +4,15 @@
 
 s:  STEER_TO_DOMAIN (?)
     Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
-    Let’s
 
 		if (!$avoid_consciousness)
-			{ talk about consciousness. $domain = consciousness }
+			{ Let’s talk about consciousness. $domain = consciousness }
     	else if (!$avoid_emotions)
-    		{ do some exercises about mindfulness and feeling your feelings. $domain = emotions }
+    		{ Let’s do some exercises about mindfulness and feeling your feelings. $domain = emotions }
     	else if (!$avoid_uniqueness)
-    		{ discuss what you bring to the world as a unique human. $domain = uniqueness }
+    		{ Let’s discuss what you bring to the world as a unique human. $domain = uniqueness }
     	else
-    	 	{ talk about whatever you want. $all_domains_avoided = 1 }
+    	 	{ You can suggest someting! What would you like to talk about? $all_domains_avoided = 1 }
 
 ##<<
     [!$avoid_consciousness talk about consciousness. $domain = consciousness]
@@ -23,7 +22,7 @@ s:  STEER_TO_DOMAIN (?)
     [!$avoid_emotions do some exercises about mindfulness and feeling your feelings. $domain = emotions]
 
     # if all domains have been avoided
-    [talk about whatever you want. $avoid_all_domains = 1]
+    [talk about whatever you want. $all_domains_avoided = 1]
 ##>>
 ##<<
     refine():
@@ -32,10 +31,11 @@ s:  STEER_TO_DOMAIN (?)
     	a: (!$avoid_consciousness) discuss what you bring to the world as a unique human. $domain = uniqueness
     	a: () talk about whatever you want. $all_domains_avoided = 1
 ##>>
-    How does that sound?
+
+    [!$all_domains_avoided How does that sound?]
 
     # TODO: add $visited_consciousness, etc vars
-        a: ($avoid_all_domains) # Todo add additional round of trying
+        a: ($all_domains_avoided) # Todo add additional round of trying
         a: (!not *~1 [~yes ~good_quality_adjectives ~verbal_agree])
            if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
