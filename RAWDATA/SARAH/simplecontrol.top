@@ -120,7 +120,10 @@ u: () # main per-sentence processing
 		}
 	}
 	if (%response == 0){ nofail(TOPIC ^gambit($$currenttopic)) } # gambit from current topic even though no keywords matched
-	
+
+	# customization: Go back to our pending topics beyond just the current topic
+	if (!$herweare %response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
+
 	if (%response == 0) 
 	{ 
 		@8 = ^GambitTopics()		# all topics with gambits (excluding system topics)

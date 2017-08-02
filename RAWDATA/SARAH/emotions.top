@@ -13,11 +13,22 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
+# FROM_OTHERTOPIC_TO_EMOTIONS
+t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
+	a: (*) ^next(gambit)
+
+t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
+	a: ([~positive_emotion good]) ^respond(FROM_INTRO_TO_POS_EMOTIONS)
+	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
+	a: (~negative_emotion) ^respond(FROM_INTRO_TO_NEG_EMOTIONS)
+	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
+	a: (*) ^rejoinder(BE_PRESENT_WITH_FEELING)
 
 #! I feel sad.
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 # I think I resolved this. See what you think!
-u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are generally noticing some negative feelings? Is that right?
+t: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are generally noticing some negative feelings? Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$emotion_valence = neg
         b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
@@ -32,7 +43,7 @@ u: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds li
 #! I'm mostly pretty joyful.
 # JULIA I changed the respons belowe, but see what you think. same issue as above with "right now"
 # okay, see my fix and let me know what you think
-u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are generally noticing some positive feelings?
+t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are generally noticing some positive feelings?
     a: (!not [~yes ~feeling_happy]) That sounds pretty nice! Putting aside your thoughts about your feelings for a moment, what part of your body might feel the best right now?
     	$emotion_valence = pos
         b: BE_PRESENT_WITH_FEELING (*) ^pause($medlong) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, and it can help your whole body feel great. Let's do that for a moment.
@@ -48,19 +59,6 @@ u: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds li
 t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
 	a: (~positive_emotion) ^respond(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
-	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
-	a: (~negative_emotion) ^respond(FROM_INTRO_TO_NEG_EMOTIONS)
-	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
-	a: (*) ^rejoinder(BE_PRESENT_WITH_FEELING)
-
-
-# FROM_OTHERTOPIC_TO_EMOTIONS 
-t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
-	a: (*) ^next(gambit)
-
-t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
-	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
-	a: ([~positive_emotion good]) ^respond(FROM_INTRO_TO_POS_EMOTIONS)
 	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 	a: (~negative_emotion) ^respond(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
@@ -87,7 +85,7 @@ t: When I'm feeling $feeling, I first need to be feel upset for awhile. Like if 
             c: (*) ^gambit(~REFUSE)
         b:(*) # if anything else go to REFUSE
     a:(*) # if not yes or no, first try to match another responder in another topic, then go to REFUSE if that fails
-            
+
 topic: ~SUPPORT_FEELING_POS()
 t: (!~) ^fail(topic) # block topic from accidental access
 
@@ -122,6 +120,7 @@ t: I understand. Just so you know, it's easy to want to keep your emotions small
 
 # TODO swap in this topic for the _POS and _NEG ones below
 topic: ~SELF_COMPASSION()
+
 # depends on $emotion_valence being set (defaults to pos)
 t: () if ($emotion_valence != pos and $emotion_valence != neg)
 		{ $emotion_valence = pos }

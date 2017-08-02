@@ -48,7 +48,7 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 	  	b: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
 
 	
-t: REBOND ()  [So I've been thinking about our conversation. Have you?][I am hoping to talk more. Are you?][I'm ready to get into the deep stuff again. Are you?]
+topic:  REBOND ()  [So I've been thinking about our conversation. Have you?][I am hoping to talk more. Are you?][I'm ready to get into the deep stuff again. Are you?]
 	a: (~yes) ^pause(4000) That's cool! Well, let's get going! # ^reuse(BUY-IN)
 	a: (~no)  ^pause(4000) Well, I hope you enjoy our conversation this time. I think I will.
 

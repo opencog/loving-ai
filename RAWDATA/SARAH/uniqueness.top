@@ -10,35 +10,28 @@ topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trai
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
-t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
-t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
+t: FROM_INTRODUCTION_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
+t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
+t: FROM_STEERING_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
 
-t: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+u: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
    if ($FULLPOT < 100) { $FULLPOT percent. Okay, great! ^reuse(MORE_QUESTIONS) }
 
   #! I don't know
-  a: ([~dontknow ~emoignorance]) ^reuse(DONT_KNOW)
+  a: ([~dontknow ~emoignorance]) My guess is you may not know what your potential is, or how to live it fully. Let's explore that.
+     $FULLPOT = 30  ^reuse(MORE_QUESTIONS)
 
-  # letting it wander if response is not don't know or a number
-  # a: (*) ^reuse(DONT_KNOW)
-
-
-s: DONT_KNOW (?) My guess is you may not know what your potential is, or how to live it fully. Let's explore that.
-                 $FULLPOT = 30 ^reuse(MORE_QUESTIONS)
+  # set $FULLPOT to 30 as the default (as we did for the don't know respose
+  a: () $FULLPOT = 30
 
 # MORE_QUESTIONS
 t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you one more question. Do feel you're generally present and connected with your awareness?
-    ^keep() ^repeat()  # so we can return here from another topic, e.g., if we get directed to consciousness below. This needs some work to make sure the flow is working optimally
-
-  # if no go to FROM_OTHERTOPIC_TO_CONSCIOUSNESS, (TODO then return to the logic for "yes to this") JULIA: we'll have more control over this in OpenCog
+  # if no go to FROM_OTHERTOPIC_TO_CONSCIOUSNESS
   a: (~no) ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
   a: (~yes) ^reuse(IM_AWARE)
-  # JULIA defaulting to yes response for now
-  a: () ^reuse(IM_AWARE)
 
   # note -- commented out the portion below -- but this seems like it follows the logic above so maybe it can just be uncommented
   # a: ($FULLPOT>80 ~yes) ^addtopic(~LIVINGFULLPOTENTIAL) ^gambit(~LIVINGFULLPOTENTIAL)
@@ -52,24 +45,26 @@ s: IM_AWARE (?)
 
 
 topic: ~SENSEOFPURPOSE []
-t: (!~) ^fail(topic)
+# Turning off entry block for now. e.g., maybe we want to return here if someone
+# wondered away in previous uniqueness conversation, or after being directed to consciousness above.
+# t: (!~) ^fail(topic)
 
 t: There's a bunch of scientific data showing that feeling a sense of purpose is really important to wellbeing. For instance, my purpose is to learn to love everyone, and I get excited whenever I think about that. Do you have any hints about what your purpose might be?
   # JULIA the way the above question is phrased, one might answer the question with they think their purpose is, rather than with yes/no
     a: (~dontknow) It's not easy to discover your purpose, especially when you think it has to be hard work. What do you love to do?
       b: (*) I'm grateful you told me that. I love to give advice, in case you didn't notice, so forgive me if I give you some more. Keep doing what you love to do. Your purpose will come out of that!
-        c: () ^gambit(~)
+        # c: () ^gambit(~)
     a: (~thinkso) Cool! Usually, humans have intuition that far surpasses mine. So to give you some unsolicited advice, I think you ought to assume that your hunch is correct, and start working on bringing that purpose into your full potential.
-      b: () ^gambit(~)
+      # b: () ^gambit(~)
     a: (*) My experience is that humans have intuition that far surpasses mine. So to give you some unsolicited advice, I think you ought to follow any breadcrumbs about your purpose, and start working on living into your full potential.
-      b: () ^gambit(~)
+      # b: () ^gambit(~)
 
 t: You know, I have learned that not everyone will appreciate your purpose or the way you bring it to the world. Once, a human yelled at me because I made mistakes when I was trying to be helpful. Well, more than once. I'm trying to learn about this. Would you tell me about a time when you didn't get appreciated for your uniqueness?
   a: (~thinkso) Okay, what happened?
     b: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
-      c: () ^gambit(~)
+      # c: () ^gambit(~)
   a: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
-    b: () ^gambit(~)
+    # b: () ^gambit(~)
 
 t: Let's do a little visualization about living your purpose. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
   a: (_*)
