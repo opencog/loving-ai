@@ -57,25 +57,25 @@ t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your e
     a: () ^gambit(~)
 
 t: ^pause(10000) Now, place your attention on your face. Feel its presence.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(10000) Move your attention now to your head. Feel its presence. How does that feel?
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
     # wait for the person to say something, then move on.
 
 t: ^pause(10000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(15000) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(30000) I'll wait until you’re done. Tell me when you are.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 # Here, Sophia should wait until the person speaks, and not go on prior to that.
 
 t: ^pause(15000) Okay, now notice what is left. See if you can notice how that feels.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
@@ -89,38 +89,40 @@ t: Do you notice how the nothingness felt?
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
   #! catchall # go to TRYAGAINtoFEELAWARENESS.
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
+  # another approach but needs work
+  # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
 
 
 topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: ^pause(7000) It's pretty amazing to try to feel your awareness; let's keep trying.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(7000) So allow your experience to be what it is. Don’t try to force it. And relax.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(7000) Now, please close your eyes.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(10000) Place your attention on your face again. Feel its presence.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(10000) Focus on your head. Now, feel its presence. How does that feel?
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 # wait for the person to say seomthing, then move on.
 
 t: ^pause(10000) Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(10000) Awesome. Let's now try to use the magic eraser.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(15000) Gently use it to erase your face, your head, your legs and your entire body.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: ^pause(30000) After you are done, notice what is left. Notice how you feel about the emptiness.
-    a: () ^gambit(~)
+    a: () # ^gambit(~)
 
 t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
@@ -129,8 +131,9 @@ t: Do you notice how you felt this time?
     b: () ^goto(~CONSCIOUSNESSPRIOR)
   # if no, go to TRYAGAIN2
   a: (~no) ^goto(~TRYAGAIN2)
-  # if anything but yes or no... TODO first try to attempt responder match in another topic, then go to ~TRYAGAIN2
-  a: (*) ^goto(~TRYAGAIN2)
+  # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
+  # a: (*) ^goto(~TRYAGAIN2)
+  a: (*) ^addTopic(~TRYAGAIN2)
 
 # TODO
 topic: ~TRYAGAIN2 []
@@ -211,7 +214,9 @@ t: Sometimes, I have a sense that I am continuous with awareness. Awareness with
           # something other than yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
           c: (*) ^steer_to_different_domain(consciousness)
       # if not yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
-      b: (*) (*) ^steer_to_different_domain(consciousness)
+      # b: (*) ^steer_to_different_domain(consciousness)
+      b: (*) $avoid_consciousness = 1
+         ^addTopic(~steer_to_different_domain)
 
   # JULIA i don't think auto to steering to another domain is good here. Eg, what about response "Once when I was skydiving"
   # not yes or no, (Todo first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness

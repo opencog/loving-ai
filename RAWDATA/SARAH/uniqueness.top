@@ -31,11 +31,9 @@ u: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful 
 t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you one more question. Do feel you're generally present and connected with your awareness?
   # if no go to FROM_OTHERTOPIC_TO_CONSCIOUSNESS
   a: (~no) ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
-  a: (~yes) ^reuse(IM_AWARE)
-
-  # note -- commented out the portion below -- but this seems like it follows the logic above so maybe it can just be uncommented
-  # a: ($FULLPOT>80 ~yes) ^addtopic(~LIVINGFULLPOTENTIAL) ^gambit(~LIVINGFULLPOTENTIAL)
-  # a: (~yes) ^addtopic(~SENSEOFPURPOSE) ^gambit(~SENSEOFPURPOSE)
+  a: ([~yes ~thinkso]) ^reuse(IM_AWARE)
+  a: (["sort of" somewhat ~dontknow ~emoignorance maybe perhaps])
+     ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
 
 s: IM_AWARE (?)
     if ($FULLPOT >= 80) { ^goto(~LIVINGFULLPOTENTIAL) }

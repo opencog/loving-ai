@@ -3,7 +3,7 @@
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
 
-$version = yogananda
+$version = threewishes
 
 # turn on/off accidental topic entry blocking
 # $blocking = null
@@ -106,6 +106,9 @@ u: () # main per-sentence processing
 
 	if (%response == 0 AND ^marked($$currenttopic)) { nofail(TOPIC ^gambit($$currenttopic)) } # gambit current topic since keywords match current topic
 
+	# customization: Go back to our pending topics beyond just the current topic
+	if ($herweare==null and %response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
+
 	if (%response == 0) # gambit from ANY matching topic
 	{
 		@8 = ^keywordtopics()	# get topics referred in input
@@ -121,10 +124,7 @@ u: () # main per-sentence processing
 	}
 	if (%response == 0){ nofail(TOPIC ^gambit($$currenttopic)) } # gambit from current topic even though no keywords matched
 
-	# customization: Go back to our pending topics beyond just the current topic
-	if ($herweare==null and %response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
-
-	if (%response == 0) 
+	if (%response == 0)
 	{ 
 		@8 = ^GambitTopics()		# all topics with gambits (excluding system topics)
 		loop()
