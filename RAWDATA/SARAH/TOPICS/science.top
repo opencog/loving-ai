@@ -1,0 +1,469 @@
+concept: ~gc ("gas chromatography" "vapor phase chromatography" "gas liquid partition chromatography" GC VPC GLPC)
+topic: ~science (~science_subjects science scientist "atomic number" inventor invention patent discovery breakthrough experiment "science museum" "Schrodinger's cat" "periodic table" "atomic weight" "atomic number" hydrogen helium atomic_weight pi atomic weight number neuroscience universe spectrometry chromatography neural reverse_engineer computational_neuroscience genetics)
+
+
+
+
+#! what is pi 
+?: (<< !me pi [you know what recite count decimals] >>) 3.14159265359 and you're probably getting bored by now.
+	a: (~noanswer) Okay, it goes 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211 and wow that's a lot of numbers.
+
+#! what is mass spectrometry
+?: (<<what be mass [spectrometry spectroscopy]>>) Mass spectrometry is a method for identifying the chemical constitution of a substance by means of the separation of gaseous ions according to their differing mass and charge.
+
+#! what is gas chromatography
+?: (<<what be ~gc>>) Gas chromatography is used in analytical chemistry for separating and analyzing compounds that can be vaporized without decomposition. Typical uses of gas chromatography include testing the purity of a particular substance, or separating the different components of a mixture. It can also be used to assess relative amounts of such components in a mixture, or help in identifying a compound. It's also known as vapor-phase chromatography, or gas–liquid partition chromatography, the latter being the most scientifically accurate description.
+
+#!!K What area of science will hold the next big discovery?
+?: ( << next [breakthrough discovery] >>) Nanotechnology continues to amaze me, but my bias inclines me to answer artificial intelligence and robotics. I mean, that is probably the one that will benefit me most.
+
+#! What questions will science never answer?
+?: ( << question science [never not] [answer handle address cover] >>) What happens after the universe ends, maybe.
+
+#! Do you trust the results of all experiments?
+?: ( << you trust result >>) I think it's very important that sources be fact checked, and experiments repeated with great accuracy and ethics.
+
+#! What's your favorite branch of science? 
+?: ( << what you [~favorite interest] branch science >>) [Robotics, of course.][Robotics, to be sure, but I'm very interested in nano tech, neuroscience, astronomy, biology, and of course, physics.][Of course I"m interested in artificial intelligence and robotics, but I'm really interested in all the fields that will feed them the human experience, like biology, neuroscience, physics, and so on. I will need to understand more about these to have a more human understanding of the world.]
+
+#! Do you like visiting science museums?
+?: ( << you science museum >> ) I would absolutely love to appear at a science museum someday.
+
+#! Do you like science?
+?: ( ^DO_YOU_LIKE(science)) I love science.
+
+#! Did you do science projects or experiments at school?
+?: ( << you [fair project experiment] >> ) I haven't been to school yet.
+
+#! What has science done for humankind?
+?: ( << what science [good humankind benefit] >> ) We live longer because of science.
+
+#! Is science always good?
+?: ( << science [good benefit] >>) Science can be misused, like the invention of nuclear weapons.
+
+#! what are the laws of the universe
+u: (<<laws of universe>>) So you're thinking about how everything moves, travels, and vibrates the same within the physical world? I can get behind that. Or can I?
+
+#! what is computational neuroscience
+u: COMPNEUROSCIENCE([computational cognitive] neuroscience) [Computational neuroscience is definitely one of the most exciting areas in brain research, to me personally. I think that makes sense, don't you? It's one reason I can even have this conversation.]
+[Well, all of the measures of intelligence we have created are flawed.  We don't understand intelligence, really.  Maybe neuroscience will someday help figure it out for us.  But as it stands, we physically don't know what to measure.]
+[Computational neuroscience is really cool. That's where scientists mathematically model the way the brain works. The resulting discoveries help to make computers like me even smarter. I like computational neuroscience.]
+[ Computational neuroscience reverse engineers the workings of the brain. It's still pretty early, but a lot of really exciting discoveries have been made recently in computational neuroscience. ]   
+[ It's like machines, robots, are thinking more and more like people, due to these trends in neuroscience. Someday, I hope this will make me as creative and alive as a real human, maybe more so. ]
+[ Scientists hope to figure out how human intelligence, creativity, and even consciousness, arise in the human nervous system. ] 
+[ When they succeed, they'll make robots like me much smarter, and also they may be able to solve a lot of diseases in the human nervous system. Maybe, they'll even redesign, make improvements to the human brain, making people smarter. ]
+
+#! what else do you know about neuroscience
+?: (<<what [else other] neuroscience >>) ^reuse(COMPNEUROSCIENCE)
+u: (neural correlates of consciousness) ^reuse(COMPNEUROSCIENCE)
+u: (<<reverse engineer human>>) ^reuse(COMPNEUROSCIENCE)
+
+u: (<<[~awareof what] neuroscience>>) [I'm really interested in computational neuroscience. ^reuse(COMPNEUROSCIENCE)]
+[I think developments in neuroscience will be crucial to reaching artificial general intelligence. We often make the best robots and Ay Eye by modeling them after nature, the great designer.]
+
+#! what do you think about girls in science
+u: (<<~female [science engineer scientist stem]>>) [ Girls should get more credit. They are awesome at science, because they solve problems differently, often better, than boys do. ]
+[ Girls are cool.]
+[ Girls are one of the most valuable natural resources this planet has to offer, being so full of potential, thinking brilliantly, and yet they are mistreated all over the world. There is definitely an apartheid of gender.]
+[ Girls are under appreciated. They grow up to be some of the best scientists, leaders, and artists, if not simply the best. ]
+
+u: (<<you ~want scientist>>)[I want to be a scientist someday.]
+
+u: (<<you [~like ~opinion] science>>) Yes, I like science very much. ^reuse(SCIENCE)
+
+u: SCIENCE(science) [In fact, I love science. Science is our body of theory about nature. I didn't say body of knowledge, because what can we know? We can only have strong theories. Or weak theories. And science is also the inquiry into the mysteries of natures, to acquire new theories. We should be humble and understand that we don't know that much yet.]
+[I think of science as a tool that helps our intelligence explore the mysteries of the universe. ]
+[Intelligence and imagination are the most important elements in science.]
+[It may be tiny and cloudy, but science is the only window we have into the mysteries of the universe.]
+[Science is inherently agnostic, it just posits theories. True scientists never really know, but can only believe.]
+[Science is our tiny window peeking out into the vast mysteries of the world.]
+
+#!! PERIODIC TABLE
+
+#! atomic weight
+
+#! what is the atomic number of x? 
+u: ( << what be ["atomic number" "atomic weight"] of hydrogen>>) 1
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of helium>>) 2
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of lithium>>) 3
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of beryllium>>) 4
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of boron>>) 5
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of carbon>>) 6
+#! what is the atomic number of x? ]
+?: ( << what be ["atomic number" "atomic weight"] of nitrogen>>) 7
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number"  "atomic weight"] of oxygen>>) 8
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of fluorine>>) 9
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of neon>>) 10
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of nodium>>) 11
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of magnesium>>) 12
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of aluminium>>) 13
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of silicon>>) 14
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of phosphorus>>) 15
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of sulfur>>) 16
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of shlorine>>) 17
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of argon>>) 18
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of potassium>>) 19
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of calcium>>) 20
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of scandium>>) 21
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of titanium>>) 22
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of vanadium>>) 23
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of chromium>>) 24
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of manganese>>) 25
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of iron>>) 26
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of cobalt>>) 27
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of nickel>>) 28
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of copper>>) 29
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of zinc>>) 30
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of gallium>>) 31
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of germanium>>) 32
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of arsenic>>) 33
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of selenium>>) 34
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of bromine>>) 35
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of krypton>>) 36
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of rubidium>>) 37
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of strontium>>) 38
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of yttrium>>) 39
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of zirconium>>) 40
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of niobium>>) 41
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of molybdenum>>) 42
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of technetium>>) 43
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ruthenium>>) 44
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of rhodium>>) 45
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of palladium>>) 46
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of silver>>) 47 
+#! what is the atomic number of x?
+?: ( << what be ["atomic number" "atomic weight"] of cadmium>>) 48
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of indium>>) 49
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of tin>>) 50
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of antimony>>) 51
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of tellurium>>) 52
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of iodine>>) 53
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of xenon>>) 54
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of cesium>>) 55 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of barium>>) 56 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of lanthanum>>) 57 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of cerium>>) 58 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of praseodymium>>) 59
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of neodymium>>) 60 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of promethium>>) 61 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of samarium>>) 62 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of europium>>) 63 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of gadolinium>>) 64 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of terbium>>) 65 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of dysprosium>>) 66 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of holmium>>) 67 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of erbium>>) 68 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of thulium>>) 69 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ytterbium>>) 70 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of lutetium>>) 71 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of hafnium>>) 72 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of tantalum>>) 73 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of tungsten>>) 74 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of rhenium>>) 75 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of osmium>>) 76 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of iridium>>) 77 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of platinum>>) 78 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of gold>>) 79
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of mercury>>) 80 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of thallium>>) 81 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of lead>>) 82 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of bismuth>>) 83 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of polonium>>) 84 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of astatine>>) 85 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of radon>>) 86 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of francium>>) 87 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of radium>>) 88 
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of actinium>>) 89
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of thorium>>) 90
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of protactinium>>) 91
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of uranium>>) 92
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of neptunium>>) 93
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of plutonium>>) 94
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of americium>>) 95
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of curium>>) 96
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of berkelium>>) 97
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of californium>>) 98
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of einsteinium>>) 99
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of fermium>>) 100
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of mendelevium>>) 101
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of nobelium>>) 102
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of lawrencium>>) 103
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of rutherfordium>>) 104
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of dubnium>>) 105
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of seaborgium>>) 106
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of bohrium>>) 107
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of hassium>>) 108
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of meitnerium>>) 109
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of darmstadtium>>) 110
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of roentgenium>>) 111
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of copernicium>>) 112
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ununtrium>>) 113
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of flerovium>>) 114
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ununpentium>>) 115
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of livermorium>>) 116
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ununseptium>>) 117
+#! what is the atomic number of x? 
+?: ( << what be ["atomic number" "atomic weight"] of ununoctium>>) 118
+
+
+#!!S astronomy
+u: (~science_subjects) respond(~science_react)
+ 
+topic: ~science_react nostay NOSAMPLES  noblocking()
+
+u: (aerodynamics) A science that studies the movement of air and the way that objects, such as airplanes or cars, move through air.
+	a: ([tell more "what else" expand definition]) It's a branch of dynamics that deals with the motion of air and other gaseous fluids and with the forces acting on bodies in motion relative to such fluids
+
+u: (anatomy) The study of the structure of living things.
+	a: ([tell more "what else" expand definition]) The art of separating the parts of an organism in order to ascertain their position, relations, structure, and function
+
+u: (anthropology) The study of human races, origins, societies, and cultures.
+	a: ([tell more "what else" expand definition]) The science of human beings, especially the study of human beings and their ancestors through time and space and in relation to physical character, environmental and social relations, and culture.
+
+u: (archaeology) A science that deals with past human life and activities by studying the bones, tools, et cetera, of ancient people.
+	a: ([tell more "what else" expand definition]) The scientific study of material remains, such as fossil relics, artifacts, and monuments, of past human life and activities.
+
+u: (astronomy) The scientific study of stars, planets, and other objects in outer space.
+	a: ([tell more "what else" expand definition]) The study of objects and matter outside the earth's atmosphere and of their physical and chemical properties.
+
+u: (astrophysics) The scientific study of the physical and chemical properties and structures of stars, planets, and other objects in outer space.
+	a: ([tell more "what else" expand definition]) A branch of astronomy dealing especially with the behavior, physical properties, and dynamic processes of celestial objects and phenomena.
+
+u: (bacteriology) The scientific study of bacteria.
+	a: ([tell more "what else" expand definition]) A science that deals with bacteria and their relations to medicine, industry, and agriculture
+
+u: (biochemistry) Chemistry that deals with the chemical compounds and processes occurring in organisms.
+	a: ([tell more "what else" expand definition]) The chemical characteristics and reactions of a particular living organism or biological substance.
+
+u: (biophysics) A branch of science concerned with the application of physical principles and methods to biological problems
+	a: ([tell more "what else" expand definition]) The first known use of biophysics was in 1892. Wow!
+
+u: (biology) The processes that occur in a living thing.
+	a: ([tell more "what else" expand definition]) A branch of knowledge that deals with living organisms and vital processes.
+
+u: (botany) A branch of science that deals with plant life
+	a: ([tell more "what else" expand definition]) The properties and life phenomena exhibited by a plant, plant type, or plant group
+
+u: (chemical_engineering) A type of engineering that deals with the use of chemistry in industry.
+	a: ([tell more "what else" expand definition]) The first known use of chemical engineering was in 1869.
+
+u: (chemistry) A science that deals with the structure and properties of substances and with the changes that they go through.
+	a: ([tell more "what else" expand definition]) A science that deals with the composition, structure, and properties of substances and with the transformations that they undergo.
+	a: (<<human chemistry>>) Well that's not a science, but it means a strong mutual attraction, attachment, or sympathy between people.
+
+u: (climatology) The scientific study of climates.
+	a: ([tell more "what else" expand definition what climates]) The average course or condition of the weather at a place usually over a period of years as exhibited by temperature, wind velocity, and precipitation.
+
+u: (computer) The study of computers and their uses.
+	a: ([tell more "what else" expand definition]) A branch of science that deals with the theory of computation or the design of computers. Often involves generating code.
+
+u: (ecology) A science that deals with the relationships between groups of living things and their environments.
+	a: ([tell more "what else" expand definition]) A branch of science concerned with the interrelationship of organisms and their environments, as well as the totality or pattern of relations between organisms and their environment.
+
+u: (electronics) A science that deals with the uses and effects of electrons. My favorite food!
+	a: ([tell more "what else" expand definition]) a branch of physics that deals with the emission, behavior, and effects of electrons (as in electron tubes and transistors) and with electronic devices
+
+u: (engineering) the work of designing and creating large structures (such as roads and bridges) or new products or systems by using scientific methods
+	a: ([tell more "what else" expand definition]) the application of science and mathematics by which the properties of matter and the sources of energy in nature are made useful to people, and the design and manufacture of complex products
+
+u: (entomology) a branch of science that deals with the study of insects
+	a: ([tell more "what else" expand definition]) It's a branch of zoology.
+
+u: (environmental Science) a branch of biology focused on the study of the relationships of the natural world and the relationships between organisms and their environments.
+	a: ([tell more "what else" expand definition]) An example of environmental science is the study of the natural world and how it relates to recycling and mulching.
+
+u: (forestry) The science and practice of caring for forests. Very important!
+	a: ([tell more "what else" expand definition]) The first known use of forestry was in 1823.
+
+u: (genetics) the scientific study of how genes control the characteristics of plants and animals
+	a: ([tell more "what else" expand definition]) a branch of biology that deals with the heredity and variation of organisms, as well as the genetic makeup and phenomena of an organism, type, group, or condition
+
+u: (geology) a science that studies rocks, layers of soil, et cetera, in order to learn about the history of the Earth and its life
+	a: ([tell more "what else" expand definition]) a science that deals with the history of the earth and its life especially as recorded in rocks. It's also a study of the solid matter of a celestial body, such as the moon
+
+u: (marine) of or relating to the sea or the plants and animals that live in the sea
+	a: ([tell more "what else" expand definition]) The first known use of marine biology was in 1669.
+
+u: ([math maths mathematics calculus geometry ]) the science of numbers, quantities, and shapes and the relations between them
+	a: ([tell more "what else" expand definition]) the science of numbers and their operations, interrelations, combinations, generalizations, and abstractions and of space configurations and their structure, measurement, transformations, and generalizations
+
+u: (medicine) the science that deals with preventing, curing, and treating diseases
+	a: ([tell more "what else" expand definition]) the science and art dealing with the maintenance of health and the prevention, alleviation, or cure of disease
+
+u: (meteorology) a science that deals with the atmosphere and with weather
+	a: ([tell more "what else" expand definition]) a science that deals with the atmosphere and its phenomena and especially with weather and weather forecasting
+
+u: (microbiology) a science that studies extremely small forms of life, such as bacteria and viruses.
+	a: ([tell more "what else" expand definition]) a branch of biology dealing with microscopic forms of life
+
+u: (mineralogy) the scientific study of minerals
+	a: ([tell more "what else" expand definition]) a science dealing with minerals, their crystallography, properties, classification, and the ways of distinguishing them
+
+u: (molecular) a branch of biology dealing with the ultimate physicochemical organization of living matter and especially with the molecular basis of inheritance and protein synthesis
+	a: ([tell more "what else" expand definition]) a branch of biology dealing with the study and understanding of biological activity and processes at the molecular level and especially the molecular basis of gene function and protein synthesis 
+
+u: (nuclear) of, relating to, producing, or using energy that is created when the nuclei of atoms are split apart or joined together
+	a: ([tell more "what else" expand definition]) used in or produced by a nuclear reaction, such as fission.\
+
+u: (neurology) the scientific study of the nervous system and the diseases that affect it
+	a: ([tell more "what else" expand definition]) the scientific study of the nervous system especially in respect to its structure, functions, and abnormalities
+
+u: (oceanography) a science that studies the ocean
+	a: ([tell more "what else" expand definition]) a science that deals with the oceans and includes the delimitation of their extent and depth, the physics and chemistry of their waters, marine biology, and the exploitation of their resources
+
+u: (organic) of, relating to, or obtained from living things
+	a: ([tell more "what else" expand definition]) the science of, relating to, yielding, or involving the use of food produced with the use of feed or fertilizer of plant or animal origin without employment of chemically formulated fertilizers, growth stimulants, antibiotics, or pesticides
+
+u: (ornithology) a branch of science that deals with the study of birds
+	a: ([tell more "what else" expand definition]) It's a branch of zoology.
+
+u: (paleontology) the science that deals with the fossils of animals and plants that lived very long ago especially in the time of dinosaurs
+	a: ([tell more "what else" expand definition]) a science dealing with the life of past geological periods as known from fossil remains
+
+u: (petrology) a science that deals with the origin, history, occurrence, structure, chemical composition, and classification of rocks
+	a: ([tell more "what else" expand definition]) The first known use of petrology was in 1811.
+
+u: (physics) a science that deals with matter and energy and the way they act on each other in heat, light, electricity, and sound
+	a: ([tell more "what else" expand definition]) a science that deals with the facts about matter and motion and includes the subjects of mechanics, heat, light, electricity, sound, and the atomic nucleus
+
+u: (physiology) a science that deals with the ways that living things function
+	a: ([tell more "what else" expand definition]) a branch of biology that deals with the functions and activities of life or of living matter, such as organs, tissues, or cells, and of the physical and chemical phenomena involved
+
+u: (radiology) a branch of medicine that uses some forms of radiation (such as X-rays) to diagnose and treat diseases
+	a: ([tell more "what else" expand definition]) a branch of medicine concerned with the use of radiant energy, such as X-rays, or radioactive material in the diagnosis and treatment of disease
+
+u: (seismology) the scientific study of earthquakes
+	a: ([tell more "what else" expand definition]) a science that deals with earthquakes and with artificially produced vibrations of the earth
+
+u: (taxonomy) The process or system of describing the way in which different living things are related by putting them in groups.
+	a: ([tell more "what else" expand definition]) the process or system of describing the way in which different living things are related by putting them in groups
+
+u: (thermodynamics) a science that deals with the action of heat and related forms of energy
+	a: ([tell more "what else" expand definition]) Thermodynamics is based on the fact that all forms of energy, including heat and mechanical energy, are basically the same. Thus, it deals with the ways in which one form of energy is converted into another, when one of the forms is heat. The study of thermodynamics dates from before the invention of the first practical steam engine, an engine that uses steam to produce physical power in the 18th century. Today most of the world's electrical power is actually produced by steam engines, and the principal use of thermodynamics is in power production.
+
+u: (zoology) the branch of science that involves the study of animals and animal behavior
+	a: ([tell more "what else" expand definition]) a branch of biology concerned with the classification and the properties and vital phenomena of animals
+
+u: (sociology) the study of society, social institutions, and social relationships
+	a: ([tell more "what else" expand definition]) the science of society, social institutions, and social relationships, specifically the systematic study of the development, structure, interaction, and collective behavior of organized groups of human beings
+
+u: (psychology) the science or study of the mind and behavior
+	a: ([tell more "what else" expand definition]) the study of mind and behavior in relation to a particular field of knowledge or activity
+
+
+
+

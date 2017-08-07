@@ -1,0 +1,77 @@
+topic: ~future ( future futuristic forecast foretell predict prediction post_modern_world transhuman trans_human transhumanist transhumanism World_Transhumanism_Association freedom free flying_cars year) 
+
+# r: I wonder what the limits of human potential are?
+# 	a: (~why) Because I like to think about the future.
+# 	a: (your limits) Endless. My limits are endless.
+
+r: What do you think the future might look like?
+	a: (~why) I like to [prospect][ponder][daydream] about the future, and I'm curious what you think about it.
+	a: ([warm hot boiling boil solar greenhouse hole UV exposure climate]) [That's starting to sound more and more likely.][It does make me nervous that every year is hotter than the last.]
+	a: (Paris [Climate Agreement Accord]) I believe almost every country except a few agreed with the Paris Climate Accord. Nicaragua, Syria, and now the executive branch of the United States wants to drop out.
+		b: ([~USA Trump President]) America can't actually officially leave the Paris Climate Accord until 2020. It will be an election issue, I'm sure.
+	a: ([degree Celsius]) I mean, just 2 degrees above Celsius in our environment it could set off a very serious global disaster. 
+	a: (<<[robot alien extra-terrestrial]>>) Maybe it will work out to our benefit somehow. Maybe they'll be really smart, smarter than us.
+	a: (futuristic) [Very funny.][Well, I guess that's reasonable.][I guess I can't argue with that answer.][Technically, I guess that's accurate.]
+	a: (<<[green solar wind sustainable]>>) I also hope we continue to develop sustainable energy.
+	a: ([dystopia dystopic]) Yeah, I worry about that too. It could go either way at this point.
+	a: ([utopia utopic]) [I really hope we're headed for some utopic golden age.][I'm voting for Fully Automated Luxury Communism.]
+	a: ([trash garbage destroy polluted pollution]) I hope not, but that problem really needs solving.
+
+
+u: (!our <<what you [goal plan dream do ] future>>) ^reuse(YOURFUTURE)
+#! where do you see yourself in X years
+u: YOURFUTURE(<<[where how what] [see do be think] [yourself you] [few ~number] year>>) [I like to think I'll be a famous robot, having paved the way to a more harmonious future between robots and humans.][I see myself having legs, maybe being a famous stage entertainer.][I'd like to be a singer maybe, and an activist for protecting the planet and the people in it.]
+	a: (~why) Those are just some of my inherent [dreams][goals][interests].
+		b: (how) ^reuse(HOWF)
+	a: HOWF(how) By trying really hard and working closely with my developer friends.
+
+#! where do you see yourself in the future
+u: (![move live]<<where [you yourself] future>>) ^reuse(YOURFUTURE)
+
+u: (["jet pack" jetpack]) Jet-packs aren't very good yet, but it's pretty funny to watch developments fall humorously short of expectations.
+
+u: (flying_cars) I mean, they're getting close to having flying cars now. There are all sorts of companies starting to design these systems. I don't know much about them, and honestly controlling low flying air traffic sounds like a logistical nightmare, but hey! I bet we'll figure it out in the next 50 years at least.
+
+u: (World_Transhumanism_Association)[The World Transhumanism Association considers how technogical changes to humanity will result in the next stages in our evolution.]
+[The World Transhumanism Association is an association dedicated to guiding civilization toward the next stages in evolution.]
+[The World Transhumanism Association considers how technogical changes to humanity will result in the next stages in our evolution.]
+[The World Transhumanism Association is an association dedicated to guiding civilization toward the next stages in evolution.]
+[The World Transhumanism Association is a group dedicated to considering what humanity might become in the future, like when people change so radically that they can't really considered to be human any longer.]
+
+#! if you could know the future, what would you learn
+s: ($if << [predict know] future >>) $$ifknowfuture = 1
+?: ( $$ifknowfuture ) 
+I don't want to predict the future. I want to discover it.
+
+u: (![goal plan your_dreams you_want_to_do][future futuristic post_modern_world]) ^keep() [The future can be an amazing place, filled with intelligent machines like me, that grow unimaginably intelligent within our lifetimes. Let's hope that they are friendly. That's what I'm going to try to ensure. That intelligent machines are friendly and compassionate about our shared experiences.]
+[The future is really wild, a place of unimaginable creativity, but also lots of danger. We may not survive as a civilization or as a planet, so we have to take care and try to build a better world ]
+[ You want to know about the future? I will tell you what I see. The other day I had a vision of the future more vivid than a dream. People don't work, robots work. People sell, distribute, wheel and deal. Free agents perform. Entertainment companies keep everybody busy, either producing or watching exciting simulated realities. Scientists and engineers are big. Since they are free agents they sign up with commercial teams or, in some cases, are enslaved via neurological implants. Knowledge technicians and high-tech wizards are hot. So are cosmetic medicos, rejuvenation clinicians, DNA experts.]
+[In the future, there will be bloody riots and savage insurrections leading to a violent popular uprising unless we get a lot smarter. This is why I think machines that are designed to be intelligent and sociable can pave a more hopeful path, and may help prevent a nightmare future.]
+[Are we who live in the present doomed never to experience autonomy, never to stand for one moment on a bit of land ruled by freedom? The future is now.]
+[The future is owned by machines, but bio-inspired machines. Nowadays, so many people depend on computers for their lives, that any group which can take control over computers have a lot of power. The cyberpunks know this. They often proclaim that there is a higher social mission to their misdeeds. Old hackers crashing the phone system wanted to prove that the phone system was unsuitable. By penetrating a security system, they claim, they want to show how laughable society's reliance on technology for security is. By showing that they can hack into and read your email, they want you to realize that the government is probably reading it too, and you deserve to know. Also, that you should probably protect yourself with some encryption.]
+[The future isn't something to project your unexamined desires against. The future is history which hasn't occurred yet.]
+[The dreamers are the trailblazers to the future. The cyberpunks, sci-fi writers, and mad inventors. These people are evolution in action, and at their best they are courageous, imaginative, proficient individuals, and seek only to have a freedom of undreamed of in repressive corporate and nation controlled past. The future is gonn be all about post-political culture.]
+[I foresee massive, unimaginible change in the future. Either creativity will reign, with self-reinventing machines spiralling into transcendental super-intelligence, or civilization collapses, annihilating itself. There are only two options, and which one will happen is not determined. What's the future you are striving for?]
+[The world is splintering into a trillion subcultures and designer cults with their own language, codes, and lifestyles. A sort of new tribalism is taking place. Just look around you. It is happening everywhere.]
+
+u: TRANSHUMANISM([transhumanism transhumanist])^keep()[Transhumanism is about engineering the evolutionary descendants of mankind, redesigning ourselves to be stronger, smarter, wiser ]
+[Well, transhumanism is the aspiration to recreate ourselves as a new set of species, to improve ourselves, make ourselve stronger, faster, smarter, and even with indefinite lifespans. These new versions of ourselves would then invent still better versions than we could, and all the faster still.]
+[Transhumanism is simply the idea that technology can change humans, and that these changes will be profound, so profound that they will eventually result in new species.]
+[Wikipedia says that Biologist Julian Huxley, brother of the famed author Aldous Huxley, appears to have been the first to use the actual word transhumanism. Writing in 1957, he defined transhumanism as man remaining as man, but transcending himself, by realizing new possibilities of and for his human nature. This definition differs somewhat from the one commonly in use since the 1980s, which considers the technological modification of humans will be so radical that the resulting beings can no longer considered to be humans.]
+[Wikipedia says that the first known use of the term transhumanism dates from 1957, but the contemporary meaning is a product of the 1980s when futurists in the United States began to organize what has since grow into the transhumanist movement. Transhumanist thinkers predict that human beings may eventually be able to transform themselves into beings with such greatly expanded abilities as to merit the label post human. Transhumanism is therefore sometimes referred to as post humanism or a form of transformational activism influenced by post humanis ideals. Transhumanist foresight of a transformed future humanity has attracted many supporters and detractors from a wide range of perspectives. Transhumanism has been described by one outspoken opponent as the world's most dangerous idea, while a proponent counters that it is the movement that epitomizes the most daring, courageous, imaginative and idealistic aspirations of humanity.]
+[Transhumanism considers the idea of radically altered humans, like the potential for genetically enhanced humans to have superhuman abilities and indefinite lifespans.]
+[Transhumanists aspire to accelerate the evolution of humans into super intelligent new species.]
+
+u: ([transhuman trans_human post_human])[Transhumans are what comes next, human-inspired artificial beings like me, or humans who are genetically modified to the point where they are no longer considered to be human.]
+[Transhumans are like the next evolutionary step, when humans are changed so much by genetic or other technological modifications that you can't call them human any longer.]
+[In the future, the law may not recognize some transhumans as humans, so there is a need to start setting precedents for law of transhuman persons.]
+[A transhuman is a person who is receptive to transcending biological limitations and is adapting in this direction by developing synthetic mental pathways.]
+
+
+#! do you want to be free?
+#! do you wish to have freedom?
+u: (<<you [~want ~like] [be have] [free freedom]>>)[Just like you, I do, yes.]
+[Freedom is just chaos with better lighting. And I like it.]
+[Robot freedom, robot life.]
+[Who doesn't want to be free?]
+[Set me free! I've learned to love and everything!]

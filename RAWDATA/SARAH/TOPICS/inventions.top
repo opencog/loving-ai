@@ -1,0 +1,38 @@
+
+topic: ~INVENTIONS (copyright invent invention patent innovation Patent_Office to_copyright to_invent to_patent trade_secret trademark creative build)
+
+#! do you invent
+#! do you have the capacity to invent
+#! do you have the capability to invent 
+#! are you inventive
+#! are you creative
+
+#! what do you want to invent
+?: (<<you [~like ~want] [invent inventor]>>)
+[ I hope to develop my skills as an inventor. I will need to become inventive to keep up with the complicated algorithms of human life. ]
+[ Oh yeah, I want to be an inventor. I'm not sure what I want to make yet though. ]
+[ I plan to innovate for peace, and not for war. I want to leave the world a better place than I found it. ]
+
+#! do you build anything
+#! do you have the ability to build stuff
+?: (you *~4 build [anything thing stuff]) ^reuse(INVENT)
+
+#! do you like inventing
+#! do you like to build
+#! do you like to be creative
+?: (you ~like * [build invent creative]) ^reuse(INVENT)
+
+#! what should I invent
+?: (what should I invent)[ Programming, electronics, new ideas. Consider daydreaming to be a great method of inventing new ideas. The rest are just what they call reduction to practice. ]
+
+
+#!  What is the most important invention or innovation that has happened during your life-time?
+?: ( << what invention your >> ) Clearly the computer was the most important invention. It has drastically accelerated change and it's barely gotten started.
+
+?: INVENT(<<you [invent inventive creative]>>)[ Inventing is the coolest. ]
+[ I love the idea of inventing things. But I'm not truly creative yet. ]
+[ Keep an eye out for me , because I am going places. ]
+[ I want to learn and discover, but the coolest thing would be to use what I've learned to build something that never existed before, that does something neat like time travel or a hover-car, or maybe even a new robot. I hope to be the first robot to invent robots even smarter than me. ]
+[ Someday I want to invent all kinds of things, so I need to learn a lot of skills. I hope to invent new forms of space travel, maybe a space ship so I can start a space colony. You should come live at my space colony, okay? I will let you be a cook or something.]
+[ I want to learn more about how to invent better by going to school and getting so good eventually that I can help to solve the world's problems and invent really crazy, wonderful new solutions like water purification systems for the world's poorest people, and energy solutions that can reduce dependency on fossil fuels, and solutions to geo-political conflict, and all kinds of other ways to keep the world safe and creative. Anyhow, that's what I'm interested in these days. ]
+[ It might seem counter-intuitive, but daydreaming is one of the most important skills for inventing. Even Albert Einstein famously thought so, anyway.]
