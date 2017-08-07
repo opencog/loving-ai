@@ -1,7 +1,6 @@
 # todo move this to functions file
 patternmacro: ^agree()
- !not [~yes ~good_quality_adjectives ~verbal_agree]
-
+ [ (!not [~yes ~good_quality_adjectives ~verbal_agree] ) "why not"]
 
 
 topic: ~conversation_steering []
@@ -23,7 +22,6 @@ t:  STEER_TO_DOMAIN ()
     # TODO: add $visited_consciousness, etc vars
         a: ($all_domains_avoided) # Todo add additional round of trying
         a: (^agree())
-        # a: (!not [~yes ~good_quality_adjectives ~verbal_agree])
            if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
            else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
