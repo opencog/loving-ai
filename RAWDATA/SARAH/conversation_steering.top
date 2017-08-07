@@ -1,6 +1,10 @@
-  topic: ~conversation_steering []
+# todo move this to functions file
+patternmacro: ^agree()
+ !not [~yes ~good_quality_adjectives ~verbal_agree]
 
-# t: This is the part where I steer you to a particular domain.
+
+
+topic: ~conversation_steering []
 
 t:  STEER_TO_DOMAIN ()
     Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
@@ -14,39 +18,15 @@ t:  STEER_TO_DOMAIN ()
     	else
     	 	{ You can suggest someting! What would you like to talk about? $all_domains_avoided = 1 }
 
-##<<
-    [!$avoid_consciousness talk about consciousness. $domain = consciousness]
-
-    [!$avoid_uniqueness discuss what you bring to the world as a unique human. $domain = uniqueness]
-
-    [!$avoid_emotions do some exercises about mindfulness and feeling your feelings. $domain = emotions]
-
-    # if all domains have been avoided
-    [talk about whatever you want. $all_domains_avoided = 1]
-##>>
-##<<
-    refine():
-    	a: (!$avoid_consciousness) talk about consciousness. $domain = consciousness
-    	a: (!$avoid_emotions) do some exercises about mindfulness and feeling your feelings. $domain = emotions
-    	a: (!$avoid_consciousness) discuss what you bring to the world as a unique human. $domain = uniqueness
-    	a: () talk about whatever you want. $all_domains_avoided = 1
-##>>
-
-    [!$all_domains_avoided How does that sound?] [!$all_domains_avoided  What do you think?] [ ]
+    [!$all_domains_avoided How does that sound?] [!$all_domains_avoided  What do you think?]
 
     # TODO: add $visited_consciousness, etc vars
         a: ($all_domains_avoided) # Todo add additional round of trying
-        a: (!not *~1 [~yes ~good_quality_adjectives ~verbal_agree])
+        a: (^agree())
+        # a: (!not [~yes ~good_quality_adjectives ~verbal_agree])
            if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
            else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
            else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
-
-           ##<<  doesn't work
-            ^refine()
-                 a: ($domain=consciousness) ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS)
-                 a: ($domain=uniqueness) ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS)
-                 a: ($domain=emotions) ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
-           ##>>
 
         a: ([~no ~bad_quality_adjectives (not *~1 [~good_quality_adjectives ~verbal_agree])]) Totally fine.
             if ($domain=consciousness) { $avoid_consciousness = 1 }
@@ -56,10 +36,6 @@ t:  STEER_TO_DOMAIN ()
 
         a: () [I'm not sure what you mean.] [I don't understand.] [I didn't get that.]
             ^reuse(STEER_TO_DOMAIN)
-
-# alt approach
-#  refine()
-#    a: (!avoid_consciousness)
 
 
 # S: Okay! Here’s what I think would be fun. Let’s [talk about consciousness][discuss what you bring to the world as a unique human][do some exercises about mindfulness and feeling your feelings]. How does that sound?
