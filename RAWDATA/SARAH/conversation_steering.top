@@ -1,6 +1,9 @@
-# todo move this to functions file
+# todo move below to functions/different file
+
+concept: ~agreement_words [ awesome ]
+
 patternmacro: ^agree()
- [ (!not [~yes ~good_quality_adjectives ~verbal_agree] ) "why not"]
+ [ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words] ) "why not"]
 
 
 topic: ~conversation_steering []

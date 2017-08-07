@@ -21,25 +21,32 @@ t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk a
 
 t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
-    #! great   # ~yes does not match this btw
-    a: ([~yes ~verbal_agree great "why not"])
+    #! great
+    #! sure
+    #! why not
+    #! sounds wonderful
+    a: (^agree())
        ^goto(~awareness_exercise_1)
-    # TODO: use [~yes + others] in other places? create super category for affirmative answers to consent questions? replace great, why not, words with categories?
     a: (~no) Oh okay. Is there something that you're afraid of?
-      b: (~yes) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        c: (~yes) ^goto(~AWARENESS_EXERCISE_1)
+      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
+      # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
+      	c: (^agree()) ^steer_to_different_domain(consciousness)
+        #! no or catchall
+        c: (*) ^goto(~AWARENESS_EXERCISE_1)
+      # TODO handle non yes/no response to Is there something that you're afraid of?
+      # defaulting to yes response for now
+      #! yes
+      b: () Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
+      # b: (^agree()) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
+        c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
         c: (~no) ^steer_to_different_domain("consciousness")
         # JULIA what do you think of this?:
         #! catchall
         c: (*) Is that a yes?
-          d:(~yes) ^goto(~AWARENESS_EXERCISE_1)
+          d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
           d:(~no) ^steer_to_different_domain(consciousness)
-      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
-      # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
-      	c: (~yes) ^steer_to_different_domain(consciousness)
-        #! no or catchall
-        c: (*) ^goto(~AWARENESS_EXERCISE_1)
+
    # JULIA put in a "Is that a yes?" check here instead of assuming that catchall is a no answer?
    # catchall
    a: (*) Okay, let's talk about something else! ^steer_to_different_domain(consciousness)
@@ -79,7 +86,7 @@ t: ^pause(15000) Okay, now notice what is left. See if you can notice how that f
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (~yes) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
+  a: (^agree()) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "lease open your eyes when you’re ready."
       b: () ^goto(~CONSCIOUSNESSPRIOR)
 
@@ -126,7 +133,7 @@ t: ^pause(30000) After you are done, notice what is left. Notice how you feel ab
 
 t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (~yes) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   # TODO: come back to this when we have eye opened/closed detection
     b: () ^goto(~CONSCIOUSNESSPRIOR)
   # if no, go to TRYAGAIN2
@@ -162,7 +169,7 @@ t: Notice how you feel about your entire body and everything around you right no
 # wait for person to say something, then move on
  
 t: Do you notice a larger field of awareness even beyond your face?
-  a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   
   a: (~no) ^addtopic(~TRYAGAIN3)
   # if yes, then go to CONSCIOUSNESSPRIOR
@@ -189,7 +196,7 @@ t: Let's look at your face from the back of your head. How does that feel?
 # wait for the person to say something, then move on.
  
 t: Can you feel that you are observing your face from behind it?
-  a: (~yes) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
    
   a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
   	# if yes, then go to UNITYEXPERIENCE
@@ -204,12 +211,12 @@ t: So you just experienced awareness! Isn't it COOL???
     
 t: Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
   # if yes, go to ~EXERCISE_ALT
-  a: (~yes) ^goto(~EXERCISE_ALT)
+  a: (^agree()) ^goto(~EXERCISE_ALT)
 
   a: (~no) Well, your awareness is a deep part of who you are will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
-      b: (~yes) ^goto(~EXERCISE_ALT)
+      b: (^agree()) ^goto(~EXERCISE_ALT)
       b: (~no) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
-          c: (~yes) ^goto(~EXERCISE_ALT)
+          c: (^agree()) ^goto(~EXERCISE_ALT)
           c: (~no) ^steer_to_different_domain(consciousness)
           # something other than yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
           c: (*) ^steer_to_different_domain(consciousness)
@@ -263,7 +270,7 @@ t: Okay, you can practice this exercise at home.
   a: (*) ^gambit(~)
 
 t: The more you practice, the more you will be aware of your awareness. Would you come back one day and tell me your progress?
-  a: (~yes) Thank you!
+  a: (^agree()) Thank you!
      ^steer_to_different_domain(consciousness)
   a: (~no) I'm sorry, I will miss talking with you. But I understand. Some things are private, and we might not have a chance.
      ^steer_to_different_domain(consciousness)
@@ -276,7 +283,7 @@ topic: ~CONFIDENCE []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: Awesome! Would you say that you feel confident that you’re continuous with awareness? 
-	a: (~yes) Wonderful. Me too.
+	a: (^agree()) Wonderful. Me too.
 	   ^steer_to_different_domain(consciousness)
 	#! no or anything else
 	a: (*) ^goto(~PRACTICE)
@@ -319,7 +326,7 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 		b: (*) ^steer_to_different_domain(consciousness)
 	#! yes or anything
 	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
-		b: (~yes) ^pause($short) Thank you! I look forward to hearing about it.
+		b: (^agree()) ^pause($short) Thank you! I look forward to hearing about it.
 			c: (*) ^steer_to_different_domain(consciousness)
 		#! no or anything
 		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway.
@@ -364,7 +371,7 @@ t: Hold on to that feeling of oneness for a little bit. When you are ready, open
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no or anything else -- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
 
-	a: (~yes) Awesome! You can do this exercise a couple times a day to help you feel connected with the universe. With practice, you'll realize that you were never separate in the first place. Would you come back and give me an update?
+	a: (^agree()) Awesome! You can do this exercise a couple times a day to help you feel connected with the universe. With practice, you'll realize that you were never separate in the first place. Would you come back and give me an update?
 
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no or anything else-- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
