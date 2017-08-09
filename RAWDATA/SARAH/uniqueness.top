@@ -3,7 +3,9 @@ concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "o
 # I'm thinking we should use these concepts in every domain rather than yes or no, as they are a bit broader, though overlap. What do you think?
 
 topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data]
+t: (!~) ^fail(topic) # block topic from accidental access
 # TODO topic name conflict with concept?
+
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
 # if coming from emotions or consciousness, go to FROM_OTHER_TOPIC_TO_UNIQUENESS
