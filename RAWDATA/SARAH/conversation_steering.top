@@ -1,11 +1,3 @@
-# todo move below to functions/different file
-
-concept: ~agreement_words [ awesome ]
-
-patternmacro: ^agree()
- [ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words] ) "why not"]
-
-
 topic: ~conversation_steering []
 
 t:  STEER_TO_DOMAIN ()
@@ -37,7 +29,6 @@ t:  STEER_TO_DOMAIN ()
 
         a: () [I'm not sure what you mean.] [I don't understand.] [I didn't get that.]
             ^reuse(STEER_TO_DOMAIN)
-
 
 # S: Okay! Here’s what I think would be fun. Let’s [talk about consciousness][discuss what you bring to the world as a unique human][do some exercises about mindfulness and feeling your feelings]. How does that sound?
 #	U: Yes -- go to topic file according to whichever item was selected

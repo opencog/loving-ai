@@ -1,0 +1,10 @@
+# Functions for the Loving-AI character
+
+# ^agree()
+# Create a general pattern to be used when user is asked whether they agree to participate in something.
+# E.g., "Do you want to try this?" "Would you like to talk about this?"
+
+concept: ~agreement_words [ awesome ]
+
+patternmacro: ^agree()
+ [ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words] ) "why not"]
