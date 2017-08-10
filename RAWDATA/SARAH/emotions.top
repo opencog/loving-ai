@@ -6,21 +6,16 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
 
-# EDDIE -- note about above -- topic EMOTIONS2 was here when I edited, though it seems redundant with neg and pos emotion concepts, that's prob why it's commented out.
-
 # If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_NEG_EMOTIONS if neg emotion
 # If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
-# FROM_OTHERTOPIC_TO_EMOTIONS
 t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
 	# a: (*) # ^next(gambit)
 
 t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
-	# if pos emotions, go to FROM_INTRO_TO_POS_EMOTIONS
 	a: ([_~positive_emotion good]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS)
-	# if neg emotions, go to FROM_INTRO_TO_NEG_EMOTIONS
 	a: (_~negative_emotion) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
 	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
@@ -59,16 +54,12 @@ s: BE_PRESENT_WITH_FEELING (?)
    			a: (*) ^goto(~SUPPORT_FEELING)
 
 # FROM_STEERING_TO_EMOTIONS
-# could use u: xxx (?), but then loose potential use as a gambit
+# could use s: xxx (?), but then loose potential use as a gambit
 t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 	a: ([(!not _~positive_emotion) (not * ~negative_emotion)]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	a: ([_~negative_emotion (not * ~positive_emotion)]) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
 	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
-
-#JULIA - let's talk about the best way to deal with repeating dialogue with variations sometime soon. i think the sections below would have taken me a lot less time to do if you had written out the logic in english rather that CS code, or in coding style using an $emotion-valence variable to indicate positive or neg emotion
-# EDDIE -- Sure, let me know what works for you and that will be what I do
-
 
 
 topic: ~SUPPORT_FEELING ()
@@ -99,7 +90,7 @@ t: () if (!$valence) { $valence = pos }
 
         b:(~yes) ^reuse(INVITE)
 
-u: INVITE (?) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+s: INVITE (?) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
 	# If they say ready or yes, go to SELF_COMPASSION
 	a: ([(!not ready) ^agree() ~feeling_happy]) ^goto(~SELF_COMPASSION)
 	# if they say Not ready or no or anything else -- go to REFUSE
@@ -141,7 +132,7 @@ t: ^pause($long) ^repeat()
     # no or anything else continue on to BODY_EXERCISE
     a: (*) ^reuse(BODY_EXERCISE)
 
-u: BODY_EXERCISE (?)
+s: BODY_EXERCISE (?)
     if ($valence=pos) { ^gambit(~BODY_EXERCISE_POS)}
     if ($valence=neg) { ^gambit(~BODY_EXERCISE_NEG)}
 
@@ -164,7 +155,7 @@ t: [Looks like you need some support. What are you feeling now?] [I'm right here
         a: (*) # anything else aside from yes or no, go to BODY_EXERCISE_NEG
             
 # BETTER
-# u: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Want to do an exercise that you can use to help you magnify good feelings?
+# s: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Want to do an exercise that you can use to help you magnify good feelings?
     b: (^agree()) # go to BODY_EXERCISE_POS
     b: (*) # no or anything else -- go to conversation_steering to any topic other than emotions
 
