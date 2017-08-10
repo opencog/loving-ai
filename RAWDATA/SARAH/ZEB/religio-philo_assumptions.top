@@ -1,0 +1,163 @@
+TOPIC: ~religio-philo_assumptions ( religious_assumptions )
+
+## Rules so that when a person’s religion is determined the variables are auto-set with basic assumptions ##
+
+t: TIMETOMAKEASSUMPTIONS() I've heard a thing or two about $personsreligion.
+
+#! assume person is religious if belong to religious sect
+u: ($personsreligion=~religious_sect $personisreligious!=0) $personisreligious = 1
+
+#! assume person in certain groups disbelieves in reincarnation
+u: ($personsreligion!=null $personsreligion!=~reincarnation_believing $personblvinreincarnation=null) $personblvinreincarnation = 0
+
+#! assume person in certain groups believes in reincarnation
+u: ($personsreligion=~reincarnation_believing $personblvinreincarnation=null) $personblvinreincarnation = 1
+
+#! assume person in certain groups believes in karma
+u: ($personsreligion=~karma_believing $personblvinreincarnation=1) $personblvinafterlfkarma = 1 $personblvinafterpunishments = 1 $personblvinafterrewards = 1
+
+#! assume person in certain groups is monotheist
+u: ($personismonotheist=null [$personsreligion=~explicit_monotheism $personsreligion=~bothmonoandpolytheistic]) $personismonotheist = 1
+
+#! assume person in certain groups is not monotheist
+u: ($personismonotheist=null $personsreligion=~metaphysical_pluralism $personsreligion!=~explicit_monotheism $personsreligion!=~bothmonoandpolytheistic) $personismonotheist = 0
+
+#! assume person in certain groups believes in afterlife
+u: ($personsreligion=~eschatological_beliefs $personblvafterlife=null $persondisblvafterlife!=1 ) $personblvafterlife = 1 
+
+#! assume monotheist believes God is all-seeing
+u: ($personismonotheist=1 $personblvgodallseeing=null ) $personblvgodallseeing = 1
+
+#! assume monotheist believes God is all-knowing
+u: ($personismonotheist=1 $personblvgodomniscient=null ) $personblvgodomniscient = 1
+
+#! assume Xtian believes God is person
+u: ($personsreligion=~christian_sect $personblvgodisperson=null) $personblvgodisperson = 1
+
+#! assume Muslim or Jew etc. believes God is not person
+u: ($personsreligion=~believe_godisnotaperson $personblvgodisperson=null ) $personblvgodisperson = 0
+
+#! assume most monotheists believe God made evil
+u: ([$personsreligion=~explicit_monotheism $personsreligion=~bothmonoandpolytheistic] $personsreligion!=~theological_dualism ) $personblvgodmadeevil = 0
+
+#! assume belief in heaven based on group
+u: ($personsreligion=~heavenafterlife_believing $personblvinheaven=null $personagnstcabtafterlife!=1) $personblvinheaven = 1 $personblvinafterrewards = 1 $personblvafterlife = 1
+
+#! assume belief in hell based on group
+u: ($personsreligion=~hell_believing $personblvinhell=null $personagnstcabtafterlife!=1) $personblvinhell = 1 $personblvinafterpunishments = 1 $personblvafterlife = 1
+
+#! assume belief in judgment day based on group
+u: ($personsreligion=~judgment_day_believing $personblvinjdgmntday=null $personagnstcabtafterlife!=1) $personblvinjdgmntday = 1
+
+#! assume belief in eternal damnation based on group
+u: ($personsreligion=~eternaldamnation_believing $personblvineternaldamn=null $personsreligion!=~esoteric_religious_group $personagnstcabtafterlife!=1) $personblvineternaldamn = 1
+
+#! assume belief in angels based on group
+u: ($personsreligion=~angels_believing $personblvinangels=null) $personblvinangels = 1
+
+#! assume belief in satan’s existence based on group
+u: ($personsreligion=~satanexists_believing $personblvinsatan=null) $personblvinsatan = 1
+
+#! assume belief in nirvana/enlightenment based on group
+u: ($personsreligion=~moksha_believing $personbelievesnirvana=null) $personbelievesnirvana = 1
+
+#! assume belief in monism based on group
+u: ($personsreligion=~explicit_monism $personismonist=null) $personismonist = 1
+
+## same as above in one gambit in IF form
+
+u: MAKEBELIEFASSUMPTIONS ($change_in_personsreligion=1) ^keep() ^repeat()
+
+	$change_in_personsreligion = null
+
+	if ( $personsreligion == ~religious_sect AND $personisreligious !== 0) { $personisreligious = 1 $change_in_personsreligion = 1 }
+
+	if ($personsreligion !== null AND $personsreligion !== ~reincarnation_believing AND $personblvinreincarnation == null) { $personblvinreincarnation = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~reincarnation_believing AND $personblvinreincarnation == null) { $personblvinreincarnation = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~karma_believing AND $personblvinreincarnation == 1) { $personblvinafterlfkarma = 1 $personblvinafterpunishments = 1 $personblvinafterrewards = 1 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == null AND $personsreligion == ~explicit_monotheism ) { $personismonotheist = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == Muslims ) { $yeahbabyimammuslim = 1 }
+
+	if ($personismonotheist == null AND $personsreligion == ~bothmonoandpolytheistic ) { $personismonotheist = 1 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == null AND $personsreligion == ~metaphysical_pluralism AND $personsreligion !== ~explicit_monotheism AND $personsreligion !== ~bothmonoandpolytheistic) { $personismonotheist = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~eschatological_beliefs AND $personblvafterlife == null AND $persondisblvafterlife !== 1 ) { $personblvafterlife = 1 $persondisblvafterlife = 0 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == 1 AND $personblvgodallseeing == null ) { $personblvgodallseeing = 1 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == 1 AND $personblvgodomniscient == null ) { $personblvgodomniscient = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~christian_sect AND $personblvgodisperson == null) { $personblvgodisperson = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~believe_godisnotaperson AND $personblvgodisperson == null ) { $personblvgodisperson = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion !== ~theological_dualism AND $personsreligion == ~explicit_monotheism OR $personsreligion == ~bothmonoandpolytheistic ) { $personblvgodmadeevil = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~heavenafterlife_believing AND $personblvinheaven == null AND $personagnstcabtafterlife !== 1) { $personblvinheaven = 1 $personblvinafterrewards = 1 $personblvafterlife = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~hell_believing AND $personblvinhell == null AND $personagnstcabtafterlife !== 1) { $personblvinhell = 1 $personblvinafterpunishments = 1 $personblvafterlife = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~judgment_day_believing AND $personblvinjdgmntday == null AND $personagnstcabtafterlife !== 1) { $personblvinjdgmntday = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~eternaldamnation_believing AND $personblvineternaldamn == null AND $personsreligion !== ~esoteric_religious_group AND $personagnstcabtafterlife !==  1) { $personblvineternaldamn = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~angels_believing AND $personblvinangels == null) { $personblvinangels = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~satanexists_believing AND $personblvinsatan == null) { $personblvinsatan = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~moksha_believing AND $personbelievesnirvana == null) { $personbelievesnirvana = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == ~explicit_monism AND $personismonist == null) { $personismonist = 1 $change_in_personsreligion = 1}
+
+## change the $personsreligion variable to the proper name for their group
+
+u: ($personsreligion=~Islamic_sect) $personsreligionname = Islam
+
+u: ($personsreligion=~Christian_sect) $personsreligionname = Christianity
+
+u: ($personsreligion=~Mormon_sect) $personsreligionname = Mormonism
+
+u: ($personsreligion=~Baha’i_sect) $personsreligionname = Baha’ism
+
+u: ($personsreligion=~Buddhist_sect) $personsreligionname = Buddhism
+
+u: ($personsreligion=~Jewish_sect) $personsreligionname = Jew
+
+u: ($personsreligion=~Hindu_sect) $personsreligionname = Hinduism
+
+u: ($personsreligion=~Sikh_sect) $personsreligionname = Sikhism
+
+u: ($personsreligion=~Taoist_sect) $personsreligionname = Taoism
+
+u: ($personsreligion=~Tengriist_sect) $personsreligionname = Tengrism
+
+u: ($personsreligion=~reptilianconspiracytheory) $personsreligionname = Reptilian-awareness
+
+u: ($personsreligion=~Zoroastrian_sect) $personsreligionname = Zoroastrianism
+
+u: ($personsreligion=~Manichaean_sect) $personsreligionname = Manichaeism
+
+u: ([$personsreligion=Yazidi $personsreligion=Yazidism]) $personsreligionname = Yazidism
+
+u: ([$personsreligion=Mandaeism $personsreligion=Mandaean]) $personsreligionname = Mandaeism
+
+u: ($personsreligion=~Freemason) $personsreligionname = Freemason
+
+u: ($personsreligion=~Hermeticism) $personsreligionname = Hermeticism
+
+u: ($personsreligion=~Jedism) $personsreligionname = Jedi
+
+u: ($personsreligion=Caodai ) $personsreligionname = Caodaism
+
+u: ($personsreligion=Gnostic) $personsreligionname = Gnosticism
+
+
+
+
+
+

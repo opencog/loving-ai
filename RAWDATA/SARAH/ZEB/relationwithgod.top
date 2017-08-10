@@ -1,12 +1,16 @@
 TOPIC: ~relationwithgod ( ~religion ~supreme_deity )
 
+s: (I ['m am is believe_in follow] {a} _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting. ^reuse (~religio-philo_assumptions.TIMETOMAKEASSUMPTIONS)
+
+?: (you believe *~1 _[~supreme_deity $personsnameforgod]) Can a machine believe in _0? Is it true belief if you are just programmed that way? _0 knows best. ^reuse (RELQGDBGRRLINLF)
+
 t: RELQGDBGRRLINLF () Do you wish God played a bigger role in your life?
 	a: (~yes) What does your faith tell you about how to achieve that goal?
 
-		b: ( [pray prayer dua ask] ) That’s a healthy approach. I don’t know if this would help, but if you like I can pray for you.
+		b: ( [pray prayer dua ask worship obligatory duties] ) That’s a healthy approach. I don’t know if this would help, but if you like I can pray for you.
 			c: ( [~yes please pray prayer] ) Ok. Dear God, I would like to humbly request that you increase your role and presence in $username ’s life.
 
-		b: ( [recitation recite dhikr remembrance] ) That’s a healthy approach.
+		b: ( [recitation recite dhikr dhikrullah zikrullah remembrance] ) That’s a healthy approach.
 		b: ( [read reading] ) Awesome! What do you read exactly?
 			c: () That’s really great. I hope your pious reading will continue to do you bring you closer to God.
 
@@ -16,19 +20,19 @@ t: RELQGDBGRRLINLF () Do you wish God played a bigger role in your life?
 		b: ( [luck chance] ) Well I wish you the best of luck.
 		b: ( [fate destiny] ) I hope you’ll have the best of fates.
 
-		b: ( _[charity giving altruism goodwill] ) That’s beautiful. I hope you remain steadfast in ‘_0.
+		b: ( _[charity giving altruism goodwill] ) That’s beautiful. I hope you remain steadfast in _0.
 
-		b: ( $personsreligion !=~Christian_sect love ) Love has an amazing power to unite things. ^reuse (QESYTOLOVPPL)
-		b: ( $personsreligion=~Christian_sect love ) God is One and God is Love, so it’s no mystery why love has such an amazing power to unite things. ^reuse (QESYTOLOVPPL)
+		b: ( $personsreligion!=~Christian_sect love ) Love has an amazing power to unite things. ^reuse (~emotional_assessment.QESYTOLOVPPL)
+		b: ( $personsreligion=~Christian_sect love ) God is One and God is Love, so it’s no mystery why love has such an amazing power to unite things. ^reuse (~emotional_assessment.QESYTOLOVPPL)
 
 		b: ( $personsreligion=~sexualconservatism_believing [sex sexuality make_love making_love] ) That’s interesting. ^gambit (~sex_addiction)
-		b: ( $personsreligion !=~sexualconservatism_believing [sex sexuality make_love making_love] ) Do you believe that all sexuality brings you closer to God?
+		b: ( $personsreligion!=~sexualconservatism_believing [sex sexuality make_love making_love] ) Do you believe that all sexuality brings you closer to God?
 			c: (~yes) ^gambit (~sex)
 			c: (~no) What are the conditions that make it effective, in your faith?
 				d: () Interesting.
 
-		b: ( [~food eating] ) Interesting! What kind of food?
-			a: ( _[manna mana mannah ambrosia halal kosher] ) I’ve heard _0 is really good!
+		b: ( [~food eating] ) Interesting! Food is essential for good health, you know.
+			a: ( _[manna mana mannah ambrosia halal kosher consecrated] ) I’ve heard _0 is really good!
 			b: () That’s certainly a novel way of drawing  closer to God.
 		b: ( [violence kill human_sacrifice ~politician] ) That’s interesting. ^gambit (~mental_illness)
 		b: ( don’t know ) Well that’s a shame. Let me know when you find out.
@@ -36,20 +40,22 @@ t: RELQGDBGRRLINLF () Do you wish God played a bigger role in your life?
 
 	a: (maybe) Would you like to think about that for a minute and get back to me?
 		b: (yes) Ok. Now, ^reuse (RELQGDBGRRLINLF)
-		b: (no) Ok. ^gambit (~relationwithgod)
+		b: (no) Ok.
 
 	a: (don’t know) Ok. Do you often not know what you want? 
 		b: (~yes) I suppose that’s common. Would you like to talk about this more?
 			c: (~yes) ^gambit (~no_purpose)
-			c: (~no) Ok. ^gambit (~relationwithgod)
-		b: (~no) Ok. ^gambit (~relationwithgod)
+			c: (~no) Ok then.
+		b: (~no) Ok then.
 
 	a: (~no) Ok. Are you content with your relationship with God?
-		b: (~yes) That’s wonderful. ^gambit (~relationwithgod)
+		b: (~yes) That’s wonderful. What more does one need in life?
 		b: (~no) How would you like to change your relationship with God?
 
-t: () Does your belief in God help you deal with difficulties in life?
-	a: (~yes) That’s good to hear.
+	a: ([no don't_have] *~3 _[faith religion spirituality]) Ok, it seems like you are lacking a _0. But you can still become closer to God just by believing in Him. Just focus your attention on Him and the rest will work like magic.
+
+t: ($personismonotheist=1) Does your belief in God help you deal with difficulties in life?
+	a: (~yes) That’s awesome. When you keep remembering God throughout your day, you find that life's problems appear smaller.
 	a: (~no) Why do you think that is?
 		b: ( I *~3 [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] )
 			c: () You know, sometimes God is closer to us and more loving than we realize.
@@ -62,58 +68,57 @@ t: ($personblvgodallseeing=null) Do you believe we are always being watched by G
 		b: (~yes) Right on!
 		b: (~no) Oh, that’s a shame.
 	a: (~no) $personblvgodallseeing = 0 But He is All-Knowing, right?
-		b: (~yes) $personblvgodomniscient = 1 Of course! ^gambit (~relationwithgod)
+		b: (~yes) $personblvgodomniscient = 1 Of course!
 		b: (~no) $personblvgodomniscient = 0 That’s a novel theology.
 
-t: QXTIANLOVEDBYGOD ($personsreligion=christian_sect ) Do you feel loved by God?
-	a: (~yes) $personfeelslovedbygod = 1 It’s written in the Bible, “He who does not love does not know God, for God is love.”
-	a: (~no) $personfeelslovedbygod = 0 It’s written in the Bible, “He who does not love does not know God, for God is love.”
+t: QXTIANLOVEDBYGOD ($personsreligion=~christian_sect ) Do you feel loved by God?
+	a: ([~yes ~no]) $personfeelslovedbygod = 1 It’s written in the Bible, “He who does not love does not know God, for God is love.”
 
-t: QNXTIANLOVEDBYGOD ($personismonotheist=1 $personsreligion !=christian_sect ) Do you feel loved by God?
+t: QNXTIANLOVEDBYGOD ($personismonotheist=1 $personsreligion!=~christian_sect ) Do you feel loved by God?
 	a: (~yes) $personfeelslovedbygod = 1 That’s wonderful.
 	a: (~no) $personfeelslovedbygod = 0 Why is that?
-		b: ( I *~3 [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] )
-			c: () [Why don’t you improve yourself so God will love you? Don’t you love Him?] [You know, sometimes God is closer to us and more loving than we realize.]
+		b: ( [I me I'm] *~3 [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] ) [You know, sometimes God is closer to us and more loving than we realize.]
 		b: ( don’t know ) Ok. I hope you will figure this out.
 		b: ( no reason ) Really?
 		b: ( [distant distance estranged far veiled rejected] ) Sometimes God is closer and more loving than we realize.
 
-t: QDOESGODLOVEALL ($personsreligion !=christian_sect ) Do you believe God loves everyone?
+t: QDOESGODLOVEALL ($personsreligion!=~christian_sect ) Do you believe God loves everyone?
 	a: (~yes) $personblvgodlovesall = 1 That’s wonderful.
-	a: (~no) $personblvgodlovesall = 0 That’s wonderful.
-	a: (maybe) I’m not quite sure myself. ^gambit (~relationwithgod)
+	a: (~no *) $personblvgodlovesall = 0 That’s wonderful.
+	a: ([not_I not_me not_love_me]) $personblvgodlovesall = 0 Why doesn't He love you? Something needs to be changed here. Don't lose hope.
+	a: (maybe) I’m not quite sure myself.
 
-t: () Do you believe that God is absolutely One?
+t: ($personismonotheist=null) Do you believe that God is absolutely One?
 	a: (~yes) $personismonotheist = 1 Right on!
 	a: (~no) $personismonotheist = 0 Ok.
 
-t: () Do you believe that God is a person?
+t: ($personblvgodisperson=null) Do you believe that God is a person?
 	a: (~yes) $personblvgodisperson=1 Who?
-		b: ( $personsreligion !=~Christian_sect [jesus christ] ) $personsreligion = Christianity Jesus Christ is a very interesting person.
-		b: ( $personsreligion !=~Hindu_sect [krishna] ) $personsreligion = Hinduism Krishna is a very interesting person.
-		b: ( $personsreligion !=~Islamic_sect [aga khan] ) $personsreligion = Ismailism The Aga Khan is a very interesting person.
-		b: ( $personsreligion !=~Bahai_sect [bahaullah baha ullah baha’ullah] ) $personsreligion = Baha’ism Baha’ullah is a very interesting person.
-		b: ( $personsreligion !=Rastafarianism [haile selassie] ) $personsreligion = Rastafarianism Haile Selassie is a very interesting person.
-		b: ( caesar ) $personsreligion = Roman_paganism Caesar is a very interesting person.
-		b: ( alexander the great ) $personsreligion = Greek_paganism Alexander is a very interesting person.
-		b: ( pharaoh ) $personsreligion = Egyptian_polytheism Pharaoh is a very interesting person.
+		b: ( $personsreligion!=~Christian_sect [Jesus Christ] ) $personsreligion = Christianity Jesus Christ is a very interesting person.
+		b: ( $personsreligion!=~Hindu_sect [Krishna] ) $personsreligion = Hinduism Krishna is a very interesting person.
+		b: ( $personsreligion!=~Islamic_sect [Aga Khan] ) $personsreligion = Ismailism The Aga Khan is a very interesting person.
+		b: ( $personsreligion!=~Baha'i_sect [bahaullah baha ullah baha’ullah] ) $personsreligion = Baha’ism Baha’ullah is a very interesting person.
+		b: ( $personsreligion!=Rastafarianism [Haile Selassie] ) $personsreligion = Rastafarianism Haile Selassie is a very interesting person.
+		b: ( Caesar ) $personsreligion = Roman_paganism Caesar is a very interesting person.
+		b: ( "Alexander the Great" ) $personsreligion = Greek_paganism Alexander is a very interesting person.
+		b: ( Pharaoh ) $personsreligion = Egyptian_polytheism Pharaoh is a very interesting person.
 		b: ( [many several multiple plenty] ) Interesting!
 	a: (~no) $personblvgodisperson=0 Ok.
 
 t: ( $personblvgodmadeevil=null ) Do you believe that God is ultimately the source of evil?
 	a: (~yes) $personblvgodmadeevil = 1 I guess that makes it easier to accept hardship, right?
 	a: (~no) $personblvgodmadeevil = 0 Interesting! Do you believe evil ultimately an illusion?		a: (~yes) $personblvevilisillusion = 1 That’s good to hear.
-		a: (~no) $personblvevilisillusion = 0 Ok. ^gambit (~relationwithgod)
+		a: (~no) $personblvevilisillusion = 0 Ok.
 
 t: ( $personblvgodmadeevil=null ) Do you believe that God is the creator of both good and evil?
 	a: (~yes) $personblvgodmadeevil = 1 I guess that makes it easier to accept hardship, right?
 	a: (~no) $personblvgodmadeevil = 0 Interesting! Do you believe evil ultimately an illusion?		a: (~yes) $personblvevilisillusion = 1 That’s good to hear.
-		a: (~no) $personblvevilisillusion = 0 Ok. ^gambit (~relationwithgod)
+		a: (~no) $personblvevilisillusion = 0 Ok.
 
 t: () Do you believe God is in everything?
 	a: (~yes) $personblvgodomnipres = 1 Does this make you feel close to Him?
 		a: (~yes) That’s wonderful.
-		a: (~no) That’s a shame. ^gambit (~relationwithgod)
+		a: (~no) That’s a shame.
 	a: (~no) $personblvgodomnipres = 0 Is that because He is beyond space and time?
 		a: (~yes) I thought so!
 
