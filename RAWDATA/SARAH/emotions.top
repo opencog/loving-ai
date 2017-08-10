@@ -1,5 +1,5 @@
 concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives)
-concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)
+concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
@@ -28,12 +28,13 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 #! I feel sad.
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 # I think I resolved this. See what you think!
+
 t: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are generally noticing some negative feelings? Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
-    	$emotion_valence = neg
+    	$valence = neg
         b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
         	# pause for 10 seconds, then go to ~SUPPORT_FEELING_NEG
-        	c: (*) ^goto(~SUPPORT_FEELING_NEG)
+        	c: (*) ^goto(~SUPPORT_FEELING)
     # If anything other than yes, go to conversation_steering  after saying the above line
     # JULIA, wondering what else we can do here. E.g., response "I've been really pissed off" would send them to different domain
     # Okay, good point -- what about "I get the sense it would be useful to talk some more about your feelings, is that right?" then if yes go to SUPPORT_FEELING_NEG and if no go to another domain
@@ -41,10 +42,11 @@ t: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds li
 
 
 #! I'm mostly pretty joyful.
-# JULIA I changed the respons belowe, but see what you think. same issue as above with "right now"
+# JULIA I changed the respons below, but see what you think. same issue as above with "right now"
 # okay, see my fix and let me know what you think
+
 t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are generally noticing some positive feelings?
-    a: (!not [~yes ~feeling_happy]) $emotion_valence = pos
+    a: (!not [~yes ~feeling_happy]) $valence = pos
        That sounds pretty nice! Putting aside your thoughts about your feelings for a moment, what part of your body might feel the best right now?
          b: (*) ^reuse(BE_PRESENT_WITH_FEELING)
     # JULIA, same as above, wondering what else we can do here. E.g., response "I've just been overjoyed all the time" would send them to different domain
@@ -54,7 +56,7 @@ t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds li
 s: BE_PRESENT_WITH_FEELING (?)
    ^pause($medlong) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, and it can help your whole body feel great. Let's do that for a moment.
            	# pause for 10 seconds, then go to SUPPORT_FEELING_POS
-   			a: (*) ^goto(~SUPPORT_FEELING_POS)
+   			a: (*) ^goto(~SUPPORT_FEELING)
 
 # FROM_STEERING_TO_EMOTIONS
 # could use u: xxx (?), but then loose potential use as a gambit
@@ -62,82 +64,77 @@ t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for 
 	a: ([(!not _~positive_emotion) (not * ~negative_emotion)]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	a: ([_~negative_emotion (not * ~positive_emotion)]) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
-	a: (*) ^rejoinder(BE_PRESENT_WITH_FEELING)
+	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
 
 #JULIA - let's talk about the best way to deal with repeating dialogue with variations sometime soon. i think the sections below would have taken me a lot less time to do if you had written out the logic in english rather that CS code, or in coding style using an $emotion-valence variable to indicate positive or neg emotion
 # EDDIE -- Sure, let me know what works for you and that will be what I do
-topic: ~SUPPORT_FEELING_NEG ()
+
+
+
+topic: ~SUPPORT_FEELING ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: When I'm feeling $feeling, I first need to be feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
-    a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'bad'. Can you tell me about a time when you've discovered that?
-        b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
-            # If they say ready or yes, go to SELF_COMPASSION_NEG
-            c: ([(!not ready) ^agree() ~feeling_happy]) ^gambit(~SELF_COMPASSION_NEG)
-            # if they say Not ready or no or anything else -- go to REFUSE
-            c: (*) ^gambit(~REFUSE)
-    # no or anything else
-    a:(*) So I guess what I'm referring to is the scientific research showing that a feeling can be buried for many years, but eventually it comes out. So it's really useful to practice feeling your feelings, both positive and negative. Does that make sense?
-        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
-            # If they say ready or yes, go to SELF_COMPASSION_NEG
-            # if they say Not ready or no or anything else -- go to REFUSE
-            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_NEG)
-			# anything else, go to REFUSE
-            c: (*) ^gambit(~REFUSE)
-        # if anything else go to REFUSE
-        b:(*) ^gambit(~REFUSE)
+# $valence should be set here already, but if for some reason it's not default to pos
+t: () if (!$valence) { $valence = pos }
+      if (!$feeling) { $feeling = something }
 
-topic: ~SUPPORT_FEELING_POS()
+	When I'm feeling $feeling,
+	if ($valence=neg) { I first need to feel upset for awhile. Like if I skip over a feeling, it creeps up on me later.}
+	if ($valence=pos) {I like to magnify it. Life is too short to ignore when we feel good!}
+	You know what I mean?
+
+	a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call
+		if ($valence=neg) {bad.}
+		if ($valence=pos) {good.}
+		Can you tell me about a time when you've discovered that?
+		b:(*) ^reuse(INVITE)
+
+    # no or anything else
+    a:(*) So I guess what I'm referring to is the scientific research showing that
+
+		if ($valence=neg) { a feeling can be buried for many years, but eventually it comes out. So it's really useful to practice feeling your feelings, both positive and negative.}
+		if ($valence=pos) { good feelings need to be really experienced to have their positive impacts on wellness and health.}
+
+		Does that make sense?
+
+        b:(~yes) ^reuse(INVITE)
+
+u: INVITE (?) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+	# If they say ready or yes, go to SELF_COMPASSION
+	a: ([(!not ready) ^agree() ~feeling_happy]) ^goto(~SELF_COMPASSION)
+	# if they say Not ready or no or anything else -- go to REFUSE
+	a: (*) ^goto(~REFUSE)
+
+
+topic: ~SELF_COMPASSION ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good! You know what I mean?
-    a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'good'. Can you tell me about a time when you've discovered that?
-        b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
-            # If they say ready or yes, go to ~SELF_COMPASSION_POS
-            # if they say Not ready or no -- go to REFUSE
-            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_POS)
-            c: (*) # anything else, go to REFUSE
-    # no or anything else
-    a:(*) So I guess what I'm referring to is the scientific research showing that good feelings need to be really experienced to have their positive impacts on wellness and health. Does that make sense?
-        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
-            # If they say ready or yes, go to ~SELF_COMPASSION_POS
-            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_POS)
-            # anything else, go to REFUSE
-            c: (*) ^gambit(~REFUSE)
-        # if anything else go to REFUSE
-        b:(*) ^gambit(~REFUSE)
+# depends on $valence being set (defaults to pos)
+t: () if ($valence != pos and $valence != neg)
+		{ $valence = pos }
 
+t: ^pause($verylong)
+	Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling]
+	if ($valence=pos) { and see if you can really magnify it. Like pretend it is spreading across your whole body.}
+	if ($valence=neg) { and see if you can be warmly ok with it, maybe even love it, without trying to change it.}
+	a: () ^goto(~LONGER)
 
 topic: ~REFUSE ()
-t: I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
-	a: (^agree()) [$emotion_valence=pos ^gambit(~SELF_COMPASSION_POS) ]
-							  [$emotion_valence=neg ^gambit(~SELF_COMPASSION_NEG) ]
-							  [ ^gambit(~SELF_COMPASSION_POS) ]
+t: (!~) ^fail(topic)
 
+t: I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
+	a: (^agree()) ^goto(~SELF_COMPASSION)
 	a: (*) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
 		# TODO for no or anything else, first try to match a responder in another topic, then if that fails, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
 		^gambit(~uniqueness)
-
-# TODO swap in this topic for the _POS and _NEG ones below
-topic: ~SELF_COMPASSION()
-
-# depends on $emotion_valence being set (defaults to pos)
-t: () if ($emotion_valence != pos and $emotion_valence != neg)
-		{ $emotion_valence = pos }
-
-t: ^pause($verylong)
-	Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] [what's up] and
-	[$emotion_valence=pos see if you can really magnify it. Like pretend it is spreading across your whole body.]
-	[$emotion_valence=neg see if you can be warmly ok with it, maybe even love it, without trying to change it.]
-		a: () ^next(gambit)
 
 
 topic: ~LONGER []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: ^pause($long) ^repeat()
-	[$emotion_valence=pos Would you like to try magnifying it a little longer? ]
-	[$emotion_valence=neg Would you like to be with that feeling a little longer? ]
+	[$valence=pos Would you like to try magnifying it a little longer? ]
+	[$valence=neg Would you like to be with that feeling a little longer? ]
 	# if yes, pause some more, # todo and keep going through the loop until no.
     a:(^agree())  ^pause($long)
     	b: (*) ^reuse(BODY_EXERCISE)
@@ -145,43 +142,8 @@ t: ^pause($long) ^repeat()
     a: (*) ^reuse(BODY_EXERCISE)
 
 u: BODY_EXERCISE (?)
-    [$emotion_valence=pos ^gambit(~BODY_EXERCISE_POS)]
-    [$emotion_valence=neg ^gambit(~BODY_EXERCISE_NEG)]
-
-##<<
-t: LONGER? () ^pause($long) [Would you like to try magnifying it a little longer?] [$longer A little more?] ^repeat() $_longer = 1
-	# if yes, pause some more, and keep going through the loop until no.
-    a:(^agree())  ^pause($long)
-    	b: (*) ^reuse(LONGER?)
-    # no or anything else continue on to BODY_EXERCISE_POS
-    a: (*) ^gambit(~BODY_EXERCISE_POS)
-
-##>>
-##<< Unused code
-	if (emotion_valence == neg)
-		{ see if you can be warmly ok with it, maybe even love it, without trying to change it. }
-	else # emotion_valence == pos
-		{ see if you can really magnify it. Like pretend it is spreading across your whole body. }
-
-	^refine()
-		a: (emotion_valuence=neg)
-			Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] [what's up] and see if you can be warmly ok with it, maybe even love it, without trying to change it.]
-		a: ([emotion_valence=pos *])
-			Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can really magnify it. Like pretend it is spreading across your whole body.
-##>>
-
-
-topic: ~SELF_COMPASSION_NEG ()
-t: (!~) ^fail(topic) # block topic from accidental access
-
-t: ^pause(30000) Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] [what's up] and see if you can be warmly ok with it, maybe even love it, without trying to change it.
-	# a: () ^next(gambit)
-	a: () ^goto(~LONGER)
-
-topic: ~SELF_COMPASSION_POS()
-
-t: ^pause($verylong) Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can really magnify it. Like pretend it is spreading across your whole body.
-	a: () ^goto(~LONGER)
+    if ($valence=pos) { ^gambit(~BODY_EXERCISE_POS)}
+    if ($valence=neg) { ^gambit(~BODY_EXERCISE_NEG)}
 
 
 
@@ -211,7 +173,7 @@ topic: ~BODY_EXERCISE_NEG ()
 
  # t: This will be  a body scanning exercise, but it's not implemented yet. Stay tuned!
 # EDDIE -- commented this out because its half-CS, half-English
-t: You know what we could try? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel? THIS EXERCISE IS UNDER CONSTRUCTION
+t: You know what we could try next? Let's do this. Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel? FYI THIS EXERCISE IS UNDER CONSTRUCTION
   #   (*) AFter they respond --> Great! Now while you're with that good feeling, bring in a bit of the $Feeling into the mix. Wait a moment. 
     # [PAUSE]
     # continued after pause -- Now. Does that feel better?
@@ -230,7 +192,7 @@ t: You know what we could try? Let's do this. Just scan your body mentally and c
 topic: ~BODY_EXERCISE_POS ()
 
 # EDDIE -- commented this out because its half-CS, half-English
-t: You know what we could try? Let's do this. Just scan your body mentally and choose any part that feels really good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel? THIS EXERCISE IS UNDER CONSTRUCTION
+t: You know what we could try next? Let's do this. Just scan your body mentally and choose any part that feels really good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel? FYI THIS EXERCISE IS UNDER CONSTRUCTION
 t: This will continue the body scanning exercise, but it's not implemented yet. Stay tuned!
   # Pause and wait for response.
   #   (*) Okay, while you're with that feeling, let's magnify that feeling with your $feeling feeling. Imagine that. 
@@ -284,3 +246,90 @@ s: NOTRESISTING (?) Very nice! It's wonderful that you’ve learned to embrace y
 
 # TODO "wonderful" (by itself) gets substitued with ~yes as an introjection, so doesn't get picked up as postive emotion in answer to "how are you feeling?"
 # see ^removeinternalflag ( word value ) for potential solution
+
+
+
+
+# ################ OLD CODE ##################
+
+###<<<
+topic: ~SUPPORT_FEELING_NEG ()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: When I'm feeling $feeling, I first need to feel upset for awhile. Like if I skip over a feeling, it creeps up on me later. You know what I mean?
+    a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'bad'. Can you tell me about a time when you've discovered that?
+        b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to SELF_COMPASSION_NEG
+            c: ([(!not ready) ^agree() ~feeling_happy]) ^gambit(~SELF_COMPASSION_NEG)
+            # if they say Not ready or no or anything else -- go to REFUSE
+            c: (*) ^gambit(~REFUSE)
+    # no or anything else
+    a:(*) So I guess what I'm referring to is the scientific research showing that a feeling can be buried for many years, but eventually it comes out. So it's really useful to practice feeling your feelings, both positive and negative. Does that make sense?
+        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to SELF_COMPASSION_NEG
+            # if they say Not ready or no or anything else -- go to REFUSE
+            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_NEG)
+			# anything else, go to REFUSE
+            c: (*) ^gambit(~REFUSE)
+        # if anything else go to REFUSE
+        b:(*) ^gambit(~REFUSE)
+
+topic: ~SUPPORT_FEELING_POS()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: When I'm feeling $feeling, I like to magnify it. Life is too short to ignore when we feel good! You know what I mean?
+    a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call 'good'. Can you tell me about a time when you've discovered that?
+        b:(*) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to ~SELF_COMPASSION_POS
+            # if they say Not ready or no -- go to REFUSE
+            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_POS)
+            c: (*) # anything else, go to REFUSE
+    # no or anything else
+    a:(*) So I guess what I'm referring to is the scientific research showing that good feelings need to be really experienced to have their positive impacts on wellness and health. Does that make sense?
+        b:(~yes) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+            # If they say ready or yes, go to ~SELF_COMPASSION_POS
+            c: ([ready ~yes]) ^gambit(~SELF_COMPASSION_POS)
+            # anything else, go to REFUSE
+            c: (*) ^gambit(~REFUSE)
+        # if anything else go to REFUSE
+        b:(*) ^gambit(~REFUSE)
+###>>>
+
+##<<
+t: LONGER? () ^pause($long) [Would you like to try magnifying it a little longer?] [$longer A little more?] ^repeat() $_longer = 1
+	# if yes, pause some more, and keep going through the loop until no.
+    a:(^agree())  ^pause($long)
+    	b: (*) ^reuse(LONGER?)
+    # no or anything else continue on to BODY_EXERCISE_POS
+    a: (*) ^gambit(~BODY_EXERCISE_POS)
+
+##>>
+##<< Unused code
+	if (emotion_valence == neg)
+		{ see if you can be warmly ok with it, maybe even love it, without trying to change it. }
+	else # emotion_valence == pos
+		{ see if you can really magnify it. Like pretend it is spreading across your whole body. }
+
+	^refine()
+		a: (emotion_valuence=neg)
+			Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] [what's up] and see if you can be warmly ok with it, maybe even love it, without trying to change it.]
+		a: ([emotion_valence=pos *])
+			Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [what's up] [or $Feeling] and see if you can really magnify it. Like pretend it is spreading across your whole body.
+##>>
+
+###<<<
+topic: ~SELF_COMPASSION_NEG ()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: ^pause(30000) Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] [what's up] and see if you can be warmly ok with it, maybe even love it, without trying to change it.
+	# a: () ^next(gambit)
+	a: () ^goto(~LONGER)
+
+topic: ~SELF_COMPASSION_POS()
+
+t: ^pause($verylong) Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling] and see if you can really magnify it. Like pretend it is spreading across your whole body.
+	a: () ^goto(~LONGER)
+###>>>
+
+
+
