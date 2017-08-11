@@ -137,71 +137,10 @@ t: Do you notice how you felt this time?
   # TODO: come back to this when we have eye opened/closed detection
     b: () ^goto(~CONSCIOUSNESSPRIOR)
   # if no, go to TRYAGAIN2
-  a: (~no) ^goto(~TRYAGAIN2)
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
-  # a: (*) ^goto(~TRYAGAIN2)
-  a: (*) ^addTopic(~TRYAGAIN2)
+  # Sending them to consciousness prior for now, until tryagain2 is completed
+  a: () ^goto(~CONSCIOUSNESSPRIOR)
 
-# TODO
-topic: ~TRYAGAIN2 []
-t: (!~) ^fail(topic) # block topic from accidental access
-
-t: Let's try a different exercise to help you feel your awareness. Are you up for that?
-	a: (~no) It's really worth trying, and it's a different approach so it might work. Okay?
-	  b: (~no) ^steer_to_different_domain(consciousness)
-	  b: () ^gambit(~)
-	a: () ^gambit(~)
- 
-t: Okay, wonderful. First, sit quietly with your eyes closed for a moment.
-
-t: Need to add the automatic progression to this exercise but you can keep pushing enter to go on through in the meantime. (Ignore the man behind the curtain.)
-
-t: Now, feel your face.
- 
-t: Imagine a large empty space. 
-
-t: Now imagine your face filling up that large space.
- 
-t: Feel the sensations of your face in that larger space of awareness.
- 
-t: Notice how you feel about your entire body and everything around you right now. How does that feel?
-
-# wait for person to say something, then move on
- 
-t: Do you notice a larger field of awareness even beyond your face?
-  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-  
-  a: (~no) ^addtopic(~TRYAGAIN3)
-  # if yes, then go to CONSCIOUSNESSPRIOR
-# if no, go to TRYAGAIN3
-# if neither yes nor no, first try to attempt responder match in another topic, then go to TRYAGAIN3
-  
-
-# TODO
-topic: ~TRYAGAIN3 []
-t: (!~) ^fail(topic) # block topic from accidental access
-
-t: Please excuse the construction. This particular practice is in development.
-
-t: Let's try this. Go ahead and leave your eyes open for a moment.
- 
-t: First, notice how you view the world from the location of your eyes.
-
-t: Now, go ahead and close your eyes again.
- 
-t: Let's move your viewpoint to the back of your head, so you are observing the world from the back of your head.
- 
-t: Let's look at your face from the back of your head. How does that feel?
-
-# wait for the person to say something, then move on.
- 
-t: Can you feel that you are observing your face from behind it?
-  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
-   
-  a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
-  	# if yes, then go to UNITYEXPERIENCE
-	# if no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
- 
 
 topic: ~CONSCIOUSNESSPRIOR []
 t: ($blocking !~) ^fail(topic) # block topic from accidental access
@@ -209,7 +148,7 @@ t: ($blocking !~) ^fail(topic) # block topic from accidental access
 t: So you just experienced awareness! Isn't it COOL???
 # wait for response
     
-t: Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
+t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
   # if yes, go to ~EXERCISE_ALT
   a: (^agree()) ^goto(~EXERCISE_ALT)
 
@@ -290,7 +229,7 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 
 
 topic: ~PRACTICE []
-t: ($blocking !~) ^fail(topic) # block topic from accidental access
+t: (!~) ^fail(topic) # block topic from accidental access
 
 
 t: Alright, would you like a few tips on practicing feeling your connection to awareness?
@@ -376,3 +315,64 @@ t: Hold on to that feeling of oneness for a little bit. When you are ready, open
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no or anything else-- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
 	a: (*) # if anything else -- say: Thank you for doing this with me. I think it's really cool too. --> then go to conversation steering to a topic not consciousness
+
+# TODO
+topic: ~TRYAGAIN2 []
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: Let's try a different exercise to help you feel your awareness. Are you up for that?
+	a: (~no) It's really worth trying, and it's a different approach so it might work. Okay?
+	  b: (~no) ^steer_to_different_domain(consciousness)
+	  b: () ^gambit(~)
+	a: () ^gambit(~)
+
+t: Okay, wonderful. First, sit quietly with your eyes closed for a moment.
+
+t: Need to add the automatic progression to this exercise but you can keep pushing enter to go on through in the meantime. (Ignore the man behind the curtain.)
+
+t: Now, feel your face.
+
+t: Imagine a large empty space.
+
+t: Now imagine your face filling up that large space.
+
+t: Feel the sensations of your face in that larger space of awareness.
+
+t: Notice how you feel about your entire body and everything around you right now. How does that feel?
+
+# wait for person to say something, then move on
+
+t: Do you notice a larger field of awareness even beyond your face?
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+
+  a: (~no) ^addtopic(~TRYAGAIN3)
+  # if yes, then go to CONSCIOUSNESSPRIOR
+# if no, go to TRYAGAIN3
+# if neither yes nor no, first try to attempt responder match in another topic, then go to TRYAGAIN3
+
+
+# TODO
+topic: ~TRYAGAIN3 []
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: Please excuse the construction. This particular practice is in development.
+
+t: Let's try this. Go ahead and leave your eyes open for a moment.
+
+t: First, notice how you view the world from the location of your eyes.
+
+t: Now, go ahead and close your eyes again.
+
+t: Let's move your viewpoint to the back of your head, so you are observing the world from the back of your head.
+
+t: Let's look at your face from the back of your head. How does that feel?
+
+# wait for the person to say something, then move on.
+
+t: Can you feel that you are observing your face from behind it?
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+
+  a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
+  	# if yes, then go to UNITYEXPERIENCE
+	# if no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
+ 
