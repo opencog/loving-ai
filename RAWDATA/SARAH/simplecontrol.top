@@ -37,9 +37,9 @@ u: (< resetmenow >) ^reset(USER)
 u: (whatversion) $version
 
 u: (< jumpto _*)
-	# going to '_0 ^goto('_0)
 	 ^refine()
 		a: (body) ^goto(~body_exercise)
+		a: () ^goto('_0)
 
 
 

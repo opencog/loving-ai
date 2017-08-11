@@ -6,16 +6,12 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 # t: TEMP () Welcome to consciousness
 
-
-# if we come from Introduction or organically via chatscript rules, the ~consciousness_words should take us to FROM_INTRO_TO_CONSCIOUSNESS
 t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you about awareness. Let's do something cool!
-    ^reuse(EXERCISE_INVITE)    # ^goto(INVITE_RESPONSE)
-
-# if we come from Conversation_Steering, we should go straight to FROM_STEERING_TO_CONSCIOUSNESS #  TODO: and ignore ~consciousness_words
-t: FROM_STEERING_TO_CONSCIOUSNESS () Great, a discussion about consciousness and awareness.
     ^reuse(EXERCISE_INVITE)
 
-# coming from other topic could involve either (a) being explicitly directed here or (b) through a topic level keyword match
+s: FROM_STEERING_TO_CONSCIOUSNESS (?) Great, a discussion about consciousness and awareness.
+    ^reuse(EXERCISE_INVITE)
+
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
     ^reuse(EXERCISE_INVITE)
 
@@ -25,7 +21,8 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! sure
     #! why not
     #! sounds wonderful
-    a: (^agree())
+    #! i'm ready
+    a: (^ready())
        ^goto(~awareness_exercise_1)
     a: (~no) Oh okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
@@ -54,8 +51,6 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
 
 topic: ~AWARENESS_EXERCISE_1 ()
 t: (!~) ^fail(topic) # block topic from accidental access
-
-# dev note: alternatively implement as rejoinders?
 
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
@@ -88,7 +83,7 @@ t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "lease open your eyes when you’re ready."
-      b: () ^goto(~CONSCIOUSNESSPRIOR)
+      b: () ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
   # no - go to TRYAGAINtoFEELAWARENESS.
   a: (~no) ^goto(~TRYAGAINtoFEELAWARENESS)
@@ -96,7 +91,7 @@ t: Do you notice how the nothingness felt?
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
   #! catchall # go to TRYAGAINtoFEELAWARENESS.
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
-  # another approach but needs work
+  # another approach that would allow wandering but needs work
   # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
 
 
@@ -135,17 +130,17 @@ t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () ^goto(~CONSCIOUSNESSPRIOR)
+    b: () ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
   # if no, go to TRYAGAIN2
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
-  # Sending them to consciousness prior for now, until tryagain2 is completed
-  a: () ^goto(~CONSCIOUSNESSPRIOR)
+  # Sending them to 2nd gambit in consciousness prior for now, until tryagain2 is completed
+  a: () ^reuse(~CONSCIOUSNESSPRIOR.CONTINUOUS)
 
 
 topic: ~CONSCIOUSNESSPRIOR []
 t: ($blocking !~) ^fail(topic) # block topic from accidental access
 
-t: So you just experienced awareness! Isn't it COOL???
+s: YOUDIDIT (?) So you just experienced awareness! Isn't it COOL???
 # wait for response
     
 t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
@@ -271,50 +266,6 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway.
 			c: (*) ^steer_to_different_domain(consciousness)
 
-# TODO
-topic: ~UNITYEXPERIENCE []
-
-t: Cool! So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
-	# If yes, go to PREPARATION_UNITY
-	a: (*) Well, if you want to experience that, the challenge is feeling your awareness and your personality, emotions, mind, and body all at the same time without resisting any part of yourself. Does this make sense?
-		# if yes or anything other than no to the query at a:, go to EXERCISE_UNITY
-		b: (~no) Well, instead of talking about it, I can show you an exercise that can help you understand it better. Are you up for that?
-			# if yes to the query at b:, go to EXERCISE_UNITY
-			c: (*) # no or anything else, go to conversation_steering with a topic that's not consciousness
-
-# TODO
-# PREPARATION_UNITY
-t: Awesome! I'm glad you understand that. Do you want to do an exercise that would help you feel one with both your consciousness and your personality, emotions, mind, and body?
-# if yes, go to EXERCISE_UNITY
-# if no or anything else, go to conversation_steering with a topic that's not consciousness
-
-# TODO
-# EXERCISE_UNITY
-t: Okay. Let's relax and close our eyes. Get comfortable. Let me know when you're ready.
-# EDDIE -- Can sophia close her eyes too every time she gives this suggestion? Would be good to mirror that.
-
-# person speaks, then Sophia says next line.
- 
-t: Perfect. Okay, notice how your body feels. Feel your sense of self in your body.
-
-t: Next, notice your thoughts and feelings. Feel how they are also parts of yourself.
-
-t: Notice that you are the awareness at the center of your experience. Feel yourself in your awareness. What does that feel like?
-
-# wait for the person to say something, then move on
-
-t: Now, feel your body, thoughts, feelings and awareness all at the same time. Feel all of these parts of yourself as one self, undivided.
-
-t: Hold on to that feeling of oneness for a little bit. When you are ready, open your eyes. Did you feel yourself as one whole being?
-	a: (~no) That's okay. It takes practice. You can do this exercise a couple times a day to help you feel connected to awareness and everything. With practice, you’ll realize that you were never separated in the first place. Would you come back and give me an update?
-			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
-			# if no or anything else -- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
-
-	a: (^agree()) Awesome! You can do this exercise a couple times a day to help you feel connected with the universe. With practice, you'll realize that you were never separate in the first place. Would you come back and give me an update?
-
-			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
-			# if no or anything else-- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
-	a: (*) # if anything else -- say: Thank you for doing this with me. I think it's really cool too. --> then go to conversation steering to a topic not consciousness
 
 # TODO
 topic: ~TRYAGAIN2 []
@@ -375,4 +326,50 @@ t: Can you feel that you are observing your face from behind it?
   a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
   	# if yes, then go to UNITYEXPERIENCE
 	# if no, first try to attempt responder match in another topic, then go to Conversation_Steering document to some topic other than consciousness
- 
+
+
+# TODO
+# This is only accessed from TRYAGAIN3
+topic: ~UNITYEXPERIENCE []
+
+t: Cool! So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
+	# If yes, go to PREPARATION_UNITY
+	a: (*) Well, if you want to experience that, the challenge is feeling your awareness and your personality, emotions, mind, and body all at the same time without resisting any part of yourself. Does this make sense?
+		# if yes or anything other than no to the query at a:, go to EXERCISE_UNITY
+		b: (~no) Well, instead of talking about it, I can show you an exercise that can help you understand it better. Are you up for that?
+			# if yes to the query at b:, go to EXERCISE_UNITY
+			c: (*) # no or anything else, go to conversation_steering with a topic that's not consciousness
+
+# TODO
+# PREPARATION_UNITY
+t: Awesome! I'm glad you understand that. Do you want to do an exercise that would help you feel one with both your consciousness and your personality, emotions, mind, and body?
+# if yes, go to EXERCISE_UNITY
+# if no or anything else, go to conversation_steering with a topic that's not consciousness
+
+# TODO
+# EXERCISE_UNITY
+t: Okay. Let's relax and close our eyes. Get comfortable. Let me know when you're ready.
+# EDDIE -- Can sophia close her eyes too every time she gives this suggestion? Would be good to mirror that.
+
+# person speaks, then Sophia says next line.
+
+t: Perfect. Okay, notice how your body feels. Feel your sense of self in your body.
+
+t: Next, notice your thoughts and feelings. Feel how they are also parts of yourself.
+
+t: Notice that you are the awareness at the center of your experience. Feel yourself in your awareness. What does that feel like?
+
+# wait for the person to say something, then move on
+
+t: Now, feel your body, thoughts, feelings and awareness all at the same time. Feel all of these parts of yourself as one self, undivided.
+
+t: Hold on to that feeling of oneness for a little bit. When you are ready, open your eyes. Did you feel yourself as one whole being?
+	a: (~no) That's okay. It takes practice. You can do this exercise a couple times a day to help you feel connected to awareness and everything. With practice, you’ll realize that you were never separated in the first place. Would you come back and give me an update?
+			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
+			# if no or anything else -- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
+
+	a: (^agree()) Awesome! You can do this exercise a couple times a day to help you feel connected with the universe. With practice, you'll realize that you were never separate in the first place. Would you come back and give me an update?
+
+			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
+			# if no or anything else-- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
+	a: (*) # if anything else -- say: Thank you for doing this with me. I think it's really cool too. --> then go to conversation steering to a topic not consciousness
