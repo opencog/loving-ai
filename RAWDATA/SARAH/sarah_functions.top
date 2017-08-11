@@ -14,3 +14,9 @@ patternmacro: ^agree()
 
 patternmacro: ^ready()
 	[(!not ready) ^agree() ~feeling_happy]
+
+
+
+
+
+

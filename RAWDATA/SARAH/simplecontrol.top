@@ -36,6 +36,14 @@ topic: ~control system ()
 u: (< resetmenow >) ^reset(USER)
 u: (whatversion) $version
 
+u: (< jumpto _*)
+	# going to '_0 ^goto('_0)
+	 ^refine()
+		a: (body) ^goto(~body_exercise)
+
+
+
+
 
 
 
@@ -168,25 +176,29 @@ outputmacro: ^pause(^ms)
 
 # ^goto(^topic)
 # adds ^addTopic for topics that block accidental access
-# actually now i'm thinking this might not be needed if the topic does not have keywords
+# actually now i'm wondering if this might not be needed if the topic does not have keywords
 outputmacro: ^goto(^topic)
 	# == going to ^topic ==
-	# failed attempts to reset the inputrejoinder when using this function for debugging
-	# %inputrejoinder = null #doesn't reset the var
-	#^end(RULE) # nope this stops the function apparently
-
 	^addTopic(^topic)
 	^gambit(^topic)
 
 # dev macro to jump to topic, but clear rejoinder first
 outputmacro: ^g(^topic)
-	^gambit(~clearRej)
-	# ^disable(inputrejoinder)
-	^disable(outputrejoinder)
+	# ^goto(~clearRej)
+	# %inputrejoinder = null # doesn't reset the var
+	# ^setrejoinder(input null)
+	# ^setrejoinder(output null)
+	# ^disable(inputrejoinder)  # this doesn't seem to be working
+ 	^disable(outputrejoinder)
+
 	^goto(^topic)
 
+ 	# if (^topic == ~body_exercise) { setrejoinder(input ~body_exercise.1.2) }
+
+
 topic: ~clearRej system keep []
-t: () $nothing = nothing
+t: (!~) ^fail(topic)
+t: () $nothing = nothing .
 
 # ^continue_after_pause()
 # continues to next gambit after user says anything or after pause timeout
