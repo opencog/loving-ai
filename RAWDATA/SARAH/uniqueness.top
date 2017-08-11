@@ -12,9 +12,9 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: FROM_INTRODUCTION_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
-t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
-t: FROM_STEERING_TO_UNIQUENESS () ^respond(~.TO_UNIQUENESS)
+t: FROM_INTRODUCTION_TO_UNIQUENESS ()
+t: FROM_OTHER_TOPIC_TO_UNIQUENESS ()
+t: FROM_STEERING_TO_UNIQUENESS ()
 
 u: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
