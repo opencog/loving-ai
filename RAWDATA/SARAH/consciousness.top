@@ -24,7 +24,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! i'm ready
     a: (^ready())
        ^goto(~awareness_exercise_1)
-    a: (~no) Oh okay. Is there something that you're afraid of?
+    a: ([~no ~dontknow ~emomaybe]) Oh okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
