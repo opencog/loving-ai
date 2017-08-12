@@ -109,8 +109,8 @@ t: ^pause($verylong)
 	a: () ^reuse(LONGER?)
 
 s: LONGER? (?) ^pause($long) ^repeat()
-	[$valence=pos Would you like to try magnifying it a little longer? ]
-	[$valence=neg Would you like to be with that feeling a little longer? ]
+	if ($valence == pos) { Would you like to try magnifying it a little longer? }
+	if ($valence == neg) { Would you like to be with that feeling a little longer? }
 	# if yes, pause some more, # todo and keep going through the loop until no.
     a:(^agree())  ^pause($long) Okay
     	b: (*) ^goto(BODY_EXERCISE)
