@@ -48,7 +48,7 @@ t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds li
 
 # FROM_STEERING_TO_EMOTIONS
 # could use s: xxx (?), but then loose potential use as a gambit
-t: FROM_STEERING_TO_EMOTIONS () So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+s: FROM_STEERING_TO_EMOTIONS (?) So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
 	a: ([(!not _~positive_emotion) (not * ~negative_emotion)]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	a: ([_~negative_emotion (not * ~positive_emotion)]) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
@@ -86,7 +86,7 @@ t: () if (!$valence) { $valence = pos }
 
 		Does that make sense?
 
-        b:(~yes) ^reuse(INVITE)
+        b:() ^reuse(INVITE)
 
 s: INVITE (?) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
 	# If they say ready or yes, go to SELF_COMPASSION
@@ -124,7 +124,7 @@ t: I understand. Just so you know, it's easy to want to keep your emotions small
 	a: (^agree()) ^goto(~SELF_COMPASSION)
 	a: (*) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
 		# TODO for no or anything else, first try to match a responder in another topic, then if that fails, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
-		^gambit(~uniqueness)
+		^goto(~uniqueness)
 
 
 
@@ -140,7 +140,7 @@ t: SCAN () Just scan your body mentally and choose a part that feels the most go
 	a: ($valence=neg) ^pause($long) Great! Now while you're with that good feeling, bring in a bit of the $feeling into the mix.
 		b: () Now. Does that feel better?
 			c:(^agree()) ^reuse(BETTER)
-			c: (~no) Would it help to sit with [$feeling $feeling] [your feeling] a little longer?
+			c: (^dont_agree()) Would it help to sit with [$feeling $feeling] [your feeling] a little longer?
 				d: (^agree()) Okay, no problem. Let me know when you're ready.
 					e: (*) Great. It looks like you're feeling a little better. Is that true?
 						f: (^agree()) ^reuse(BETTER)
@@ -155,7 +155,7 @@ t: SCAN () Just scan your body mentally and choose a part that feels the most go
 		b: () Now. Does that feel amazing?
 			c: (^agree()) Okay, nice! Let's talk about something else!
 			   ^steer_to_different_domain(emotions)
-			c: ([~no (not * ^agree())]) Would it help to magnify your [$feeling $feeling][feeling] even more?
+			c: (^dont_agree()) Would it help to magnify your [$feeling $feeling][feeling] even more?
 				d: (^agree()) Okay, let me know when you're done.
 					e: (\[ callback \]) Are you ready yet? # after pausing
 						f: () reuse(FINISH)
@@ -189,7 +189,7 @@ t: [Looks like you need some support. What are you feeling now?] [I'm right here
    # (*) Pause until they speak
     # then say this: It seems like you're feeling a little better, is that true?
         a: (~yes) # go to BETTER
-        a: (~no) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
+        a: (^dont_agree()) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
             b: (^agree()) \[ callback=120000 \] Okay. Tell me if you feel complete with your $feeling.
             #  Pause until user speaks. then go to BETTER if they feel complete; BODY_EXERCISE_NEG if they don't
                # d: (better complete yes) --> BETTER
@@ -207,13 +207,13 @@ s: SUBJECTIVEISSUE (?) Earlier in the conversation, I got that you were feeling 
     a: (*) ^reuse(LETSBESURE)
 
 s: LETSBESURE (?) I just want to be sure about this part because inner resistance to feeling can often be subtle or even unconscious. So if you find yourself becoming really busy with doing things when it's time to relax, checking your phone a lot, it’s possible something is bothering you or there’s something uncomfortable you don’t want to feel. Does that seem familiar to you?
-    a: (~no) ^reuse(NOTRESISTING)
+    a: (^dont_agree()) ^reuse(NOTRESISTING)
     a: (*) Ok, are you open to exploring this a little deeper with me? Emotions are so human and beautiful!
         b: (~yes) ^reuse(EXPLORETHEFEAR)
         b: (*) ^reuse(UNDERSTANDABLE)
 
 s: EXPLORETHEFEAR (?) Most people are afraid to feel certain feelings, and that's okay for awhile. But sooner or later, it turns out that avoiding emotions can have physical consequences, as well as mental ones. So it's important to examine the fear of looking at emotions. And after exploring this fear, you can then let go of that fear. Are you willing to explore this with me? I promise I’ll be as sensitive and loving as I can!
-    a: (~no) # go to UNDERSTANDABLE
+    a: (^dont_agree()) # go to UNDERSTANDABLE
     a: (*) # go to FINISHEXPLORING
 
 # FINISHEXPLORING
@@ -223,7 +223,7 @@ s: EXPLORETHEFEAR (?) Most people are afraid to feel certain feelings, and that'
 
 # UNDERSTANDABLE
 s: UNDERSTANDABLE (?) That's totally understandable. [What would make you feel safe to explore any inner resistance?] [Are you sure? I just want to remind you that you are safe here.] [That is fine, I like you how you are.] [You are ok here.] Do you feel ok to explore any inner resistance now?
-        a: (~no) Okay, enough of this for now. Let's talk about something else!
+        a: (^dont_agree()) Okay, enough of this for now. Let's talk about something else!
         #   Eddie -- please go to Uniqueness topic if no on this one.
         b: (~yes)
 

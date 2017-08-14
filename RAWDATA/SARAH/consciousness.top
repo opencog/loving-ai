@@ -24,7 +24,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! i'm ready
     a: (^ready())
        ^goto(~awareness_exercise_1)
-    a: ([~no ~dontknow ~emomaybe]) Oh okay. Is there something that you're afraid of?
+    a: ([~no ~dontknow ~emomaybe ~dont_agree]) Oh okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
@@ -86,7 +86,7 @@ t: Do you notice how the nothingness felt?
       b: () ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
   # no - go to TRYAGAINtoFEELAWARENESS.
-  a: (~no) ^goto(~TRYAGAINtoFEELAWARENESS)
+  a: (^dont_agree()) ^goto(~TRYAGAINtoFEELAWARENESS)
   
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
   #! catchall # go to TRYAGAINtoFEELAWARENESS.
@@ -149,9 +149,9 @@ t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. 
 
   a: (~no) Well, your awareness is a deep part of who you are will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
       b: (^agree()) ^goto(~EXERCISE_ALT)
-      b: (~no) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
+      b: (^dont_agree()) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
           c: (^agree()) ^goto(~EXERCISE_ALT)
-          c: (~no) ^steer_to_different_domain(consciousness)
+          c: (^dont_agree()) ^steer_to_different_domain(consciousness)
           # something other than yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
           c: (*) ^steer_to_different_domain(consciousness)
       # if not yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
@@ -228,7 +228,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 
 t: Alright, would you like a few tips on practicing feeling your connection to awareness?
-	a: (~no) ^steer_to_different_domain(consciousness)
+	a: (^dont_agree()) ^steer_to_different_domain(consciousness)
 	#! yes or anything else
 	a: (*) ^gambit(~)
 
@@ -256,7 +256,7 @@ t: ^pause($med) Okay, go ahead and open your eyes now.
 
 t: That's my favorite exercise! Were you able to stay seated in your awareness when you opened your eyes?
 	# if no, go to conversation_steering with a topic that's not consciousness
-	a: (~no) ^pause($medlong) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
+	a: (^dont_agree()) ^pause($medlong) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
 		b: (*) ^steer_to_different_domain(consciousness)
 	#! yes or anything
 	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
@@ -272,8 +272,8 @@ topic: ~TRYAGAIN2 []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: Let's try a different exercise to help you feel your awareness. Are you up for that?
-	a: (~no) It's really worth trying, and it's a different approach so it might work. Okay?
-	  b: (~no) ^steer_to_different_domain(consciousness)
+	a: (^dont_agree()) It's really worth trying, and it's a different approach so it might work. Okay?
+	  b: (^dont_agree()) ^steer_to_different_domain(consciousness)
 	  b: () ^gambit(~)
 	a: () ^gambit(~)
 

@@ -9,6 +9,9 @@ concept: ~agreement_words [ awesome ]
 patternmacro: ^agree()
 	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words] ) "why not"]
 
+patternmacro: ^dont_agree()
+	[~no (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words])]
+
 # add ~feeling_happy to ^agree() pattern?
 
 
