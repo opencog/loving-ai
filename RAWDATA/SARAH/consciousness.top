@@ -24,7 +24,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! i'm ready
     a: (^ready())
        ^goto(~awareness_exercise_1)
-    a: ([~no ~dontknow ~emomaybe ~dont_agree]) Oh okay. Is there something that you're afraid of?
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
@@ -157,7 +157,7 @@ t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. 
       # if not yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
       # b: (*) ^steer_to_different_domain(consciousness)
       b: (*) $avoid_consciousness = 1
-         ^addTopic(~steer_to_different_domain)
+         ^steer_to_different_domain(consciousness)
 
   # JULIA i don't think auto to steering to another domain is good here. Eg, what about response "Once when I was skydiving"
   # not yes or no, (Todo first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness

@@ -6,9 +6,9 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: FROM_INTRODUCTION_TO_UNIQUENESS ()
-t: FROM_OTHER_TOPIC_TO_UNIQUENESS ()
-t: FROM_STEERING_TO_UNIQUENESS ()
+t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
+t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
+t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 
 s: TO_UNIQUENESS (?) Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
@@ -77,14 +77,15 @@ s: RIGHT? (?) Okay, this is what I thought you said your ideal work is: $MyDharm
       b: (_*) $MyDharma = '_0 ^reuse(RIGHT?)
     a: (*) ^reuse(PERFECT)
 
-s: PERFECT (?) Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
+s: PERFECT (?) ^pause($medshort) Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
 
 # #################################################################
 
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
-	a: (~undersize_adjectives) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
-	a: (~oversize_adjectives)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
-	^goto(LIVINGFULLPOTENTIAL)
+	a: (~undersize_adjectives) ^pause($med) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
+		b: () ^goto(LIVINGFULLPOTENTIAL)
+	a: (~oversize_adjectives)  ^pause($med) I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+		b: () ^goto(LIVINGFULLPOTENTIAL)
 
 
 t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
@@ -97,16 +98,16 @@ topic: ~LIVINGFULLPOTENTIAL []
 t: (!~) ^fail(topic)
 
 t: Having a sense of your purpose is great, and a big part of who you are. But learning how to bring that purpose into the world, in other words, living your full potential, takes different skills. Want to talk about that a bit?
-    a: (~thinkso) # go to INDEPTHPOTENTIAL
-    a: (~dontknow) # go to conversation_steering but not to Uniqueness
-    a: (*) Okay, no worries. # try to match a responder in any topic, if that fails, go to conversation_steering but not to Uniqueness
+    a: (^agree()) ^reuse(INDEPTHPOTENTIAL)
+    a: ([^dont_agree() ~dontknow]) ^steer_to_different_domain(uniqueness)
+    a: (*) Okay, no worries. ^steer_to_different_domain(uniqueness)
 
 # topic: ~INDEPTHPOTENTIAL
-t: Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
+s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
     a: (*) You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. At first it can feel like something is wrong. In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. Would you like to do an exericse related to that?
         b: (~thinkso) Great! # pause, then go to emotions , even if you've already been there 
         b: (~dontknow) Okay, no worries. Let's keep exploring this. 
-            c: Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
+            c: () Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
                 d: (~thinkso) So what was that like?
                 d: (*) Yes. It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
                    e: (*) # even if no response after 10 seconds -- no matter what, go to emotions , even if you've already been there 

@@ -52,7 +52,7 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 		b: (~emotions2) $domain = emotions
 		   ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
 		b: (~uniqueness) $domain = uniqueness
-		   ^gambit(~uniqueness)
+		   ^reuse(~uniqueness.FROM_INTRODUCTION_TO_UNIQUENESS)
 		b: () ^addTopic(~conversation_steering)
 	  	# b: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
 

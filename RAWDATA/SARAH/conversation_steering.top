@@ -42,5 +42,9 @@ outputmacro: ^steer_to_different_domain(^avoid)
   if (^avoid=emotions) { $avoid_emotions = 1 }
   if (^avoid=uniqueness) { $avoid_uniqueness = 1 }
 
+  # check for reponses from other topics first
+  ^addtopic(~conversation_steering)
+  ^respond()
+
   # ^gambit(~CONVERSATION_STEERING)
   ^reuse(conversation_steering.STEER_TO_DOMAIN)

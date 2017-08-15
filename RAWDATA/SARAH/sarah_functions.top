@@ -5,7 +5,7 @@
 # E.g., "Do you want to try this?" "Would you like to talk about this?"
 concept: ~agreement_words [ awesome ]
 patternmacro: ^agree()
-	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better] ) "why not"]
+	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso] ) "why not"]
 
 patternmacro: ^dont_agree()
 	[~no (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words])]
