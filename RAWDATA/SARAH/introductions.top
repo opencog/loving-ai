@@ -43,7 +43,7 @@ t: BUY-IN () I really want to learn about you, and I’m told we don’t have a 
 	   [Is there anything about your thoughts or feelings you’d like to make better?]
 		b: (~consciousness_words) $domain = consciousness
 		   ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
-		b: ([(!not _~positive_emotion) (not * ~negative_emotion)]) $domain = emotions $feeling = '_0
+		b: ([(!not _~positive_emotion) (not * ~negative_emotion)])
 		   ^reuse(~emotions2.FROM_INTRO_TO_POS_EMOTIONS)
 		b: (_~negative_emotion) $domain = emotions $feeling = '_0
 		   ^reuse(~emotions2.FROM_INTRO_TO_NEG_EMOTIONS)
