@@ -54,8 +54,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
-# JULIA not sure about the word "Groovy"... (but what do i know)
-t: ^pause(7000) Groovy. Let's try something right now. Go ahead and close your eyes.
+t: ^pause(7000) Great. Let's try something right now. Go ahead and close your eyes.
     a: () ^gambit(~)
 
 t: ^pause(10000) Now, place your attention on your face. Feel its presence.
