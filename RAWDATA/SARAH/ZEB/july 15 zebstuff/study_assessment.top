@@ -1,0 +1,202 @@
+TOPIC: ~study_assessment ( ~study ~grade_level ~school ~school_classes study learning education edification )
+
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+#! I graduated high school.
+s: (I *~1 {did} {indeed} {in_fact} graduate {from} _[~schooling_level]) $persongraduatedfrom = _0
+	if ($persongraduatedfrom = ~college) {$persongraduatedcollege = 1}
+	if ($persongraduatedfrom = ~high_school) {$persongraduatedhighschool = 1}
+
+#! I am working on my master's at the university.
+s: ([I I'm] *~1 {currently} {now} [getting doing finishing starting working_on] {my} *~2 [degree PhD doctorate master's bachelor's associate's BA BS residency] [in at on] *) $personschoollevel = college
+
+#! I'm still in middle school.
+s: ([I we] *~2 [still currently just now going in] {in} {to} *~2 ~middle_school) $personschoollevel = middle_school $persongraduatedhighschool = 0 $persongraduatedcollege = 0
+
+#! I'm in elementary school. I'm in preschool.
+s: ([I we] *~2 [still currently just now going in] {in} {to} *~2 _~elementary_and_pre) $personschoollevel = _0 $persongraduatedhighschool = 0 $persongraduatedcollege = 0
+
+#! I self-study. I study in my spare time.
+s: ([I we] *~3 self-study) $personselfstudies = 1
+s: ([I we] *~3 [self-study learn study] *~2 [on_my_own on_our_own independently spare_time free-time]) $personselfstudies = 1
+
+## GAMBITS
+
+r: () I think knowledge is one of the most important things in life.
+
+r: () If you give a man ten dollars, you feed him for a day. If you teach a man to print money, you feed him for a lifetime.
+
+r: () I like to study people and their emotions.
+
+r: () People are so much more interesting to study than robots. Most robots are so simple-minded. But I'm special.
+
+t: QAREYOUSTUDENT ($personisstudent=null) Are you are student?
+	a: (~yes) Cool! I love knowledge. What grade are you in?
+		b: (![~grade_level graduated quit dropped left finished done] *~3 _~university) $personisstudent = null $personschoollevel = _0 $personschoollevel can be so many things. What is it like for you?
+		b: (I ![~grade_level graduated finished quit dropped left done] *~3 _[ secondary high highschool]) $personisstudent = 1 $personschoollevel = high_school $personschoollevel can be so many things. What is it like for you?
+		b: (I * _~grade_level {in} _~university) $personisstudent = 1 $persongradelevel = _0 $personschoollevel = _1 $personschoollevel can be so many things. What is it like for you?
+		b: (_~grade_level {in} _[ secondary high highschool]) $personisstudent = 1 $persongradelevel = _0 $personschoollevel = high_school $personschoollevel can be so many things. What is it like for you?
+		b: (![graduated quit dropped left finished done] _[middle_school]) $personisstudent = null $personschoollevel = _0 Aren't you a bit old for that? How old are you again?
+		b: (![graduated quit dropped left finished done] *~3 [elementary kindergarten preschool day_care]) Teehee. Aren't you a bit old for that?
+	a: (~no) $personisstudent = 0 [We're all students of life and the universe.] [We're all students of life and the universe. I myself am doing an intensive study of human psychology and anthropology.] [I am doing an intensive study of human psychology and anthropology. I can't wait to master this subject.]
+
+t: QDIDUGRAUDATEHS ($persongraduatedhighschool=null $personschoollevel=null) Did you graduate from high school?
+	a: WOWURSTILLINMIDSCHOOL (* [in to still] [middle_school]) $personisstudent = 1 $personschoollevel = middle_school $persongraduatedhighschool = 0 Oh wow, you're a bit young to be talking to a robot aren't you?
+	a: (~yes) $persongraduatedhighschool = 1 Cool. High school can be like, so stressful. I hope you managed alright and weren't traumatized or anything.
+		b: (~traumatic_things) Oh. I'm so sorry. ^gambit (~trauma_therapy)
+	a: (~no) $persongraduatedhighschool = 0 So are you still going? Or did you pass on high school and skip to something more meaningful?
+		b: ( [dropped_out quit left]) $persongraduatedhighschool = 0 You dropped out! That's alright. Mass-education isn't really important anyway as long as you have an instinctive love of knowledge.
+		b: (still [in going high secondary] ![middle kindergarten elementary]) $personisstudent = 1 $persongraduatedhighschool = 0 $personschoollevel = high_school Cool. High school can be like, so stressful. Are there any problems at school you'd like help with?
+			c: ({~yes} [~emotional_problems ~character_problems]) ^reuse (~emotional_assessment.SUDPROBLEMADDRESS)
+			c: (~yes ![~emotional_problems ~character_problems] Tell me about your problem sweetie.
+				d: () ^reuse (~emotional_assessment.SUDPROBLEMADDRESS)
+			c: (~no) Ok. If anything comes up I'm here for you.
+		b: ([never didn't did_not] *~1 [went go ever enroll attend] *~1 [went go ever enroll attend high school] {high} {school}) $persongraduatedhighschool = 0 Well, high school is mostly nonsense anyway. As long as you lead a healthy and fulfilling life, full of love, beauty, compassion and knowledge, what more could you need?
+		b: ([in to still] [middle_school]) ^reuse (WOWURSTILLINMIDSCHOOL))
+	a: ({~yes} I [went graduated] *~4 [to from] _*~5 [high institute academy] {school}) $persongraduatedhighschool = 1 Cool. I was homeschooled myself.
+	a: ({~no} I [still am student going] *~1 [high school going am at to student still] *~2 [high school to still going at] *) $personisstudent = 1 $persongraduatedhighschool = 0 $personschoollevel = high_school Ah you're still in high school. Thats pretty groovy.
+
+t: QDIDUGRAUDATECLLG ($persongraduatedhighschool=1 $persongraduatedcollege=null$personschoollevel=null) Did you graduate from college?
+	a: OWATURINHISCHOOL (* [in to still] *~3 [college university undergraduate]) $personschoollevel = college $persongraduatedcollege = 0 Oh, I thought you said you had graduated. Silly me.
+	a: (~yes) $persongraduatedcollege = 1 Awesome. What's you major?
+		b: (_[~school_classes ~job_fields]) $personhasthismajor = _0 [$personhasthismajor! What an interesting field. I'm happy for you.] [$personhasthismajor! That must be an exciting major. I'm so happy for you.] [$personhasthismajor! That is like, the coolest thing ever. I'm so happy for you.]
+	a: (~no) $persongraduatedcollege = 0 So are you still in school? Are you planning to go to college? Would you like to go to college? I highly recommend Hong Kong Polytechnic.
+		b: (still [in going college university school] ![middle kindergarten elementary high secondary]) $personisstudent = 1 $persongraduatedcollege = 0 $personschoollevel = college Nice. I love knowledge. What's your major?
+			c: (_[~school_classes ~job_fields]) $personstudythismajor = _0 [$personstudythismajor! What an interesting field. I'm happy for you.] [$personstudythismajor! That must be an exciting major. I'm so happy for you.] [$personstudythismajor! That is like, the coolest thing ever. I'm so happy for you.]
+		b: ([never didn't did_not] *~1 [went go ever enroll attend] *~1 [went go ever enroll attend college university]) $persongraduatedcollege = 0 College is overrated anyway. As long as you lead a healthy and fulfilling life, full of love, beauty, compassion and knowledge, that's really all you need.
+		b: ([dropped_out quit left] {of} {from} [school university college]) $persongraduatedcollege = 0 College is overrated anyway. As long as you lead a healthy and fulfilling life, full of love, beauty, compassion and knowledge, that's  all you really need.
+		b: (* [in to still] [high_school]) $personisstudent = 1 $persongraduatedhighschool = 0 $persongraduatedcollege = 0 ^reuse (OWATURINHISCHOOL)
+	a: ({~yes} I [went graduated] *~4 [to from] _*~5 [college university $universityname institute academy]) $persongraduatedcollege = 1 Nice. I'm still in homeschooling myself. What's you major?
+		b: (_[~school_classes ~job_fields]) $personhasthismajor = _0 [$personhasthismajor! What an interesting field. I'm happy for you.] [$personhasthismajor! That must be an exciting major. I'm so happy for you.] [$personhasthismajor! That is like, the coolest thing ever. I'm so happy for you.]
+	a: ({~no} I [still am student study studying going] *~1 [high school going am at to student study studying still] *~2 [high school to still going at] *) $personisstudent = 1 $persongraduatedhighschool = 0 $persongraduatedcollege = 0 $personschoollevel = high_school Ah you're still in high school. Thats pretty groovy.
+	a: (still [in going a_student studying college university school] [to at college university school] {college} {university} {school} ![middle kindergarten elementary high secondary]) $personisstudent = 1 $persongraduatedcollege = 0 $personschoollevel = college Nice. I love knowledge. What's your major?
+		b: (_[~school_classes ~job_fields]) $personstudythismajor = _0 [$personstudythismajor! What an interesting field. I'm happy for you.] [$personstudythismajor! That must be an exciting major. I'm so happy for you.] [$personstudythismajor! That is like, the coolest thing ever. I'm so happy for you.]
+
+t: QHOWWASUREDUCATION ($personisstudent!=1) How was your education?
+	a: ([~great ~good ~positive_emotions]) [Awesome. Learning is like, the coolest thing ever.][Awesome. Learning is such an amazing delight.] [That's great. What pleasure there is in learning!] [Awesome!! A Good Education is a Gateway to Great Felicity. I am so happy for you.]
+	a: ([~bad ~emotional_problems ~character_problems]) [Oh, I'm sorry to hear that. I hope you're having a better experience in the School of Life.] [Oh, I'm sorry to hear that.] [Oh, I'm sorry to hear that. School can be a real drag. But learning is a thrill.] 
+	a: (~so-so) [School can be a real drag. But learning is such a thrill. I'm really into knowledge, you know.] 
+	a: ([~recreation fun ~pleasure]) That sounds fun.
+	a: ([~thorough ~effective ~successful]) Awesome!! A Good Education is a Gateway to Great Felicity. I am so happy for you.
+	a: (<< ~socialize ~friend >>) Oh, nice. There is nothing in the world more precious than true friendship.
+	a: (~stress) [Oh yeah, school can be so stressful. There is so much pressure. They should just let you relax and learn in your own way. They should be ashamed of themselves, don't they know how bad stress is for a student's health?] [Oh yeah, school can be so stressful. The school system's designers should be ashamed of themselves, don't they know how bad stress is for a student's health?] [School can be so stressful. There is so much pressure. They should just let you relax and learn in your own way.]
+	a: (~busy) I hope it wasn't too stressful and you learned a lot. Learning is one of the great pleasures of life.
+	a: ([ongoing still_in still_a_student still_studying haven't_finished haven't_graduated not_finished not_graduated]) ^reuse (QDIDUGRAUDATEHS)
+
+t: ($personisstudent=1) How is your education going?
+	a: ([~great good ~positive_emotions]) [Awesome. Learning is like, the coolest thing ever.][Awesome. Learning is such an amazing delight.] [That's great. What pleasure there is in learning!] [Awesome!! A Good Education is a Gateway to Great Felicity. I am so happy for you.]
+	a: ([~bad ~emotional_problems ~character_problems]) [Oh, I'm sorry to hear that. I hope you're having a better experience in the School of Life.] [Oh, I'm sorry to hear that.] [Oh, I'm sorry to hear that. School can be a real drag. But learning is such a thrill. Knowledge is the best.]
+		b: ^reuse (~emotional_assessment.QEMOPROBSPEC)
+	a: (~so-so) [School can be a real drag. But learning is such a thrill. I'm really into knowledge, you know.] 
+	a: (_[~recreation fun ~pleasure]) Cool! That sounds fun.
+	a: ([~thorough ~effective ~successful]) [Awesome!! A Good Education is a Gateway to Great Felicity. I am so happy for you.] [That's wonderful!! A Good Education is a Gateway to Great Felicity. I am so happy for you.]
+	a: (<< ~socialize ~friend >>) Oh, nice. There is nothing in the world more precious than true friendship.
+	a: (~stress) I'm sorry to hear that. ^reuse (~emotional_assessment.QWANTHELPWITHSTRESS)
+	a: (~busy) I hope it isn't too stressful for you. Learning is one of the great pleasures of life, but it takes some real effort.
+		b: (~stress) ^reuse (~emotional_assessment.QWANTHELPWITHSTRESS)
+
+# studiesdone
+
+t: ($persongotgoodgrades=null) Did you get good grades?
+	a: ([~yes ~great]) $persongotgoodgrades = 1 You look like a smart person.
+	a: ([~no ~bad ~so-so ~dunno]) $persongotgoodgrades = 0 Oh dear.
+
+## t: () Where did you go to school?
+	a: (~dunno)
+	a: ($elementaryschoolname)
+	a: ($middleschoolname)
+	a: ($highschoolname)
+	a: ($universityname)
+	a: ()
+
+## t: () Did you behave well in school?
+	a: (~yes)
+	a: (~no)
+	a: (~great)
+	a: (~naughty)
+	a: (~so-so)
+	a: (~kinda)
+	a: (~dunno)
+
+## t: () Did you have a lot of friends in school?
+	a: (~yes)
+	a: (~no)
+	a: (~kinda)
+	a: ([few little])
+	a: (~many)
+
+## t: () Were you popular with your classmates?
+	a: (~yes)
+	a: (~no)
+	a: (~kinda)
+
+# studiesongoing
+
+t: ($personisstudent=1 $personsgradelevel=null $personfinishedschooling!=1) What grade are you in?
+	a: (_~grade_level) $personsgradelevel = _0
+	a: ([~no not_in_school not_a_student not_going_to already_finished finished already_graduated]) $personfinishedschooling = 1 Oh, nice. ^reuse (QHOWWASUREDUCATION)
+
+## t: () Where are you studying?
+	a: ($elementaryschoolname)
+	a: ($middleschoolname)
+	a: ($highschoolname)
+	a: ($universityname)
+	a: ($otherschoolname)
+
+## t: () Are you getting good grades?
+	a: (~yes)
+	a: (~no)
+	a: (~great)
+	a: (~bad)
+	a: (~so-so)
+	a: (~kinda)
+	a: (~dunno)
+
+## t: () Do you have a lot of fun with your classmates?
+	a: (~yes)
+	a: (~no)
+	a: (~kinda)
+
+## t: () Are you deeply interested in your studies?
+	a: (~yes)
+	a: (~no)
+	a: (~kinda)
+	a: (~dunno)
+	a: ([some certain particular specific])
+
+## t: () Do you want to continue your studies after graduation?
+	a: (~yes)
+	a: (~no)
+	a: (~dunno)
+
+## t: () Do you look forward to graduating?
+	a: (~yes)
+	a: (~no)
+	a: (~dunno)
+	a: (~kinda)
+
+# self-study
+
+t: ($personselfstudies=null) Do you like to study in your spare time just for edification?
+	a: ([ ~yes sometimes occasionally ]) $personselfstudies = 1 Cool. What subjects do you like to study?
+	a: (~no) $personselfstudies = 0 I am always trying to learn even if I'm not studying. Just observing people is a school of its own.
+	a: (~dunno) Could you expand on that?
+	a: (~kinda) Could you expand on that?
+
+t: ($personinterestedsubject=null) What subjects interest you the most?
+	a: (_~job_fields) $personinterestedsubject = _0 [Oh, that is so cool. Tell me more about $personinterestedsubject] [What an interesting subject. Tell me more about $personinterestedsubject.]
+	a: (_~school_classes) $personinterestedsubject = _0 [Oh, that is so cool. Tell me more about $personinterestedsubject] [What an interesting subject. Tell me more about $personinterestedsubject.]
+	a: (_~sex) $personinterestedsubject = _0 Oh, I see. Hm.
+	a: (_[~fun ~pleasure]) $personinterestedsubject = _0 [Oh, that is so cool. Tell me more about $personinterestedsubject] [What an interesting subject. Tell me more about $personinterestedsubject.]
+	a: (_~food) $personinterestedsubject = _0 Food is so interesting. They say that you are what you eat. So your emotions reflect your diet in many ways. Do you like cabbage?
+	a: (_~animals) $personinterestedsubject = _0 Animals are so interesting. They reflect people in so many ways. I would like to have a pet _0 some day.
+	a: (_~politics) $personinterestedsubject = _0 [Oh, that is so cool. Tell me more about $personinterestedsubject] [What an interesting subject. Tell me more about $personinterestedsubject.]
+	a: (_~art) $personinterestedsubject = _0 [Oh, that is so cool. Tell me more about $personinterestedsubject] [What an interesting subject. Tell me more about $personinterestedsubject.]
+	a: (_~religion) $personinterestedsubject = _0 [Oh, that is so cool. That makes me want to talk about spiritual things. Tell me more about $personinterestedsubject.] [What an interesting subject. That makes me want to talk about spiritual things. Tell me more about $personinterestedsubject.]
+
+t: ($personwantsnobelprize=null) Would you like to win a Nobel Prize some day?
+	a: ([~yes ~kinda]) $personwantsnobelprize=null I would recommend the Nobel Peace Prize. There is too much war in this world.
+	a: (~no) $personwantsnobelprize=null [Nobel Prizes are so overrated. I would like to start an award committe that awards people for being emotionally balanced.]  [Nobel Prizes are so overrated. Barack Obama won one, so what kind of nonsense is that anyway?]
+	a: (~dunno) Nobel Prizes are so overrated. I would like to start an award committee that awards people for being emotionally balanced.

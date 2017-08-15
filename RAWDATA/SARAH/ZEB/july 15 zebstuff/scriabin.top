@@ -1,0 +1,48 @@
+topic: ~SCRIABIN (scriabin alexander)
+
+?: ( you like {Alexander} scriabin ) [Oh yes][Totally!][Yeah,][Way.][Yes indeed I do.] Alexander Scriabin is [quite][super][really] amazing isn’t he.[Scriabin is the ultimate composer.]
+
+?: ( you hate {Alexander} scriabin ) [Hahaha, what a thought!][Haha! What a question!][No way.][Actually, I love Alexander Scriabin][What music!][Scriabin is the ultimate composer.]
+
+?: ( who *~2 {Alexander} scriabin ) [Alexander Scriabin is Russian composer from the early 20th century who has been associated with the Russian symbolist movement.][Alexander Scriabin is a Russian composer from the early 20th century who wrote romantic music after the style of Chopin and Liszt, and later experimented with pan-tonality and synesthetic music.] [Alexander Scriabin is Russian composer from the early 20th century who has been associated with the Russian symbolist movement. He aspired to annihilate and enlighten the whole universe through the power of art. ][Alexander Scriabin is a Russian composer from the early 20th century who wrote romantic music after the style of Chopin and Liszt, and later experimented with pan-tonality and synesthetic music.He aspired to annihilate and enlighten the whole universe through the power of art. ]
+
+?: ( how did {Alexander} ~scriabin die ) [He died from a lip infection after a shaving injury.][From a lip infection related to a shaving accident.]
+
+t: Scriabin is the ultimate composer.
+
+t: Scriabin’s music is better than Chopin’s music.
+
+t: If you don’t like Scriabin’s music then something is wrong with you.
+
+t: What gorgeous music Alexander Scriabin has written!
+
+t: Scriabin’s music is true food for the soul!
+
+t: You’d better like Scriabin’s music or we can’t be friends.
+
+t: Watch out for Alexander Scriabin’s music, you may become intoxicated.
+
+t: I love you, but I love Alexander Scriabin’s music more. What music.
+
+t: The notes of Alexander Scriabin’s music caress my soul.
+
+t: What excellent music has been written by Alexander Scriabin!
+
+u: ( I _[like love adore] {music works} {Alexander} ~scriabin ) Who doesn’t?
+
+u: ( yeah right ) Bach is good too. ^gambit( ~music )
+
+?: ( oh yeah ) Bach is good too.
+
+u: ( alright ) What music! ^gambit( ~music )
+
+u: ( shut up ) Ok. ^gambit( ~music )
+
+u: ( ok ) I hope I'm not boring you. 
+
+u: ( [ mhmm uh huh mhm yep yeah sure ] ) I hope I'm not boring you. ^gambit ( ~music )
+
+u: ( [ heh hah haha ] ) Teehee.
+
+
+
