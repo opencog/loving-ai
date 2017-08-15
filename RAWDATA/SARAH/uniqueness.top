@@ -1,11 +1,5 @@
-concept: ~dontknow ("not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
-concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
-# I'm thinking we should use these concepts in every domain rather than yes or no, as they are a bit broader, though overlap. What do you think?
-
 topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data]
 t: (!~) ^fail(topic) # block topic from accidental access
-# TODO topic name conflict with concept?
-
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
 # if coming from emotions or consciousness, go to FROM_OTHER_TOPIC_TO_UNIQUENESS
@@ -16,7 +10,7 @@ t: FROM_INTRODUCTION_TO_UNIQUENESS ()
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS ()
 t: FROM_STEERING_TO_UNIQUENESS ()
 
-u: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+s: TO_UNIQUENESS (?) Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
@@ -87,12 +81,11 @@ s: PERFECT (?) Perfect! Well, I want you to know I totally support you in doing 
 
 # #################################################################
 
-topic: ~under_construction []
-
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
-  a: (~undersize_adjectives) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
-  a: (~oversize_adjectives)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential.
-                # above line, continues, with direction at end: And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it. # go to LIVINGFULLPOTENTIAL
+	a: (~undersize_adjectives) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
+	a: (~oversize_adjectives)  I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+	^goto(LIVINGFULLPOTENTIAL)
+
 
 t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
   a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?

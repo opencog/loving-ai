@@ -1,13 +1,11 @@
-# Functions for the Loving-AI character
+# Functions and concepts for the Loving-AI character
 
 # ^agree()
 # Create a general pattern to be used when user is asked whether they agree to participate in something.
 # E.g., "Do you want to try this?" "Would you like to talk about this?"
-
 concept: ~agreement_words [ awesome ]
-
 patternmacro: ^agree()
-	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words] ) "why not"]
+	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better] ) "why not"]
 
 patternmacro: ^dont_agree()
 	[~no (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words])]
@@ -19,3 +17,9 @@ patternmacro: ^ready()
 	[(!not ready) ^agree() ~feeling_happy]
 
 
+
+
+####### Concepts #######
+
+concept: ~dontknow ("not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
+concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)

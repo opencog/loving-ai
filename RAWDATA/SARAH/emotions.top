@@ -1,5 +1,9 @@
-concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives "pissed off")
+concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives ~badness !not)
+# ~badness: e.g., horrible, down, pissed off
+
 concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
+
+
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
 # << Old emotions2 topic keywords, replacing with concepts
@@ -23,7 +27,7 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 # I think I resolved this. See what you think!
 #! I feel sad.
-t: FROM_INTRO_TO_NEG_EMOTIONS (_~negative_emotion) $feeling= '_0 So it sounds like you are generally noticing some negative feelings? Is that right?
+t: FROM_INTRO_TO_NEG_EMOTIONS () So it sounds like you are generally noticing some negative feelings? Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$valence = neg
         b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
