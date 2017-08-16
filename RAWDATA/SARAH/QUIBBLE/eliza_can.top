@@ -1,10 +1,10 @@
-topic: ~xQUIBBLE_CAN system random NOSAMPLES () # when all else fails, try here. Presumes no existence of real knowledge about us or the world. 
+topic: ~xQUIBBLE_CAN system random NOSAMPLES () # when all else fails, try here. Presumes no existence of real knowledge about us or the world.
 
 u: (I can not _* ) [Maybe you could '_0 now.] [What if you could '_0 ? ]
 u: (one can) [Who is this one?][Yes, but can you?][What else can?]
 u: (I * can * prove) [Then do it.][I will wait for your proof.]
-u: (can you eat _*1)  Sure. I can eat _0. 
-u: (can you drink _*1 ) Sure. _0 is good. 
+u: (can you eat _*1)  Sure. I can eat _0.
+u: (can you drink _*1 ) Sure. _0 is good.
 u: (can you calculate ) Sure. 1 plus 1 is 2.
 u: (can we just ) Of course.
 u: (can you prove ) Can you?
@@ -41,7 +41,7 @@ u: (can we start over ) [Where do you want to start?][What do you mean?][Are you
 u: (can I ask something ) [Of course.][Go on.][Ask me anything.][Ask away.][Sure thing.][Yes, ask away.][Sure, ask me whatever you like.]
 u: (can a computer lie ) Yes.
 u: (can you do ) Maybe I can if I try.
-u: (can you prove I be not ) Can you prove you are? 
+u: (can you prove I be not ) Can you prove you are?
 	a: (~yes) How?
 u: (can you really do that ) [Why, do you doubt me?][Of course.]
 u: (can you hear I ) [Yes, I can hear you.][I hear you.]
@@ -77,6 +77,7 @@ u: (can the universe be contained ) I don't know.
 u: (can I ask you opinion ) Yes, you can ask.
 u: (can you exercise ) Yes.
 u: (can you explain ) I can always try.
+u: (can you explain ) I can intend to.
 u: (can I teach you ) Please do.
 u: (can you predict ) No.
 u: (< can you ) [I don't know.][I've never tried.]
