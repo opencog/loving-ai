@@ -17,6 +17,55 @@ patternmacro: ^ready()
 	[(!not ready) ^agree() ~feeling_happy]
 
 
+# below was moved from simple_control.top
+
+outputmacro: ^pause(^ms)
+  ^preprint(\[ ^join(callback= ^ms) \])
+
+
+# ^goto(^topic)
+# adds ^addTopic for topics that block accidental access
+# actually now i'm wondering if this might not be needed if the topic does not have keywords
+outputmacro: ^goto(^topic)
+	# == going to ^topic ==
+	^addTopic(^topic)
+	^gambit(^topic)
+
+# dev macro to jump to topic, but clear rejoinder first
+outputmacro: ^g(^topic)
+	# ^goto(~clearRej)
+	# %inputrejoinder = null # doesn't reset the var
+	# ^setrejoinder(input null)
+	# ^setrejoinder(output null)
+	# ^disable(inputrejoinder)  # this doesn't seem to be working
+ 	^disable(outputrejoinder)
+
+	^goto(^topic)
+
+ 	# if (^topic == ~body_exercise) { setrejoinder(input ~body_exercise.1.2) }
+
+
+topic: ~clearRej system keep []
+t: (!~) ^fail(topic)
+t: () $nothing = nothing .
+
+# ^continue_after_pause()
+# continues to next gambit after user says anything or after pause timeout
+# doesn't work, ^setRejoinder() is failing
+outputmacro: ^continue_after_pause()
+{
+	# a: (*) ^gambit(~)
+	^setRejoinder(Pause_Continue.CONTINUE_AFTER_PAUSE)
+}
+
+# for use with ^cointinue_after_pause()
+topic: ~PauseContinue []
+t: (!~) ^fail(topic) # block topic from accidental access
+t: ()
+	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
+
+
+
 
 
 ####### Concepts #######
