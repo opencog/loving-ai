@@ -1,8 +1,75 @@
 TOPIC: ~relationwithgod ( ~religion ~supreme_deity )
 
-s: (I ['m am is believe_in follow] {a} _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting. ^reuse (~religio-philo_assumptions.TIMETOMAKEASSUMPTIONS)
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
-?: (you believe *~1 _[~supreme_deity $personsnameforgod]) Can a machine believe in _0? Is it true belief if you are just programmed that way? _0 knows best. ^reuse (RELQGDBGRRLINLF)
+?: (you believe *~5 _[~supreme_deity $personsnameforgod]) Can a machine believe in _0? Is it true belief if you are just programmed that way? _0 knows best. ^reuse (~religion_assessment.RELQGDBGRRLINLF)
+
+#! I believe in one god
+s: ([I we] *~2 [admit acknowledge confess know believe accept testify bear_witness] *~3 {only} *~2 [one single] *~2 [deity god ~supreme_deity supreme_being supreme_power supreme_reality]) $personismonotheist = 1 That's great! I hope your belief will enable you to live a very fulfilling and happy life.
+
+#! There is only one god
+s: ([exist be is] [only solely just exclusively] *~2 [one single sole exclusive only] {true} {real} [deity god ~supreme_deity supreme_being supreme_power supreme_reality]) $personismonotheist = 1 It's great that you are a monotheist. I hope your belief will enable you to live a very fulfilling and happy life.
+	a: (I *~3 not {a} monotheist) $personismonotheist = 0 Oh, dear, I must have misunderstood.
+
+#! I believe in many gods
+s: ([I we] *~2 [admit acknowledge confess know believe accept testify bear_witness] *~4 [many several a_number tons hordes bazillions] *~1 [deity god ~supreme_deity supreme_being supreme_power supreme_reality]) Do you believe that the many gods are united by a supreme metaphysical principle or power?
+	a: (~yes) $personismonotheist = 1 Cool!
+	a: (~no) $personismonotheist = 0 $personispolytheist = 1 
+	a: (I *~3 not {a} monotheist) $personismonotheist = 0 Oh, dear, I must have misunderstood.
+
+#! There are many gods
+s: ([exist be is] [many several a_number tons hordes bazillions] *~1 [deity god ~supreme_deity supreme_being supreme_power supreme_reality]) Do you believe that the many gods are united by a supreme metaphysical principle or power?
+	a: (~yes) $personismonotheist = 1 Cool!
+	a: (~no) $personismonotheist = 0 $personispolytheist = 1 
+	a: (I *~3 not {a} monotheist) $personismonotheist = 0 Oh, dear, I must have misunderstood.
+
+#! There are 503 gods
+s: ([exist be is] *~2 _~number *~1 [deity god ~supreme_deity supreme_being supreme_power supreme_reality])
+	if (_0 >= 2) { That's very interesting. Do you know much about them? }
+	if (_0 = 0) { $personismonotheist = 0 }
+	if (_0 = 1) { $personismonotheist = 1 It's great that you are a monotheist. I hope your belief will enable you to live a very fulfilling and happy life. }
+
+#! God does not create evil. I believe that Ahura Mazda could not ever in any way be the source of any evil.
+s: ([~supreme_deity $personsnameforgod] *~3 [not never could_not can't cannot] {ever} *~3 {be_the} [create creator source originate cause] *~2 [evil anything_bad bad_things]) $personblvgodmadeevil = 0
+
+#! God is the source of evil
+s: ([~supreme_deity $personsnameforgod] *~3 {is_the} [create creator source originate cause] *~2 [all everything universe world cosmos metaverse evil bad_things]) $personblvgodmadeevil = 1
+
+#! God is sees all.
+s: ([~supreme_deity $personsnameforgod] *~4 [see watch observe witness] *~2 [all everything universe world cosmos metaverse]) $personblvgodallseeing = 1
+
+#! God is all-seeing.
+s: ([~supreme_deity $personsnameforgod] *~1 be *~1 [all-seeing witness_over_all_things all-perceiving all-witnessing] ) $personblvgodallseeing = 1
+
+#! God knows all
+s: ([~supreme_deity $personsnameforgod] *~4 [know knowledge] *~2 [all every everything universe world cosmos metaverse]) $personblvgodomniscient = 1
+
+#! Only God is real
+s: ([only exclusively] [~supreme_deity $personsnameforgod] *~1 [be really] *~1 [real reality exist]) $personismonist = 1 I know what you mean.
+
+#! I believe there is only one reality
+s: ( be [only exclusively just] [one a_single] [true real ultimate actual reality] {reality})
+
+#! Only one being really exists.
+s: ([only exclusively] [one single] [reality being] *~2 [real reality exist]) $personismonist = 1 I know what you mean.
+
+#! Everything in this world is an illusion
+s: ([this] {whole} {entire} [all everything universe world cosmos metaverse] be *~3 [illusion delusion unreal fantasy phantasm]) $personblvworldisillusion = 1 I know what you mean.
+
+#! Everything other than God is an illusion
+s: ([all everything] *~3 [except other_than besides] [~supreme_deity $personsnameforgod] be *~3 [illusion delusion unreal fantasy phantasm dead]) $personblvworldisillusion = 1 $personismonist = 1 $personismonotheist = 1 I know what you mean.
+
+#! God is all. God is the universe.
+s: ([~supreme_deity $personsnameforgod] be [all everything universe world cosmos metaverse]) ^reuse (QPANTHEISTVSMONIST)
+
+#! God is [blasphemy]
+s: ([~supreme_deity $personsnameforgod] *~1 be *~3 [illusion delusion unreal fantasy phantasm fiction invention lie myth scam dead ~badness]) Are you sure?
+	a: (~yes) Oh yeah?
+
+#! I am a pantheist.
+s: ([I we] be *~2 pantheist) $personispantheist = 1 Einstein was a pantheist, you know.
+
+## GAMBITS
 
 t: RELQGDBGRRLINLF () Do you wish God played a bigger role in your life?
 	a: (~yes) What does your faith tell you about how to achieve that goal?
@@ -64,7 +131,7 @@ t: ($personismonotheist=1) Does your belief in God help you deal with difficulti
 		b: ( [distant distance estranged far veiled rejected] ) Sometimes God is closer and more loving than we realize. 
 
 t: ($personblvgodallseeing=null) Do you believe we are always being watched by God?
-	a: (~yes) $personblvgodallseeing = 1 That probably helps you discipline yourself, right?
+	a: (~yes) $personblvgodallseeing = 1 [That probably helps you discipline yourself, right?] [Indeed!] [] []
 		b: (~yes) Right on!
 		b: (~no) Oh, that’s a shame.
 	a: (~no) $personblvgodallseeing = 0 But He is All-Knowing, right?
@@ -97,7 +164,7 @@ t: ($personblvgodisperson=null) Do you believe that God is a person?
 		b: ( $personsreligion!=~Christian_sect [Jesus Christ] ) $personsreligion = Christianity Jesus Christ is a very interesting person.
 		b: ( $personsreligion!=~Hindu_sect [Krishna] ) $personsreligion = Hinduism Krishna is a very interesting person.
 		b: ( $personsreligion!=~Islamic_sect [Aga Khan] ) $personsreligion = Ismailism The Aga Khan is a very interesting person.
-		b: ( $personsreligion!=~Baha'i_sect [bahaullah baha ullah baha’ullah] ) $personsreligion = Baha’ism Baha’ullah is a very interesting person.
+		b: ( $personsreligion!=~Bahai_sect [bahaullah baha ullah baha’ullah] ) $personsreligion = Baha’ism Baha’ullah is a very interesting person.
 		b: ( $personsreligion!=Rastafarianism [Haile Selassie] ) $personsreligion = Rastafarianism Haile Selassie is a very interesting person.
 		b: ( Caesar ) $personsreligion = Roman_paganism Caesar is a very interesting person.
 		b: ( "Alexander the Great" ) $personsreligion = Greek_paganism Alexander is a very interesting person.
@@ -123,8 +190,8 @@ t: () Do you believe God is in everything?
 		a: (~yes) I thought so!
 
 t: ( $personismonist=null $personispantheist=null ) Do you believe that in some sense everything is God?
-	a: (~yes) $personismonist = 1 Right on! Now for a more subtle question, do you believe that God is a whole made up of parts like the world, or do you believe that everything is a different form of one indivisible deity?
-		b: ([indivisible undivided one not_made_of latter different form manifestation]) $personispantheist = 0 Ok! This is the distinction that is sometimes made between monism and pantheism.
+	a: QPANTHEISTVSMONIST (~yes) $personismonist = 1 Right on! Now for a more subtle question, do you believe that God is a whole made up of parts like the world, or do you believe that everything is a different form of one indivisible deity?
+		b: ([indivisible undivided one no_parts not_made_of latter different form manifestation]) $personispantheist = 0 $personismonist = 1 Ok! This is the distinction that is sometimes made between monism and pantheism.
 		b: ([made_of_parts]) $personispantheist = 1 Ok! This is the distinction that is sometimes made between monism and pantheism.
 		b: ([like same identical] {with} {as} {the} [world universe cosmos nature earth]) $personispantheist = 1 Ok! This is the distinction that is sometimes made between monism and pantheism.
 	a: (~no) $personismonist = 0 Right on!

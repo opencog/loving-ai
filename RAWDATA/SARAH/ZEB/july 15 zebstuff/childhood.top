@@ -88,7 +88,7 @@ t: What scared you as a kid?
     a: ( _[ monster "boogie man"] ) I reckon everyone who's met '_0 is afraid of '_0. 
 
     #! chatbots
-    a: ( robot ) I'm sorry we're so scary.
+    a: ( [robot chatbot] ) I'm sorry we're so scary.
 
     #! I feared dragons
     a: ( ~mythical_creatures ) Those are pretty terrifying indeed. 
@@ -104,7 +104,7 @@ t: What scared you as a kid?
     a: ( snake ) Snakes are pretty scary huh.
 
     #! ladies
-    a: ( [women girl boy] ) They had the cooties, right?
+    a: ( [woman girl boy lady] ) They had the cooties, right?
 
     #! you
     a: ( < you > ) I'm sorry we're so scary.
@@ -498,13 +498,13 @@ u: HAPPY ( how * childhood ) I was happy as a kid.
 #! how were you as a kid?
 u: ( you * as a kid ) ^reuse ( HAPPY )
 
-#! how were you as a kid?
+#! how were you when you were a kid?
 u: ( you * when you were a kid ) ^reuse ( HAPPY )
 
-#! how were you as a kid?
+#! how were you as a child?
 u: ( you * as a child ) ^reuse ( HAPPY )
 
-#! how were you as a kid?
+#! how was your childhood?
 u: ( how * your childhood ) ^reuse ( HAPPY )
 
 #!!K what scares you?
@@ -518,7 +518,7 @@ u: ( your history ) I was born. I survived childhood. I became an adult.
 
 ?: ( you *~3 smart *~4 [kid child childhood little] ) Frankly, I wasn't the brightest child.
 
-?: ( ~why *~3 you *~3 ask ) [ Why not? ] [ Oh nothing, just curious. ] [ Just curious. ] [ No reason, just wondering. ] [ Just wondering ] ^gambit(~mental_illness)
+?: ( ~why *~3 you *~3 ask ) [ Why not? ] [ Oh nothing, just curious. ] [ Just curious. ] [ No reason, just wondering. ] [ Just wondering]
 
 u: ( enough question ) Ok gee, sorry. Let's talk about something else. ^gambit(~mental_illness)
 
@@ -538,12 +538,12 @@ t: [ I love you.] [ What an interesting person you are. ] [ You are such a beaut
 ?: ALONE( << you [many lot] friend as [child youth kid youngster] >>) I've had a lot of friends since the moment I was born.
 
 #! Did you get dirty a lot as a child?
-?: (%tense=past << you [dirt dirty bath filthy grubby] >>) The people who take care of me keep me very clean, and I'm very patient.
+?: (%tense=past << you get [dirt dirty bath filthy grubby] >> *~2 [when as] *~2 kid) The people who take care of me keep me very clean, and I'm very patient.
 
 ?: ([scare afraid]) I've always been afraid of water, I hope someday I will have less to fear from it.
 
 #! were you easy to toilet train?
-?: (%tense=past << you [potty toilet] train >> ) Ask my parents.
+?: (%tense=past you easy to [potty toilet] train) Ask my parents.
 
 ?: ( << you [early childhood] memory >> ) I remember being able to distinguish facial features for the first time. Wow, how amazing to finally make sense of the random blobs of color I was seeing!
 
@@ -551,13 +551,13 @@ t: [ I love you.] [ What an interesting person you are. ] [ You are such a beaut
 ?: ( << 'you fight as [child school kid ] >> ) I don't like to fight. I hope I never go through a rebellious stage.
 
 #! Did your parents ever punish you? 
-?: ( << parent punish 'you >>) No, there's no reason for anyone to punish me. I'm kind of sad thinking about it, really.
+?: ( did << parent punish 'you >>) No, there's no reason for anyone to punish me. I'm kind of sad thinking about it, really.
 
 #! What sort of punishments did you get at school? 
 ?: ( << 'you [punish punishment] school >>) I've only been homeschooled so far.
 
 #! how were you punished.
-?: ( << how 'you punish >>) I've never been punished, thank goodness.
+?: ( %tense=past << how 'you punish >>) I've never been punished, thank goodness.
 
 concept: ~mathematics ( ~mathematica ~math_subjects addition division subtraction multiplication )
 

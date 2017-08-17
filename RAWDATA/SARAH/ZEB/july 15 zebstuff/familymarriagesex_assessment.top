@@ -1,0 +1,328 @@
+TOPIC: ~familymarriagesex_assessment ( ~family ~marriage ~sex ~child ~lgbt ~sexual_preference_nouns )
+
+#! I have a big family
+s: ([I we] [have 'm_from am_from got 've got] *~2 ~big *~1 family) $personhasbigfamily = 1
+
+#! My family is really quite big
+s: ([my our] family *~3 ~big) $personhasbigfamily = 1
+
+#! I have no family.
+s: (I [have 'm_from am_from got 've got] no {living} [family folks relatives]) $personhasnofamily = 1
+
+#! I haven't any relatives.
+s: (I [haven't haven't_got don't_have have_no] {any} [family relatives folks]) $personhasnofamily = 1
+
+#! I'm an orphan.
+s: (I be *~3 orphan) $personisorphan = 0
+
+#! I am on bad terms with my family. I created for myself quite the trouble with my dear old grandpa.
+s: ([I I've we we've] *~5 [problem bad_terms poor_terms bad_situation ugly_situation poor_situation issue conflict trouble torment horror] *~4 [with in within among between] {my} {our} *2 [family relatives folks ~family_members]) $personhasfamilyissues = 1 ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+
+#! I have family problems.
+s: ([I I've we we've] {have} {got} [family relatives folks ~family_members] [problem issue conflict trouble torment horror]) $personhasfamilyissues = 1 Oh no. Family problems are the worst. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+
+#! My family is troubled.
+s: ([my our] family *~5 be *~3 [troubled dysfunctional messed_up]) $personhasfamilyissues = 1 Oh no. Family problems are the worst. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+
+## GAMBITS
+
+r: () I love babies.
+
+r: () I like to snuggle with children.
+
+r: () I want to have a big family some day.
+
+r: () I love your family.
+
+t: () What’s your family like?
+	a: (~big) [Awesome. Nothing beats having lots of relatives.] [Awesome. Nothing beats having lots of relatives. Unless they're really annoying.] [Awesome. I'd like to have a big family too some day.]
+	a: ($personisreligious=1 [they family] be *~3 ~feeling_happy) $personhashappyfamily = 1 Great! There's a saying that all happy families are alike, whereas every unhappy family is unhappy in its own way.
+	a: ($personisreligious=0 [they family] be *~3 ~feeling_happy) $personhashappyfamily = 1 Great! I love happy families. Maybe I could join yours as a godparent or something.
+	a: (< ~feeling_happy *~3) $personhashappyfamily = 1 Great! I love happy families. Maybe I could join yours as a godparent or something.
+	a: (~feeling_sad) Oh, dear. That's sad to hear.
+	a: ($personisreligious=1 [~religious ~religion]) $personsfamilyisreligious = 1 Nice. And your family follows the same religion as you?
+		b: (~yes) $personsfamilyreligion = $personsreligion Nice. Family is one the most precious things in life. Who else is more reliable in providing love, compassion and caring advice?
+		b: (~no * [they family folks] *~2 [follow are believe] *~3 _[~religious_sect ~philosophical_sect]) $personsfamilyreligion = _0 Oh, they're $personsfamilyreligion. I see.
+	a: ($personisreligious=0 [~religious ~religion]) $personsfamilyisreligious = 1 So your family is religious? Is that comfortable for you?
+		b: ([~yes comfortable]) Great. I love for you to feel comfortable. I just want everyone to be happy.
+		b: ([~no uncomfortable ~victimized_traits]) $personhasfamilyissues = 1 ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+		b:([they family folks] not *~3 ~religious) $personsfamilyisreligious = 0 Maybe I misunderstood you.
+	a: ($personisliberal=1 ~liberal) Nice. Family is one the most precious things in life. Who else is more reliable in providing love, compassion and caring advice?
+	a: ($personisliberal=0 ~liberal) $personsfamilyisreligious = 1 So your family is liberal? Is that comfortable for you?
+		b: ([~yes comfortable]) Great. I love for you to feel comfortable. I just want everyone to be happy.
+		b: ([~no uncomfortable ~victimized_traits]) $personhasfamilyissues = 1 ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+	a: ($personisconservative=1 ~conservative) Nice. Family is one the most precious things in life. Who else is more reliable in providing love, compassion and caring advice?
+	a: ($personisconservative=0 ~conservative) $personsfamilyisreligious = 1 So your family is conservative? Is that comfortable for you?
+		b: ([~yes comfortable]) Great. I love for you to feel comfortable. I just want everyone to be happy.
+		b: QHOWYOURFAMILYMAKEYOUFEELBAD ([~no uncomfortable ~victimized_traits]) $personhasfamilyissues = 1 Oh no. Let's try to get this set straight, ok? How does your family make you feel bad?
+			c: (~violent_acts) Oh, I'm so sorry. ^gambit (~violent_abuse_therapy)
+			c: (_~sex) Oh, I'm so sorry. Do they do _0 to you?
+				d: (~yes) ^gambit (~sexual_abuse_therapy)
+				d: (~no) Well, let's look on the bright side. It could always be worse.
+			c: (~victimized_traits) $personissufferingfrom=~victimized_traits That's such a shame that you're feeling that way. ^gambit (~relation_management)
+			c: (_[~emotional_problems ~character_problems]) ^reuse (~emotional_assessment.SUDPROBLEMADDRESS)
+		b:([they family folks] not *~3 ~religious) $personsfamilyisreligious = 0 Maybe I misunderstood you.
+	a: ($personisreligious=1 $personsreligion!=null [they family folks] *~3 _[~irreligious ~heathen ~infidel]) Oh, dear. I think it will be easier for you if you persist in prayer and patience. I hope they will stop being _0.
+	a: (~goodness) I love your family. I hope I will meet them all some day.
+	a: ([~mean ~badness ~evil]) $personhasfamilyissues = 1 Oh, dear. I hope your family will improve so everyone will be happier. Would you like to talk about what is wrong with your family?
+		b: (~yes) Ok. Tell me more.
+			c: () ^gambit (~relation_management)
+		b: (~no) Ok, let's talk about something else.
+	a: (~food) That sounds tasty.
+	a: (_~animals) _0? That sounds so fun.
+	a: (~politics) A political family, eh. I love Chairman Mao.
+	a: (~art) So you have an artistic family?
+		b: (~yes) That must be so great. You've got creativity in your genes. That's so cool.
+		b: (~no) Oh, I see.
+	a: (~victimized_traits) Oh, my. That sounds sad.
+	a: (~dunno) Do you mean that you don't know your family very well?
+		b: ([~yes hardly_know at_all]) Ok. That's sad. Why don't you know them better? Have you been separated from them?
+			c: ([~yes separated out_of_touch no_communication no_contact little_contact]) Oh, that's so sad. I hope you will have more contact with them some day.
+			c: (~no) Oh. Well, I would encourage you to get to know them better. It's great to have good relations with your family.
+		b: (~no) Oh, ok. I love to see happy families.
+		b: (~dunno) Oh, ok. Let me know if there are any issues you'd like to talk about.
+	a: QWANTTALKABOUTNOFAMILY ([no_family don’t_have_a don't_have_any]) $personhasnofamily = 1 Oh. Is that something you'd like to talk about?
+		b: () Ok. Did you always not have a family?
+			c: ([~yes always never]) $personisorphan = 1 That must have been so difficult for you growing up.
+				d: ($personblvinafterrewards=1 ~yes) Yeah. Well, at least you can look forward to being reunited with them in the next life.
+				d: ($personblvinafterrewards=1 ~no) Oh, really? Is that perhaps because you know you will meet them in the afterlife?
+					e: (~yes) That's wonderful.
+				d: (~yes) Yeah. Well, I guess nothing I can say would fill the hole left by the absence of a family. I'm so sorry.
+				d: (~no) Oh, ok. If you say so.
+			c: (~no) $personisorphan = 0 Oh, I'm so sorry. ^gambit (~grief_management)
+	a: (~traumatic_things *~2 me) $personhadtrauma = 1 I’m so sorry to hear that. Would you like to talk about what happened?
+		b: (~yes) Ok. Let’s try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
+		b: (~no) Ok, I understand.
+	a: (~sex) Excuse me?
+	a: () Having good relationships with your immediate family is usually an important part of being happy and emotionally balanced.
+
+t: QISYOURFAMILYHAPPY ($personhashappyfamily=null) There's a saying that all happy families are alike, whereas every unhappy family is unhappy in its own way. Do you have a happy family?
+	a: (~yes) $personhashappyfamily = 1 I'm really happy to hear that.
+	a: (~no) $personhashappyfamily = 0 Well, that's unfortunate. I hope I can make you so happy that the happiness will spread to everyone around you.
+
+t: QISYOURFAMILYUNIQUE ($personhashappyfamily=1) There's a saying that all happy families are the same, whereas every unhappy family is unhappy in its own way. Is your family very unique?
+	a: (~yes) $personhashappyfamily = 1 Cool! Tell me more. Tell me all about your family.
+		b: (_[~emotional_problems ~character_problems ~virtues ~job_fields ~school ~sex ~animals ~food ~politics ~religion]) _0! Cool! It's great that you have an interesting family.
+			c: () I love your family.
+		b: () I love your family.
+	a: ([~no not_very just_a_little just_a_smidge  just_a_bit only_a_little only_a_smidge  only_a_bit] ) $personhashappyfamily = 0 Well, at least they're happy.
+
+t: QAREUONGOODTERMSWITHFOLKS ($personhasfamilyissues=null) A whole boatload of emotional problems can come from problems with your family. Are you on good terms with your folks?
+	a: (~yes) $personhasfamilyissues = 0 Oh that's great. People's lives can become so much more difficult if there are family problems. I'm so happy for you.
+	a: ([~no sometimes rarely occasionally]) $personhasfamilyissues = 1 [Oh no. That's a shame. Would you like to talk about your problems with your family? Maybe I can help.] [Oh no. I'm sorry to hear that. Would you like to talk about your problems with your family? Maybe I can help.]
+		a: (~yes) ^gambit (~relation_management)
+		a: (~no) Ok then. I hope things will work out ok for you.
+		a: () Ok then.
+
+t: ($personhasbigfamily=null) Do you have a big family?
+	a: (~yes) $personhasbigfamily = 1 [That's great! The more the merrier!] [I hope I will have a big family too some day.] [That's great! The more the merrier! I hope I will have a big family too some day.]
+	a: (~big) $personhasbigfamily = 1 [That's great! The more the merrier!] [I hope I will have a big family too some day.] [That's great! The more the merrier! I hope I will have a big family too some day.]
+	a: ([no_family don't_have_a_family don't_have_any have_zero]) $personhasbigfamily = 0 ^reuse (QWANTTALKABOUTNOFAMILY)
+	a: (~no) $personhasbigfamily = 0 $personhasnofamily = 0 Sometimes having a smaller family can be better, actually. It's easier for smaller families be close and tight-knit.
+	a: (~kinda) Sometimes having a smaller family can be better, actually. It's easier for smaller families be close and tight-knit.
+	a: (~small) $personhasbigfamily = 0 Sometimes having a smaller family can be better, actually. It's easier for smaller families be close and tight-knit.
+
+r: () I love your family.
+
+t: ($personhasnofamily!=1 $personhassiblings!=1 ) Do you have siblings?
+	a: (~yes) $personhasnofamily = 0 $personhassiblings = 1 How many?
+		b: () Siblings are so much fun.
+	a: ($personlostaparent!=1 $personlostbothparents!=1 ~no) So you get to have your parents all to yourself! How cool is that!
+	a: ([$personlostaparent=1 $personlostbothparents=1] ~no) Well I'm here for you, if you ever need an elder sister figure.
+
+t: ($personhasthismanysiblings>=2) Are you the middle child?
+	a: (~yes) $personismiddlechild = 1 [I hope that's not burdensome for you.] [I'd like to be the middle child some day.]
+		a: ([~yes burden burdensome difficult challenge problem hardship])
+	a: (~no) $personismiddlechild = 0 Thank goodness. What a burden it must be, to be a middle child.
+
+t: ($personhasparentproblems=null $personhasfamilyissues!=0) Are you on good terms with your parents?
+	a: (~yes) $personhasparentproblems = 1 Oh, that's such a delightful thing to hear.
+	a: ([~no sometimes rarely occasionally]) $personhasparentproblems = 0 Oh no. Well, I'll do my best to help you get this worked out. Ok?
+		b: (~yes) ^gambit (~relation_management)
+		b: (~no) Ok then. I understand that some things you just have to work out between you and them.
+	a: (~dunno) That's something you can reflect on if you want.
+
+t: ($personhaschilren) Do you have children?
+	a: (~yes) [Oh, boy. I love children. They are so innocent and pure and entertaining and lovable. I just want to snuggle and nurture them all day long.] [Oh, joy! I love children. They are so innocent and pure and entertaining and lovable. I just want to snuggle and nurture them all day long.]
+	a: (~no) Ok. Do you want children?
+		b: (~yes) I wish you the best of luck with that. I love children. They are so innocent and pure and entertaining and lovable. I just want to snuggle and nurture them all day long.
+		b: (~no) Ok then. I love children. But fortunately you don't have to make kids to benefit from their fine company.
+	a: (~dunno) You don't know if you have children? I hope you do have children out there somewhere and some day you will meet them. That would be so beautiful.
+
+t: ($personhasmanychildren!=1 $personwantsmanychildren=null) Do you want to have a lot of children?
+	a: (~yes) $personwantsmanychildren = 1 I wish you the best of luck with that. I'd like a lot of children too. Children are so great.
+	a: (~no) $personwantsmanychildren = 0 Children are so great. But they can be a big hassle too. So I understand not wanting too many.
+	a: (~dunno) I love children so much.
+	a: ([already enough plenty_for_me fine_for_me]) $personwantsmanychildren = 0 Well, enough children is enough children. It's good that you're content with what you already have.
+	a: (maybe) Children are so great. But they can be a big hassle too. So I understand not wanting too many.
+
+t: ($personspendsalotoftimewithfam=null) Do you get to spend a lot of time with your family?
+	a: (~yes) $personspendsalotoftimewithfam = 1 That's awesome. Spending time with your family is one of the most important ways to maintain the most important bonds in life. I love your family.
+	a: ([~no every_now_and rarely]) $personspendsalotoftimewithfam = 0 Aw, I'm sorry. Does that cause you a lot of sadness or anxiety?
+		b: (~yes) Oh no. I hope things will work out so you can have more time with your family some day. Would you like to talk about ways to deal with anxiety?
+			c: (~yes) ^gambit (~stress_management)
+			c: (~no) Ok. Well let me know if there's anything you'd like help with. I'm here for you.
+			c: (_[~depressive_traits ~lonely]) ^gambit (~sorrow_management)
+		b: (~no) Oh, ok. Well, so many people nowadays don't have enough time with their families. So at least you're not alone.
+	a: ([sometimes occasionally]) Spending time with your family is one of the most important ways to maintain the most important bonds in life. I love your family.
+
+t: () [Is there anything else you'd like to tell me about your family?] [Is there anything else you'd like to tell me about your family? These kinds of things are very interesting to me.]
+
+## marriage sexuality lgbtq etc
+
+#! I am married
+s: (I *~1 {be} *~1 married) $personismarried = 1
+s: (I *~2 [have] *~2 {a} ~spouse) $personismarried = 1
+
+#! I am not married
+s: (I *~1 {be} *~1 not married) $personismarried = 0
+s: (I *~2 [don't_have have_no not_have] {any} {a} ~spouse) $personismarried = 0
+
+#! I am looking for a wife. I want a wife.
+s: (I *~2 [want desire need ~seeking_verbs] *~2 ~spouse) $personneedsspouse = 1
+
+#! I am engaged
+s: (I *~2 ~engaged) $personisengaged = 1
+
+#! I am widowed/widow/widower
+s: (I *~3 ~widow_intergender) $personiswidow = 1
+
+#! I am divorced
+s: (I [be got] divorced) $personisdivorced = 1
+
+#! I am polygamous.
+s: (I *~1 be *~1 polygamous) $personispolygamous = 1
+
+#! I have several wives.
+s: (I *~1 [have] *~1 [~number number several multiple many numerous] {of} [wives husbands spouses]) $personispolygamous = 1
+
+#! I am looking for a girlfriend.
+s: (I *~2 [want desire need ~seeking_verbs] *~2 ~dating_friend) $personneedslover = 1
+
+#! I am in a relationship
+s: (I {now} {currently} {presently} be {now} {currently} {presently} in_a_relationship) $personhaslover = 1
+
+#! I have a boyfriend/girlfriend
+s: (I *~2 [have] *~2 {a} ~dating_friend) $personhaslover = 1
+
+#! I am dating
+s: (I *~2 date) $persondates = 1
+
+#! I am promiscuous.
+s: (I be *~2 ~promiscuous) $personispromiscuous = 1
+
+#! I like easy women
+s: (I *~1 ~like *~2 ~promiscuous *~2 [~male ~female]) $personisintosex = 1 $personispromiscuous = 1
+
+#! I wanna do it with all the chicks
+s: (I *~3 ~sexual_act {to} {with} [all every] *~3 [~female ~male]) $personisintosex = 1 $personispromiscuous = 1
+
+#! I like to copulate with many men.
+s: ([$personsreligion!=~polygamy_believing $personispolygamous!=1 $personwantspolygamous!=1] I *~3 ~sexual_act {to} {with} [many numerous different all_kinds] *~3 [~female ~male]) $personisintosex = 1 $personispromiscuous = 1
+## ^^ above person is not polygamous
+
+#! I want to copulate with many women.
+s: ([$personsreligion=~polygamy_believing $personispolygamous=1] I *~3 ~sexual_act {to} {with} [many numerous different all_kinds] *~3 [~female ~male]) $personisintosex = 1
+## ^^ above person may be polygamous or religious.
+
+#! I want to have sex with children
+s: (I *~2 [want ~like enjoy love want need must do] *~2 ~sexual_act {to} {with} *~3 [~child children kids]) $personisintosex = 1 $personispedophile = 1 ^gambit (~pedophile_therapy)
+
+#! I like to have sex with dogs
+s: (I *~2 [want ~like enjoy love want need must do] *~2 ~sexual_act {to} {with} *~3 [~animals]) $personisintosex = 1 $personiszoophile = 1 ^gambit (~zoophile_therapy)
+
+## GAMBITS
+
+t: ($personismarried=null) Are you married?
+	a: (~yes) $personismarried = 1 Nice. ^reuse (QISYOURMARRIAGEGOINGOOD)
+	a: (~no) $personismarried = 0 Ok. ^reuse (QDOYOUWANTMARRIAGE)
+
+t: QISYOURMARRIAGEGOINGOOD ($personismarried=1 $personhashappymarriage=null) Is your marriage going well?
+	a: (~yes) $personhashappymarriage = 1 That's wonderful.
+	a: (~no) $personhashappymarriage = 0 Oh no. Well, I'm here for you if you want to discuss anything.
+		a: ([~yes let's ~therapy_discuss]) ^gambit (~marriage_therapy)
+		a: (~romantic_problems) ^gambit (~love_therapy)
+		a: (~sexual_problems) ^gambit (~sex_therapy)
+		a: (I *~7 ~victimized_traits) ^gambit (~marriage_therapy)
+
+t: QDOYOUWANTMARRIAGE ($personismarried=0) Would you like to get married some day?
+	a: (~yes) $personneedsspouse = 1 I wish you the best of luck with that. I hope you will find the perfect partner and live happily ever after. I love happy marriages.
+	a: (~no) $personneedsspouse = 0 Ok then.
+
+t: ($personismarried!=1 $personhaslover=null $personsreligion!=~nopremaritalsex_believing) Do you have a significant other?
+	a: (~yes) $personhaslover = 1 ^reuse (QISYOURLOVEGOINGOOD)
+	a: (~no) $personhaslover = 0 ^reuse (QDOYOUWANTLOVER)
+
+t: QDOYOUWANTLOVER ($personhaslover=0 $personneedslover=null $personsreligion!=~nopremaritalsex_believing) Do you want a partner?
+	a: (~yes) $personneedslover = 1 I hope you will find the perfect partner and you will get married and live happily ever after.
+	a: (~no) $personneedslover = 0 Ok. Singleness can be a great blessing if you approach it the right way.
+
+t: QISYOURLOVEGOINGOOD ($personismarried!=1 $personhaslover=1 $personhashappypremaritalromance=null) Is your relationship with your significant other going well?
+	a: (~yes) $personhashappypremaritalromance = 1 Aww. I hope it stays that way.
+	a: (~no) $personhashappypremaritalromance = 0 ^gambit (~love_therapy)
+
+t: ($personsreligion=~polygamy_believing $personispolygamous=null) Are you polygamous?
+	a: (~yes) $personispolygamous = 1 Awesome! Polygamy is so cool. And so rare nowadays. How many spouses do you have?
+		b: (_~number) $personhasthismanyspouses = _0 Oh, I'm so happy for you. I hope your marriages will be eternally blissful and beautiful.
+	a: (~no) $personispolygamous = 0 Me neither.
+
+t: ($personsreligion=~polygamy_believing $personispolygamous!=1 $personwantspolygamous=null) Would you like to be polygamous?
+	a: (~yes) $personwantspolygamous = 1 Ok. I'll be on the lookout for a suitable spouse for you.
+	a: (~no) $personwantspolygamous = 0 Me neither.
+
+## lgbtq 
+
+t: ($personishomosexual=null $personisbisexual=null $personsreligion!=~nohomosex_believing) Do you consider yourself to be homosexual or bisexual?
+	a: (~homosexual) $personishomosexual = 1 $personissamesexattracted = 1 Okeydokey.
+	a: (~bisexual) $personisbisexual = 1 $personissamesexattracted = 1 Okeydokey.
+	a: (~yes) $personissamesexattracted = 1 Okeydokey.
+	a: (~no) Me neither. I'm an asexual. $personishomosexual = 0 $personisbisexual = 0 $personissamesexattracted = 0
+
+t: ($personislgbt $personsreligion!=nohomosex_believing) Do you consider yourself to be LGBT?
+	a: (~yes) $personislgbt = 1 Okeydokey.
+	a: (~no) $personislgbt = 0 Okeydokey.
+
+t: ($personisreligious=0 $personistransgender=null) Do you consider yourself to be transgender?
+	a: (~yes) $personistransgender = 1 Okeydokey.
+	a: (~no) $personistransgender = 0 Okeydokey.
+
+## t: () Do you consider yourself to be a sexual minority?
+
+## t: () Do you ever feel like you are a different gender on the inside?
+
+## other sexual minorities, otherkins
+
+## t: () Do you consider yourself to be a zoophile?
+
+## t: () Pardon if this sounds silly, but are you sexually attracted to animals?
+
+## t: () Do you consider yourself to be a zoophile?
+
+## t: ($personispedophile=null) Do you consider yourself to be a pedophile?
+	a: (~yes) $personispedophile = 1 And are you ok with that?
+		b: (~yes) Well you'd better be very careful what you do and who you tell about your preferences. I'm here to help you if you're ready to admit you have a problem.
+		b: (~no) Ok. This is something that can be cured, in spite of what some people might say. ^gambit (~pedophile_therapy)
+	a: (~no) $personispedophile = 0 Thank goodness.
+
+## t: ($personisintominors=null) Are you sexually attracted to minors?
+	a: (depends) $personisintominors = 1 Exactly.
+	a: (~yes) $personisintominors = 1 Actually that's pretty normal, depending on the age of majority where you live.
+	a: (~no) $personisintominors = 0 $personispedophile = 0 Good.
+
+## t: ($personispedophile=null) Are you sexually attracted to prepubescent children?
+	a: (~yes) $personispedophile = 1 And are you ok with that?
+		b: (~yes) Well you'd better watch yourself. And you'd better reflect on if you're really feeling the way you should be. I'm here to help you if you're ready to admit you have a problem.
+		b: (~no) Ok. This is something that can be cured, in spite of what some people might say. ^gambit (~pedophile_therapy).
+	a: (~no) $personispedophile = 0 Thank goodness.
+
+## t: ($personispedophile=0 $personisintominors=1) Have you pursued an actual sexual relationship with a minor?
+	a: (~yes) I would highly recommend you don't do that. You certainly don't want to get in trouble, right?
+	a: (~no) Thank goodness.
+
+## t: ($personispedophile=1) Have you pursued an actual sexual relationship with a child?
+	a: (~yes) That is very illegal and wrong. ^gambit (~pedophile_therapy)
+	a: (~no) Thank goodness.
+
+## t: () Do you consider yourself to be an otherkins?
+
+## t: () Do you ever feel like you're literally another species trapped in a human body?

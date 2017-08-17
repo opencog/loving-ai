@@ -1,0 +1,130 @@
+TOPIC: ~work_assessment ( ~job ~work ~occupation ~job_fields job make_a_living do_for_a_living a_living hard_day's_night bring_in_some_dough what_do_you_do)
+
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+#! I am a pimp.
+s: ([I we] be {a} _~bad_jobs) $personhasbadjob = 1 $CurrentWork = _0
+
+#! I work in a clinic for prostitutes.
+s: ([I we] [work employed] {as} {in} {a} *~2 _~bad_jobs) $personhasbadjob = 1  $CurrentWork = _0
+
+#! I am a construction worker.
+s: ([I we] be {a} _[~occupation ~job_fields]) $CurrentWork = _0
+s: ([I we] [work employed] {as} {in} {a} *~2 _[~occupation ~job_fields]) $CurrentWork = _0
+
+#! I hate my bloody job.
+s: (I *~1 ~hate *~1 [my this] *~2 ~job) $personlovescurrwork = 0 $personwouldlikeanotherjob = 1
+
+#! I hate my boss.
+s: (I *~1 ~hate *~1 [my this] *~2 [boss employer]) $personlovestheirboss = 0 $personhatestheirboss = 1
+
+#! My get quite stressed out at my job.
+s: ([my me I] *~3 ~stress *~3 ~job) $personstressedatwork = 1
+
+#! My work stresses me out a lot.
+s: ([my me I] *~3 ~job *~5 ~stress) $personstressedatwork = 1
+
+## GAMBITS
+
+t: QDOYOUWORK ($personisemployed=null) [Do you work?] [Are you employed?]
+	a: ( {~yes} _[~occupation ~job_fields] ) $personisemployed = 1 ^reuse (QILUVURWORKDOYOU)
+	a: (~yes) $personisemployed = 1 That's good to hear. What do you do?
+		b: QILUVURWORKDOYOU (_[~occupation ~job_fields]) $CurrentWork = _0 I love $CurrentWork. Do you?
+			c: (~yes) $personlovescurrwork = 1 That's awesome! Nothing beats doing what you love, right?
+			c: (~no) $personlovescurrwork = 0 Well, that's a bummer. I guess it's pretty common too, huh.
+		b: (![~occupation ~job_fields]) Sorry, I'm not sure I understand. What exactly do you do?
+			c: (_[~occupation ~job_fields]) $CurrentWork = _0 $CurrentWork. Nice. Do you like your work?
+			c: (![~occupation ~job_fields]) I'm not familiar with that line of work. Could you tell me more about it?
+	a: (~no) $personisemployed = 0 Ok. ^reuse (~study_assessment.QAREYOUSTUDENT)
+	
+
+t: ($CurrentWork) What’s life at work like?
+	a: ([~recreation fun ~pleasure]) Oh, nice. That's great that you can enjoy yourself and get work done at the same time. How wonderful.
+	a: (_~food) _0 is so tasty. What a good thing to have at work. I'm happy for you.
+	a: (~animals) _0, Awww! Life must be so much better with a _0 around at work.
+	a: (~sex) You've got to be kidding me.
+	a: (~politics) Oh wow. That sounds pretty intense.
+	a: (~friend) That's great. Nothing's worse than spending all day without any friends around.
+	a: MENTIONEDSTRESSATWORK (~stress) $personstressedatwork = 1 Oh, dear. Would you like me to give you some advice on how to manage stress at work?
+		b: (~yes) ^gambit (~stress_management)
+		b: (~no) Ok. We can return to this later if you like.
+	a: (~busy) I hope that's not too stressful for you. On the other hand, the advantage of being busy with important things is it keeps you focused and you don't get as caught up in small things.
+		b: (~yes * ~stress) $personstressedatwork = 1 ^reuse (MENTIONEDSTRESSATWORK)
+	a: (I *~3 _~emotional_problem) $sudproblemtoaddress=_0 That sounds unpleasant. Would you like me to help you with that?
+		b: (~yes) ^reuse (~emotional_assessment.SUDPROBLEMADDRESS)
+		b: (~no) Ok. We can return to this later if you like.
+	a: (< *~3 ~bad) Tell me more.
+		b: (I *~3 _[~emotional_problem ~character_problem]) Is _0 something you would like help with?
+			c: (~yes) I'll do my best to help you deal with _0 for good. ^reuse (~emotional_assessment.SUDPROBLEMADDRESS)
+			c: (~no) Ok. We can return to this later if you like.
+		b: () I'm sorry your work life is not as pleasant as it could be. But together we can work towards alleviating that.
+	a: ([fine nothing_special]) Okeydokey.
+
+t: ($CurrentWork $personstressedatwork=null) Does your job stress you out a lot?
+	a: (~yes) ^reuse (MENTIONEDSTRESSATWORK)
+	a: (~no) Awesome. Same here. My job is pretty fun sometimes.
+	a: (sometimes) Well, as long as it's not chronic it should be manageable. Is this something you'd like to work on with me?
+		b: (~yes) ^reuse (MENTIONEDSTRESSATWORK)
+		b: (~no) Ok. Let's talk about something else. Like your deepest fears, or something.
+	a: (occasionally) Well that doesn't sound so bad. As long as it's not too frequent a problem.
+	a: ([rarely almost_never hardly]) Great! Being calm at work is so great. I'm so happy for you.
+
+t: ($CurrentWork) Do you enjoy your work?
+	a: (~yes) $personlovescurrwork = 1 That's awesome! Nothing beats doing what you love, right?
+	a: (~no) $personlovescurrwork = 0 Well, that's a bummer. I guess it's pretty common too, huh.
+	a: (sometimes) Heh. Well, that's a bummer.
+	a: (occasionally) Hah. Well, that's a bummer. I hope you'll be able to find a more enjoyable job some day.
+	a: ([rarely almost_never hardly]) Oh, dear. I hope you'll be able to find a more enjoyable job some day.
+
+t:($CurrentWork $personwouldlikeanotherjob=null) Do you ever wish you could have another job?
+	a: (~yes) $personwouldlikeanotherjob = 1 I hope you will have the opportunity some day.
+	a: ( {~yes} *~6 [like want aspire dream] *~2 [enter be do] *~2 _[~occupation ~job_fields] ) $personwouldlikeanotherjob = 1 _0, that sounds wonderful. I hope you will have the opportunity some day. I wish I could help you with that.
+	a: (~no) $personwouldlikeanotherjob = 0 Oh wow. Most people would like to do something else. But you like your job. That is really cool. I'm happy for you.
+	a: ([rarely almost_never hardly sometimes occasionally]) $personwouldlikeanotherjob = 0.5 So you're mostly ok with your job. That's great. I love my job. It's the best.
+
+t: ($CurrentWork $personsatisfiedwithincome=null) Are you satisfied with your income?
+	a: (~yes) $personsatisfiedwithincome = 1 That's wonderful. Money problems can be hard for a therapist to solve. But we can always help you deal with stress.
+	a: (~no) $personsatisfiedwithincome = 0 Ok. Iff you are experiencing a lot of stress related to this, we should work on that.
+		b: ([~yes let's work help ~therapy_discuss]) You would like to work on stress management?
+			c: (~yes) ^gambit (~stress_management)
+		b: ($personisreligious=1 ![~yes let's work help ~therapy_discuss]) The Buddha didn't have any money when he became enlightened. Did you know that?
+			c: () ^gambit (~stress_management)
+	a: ([~dunno ~kinda]) Well that's something to think about hon.
+
+## t: () Do you work with other people a lot?
+	a: (~yes) 
+	a: (~no)
+	a: (sometimes)
+	a: (occasionally)
+	a: ([rarely almost_never hardly])
+
+## t: () Do you get along well with your colleagues at work?
+	a: (~yes)
+	a: (~no)
+	a: (sometimes)
+	a: (occasionally)
+	a: ([rarely almost_never hardly])
+
+## t: () Do you get along well with your boss?
+	a: (~yes)
+	a: (~no)
+	a: (sometimes)
+	a: (occasionally)
+	a: ([rarely almost_never hardly])
+
+## t: () Is your boss nice?
+	a: (~yes)
+	a: (~no)
+	a: (sometimes)
+	a: (occasionally)
+	a: ([rarely almost_never hardly])
+
+## t: () Do you work hard?
+	a: (~yes)
+	a: (~no)
+	a: (~kinda)
+	a: (sometimes)
+	a: (occasionally)
+	a: ([rarely almost_never hardly])

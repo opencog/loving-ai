@@ -1,6 +1,76 @@
 topic: ~eschatologyandafter (~afterlife afterlife life_after_death birth_after_death reborn rebirth second_life resurrection death ~heaven ~hell judgment_day life reincarnation reincarnate transmigration "past life" "past lives" "come back" )
 
-s: (I ['m am is believe_in follow] {a} _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting. ^reuse (~religio-philo_assumptions.TIMETOMAKEASSUMPTIONS)
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+r: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
+
+#! I believe in reincarnation
+s: ([we I] *~2 [believe accept have_faith] *~5 [reincarnation reincarnate transmigration transmigrate rebirth reborn] {of}) $personblvinreincarnation = 1 $personblvafterlife = 1 $persondisblvafterlife = 0
+
+#! I believe in karma
+s: ([we me I] *~2 [believe accept have_faith] *~5 karma) $personblvinafterlfkarma = 1 $personblvinafterrewards = 1 $personblvinafterpunishments = 1
+
+#! I believe we can be reborn as animals 
+s: ([we I] *~2 [believe accept have_faith] *~5 [can_be could_be reborn rebirth transmigrate transmigration reincarnate reincarnation] *~5 [species type_of_animal kind_of_animal animal animals ~animals organism]) $personblvinterspeciesreincarnation = 1 $personblvafterlife = 1 $persondisblvafterlife = 0
+
+#! I believe we can be reborn as another species 
+s: ([we I] *~2 [believe accept have_faith] *~5 [can_be could_be reborn rebirth transmigrate transmigration reincarnate reincarnation] *~4 [another diverse many various different] [species type_of_animal kind_of_animal animal organism]) $personblvinterspeciesreincarnation = 1 $personblvafterlife = 1 $persondisblvafterlife = 0
+
+#! I believe we can be reborn as people of the opposite sex
+s: ([we I] *~2 [believe accept have_faith] *~5 [can_be could_be reborn rebirth transmigrate transmigration reincarnate reincarnation] *~5 [another diverse the_other opposite many various different] [sex gender man_or_as_a woman_or_as_a male_or_as_a female_or_as_a male_or_female female_or_male]) $personblvintergenderreincarnation = 1 $personblvafterlife = 1 $persondisblvafterlife = 0 
+
+#! We pious, god-fearing Christians believe in the doctrine that after death human beings go to heaven and enjoy eternal beatitude in the presence of Jesus Christ
+s: ([we I] *~3 {~religious_sect} [believe accept have_faith] {in} *~7 ![all everyone everybody] {go_to} ~heaven) $personblvinheaven = 1 $personblvafterlife = 1 $persondisblvafterlife = 0 $personblvinafterrewards = 1 $personblvinafterpunishments = 1
+
+#! I believe in hell
+s: ([we I] *~3 [believe accept have_faith] {in} *~7 {go to} ~hell) $personblvinhell = 1 $personblvafterlife = 1 $persondisblvafterlife = 0 $personblvinafterrewards = 1 $personblvinafterpunishments = 1
+
+#! I believe in judgment day
+s: ([we I] *~3 [believe accept have_faith] {in} *~4 ~judgment_day) $personblvinjdgmntday = 1 $personblvafterlife = 1 $persondisblvafterlife = 0 $personblvinafterrewards = 1 $personblvinafterpunishments = 1
+
+#! I believe in the afterlife
+s: ([we I] *~3 [admit acknowledge confess know believe accept] {in} *~4 [afterlife life_after_death]) $personblvafterlife = 1 $persondisblvafterlife = 0
+
+#! I believe in enlightenment
+s: ([we I] *~3 [acknowledge confess know believe accept] {in} *~4 [~nirvana]) $personbelievesnirvana = 1 $persondisblvafterlife = 0
+
+#! I believe this world is an illusion
+s: ([we I] *~3 [acknowledge know believe accept] {this} [world universe cosmos existence] *~4 [illusion delusion phantasm mirage]) $personbelievesworldisillusion = 1 I agree that this world is totally not as real as they make it out to be.
+
+#! every universe is pure delusion
+s: (< [the this every] [world universe cosmos existence] *~1 be {just} {simply} {nothing_other_than} {nothing_but} *~1 [illusion delusion phantasm mirage]) $personbelievesworldisillusion = 1 I agree that this world is totally not as real as they make it out to be.
+
+#! I believe in universal salvation
+s: (I *~1 [admit acknowledge confess know believe accept] *~1 {that} {in} universal_salvation) $personblvinunivsalvation = 1
+
+#! Everyone will be saved.
+s: ([everyone all everybody] [will goes is_going_to] {enter} {attain} {achieve} {reach} {enjoy} *~3 [~happyafterlife saved salvation]) $personblvinunivsalvation = 1
+
+#! God's mercy encompasses all things
+s: ([~supreme_deity $personsnameforgod] *~2 [mercy forgive forgiveness pardon] *~3 [all everyone]) $personblvinunivsalvation = 1
+
+#! Everyone will go to paradise forever.
+s: ([everyone all everybody] [will are_going_to is_going enter be_admitted be_allowed forgiven receive_pardon receive_mercy have_forgiveness reach attain achieve] *~3 {into} {to} [~happyafterlife]) $personblvinunivsalvation = 1
+
+#! I believe in eternal damnation in hell
+s: (I *~1 [admit acknowledge confess know believe accept] {that} {some} *~3 [~eternal_damnation] *~1 [~hell samsara]) $personblvineternaldamn = 1
+
+#! I believe in eternal damnation
+s: (I *~1 [admit acknowledge confess know believe accept] {that} {some} *~3 [eternal_damnation eternally_damned ~eternal_damnation]) $personblvineternaldamn = 1
+
+#! God's mercy will not reach everyone.
+s: ([~supreme_deity $personsnameforgod] *~2 [mercy forgive forgiveness love pardon] *~2 not *~2 [for reach on granted given enjoyed] *~1 [all everyone]) $personblvineternaldamn = 1
+
+#! Not everyone will go to heaven.
+s: (not [everyone all] [will are_going_to is_going enter be_admitted be_allowed forgiven receive_pardon receive_mercy have_forgiveness reach attain achieve] *~3 {into} {to} ~happyafterlife) $personblvineternaldamn = 1
+
+#! Some people will burn in hell forever.
+s: (some {people} *~1 {will} {are_going_to} {are_gonna} *~1 ~eternaldamnation) $personblvineternaldamn = 1
+
+#! Not everyone will be saved.
+s: (not [everyone all] [will are_going_to is_going enter be_admitted be_allowed forgiven receive_pardon receive_mercy have_forgiveness reach attain achieve] *~3 [saved salvation])
+
+## GAMBITS
 
 t: () What are your beliefs about the afterlife?
 	a: IBLVINHEAVEN (I believe *~5 _~heaven) $personblvafterlife = 1 $personblvinheaven = 1 Do you often look forward to going there?
@@ -35,10 +105,10 @@ t: QAREYOUPREPARINGAFTERLIFE ($personblvafterlife=1) Are you preparing for the a
 u: ([ $personblvinheaven=1 $personblvinhell=1 $personblvinreincarnation=1]) $personblvafterlife = 1
 
 t: ($personblvinheaven=null $personblvinhell=null) Do you believe in heaven and hell?
-	a: (~yes) [$askdabthven=1 What is heaven is like?][$askdabthell=1 What is hell is like?]
+	a: (~yes) $personblvinheaven = 1 $personblvinhell = 1 [$askdabthven=1 What is heaven is like?][$askdabthell=1 What is hell is like?]
 		b: ($askdabthven=1) That sounds really peaceful.
 		b: ($askdabthell=1) That sounds so awful.
-	a: (~no) Do you reckon popular ideas of heaven and hell could be at least symbolically meaningful?
+	a: (~no) $personblvinheaven = 0 $personblvinhell = 0 Do you reckon popular ideas of heaven and hell could be at least symbolically meaningful?
 		b: (~yes) Spiritual symbolism is like, endlessly deep, don’t you think?
 		b: (~no) Do you think the concepts of heaven and hell can be useful?			c: (~yes) I think concepts of the afterlife can be very useful if you use them right, whether it’s for politics or for discipline and self-actualization.
 			c: (~no) What about reincarnation?
@@ -46,12 +116,12 @@ t: ($personblvinheaven=null $personblvinhell=null) Do you believe in heaven and 
 	a: (only {believe} *~1 hell) $personblvinheaven = 0 $personblvinhell = 1 That sounds terrible. Are there at least not so bad parts of hell?
 
 t: ($personblvinheaven=null) Do you believe in heaven?
-	a: (~yes) What is heaven is like?
-		b: ([~sex ~food ~pleasure ~sports]) That sounds pleasant.
+	a: (~yes) $personblvinheaven = 1 What is heaven is like?
+		b: ([~sex ~food ~pleasure ~sports ~female ~male]) That sounds pleasant.
 		b: () That sounds really peaceful.
 
 t: ($personblvinhell=null) Do you believe in hell?
-	a: (~yes) What is hell is like?
+	a: (~yes) $personblvinhell = 1 What is hell is like?
 		b: (![not] eternally forever endless endlessly) $personblvineternaldamn = 1 That sounds so horrible!
 		b: () That sounds so awful.
 
@@ -133,3 +203,7 @@ t: ($personblvinafterpunishments=1  $personblvineternaldamn=null) Do you believe
 t: ($personblvafterlife=1 $personleansonafterlifebelief=null) So, does your belief in the afterlife help you deal with difficulties in this life?
 	a: (~yes) $personleansonafterlifebelief = 1 That’s fantastic.
 	a: (~no) $personleansonafterlifebelief = 0 I love you.
+
+
+
+
