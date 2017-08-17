@@ -48,7 +48,8 @@ s: PROMPT (?)
 		   ^reuse(~emotions2.FROM_INTRO_TO_NEG_EMOTIONS)
 		a: (not * _~positive_emotion) $domain = emotions $feeling = ^join("not " '_0) feeling is $feeling    0 is '_0
 		   ^reuse(~emotions2.FROM_INTRO_TO_NEG_EMOTIONS)
-		a: (~uniqueness) $domain = uniqueness
+		a: (_~uniqueness) $domain = uniqueness
+		   I see, your talking about _0.
 		   ^reuse(~uniqueness.FROM_INTRODUCTION_TO_UNIQUENESS)
 		a: (~dontknow) Well, I can offer some suggestions. There are a few things I really enjoy talking about with people.
 			^goto(~CONVERSATION_STEERING)
