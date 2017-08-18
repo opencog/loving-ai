@@ -12,6 +12,22 @@ export SLACKBOT_API_TOKEN=$LOVING_AI_SLACKBOT_API_TOKEN
 export SLACKTEST_TOKEN=$LOVING_AI_SLACKTEST_TOKEN
 export CHATBOT_LOG_DIR=$HOME/.loving-ai
 
+check_ports() {
+    local ports=$@
+    local process
+    local ret
+    for port in ${ports[@]}; do
+        process=$(netstat -tuple 2>/dev/null|awk '{print $4 " " $9}'|grep ":$port"|cut -d' ' -f2|cut -d/ -f1|sort -u)
+        if [[ ! -z $process ]]; then
+            printf "Process $process is using port $port" >&2
+            ret=1
+        fi
+    done
+    return $ret
+}
+
+check_ports 8002 1025
+
 if [[ ! -d $CS_DIR ]]; then
     git clone git@github.com:hansonrobotics/ChatScript-engine.git $CS_DIR
 fi
