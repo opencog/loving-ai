@@ -3,7 +3,7 @@
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
 
-$version = unity
+$version = cake
 
 # turn on/off accidental topic entry blocking
 # $blocking = null
@@ -40,12 +40,6 @@ u: (< jumpto _*)
 	 ^refine()
 		a: (body) ^goto(~body_exercise)
 		a: () ^goto('_0)
-
-
-
-
-
-
 
 
 

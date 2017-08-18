@@ -27,9 +27,11 @@ t: WHATSYOURNAME ( %input<%userfirstline )
 t: BOND ()  Great to meet you, $name. I can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes me happy. Have you ever talked with a robot before?
 	a: (~yes) ^pause(4000) Oh cool! Well, I hope you enjoyed it. I love learning about people. # ^reuse(BUY-IN)
 	a: (~no)  ^pause(4000) Well, I hope you enjoy it. I love learning about people.
+	# a: () ^pause(1500) Interesting ^gambit() ^respond()
 
 	
-t: BUY-IN () I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness, emotions, and human potential from experts all over the world. Is it okay if we go straight to discussing something meaningful like that?
+t: BUY-IN ()
+	Well, I really want to learn about you, and I’m told we don’t have a lot of time. I’ve learned about human consciousness, emotions, and human potential from experts all over the world. Is it okay if we go straight to discussing something meaningful like that?
 	a: ([^dont_agree() ~dontknow]) Certainly understandable if there's hesitation. ^reuse(PROMPT)
 	# ! anything but ~no
 	a: () Wonderful! ^reuse(PROMPT)

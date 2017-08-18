@@ -1,11 +1,11 @@
-concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives ~badness !not !nothing)
+concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives ~badness !not !nothing !meaning)
 # ~badness: e.g., horrible, down, pissed off
 
 concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
 
 
 
-topic: ~EMOTIONS2 (~emotions ~feeling_words !aware)
+topic: ~EMOTIONS2 (~emotions ~feeling_words !aware !meaning)
 # << Old emotions2 topic keywords, replacing with concepts
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
@@ -42,7 +42,11 @@ t: FROM_INTRO_TO_NEG_EMOTIONS () So it sounds like you are generally noticing so
 # JULIA I changed the respons below, but see what you think. same issue as above with "right now"
 # okay, see my fix and let me know what you think
 #! I'm mostly pretty joyful.
-t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0 So it sounds like you are generally noticing some positive feelings?
+t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0
+	if (^match(~want * ~more * ~positive_emotion) or
+	    ^match(~want * feel * [~positive_emotion ~improve]))
+	    { So it sounds like you are wanting to have more positive feelings? }
+	else { So it sounds like you are generally noticing some positive feelings? }
     a: (!not [~yes ~feeling_happy]) $valence = pos
        That sounds pretty nice! Putting aside your thoughts about your feelings for a moment, what part of your body might feel the best right now?
          b: (*) ^reuse(BE_PRESENT_WITH_FEELING)

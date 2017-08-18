@@ -1,4 +1,4 @@
-topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data]
+topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning]
 t: (!~) ^fail(topic) # block topic from accidental access
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
