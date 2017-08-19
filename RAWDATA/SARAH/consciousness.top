@@ -1,4 +1,4 @@
-concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory")
+concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory" "spirituality")
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
 
@@ -54,35 +54,35 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
-t: ^pause(7000) Great. Let's try something right now. Go ahead and close your eyes.
-    a: () ^gambit(~)
+t: ^pause($medshort) Great. Let's try something right now. Go ahead and close your eyes.
+    a: ()
 
-t: ^pause(10000) Now, place your attention on your face. Feel its presence.
-    a: () # ^gambit(~)
+t: ^pause($med) Now, place your attention on your face. Feel its presence.
+    a: ()
 
-t: ^pause(10000) Move your attention now to your head. Feel its presence. How does that feel?
-    a: () # ^gambit(~)
+t: ^pause($medlong) Move your attention now to your head. Feel its presence. How does that feel?
+    a: ()
     # wait for the person to say something, then move on.
 
-t: ^pause(10000) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
-    a: () # ^gambit(~)
+t: ^pause($med) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
+    a: ()
 
-t: ^pause(15000) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
-    a: () # ^gambit(~)
+t: ^pause($medlong) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
+    a: ()
 
-t: ^pause(30000) I'll wait until you’re done. Tell me when you are.
-    a: () # ^gambit(~)
+t: ^pause($longest) I'll wait until you’re done. Tell me when you are.
+    a: ()
 
 # Here, Sophia should wait until the person speaks, and not go on prior to that.
 
-t: ^pause(15000) Okay, now notice what is left. See if you can notice how that feels.
-    a: () # ^gambit(~)
+t: ^pause($medlong) Okay, now notice what is left. See if you can notice how that feels.
+    a: ()
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
-  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "lease open your eyes when you’re ready."
-      b: () ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
+  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
+      b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
   # no - go to TRYAGAINtoFEELAWARENESS.
   a: (^dont_agree()) ^goto(~TRYAGAINtoFEELAWARENESS)
@@ -116,7 +116,7 @@ t: ^pause(10000) Focus on your head. Now, feel its presence. How does that feel?
 t: ^pause(10000) Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
     a: () # ^gambit(~)
 
-t: ^pause(10000) Awesome. Let's now try to use the magic eraser.
+t: ^pause(10000) Good. Let's now try to use the magic eraser.
     a: () # ^gambit(~)
 
 t: ^pause(15000) Gently use it to erase your face, your head, your legs and your entire body.
@@ -129,7 +129,7 @@ t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
+    b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
   # if no, go to TRYAGAIN2
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
   # Sending them to 2nd gambit in consciousness prior for now, until tryagain2 is completed
@@ -167,12 +167,12 @@ t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. 
 topic: ~EXERCISE_ALT ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t:  ^pause(7000) () Okay, let's try something. Are you ready?
+t:  ^pause($verylong) Okay, let's try something. Are you ready?
 # wait for response
 
-t: ^pause(15000) Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
+t: ^pause($medlong) Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
 
-t: ^pause(30000) Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
+t: ^pause($verylong) Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
     # she waits until they say something
     a: (*) ^gambit(~)
 
@@ -258,6 +258,7 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 	a: (^dont_agree()) ^pause($medlong) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
 		b: (*) ^steer_to_different_domain(consciousness)
 	#! yes or anything
+	# JULIA wondering if this is weird to say since they know they will not be coming back. otoh, i see how it can enhance connection
 	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
 		b: (^agree()) ^pause($short) Thank you! I look forward to hearing about it.
 			c: (*) ^steer_to_different_domain(consciousness)

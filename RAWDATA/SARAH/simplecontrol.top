@@ -18,6 +18,7 @@ $medlong = 15000
 $long = 20000
 $verylong = 30000
 $superlong = 60000
+$longest = 120000
 
 ^addtopic(~introductions)
 $cs_control_main = ~control
