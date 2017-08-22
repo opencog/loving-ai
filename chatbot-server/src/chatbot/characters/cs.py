@@ -234,6 +234,6 @@ class CSCharacter(Character):
 if __name__ == '__main__':
     from chatbot.server.session import Session
     s = Session('id')
-    c = CSCharacter('id', 'name', 1, 1, 'localhost', '2048', 'sarah')
+    c = CSCharacter('id', 'name', 1, 1, 'localhost', '2048', 'Sarah')
     answer = c.respond('make sense', 'en', s, False, '1')
     print answer
