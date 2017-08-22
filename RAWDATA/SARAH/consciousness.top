@@ -60,9 +60,8 @@ t: ^pause($medshort) Great. Let's try something right now. Go ahead and close yo
 t: ^pause($med) Now, place your attention on your face. Feel its presence.
     a: ()
 
-t: ^pause($medlong) Move your attention now to your head. Feel its presence. How does that feel?
+t: ^pause($long) Move your attention now to your head. Feel its presence. How does that feel?
     a: ()
-    # wait for the person to say something, then move on.
 
 t: ^pause($med) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
     a: ()
@@ -80,7 +79,7 @@ t: ^pause($medlong) Okay, now notice what is left. See if you can notice how tha
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause(12000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
+  a: (^agree()) ^pause($medlong) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
@@ -127,7 +126,7 @@ t: ^pause(30000) After you are done, notice what is left. Notice how you feel ab
 
 t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause(15000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) ^pause(20000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
   # TODO: come back to this when we have eye opened/closed detection
     b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
   # if no, go to TRYAGAIN2
@@ -177,7 +176,7 @@ t: ^pause($verylong) Notice the presence of awareness. Notice when you start to 
     a: (*) ^gambit(~)
 
 t: ^pause(10000) Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement.
-    a: (*) ^pause (20000) What does that feel like?
+    a: (*) ^pause ($superlong) What does that feel like?
         # wait for the person to say something, then move on
         # JULIA for questions like this, especially in a closed-eye practice, it's quite possible the person won't say anything,
         #      e.g., if it's interpretted as an "instruction" to notice how it's feeling rather than a question to be answered
@@ -185,7 +184,7 @@ t: ^pause(10000) Great. Now out loud or in your mind, say: “I am this.” Feel
         b: (*) ^gambit(~)
 
 t: Do you feel continuous with awareness?
-  a: (~no) ^pause(15000) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
+  a: (~no) ^pause($superlong) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
     b: (*) Are you feeling that you are the awareness that registers your face?
       # if no, go to PRACTICEatHOME.
       c: (~no) ^goto(~PRACTICEatHOME)
