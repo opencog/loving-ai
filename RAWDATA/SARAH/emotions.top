@@ -121,9 +121,11 @@ s: LONGER? (?) ^pause($long) ^repeat()
 	if ($valence == neg) { Would you like to be with that feeling a little longer? }
 	# if yes, pause some more, # todo and keep going through the loop until no.
     a:(^agree())  ^pause($long) Okay
-    	b: (*) ^goto(BODY_EXERCISE)
+    	b: (*) Okay, nice work. How was that?
+    		c: (*) ^goto(BODY_EXERCISE)
     # no or anything else continue on to BODY_EXERCISE
-    a: (*) ^goto(~BODY_EXERCISE)
+    a: (*) Okay, nice work. How was that for you?
+    	b: (*) ^goto(~BODY_EXERCISE)
 
 topic: ~REFUSE ()
 t: (!~) ^fail(topic)
@@ -139,7 +141,7 @@ t: I understand. Just so you know, it's easy to want to keep your emotions small
 topic: ~BODY_EXERCISE ()
 t: (!~) ^fail(topic)
 
-t: You know what we could try next? Let's do this. ^reuse(SCAN)
+t: Alright. You know what we could try next? Let's do this. ^reuse(SCAN)
 
 t: SCAN () Just scan your body mentally and choose a part that feels the most good. Could be your feet, your hands, whatever. Stay with that good feeling for a moment. How does that feel? ^repeat()
 
@@ -157,9 +159,9 @@ t: SCAN () Just scan your body mentally and choose a part that feels the most go
 				   ^steer_to_different_domain(emotions)
 
 	a: () # $valence=pos
-	      ^pause($medlong) Okay, while you're with that feeling, let's magnify that feeling with your $feeling feeling. Imagine that.
+	      ^pause($medlong) Okay, while you're with that feeling, let's magnify that feeling with your positive $feeling feeling from before. Imagine that.
 		b: () Now. Does that feel amazing?
-			c: (^agree()) Okay, nice! Let's talk about something else!
+			c: (^agree()) Okay, nice! I'm glad you liked it. Let's talk about something different now!
 			   ^steer_to_different_domain(emotions)
 			c: (^dont_agree()) Would it help to magnify your [$feeling $feeling][feeling] even more?
 				d: (^agree()) Okay, let me know when you're done.
