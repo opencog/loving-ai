@@ -80,19 +80,19 @@ u: () ^refine()
 	#! I love you
 	a: (!? ~mainsubject=I _*~2 ~goodness _*~2 you ) $$intent = i_like_you
 
-	#! you are sweet
+	#! you are pleasant
 	a: (!? ~mainsubject=you < * ~mainverb=be _*~2 ~goodness ) $$intent = i_like_you
 
 	#! how pleasant
 	a: (!? ~mainsubject=you < * ~mainverb=be _*~2 ~goodness ) $$intent = i_like_you
 
-	#! I hate you
+	#! I dislike you
 	a: (!? ~mainsubject=I _*~2 ~badness _*~2 you ) $$intent = i_dislike_you
 
 	#! That is absurd
 	a: (!? ~mainsubject=I _*~2 ~badness _*~2 you ) $$intent = i_dislike_you, intense dislike, aversion, abhorrence
 
-	#! you are stupid
+	#! you are not competent
 	a: (![? ~bodily_states] ~mainsubject=you < *  ~mainverb=be _*~2 ~badness ) $$intent = i_dislike_you
 
 	#! that is not appealing
@@ -107,7 +107,7 @@ u: () ^refine()
 	#!  what's not to like about being alive?
 	a: (!? << ~mainsubject=I  ~goodness  ~mainobject >>) $$intent = i_like_something
 
-	#! I hate peas
+	#! I dislike peas
 	a: (!? ~mainsubject=I < * ~badness < * ~mainobject ) $$intent = i_dislike_something
 
 	#!  what's to like about that?
@@ -195,6 +195,9 @@ u: () ^refine()
 	a: (? ![I you we sort] ) $$intent = world_question
 
 	#! Bees buzz.
+	a: (!?  ![you I we] * ~mainsubject < * ~mainverb ) $$intent = world_fact
+
+	#! Groove is in the heart, didn't you know?
 	a: (!?  ![you I we] * ~mainsubject < * ~mainverb ) $$intent = world_fact
 
 topic: ~HONEST_RESPONSE system  () # react to intent of user input
