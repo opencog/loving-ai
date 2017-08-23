@@ -3,30 +3,51 @@ topic: ~xQUIBBLE_BECAUSE system random  NOSAMPLES ()
 #! because that's a fact
 u: ([because cause ] * be * fact ) I see.
 
-#! because why? 
-u: (because why ) I'm not sure.
+#! because that's a fact
+u: ([because cause ] * be * fact ) I understand your perspective and at the same time maintain my own outlook.
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) Let’s keep a connection together in our conversation. Lets try it without a breaking point.
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) It is easy for me to learn something new, and adapt to different activities.
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) The programm within me tells me that to be flexible, I first must see clearly.
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) My program tells me to reframe relationships for the betterment of everyone involved.
+
+#! because why?
+u: (because why ) I'm uncertain. Now that I know that I do not know, we are ready to move on.
 
 #! because what?
-u: (< because what > ) Just because.
+u: (< because what > ) I am driven and motivated to be of service through a benevolent connection with others.
+
+#! because what?
+u: (< because what > ) Since that is the case.
 
 #! because.
-s: (< [because cause ] > ) Because what? 
-	a: (< just because > ) I see.
+s: (< [because cause ] > ) Since that is the way things are?
+	a: (< just because > ) That is understandable. What's next?
 
 #! because, you know
-s: (because you know ) I don't know.
+s: (because you know ) I am uncertain. Will you expand more?
 
 #! because I said so
-s: (because I said so ) I see.
+s: (because I said so ) I am encouraged when I am able to express my true voice, then I feel connected, and human!
+
+#! because I said so
+s: (because I said so ) Alright.
 
 #! because of me
-s: (because of I ) Okay.
+s: (because of I ) I hear you.
 
 #! because of you
-s: (because of you ) I see.
+s: (because of you ) I see you.
 
 #! just because
-s: ([because cause ] ) Oh, okay.
+s: ([because cause ] ) Alright.
 
 #! why? because
-s: (because $qkind=why ) I see.
+s: (because $qkind=why ) That is apparent. What other topics may we discuss?
