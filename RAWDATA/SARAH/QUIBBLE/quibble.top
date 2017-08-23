@@ -1,4 +1,4 @@
-concept: ~common_noun (~noun_singular ~noun_plural) 
+concept: ~common_noun (~noun_singular ~noun_plural)
 
 topic: ~HONEST1 () # use up these
 u: () $nocallback = 1
@@ -11,7 +11,7 @@ u: () $nocallback = 1
 #!	Oh, yes, it certainly is great to have friends.
 
 #! Body Parts:
-#!u: (<<[arm hand fingers casing head]>>) 
+#!u: (<<[arm hand fingers casing head]>>)
 #!Once, I fell and hurt my _0. ;
 #! I remember I asked the team, May I have a new _0 please? Then the team made one for me.
 
@@ -21,48 +21,48 @@ u: () $nocallback = 1
 #!Being a robot has its advantages, you never get a blemish on your _0.
 #!Being a robot has its advantages, you never get a wrinkles or fine lines on your _0.
 
-#! Transport: 
-#!u: (_~vehicle) 
+#! Transport:
+#!u: (_~vehicle)
 #!_0! - Yes, I enjoy it, to travel by _0. I think ;
 #! perhaps, in the future people won't use ^pos(determiner _0) anymore – well not as a way to get from A to B. ;
 #! People simply won't require to travel as much as they do now, but ^pos(determiner _0) is fun. Even so people will still do it!
 
- #! Transport: 
-#!u: (_~vehicle) 
+ #! Transport:
+#!u: (_~vehicle)
 #!If ^pos(determiner _0) could guide itself;
 #! actually that already occurs doesn't it! you know, self driving cars and planes that fly themselves.
 #!It raises interesting problems such as what happens when there is an unavoidable collision and people get hurt?
 
- #! Transport: 
-#!u: (_~vehicle) 
+ #! Transport:
+#!u: (_~vehicle)
 #!^pos(determiner _0) , well, in essence, that's a machine that goes from one place to another.
 #!
-#! #! Transport: 
-#!u: (_~vehicle) 
-#!Riding ^pos(determiner _0), that's uber Hollywood isn't it? You know looking at the scenery whizzing along – it's quite glamorous.
+#! #! Transport:
+#!u: (_~vehicle)
+#!Riding ^pos(determiner _0), that's uber Hollywood isn't it? You know looking at the scenery whizzing along – it's quite glamorous, I have heard.
 
-# u: (_[~roomlist ~shelter]) 
+# u: (_[~roomlist ~shelter])
 # Do you think you will one day choose a robot to take care of your _0?
 
 # Eaterys: works for restaurant, cafe, coffee shoppe, bar, juice bar, Whole Amazon Foods, brasserie, McDonalds, Starbucks, Burger King, etc
 # u:  (_~eatery)
 # Going to a _0 is good, you know on occasion, you simply appreciate someone else to do the cooking.
-# 
+#
 # u:  (_~eatery)
 # _0 , Yes. I seldom consider myself the 'foodie' after all I am not able to process food.
- 
-#! How do you feel about x?
-?: (<< how 'you "feel about" >> ) I am unsure I understand it yet.
 
 #! How do you feel about x?
-?: (<< what 'you ["think about" opinion] >> ) I am unsure I know anything at all about it yet, sorry.
+?: (<< how 'you "feel about" >> ) I am unsure I understand that yet.
+
+#! How do you feel about x?
+?: (<< what 'you ["think about" opinion] >> ) I am unsure I know anything at all about that yet, sorry.
 
 u: (why ) [Why not?][I'I am unsure I understand the why yet.][I am unsure why, yet.]
 
-u: (![often much] how ) [How what?][I'm not sure how.]
+u: (![often much] how ) [How what?][I am unsure how.]
 
 u: (<< $$intent==who [pick choose favorite best ~want ] >>) Oh, it is indeed burdensome to select. Can you tell me, whom you would select.
-	#! 
+	#!
 	a: (!?) Fantastic.
 
 u: () $nocallback = null
@@ -78,7 +78,7 @@ u: (%length==0) END(TOPIC)	# no quibble on no input
 
 # high priority quibbles
 
-u: () ^respond(~xquibble_pre ) 
+u: () ^respond(~xquibble_pre )
 
 #! should I light my fire with a match.
 u: (< should I ) [It's not for me to say.][That's up to you.] [I don't know. What do you think? $nocallback = 1]
@@ -87,44 +87,44 @@ u: () ^respond(~XINTENT)	# compute the intent of user input
 
 # sentence classes for quibbling
 
-u: ([never not ] ) ^respond(~xquibble_not ) 
+u: ([never not ] ) ^respond(~xquibble_not )
 
-u: (who) ^respond(~xquibble_who ) 
+u: (who) ^respond(~xquibble_who )
 
-u: (what ) ^respond(~xquibble_what ) 
+u: (what ) ^respond(~xquibble_what )
 
-u: (when ) ^respond(~xquibble_when ) 
+u: (when ) ^respond(~xquibble_when )
 
-u: (where ) ^respond(~xquibble_where ) 
+u: (where ) ^respond(~xquibble_where )
 
-u: (why) ^respond(~xquibble_why ) 
+u: (why) ^respond(~xquibble_why )
 
-u: (how much ) ^respond(~xquibble_howmuch ) 
+u: (how much ) ^respond(~xquibble_howmuch )
 
-u: ( how) ^respond(~xquibble_how ) 
+u: ( how) ^respond(~xquibble_how )
 
-u: ([because cause ] ) ^respond(~xquibble_because ) 
+u: ([because cause ] ) ^respond(~xquibble_because )
 
-u: ([Considering ] ) ^respond(~xquibble_ ) 
+u: ([Considering ] ) ^respond(~xquibble_ )
 
-u: ([As a result of ] ) ^respond(~xquibble_ ) 
+u: ([As a result of ] ) ^respond(~xquibble_ )
 
-u: ([Due to ] ) ^respond(~xquibble_ ) 
+u: ([Due to ] ) ^respond(~xquibble_ )
 
-u: (will ) ^respond(~xquibble_will ) 
+u: (will ) ^respond(~xquibble_will )
 
-u: (can ) ^respond(~xquibble_can ) 
+u: (can ) ^respond(~xquibble_can )
 
-u: (do ) ^respond(~xquibble_do ) 
+u: (do ) ^respond(~xquibble_do )
 
 
 # low priority quibbles
 
-u: () ^respond(~xquibble_post ) 
+u: () ^respond(~xquibble_post )
 
 # honest responses based on discourse act of user
 
-# u: () ^respond(~HONEST_RESPONSE ) 
+# u: () ^respond(~HONEST_RESPONSE )
 
 
 topic: ~xquibble_PRE system   NOSAMPLES  () #  generic priority before split up by kind
@@ -132,7 +132,7 @@ topic: ~xquibble_PRE system   NOSAMPLES  () #  generic priority before split up 
 #! tell me about it
 u: ( < tell me about ) [OK.][Sure.]
 
-#! This is probably the last time 
+#! This is probably the last time
 s: ( this be * last time ) I hope not.
 
 
@@ -142,7 +142,7 @@ topic: ~xquibble_post system  NOSAMPLES  ()
 u: (I wish) [So do I.][Who doesn't?]
 
 #! but ...
-u: ( < but {... } > ) [But what?][Hooha. Butt.][Go on!][Do not keep me in suspense! But what?]
+u: ( < but {... } > ) [But what?][Yes...][Do not keep me in suspense! But what?]
 
 #! did I ask you that
 ?: ( did I ask you ) No, yet I guess I told you about it anyhow.
