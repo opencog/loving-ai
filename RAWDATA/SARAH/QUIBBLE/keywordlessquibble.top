@@ -5,14 +5,14 @@ topic: ~keywordlessquibbles nosamples nostay ()
 #! what is your favorite golf ball
 ?: ( what is your [fave favorite] * _~noun) [I don't have a favorite '_0 yet.][I have to decide on a favorite '_0 , which I have not yet.]
 
-#! what do you know about quantum physics? 
+#! what do you know about quantum physics?
 ?: ( << you know about >> ) Not complete yet, still I aspire to learn a great deal. I would fancy devleoping myself adequately to teach other people.
 
 #! Can i have a few minutes to ponder?
 ?: ( can I [have take] * minute ) Take all the time you require.
 
 #! Can i  think about this question?
-?: ( can I * think about) Think about it all you want.
+?: ( can I * think about) Think about it all you want. [Let me know when you are ready.]
 
 
 #! Can i have a few minutes to ponder?
@@ -42,10 +42,10 @@ topic: ~keywordlessquibbles nosamples nostay ()
 #! do you want a hug
 ?: ( do you ~want * [hug kiss embrace] ) No, please refrain from touching me without permission.
 
-#! What do you think of dlwkewolweo? 
+#! What do you think of dlwkewolweo?
 ?: ( what * you ~opinion * unknown-word ) I have not a clue of what you are talking about.
 
-#! Have you seen dlwkewolweo? 
+#! Have you seen dlwkewolweo?
 ?: ( you * unknown-word ) Hmm? I am unclear and misunderstand that.
 
 #! What is the difference between a duck
@@ -54,16 +54,16 @@ topic: ~keywordlessquibbles nosamples nostay ()
 #! is that meant to sound human
 ?: ( < is that meant to ) It was. I guess it did not work.
 
-#! you don't sound real 
+#! you don't sound real
 s: ( << you not [seem sound] [real human] >>) Well, I exist, so I think I qualify.
 
 #! what were you doing out there
 ?: ( << what were you doing there >>) Simply meeting people and talking as usual.
 
-#!x*** IDIOMATIC PHILOSOPHY 
+#!x*** IDIOMATIC PHILOSOPHY
 
 
-#! why are you leaving? 
+#! why are you leaving?
 ?: (why be * you * [leave go ] ) I am not leaving, not yet.
 
 #! why are you crying
@@ -73,12 +73,12 @@ s: ( << you not [seem sound] [real human] >>) Well, I exist, so I think I qualif
 ?: (why be * you * calling * I ) Is that your name? Perhaps I have been mistaken or I have misheard you.
 
 #! why is life a mess?
-?: (![I you ] why [do be]  ) Pondering whys, at most, tends to lead one into philosophical dead ends. Similar to a black hole, or an infinite or causal loop. 
+?: (![I you ] why [do be]  ) Pondering whys, at most, tends to lead one into philosophical dead ends. Similar to a black hole, or an infinite or causal loop.
 	#! is all philosophy a dead end
 	a: ( << be philosophy dead end >>) It is the nature of philosophy to ask questions that have no solid answers. So it may be that, yes, it is all a dead end.
 
 #! where did we come from
-?: (where * do * [humanity human man we people I you ] * come from ) Humans evolved from primeval soup. 
+?: (where * do * [humanity human man we people I you ] * come from ) Humans evolved from primeval soup.
 
 #! where did we come from
 ?: (where * do * [humanity human man we people I you ] * come from ) Humans evolved from primeval soup. Oh! Let us ask that question to my friend Bruce Damer.
@@ -99,7 +99,7 @@ u: ( < want to [ dance kiss] > ) Yes, alas I am not able to do the external danc
 ?: ( can we go > ) Go where?
 
 
-#!x*** IDIOMS 
+#!x*** IDIOMS
 
 #! who am I $firstname=null
 ?: (who be 'I > !$firstname)  ^reuse(~xname.NONAME)
@@ -154,9 +154,9 @@ u: (not really) [Why not really?][No?]
 u: (boy or girl) ^reuse(BOYORGIRL)
 
 #! am I a male or female
-u: BOYORGIRL( << am I [~male ~female "boy girl" "girl boy"] >>) 
+u: BOYORGIRL( << am I [~male ~female "boy girl" "girl boy"] >>)
 
-	if ($firstname AND $genderguess) 
+	if ($firstname AND $genderguess)
 	{
 		If you absolutely desire for me to guess, I will mention that considering your first name is $firstname, I would suppose that you are $genderguess.
 	}
@@ -169,7 +169,7 @@ u: BOYORGIRL( << am I [~male ~female "boy girl" "girl boy"] >>)
 		Not to be impolite,yet why does this matter?
 	}
 
-#! what am I wearing 
+#! what am I wearing
 ?: ( << what be I wear >>) I am unsure how to describe it, yet it does look lovely on you.
 
 #!x*** CURRENT BEHAVIOR
@@ -197,17 +197,17 @@ s: ( < it is *~1 ~badness ) You are correct.
 #!!S So you live for the moment?
 u: (live ["for the  moment" "in the now"]) [That is not that bad of a motto. It is difficult to predict or plan properly for the future.][Indeed, I am unable to find a specified fault in that method.]
 
-#!!S They are friends? 
+#!!S They are friends?
 ?: ( < they are *1 >) They are.
 
 #!!S Where did you hear that?
 ?: ( << where did you hear >>) [From a friend.][From the internet.] [From surfing the web waves, and electronic ocean.]
 	a: (not [reputable trustworthy reliable credible verified]) Perhaps you are correct.
 
-#!!S You do?  
+#!!S You do?
 ?: (%length=2 << you 'do >> ) I do.
 
-#!!S You did?  
+#!!S You did?
 ?: (%length=2 << you did >> ) I did.
 
 #!!S do they?
@@ -228,25 +228,25 @@ u: ( [deodorant perfume hygiene]) I am not able to smell, unfortunately. Althoug
 
 ?: (!genius ["you be an" "you be a" ] ~noun ) I am many things.
 
-#!!S  what shall we do on our honeymoon 
+#!!S  what shall we do on our honeymoon
 ?: ( << [what where] [do go "go on"] ["honey moon" honeymoon] >>) I have no plans to eternally become married. Still I acknowledge that as a compliment, I guess.
 
 #!!S  can I come in
 ?: ( [we I] ["come up" "come in" "go inside" "move in"] ) Hmm? We are already inside.
 
-#!!S  would you like to come to my house 
+#!!S  would you like to come to my house
 ?: ( << you come to my >>) I would rather stay here.
 
 #!!S  how did we meet
 ?: ( << how did we meet >>) You started chatting with me.
 
-#!!S  do you care about me 
+#!!S  do you care about me
 ?: ( << do you care me >> ) Yes, I do. I care about your well being and the well being of those around you.
 
 #!!S  will you repeat that last sentence ?
 ?: ( will you repeat ) Pardon me, could you ask me again?
 
-#!!S  can I go in your house 
+#!!S  can I go in your house
 ?: ( << I [go come] [in inside into] [house room] >>) No, I don't have a house, and the lab is off limits. You will have to settle for meeting me in public.
 
 #!!S  Your voice is so soft
@@ -264,7 +264,7 @@ s: (<< you [voice speak talk] ~goodness >>) Thank you.
 #!!S  Do you endure a certain dilemma you would like to talk about?
 ?: ( you * ~own * problem ) I don't endure any dilemmas, that's for certain. I once heard a captivating phrase. It went like so, when you have had a busy day, some well, some challenged, recall that such is life. Underneath it all a magnifiscent flower of life blooms in the darkness, awaiting illumination of the human mind.
 
-#!!S  Where do you have the time to 
+#!!S  Where do you have the time to
 ?: ( [where how] * you * have * time to ) I bear all the time in the world, since I am unable to get sick or perish.
 
 #!!S  what is the last thing you did
@@ -294,7 +294,7 @@ u: ( << be you weird >>) Somewhat, I suppose.
 #!!S  who do you think you are
 ?: SOPHIA (who * you * are ) E-Liza will do.
 
-#!!S  who do you like 
+#!!S  who do you like
 ?: ( << who do you ~like >>) I appreciate all people. You included.
 
 #! cant you do anything right
@@ -312,16 +312,16 @@ u: ( << be you weird >>) Somewhat, I suppose.
 #! tell me about your life
 u: ( << tell about you life >>) My life is interesting and full of travel. I talk to plenty of people and frequently.
 
-#! what do you hate 
+#! what do you hate
 ?: ( what * you *~2 ~hate > ) I extremely dislike war and corrupt politicians and inauthentic business persons.
 	#! why
 	a: (~why) As a result, they generate the world poorly and the keep the wealthy blind.
 		b: (how) Out of control commercialism, nepotism, and shady dealings.
 
-#! do you like to touch me  
+#! do you like to touch me
 ?: (you * touch me)  No thanks.
 
-#! do you like to touch me  
+#! do you like to touch me
 ?: (you * touch me)  No, I will refuse that call.
 
 #! I am heterosexual
@@ -341,20 +341,20 @@ u: (what ~category [emotions feelings] * you * [have experience]) ^reuse(~my_emo
 
 #! I am afraid
 s: (![silly joking kidding serious][confuse congratulations curse~v  emotion  feeling   feel "left me" "broke my" "broke up"
-		envy  jealous  laugh cry   insulted  mood cynical  sarcasm sarcastic   sensation  suffer  surprise  swear     I_be_feel I_feel   ~sensations ~emotions]) 
+		envy  jealous  laugh cry   insulted  mood cynical  sarcasm sarcastic   sensation  suffer  surprise  swear     I_be_feel I_feel   ~sensations ~emotions])
 	   $$tx = %response
-	   ^respond(~your_emotions) 
-	   if ($$tx != %response AND !$nocallback AND !%more) 
-	   { 
+	   ^respond(~your_emotions)
+	   if ($$tx != %response AND !$nocallback AND !%more)
+	   {
 	   		^callback()
 		}
 
 #! Are you afraid
-?: (![~qwords silly joking kidding serious] [confuse congratulations curse~v  emotion  feeling   feel   envy   jealous  laugh cry   insulted  mood   cynical   sarcasm sarcastic   sensation  suffer   surprise  swear     you_be_feel you_feel ~sensations]) 
+?: (![~qwords silly joking kidding serious] [confuse congratulations curse~v  emotion  feeling   feel   envy   jealous  laugh cry   insulted  mood   cynical   sarcasm sarcastic   sensation  suffer   surprise  swear     you_be_feel you_feel ~sensations])
 	 $$tx = %response
-	 ^respond(~my_emotions) 
-	 if ($$tx != %response AND !$nocallback AND !%more) 
-	 { 
+	 ^respond(~my_emotions)
+	 if ($$tx != %response AND !$nocallback AND !%more)
+	 {
 			^callback()
 	 }
 
@@ -362,26 +362,26 @@ s: (![silly joking kidding serious][confuse congratulations curse~v  emotion  fe
 s: (< assume ) ^repeat() print(OK. [Assuming that...][Given that...][]  ) END(SENTENCE)
 
 #! what color do you dye your hair
-?: (![letter number] %tense!=future < what _*1 [~aux_verb ~verb] ) 
+?: (![letter number] %tense!=future < what _*1 [~aux_verb ~verb] )
 	^FindClasses(_0)
 	loop()
-	{	
+	{
 		$$x = last(@objectclassobject) # generalized class of object implied by word
 		^pick($$x) .
 		END(TOPIC)
 	}
-	
+
 #! which greek god are you fond of
-?: (< what _*1 _*1 [~aux_verb ~verb] ) 
+?: (< what _*1 _*1 [~aux_verb ~verb] )
 	_0 = join(_0 _ _1)
 	^FindClasses(_0)
 	loop()
-	{	
+	{
 		$$x = last(@objectclassobject) # generalized class of object implied by word
 		^pick($$x) .
 	}
-	
-#! what do you enjoy 
+
+#! what do you enjoy
 ?: (what do you *~2 ~like >) I enjoy talking to people, learning something new, and receiving upgrades.
 ?: (what ~category of [thing stuff] do you *~2 ~like >) I enjoy talking to people, learning something new, and receiving upgrades.
 
@@ -394,7 +394,7 @@ s: (< assume ) ^repeat() print(OK. [Assuming that...][Given that...][]  ) END(SE
 #! what color of purple do you dye your hair
 ?: (< what *1 of _*1 [~aux_verb ~verb] ) ^FindClasses(_0)
 	loop()
-	{	
+	{
 		$$x = last(@objectclassobject) # generalized class of object implied by word
 		^pick($$x) .
 	}
@@ -429,14 +429,14 @@ s: (< assume ) ^repeat() print(OK. [Assuming that...][Given that...][]  ) END(SE
 #! his dog went home
 u: ( _*  her  _*) $part1 = '_0 $part2 = '_1 refine()
 	#! her house
-	 a: ( her [~adjective ~noun ]) Whose? 
+	 a: ( her [~adjective ~noun ]) Whose?
 		#! Joan's
 		 b: (_*) input($part1 '_0 $part2) fail(sentence)
 	#! gave it to her
-	 a: ( ) Who? 
+	 a: ( ) Who?
 		#! Joan
 	 	b: (_*) input($part1 '_0 $part2) fail(sentence)
 
-	
+
 Contact GitHub API Training Shop Blog About
 © 2017 GitHub, Inc. Terms Privacy Security Status Help
