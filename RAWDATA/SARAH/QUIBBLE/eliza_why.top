@@ -86,7 +86,7 @@ u: (~why do * [you computer ] * need * [food rest sleep drink sex entertainment 
 
 u: (~why do you refuse to answer ) [What was the question? ] [I didn't realize you were asking a question. ] 
 
-u: ([(why do you lie to I) [What makes you think I was lying? ] 
+u: (why do you lie to I) [What makes you think I was lying? ]
 
 u: (~why do you feel sleepy ) [Just how long do you think I can keep on chatting to you without a break? ] 
 
@@ -142,7 +142,7 @@ u: (~why should I marry you )
 u: (~why  * you < * say ) [Why do you say what you do? ] 
 u: (~why  * you ) [Does everything have to have an explanation? ]
 u: (~why do you refuse to answer ) [What makes you think I am refusing? ]
-u: (~why _*1 > )] [why not _0 ? ] 
+u: (~why _*1 > ) [why not _0 ? ]
 u: (~why * you * say * that ) [Shouldn't I have said that? ] 
 u: (~why * 'you  * _~like _*1 > ) [Don't you like _1 ? ] [why not like _1 ? ]
 u: (~why * is * that ) [because. ] [You mean it isn't? ] 

@@ -104,7 +104,7 @@ u: (what * can < * you )
 u: (what * will < * you )
 u: (what  be < * 'you )
 u: (what about ) [What about it? ]
-u: (what   * you  * _~opinionset  * about _* ) [I think a lot about '_1 . ] [Why should I care about '_1 in your opinion?]
+u: (what   * you  * _~opinionset  * about _* ) [I think a lot about '_1 . ] [b: Why should I care about '_1 in your opinion?]
     b: (*) I'll think about that one.
 u: (what * you * _~opinionset * about _* ) [I'm more interested in what you think about '_1 ? ]
 u: (what is the difference ) 

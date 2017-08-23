@@ -236,7 +236,7 @@ u: (how * would * you ) [How can I answer that? ] [I don't know, how would you?]
 u: (how * can * you * prove ) [There is no way to prove anything to a complete skeptic. ] [What would you accept as proof? ] 
 
 # HOW ( frequency/quantity questions )
-u: (how many ) [Too many. ] [Not enough. ] [Too few. 
+u: (how many ) [Too many. ] [Not enough. ] [Too few. ]
 u: (how < * often < * you ) [Not often enough. ] [Often enough.]
 u: (how < * [frequently usually ] < * you ) [Usually. ] [Occasionally.] 
 u: (how much !cost ) [Too much. ] [Not enough. ] 
