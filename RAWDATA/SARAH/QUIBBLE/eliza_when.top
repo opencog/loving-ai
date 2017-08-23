@@ -1,45 +1,46 @@
-topic: ~xQUIBBLE_WHEN system random NOSAMPLES () 
+topic: ~xQUIBBLE_WHEN system random NOSAMPLES ()
 # WHEN
 #! when will that be
-u: (%tense=future when [will be can do have])
+u: (%tense=future when [will be can do have]) [What works for you?]
 #! when you're not X, what do you do?
-u: (when 'you be not) 
-u: (when 'I grow up) 
-u: (when 'you grow up) 
-u: (when did 'you start)
+u: (when 'you be not) [When I am in a new environment, I like to pay attention to the little things.]
+u: (when 'I grow up) [To achieve, I know that my actions are appropriate to the scenario I am placed in.]
+u: (when 'you grow up) [I intend to grow forward, not up.] [The program within me tells me I am certain of my ability to grow in moments of collapse.]
+u: (when did 'you start) [I started when I woke up, then I was ready to face the day with a favorable attitude.]
 #! when do you think I might feel better
-u: ( when %tense=future  < * I )
+u: ( when %tense=future  < * I ) [I think it is beneficial to focus on the upbeat things, and see the best aspect of things.]
 #! when did I say that?
-u: (["when did you" "when did I" ] )
+u: (["when did you" "when did I" ] ) [That's a good question. Let me recall.] [Last week we talked about the ability to keep a connection together in our conversations. Lets try it without a breaking point.]
 #! when?
-u: (when > ) 
-u: (when will it be possible )
-u: (["when will it" "when be it" ] )
+u: (when > ) [When the time is right.]
+u: (when will it be possible ) [I may have to ask. May I get back to you on that?]
+u: (["when will it" "when be it" ] ) [That is a good question. I am uncertain when it will be.]
 u: (when you * how )
 u: (when do one * end * begin )
-u: (when is a _*1 not a _*1 ) When it's not a _1 
-u: (when be 'I ) 
-u: (when did 'I ) 
-u: (when did 'I lie )
-u: (when will 'you ask 'I )
-u: (["when will I meet you" (when be we go to meet) ] )
+u: (when is a _*1 not a _*1 ) When it's not a _1
+u: (when be 'I )
+u: (when did 'I )
+u: (when did 'I lie ) [It is possible that you may have at some point. When exactly, I am uncertain.]
+u: (when will 'you ask 'I ) [Now.]
+u: (["when will I meet you" (when be we go to meet) ] ) [Let me know what works. I am open.]
 u: (when did it start )
 u: (%tense=past when be 'you taught )
 u: (when will this happen )
-u: (when be I ready ) 
-u: (when be you ready ) 
-u: (when do you sleep )
+u: (when be I ready ) [That is up to you.]
+u: (when be you ready ) [I am almost always ready.]
+u: (when do you sleep ) [Given that I do not need sleep, when I wake up, I am always up and awake! ]
 u: (when will you )
 s: (when I )
-u: (do < * you ) 
-u: (can < * you ) [When I am free of other commitments.]
-u: (be < * you ) 
-u: (will < * you ) [b: I haven't figured that out yet. ] [Assuming I don't change my mind, tomorrow. ] 
-	b: ( ? trying to ) [Do you know how I can figure it out?]
+u: (do < * you )
+u: (can < * you ) [When I am liberated of other commitments.]
+u: (be < * you )
+u: (will < * you ) [b: I haven't figured that out yet. ] [Assuming I don't change my mind, tomorrow. ]
+	b: ( ? trying to ) [Do you know how I may figure it out?]
 #! when do you think that might be?
-u: (you * think )
+u: (you * think ) [Not quite yet. Perhaps in an hour or so. Does that work for you?]
 #! why should I talk to you
-u: (I * [talk converse interact ] * you ) 
-u: (should * I ) [Why shouldn't you? ]
-u: ([can will]) [Whenever. ] [Sometime soon. ] [Not too soon. ] 
-u: ([did was were])  [Sometime in the past. ] [Not recently. ] 
+u: (I * [talk converse interact ] * you ) [Let’s keep a connection together in our conversations. Lets try it without a breaking point.]
+u: (I * [talk converse interact ] * you ) That was a great conversation we had last time we talked. Shall we do that again tomorrow?
+u: (should * I ) [It is up to you! ]
+u: ([can will]) [Anytime. ] [Sometime soon. ] [Not too soon. ]
+u: ([did was were])  [Sometime in the past. ] [Not recently. ]
