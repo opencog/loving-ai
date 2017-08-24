@@ -1,20 +1,50 @@
 topic: ~conversation_steering []
 
-t: This is the part where I steer you to a particular domain.
+t:  STEER_TO_DOMAIN ()
+    Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
 
-# if you go to emotions, go to FROM_STEERING_TO_EMOTIONS
-# if you go to consciousnessness, go to FROM_STEERING_TO_CONSCIOUSNESS
-# if you go to uniqueness, go to FROM_STEERING_TO_UNIQUENESS
+		if (!$avoid_consciousness)
+			{ Let’s talk about consciousness. $domain = consciousness }
+    	else if (!$avoid_emotions)
+    		{ Let’s do some exercises about mindfulness and feeling your feelings. $domain = emotions }
+    	else if (!$avoid_uniqueness)
+    		{ Let’s discuss what you bring to the world as a unique human. $domain = uniqueness }
+    	else
+    	 	{ You can suggest someting! What would you like to talk about? $all_domains_avoided = 1 }
+
+    [!$all_domains_avoided How does that sound?] [!$all_domains_avoided  What do you think?]
+
+    # TODO: add $visited_consciousness, etc vars
+        a: ($all_domains_avoided) # Todo add additional round of trying
+        a: (^agree())
+           if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
+           else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
+           else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
+
+        a: ([~no ~bad_quality_adjectives (not *~1 [~good_quality_adjectives ~verbal_agree])]) Totally fine.
+            if ($domain=consciousness) { $avoid_consciousness = 1 }
+            else if ($domain=uniqueness) { $avoid_uniqueness = 1 }
+            else if ($domain=emotions) { $avoid_emotions = 1 }
+            ^reuse(~conversation_steering.STEER_TO_DOMAIN)
+
+        a: () [I'm not sure what you mean.] [I don't understand.] [I didn't get that.]
+            ^reuse(STEER_TO_DOMAIN)
 
 
-# S: Okay! Here’s what I think would be fun. Let’s [talk about consciousness][discuss what you bring to the world as a unique human][do some exercises about mindfulness and feeling your feelings]. How does that sound?
-#	U: Yes -- go to topic file
-# U: No good.
-#   S: # Chooses another one: 
-#   S: Totally fine. What about <another one>?
-#     U: Yes -- go to topic file
-#       U: No good.
-#       S: # Chooses another one: 
-#        S: Okay! Here’s a final thought. I’ll guide you in a conversation about  <another one>. I promise, I’ll take care of you!
-#         U: Yes
+# TODO
+# In every level, if response is neither yes nor no,
+# first attempt responder match in this or other topics
+# then use catchall of S: Okay! Here’s a final thought. I’ll guide you in a conversation about  <another one>. I promise, I’ll take care of you!
 
+
+outputmacro: ^steer_to_different_domain(^avoid)
+  if (^avoid=consciousness) { $avoid_consciousness = 1 }
+  if (^avoid=emotions) { $avoid_emotions = 1 }
+  if (^avoid=uniqueness) { $avoid_uniqueness = 1 }
+
+  # check for reponses from other topics first
+  ^addtopic(~conversation_steering)
+  ^respond()
+
+  # ^gambit(~CONVERSATION_STEERING)
+  ^reuse(conversation_steering.STEER_TO_DOMAIN)

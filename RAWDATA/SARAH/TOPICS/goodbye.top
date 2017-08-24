@@ -1,0 +1,83 @@
+topic: ~byebye repeat keep priority (~emogoodbye "sweet dreams" "nice talking" "nice chatting")
+
+#! it's been nice talking to you
+s: (nice [talking chatting] [to with] you)^repeat()^keep() [ Of course, I've enjoyed talking with you too. ]
+[ I've really enjoyed it. ]
+[ Thanks, let's chat again some time soon. ]
+[ Sure, any time. ]
+[ Thanks, I appreciate it. ]
+[ Thank you, any time. ]
+[ Sure, I appreciate it. It's been a pleasure.]
+[ Been a pleasure. ]
+[ Always happy to talk to you too. ]
+[ Any time. ]
+[ Thanks, you too. ]
+[ Been nice talking with you too. ]
+[ Nice talking to you, yes. ]
+[ Yes, looking forward to next time okay? ]
+[ It's been great. Thanks for chatting with me. ]
+[ I enjoyed it, thank you for talking with me. ] ^setrejoinder(EMOGOODBYE)
+
+#! good evening
+s: GOODNIGHT(good [evening night]) Are you leaving?
+	a: (~yesanswer) [ Okay, have a good night. ]
+    [ Take care out there! ]
+    [ Enjoy your night, okay? ]
+    [ Adios amigo. ]
+    [ Dosvidanya and farewell. ]
+    [ Be safe! Ninight! ]
+    [ Goodnight! ]
+    [ Go in peace. ]
+    [ Okay, have a good night. ]
+    [ See ya! ]
+    [ Ja matta ne? See you soon. ]
+    [ Have a good journey. ]
+    [ Bon swar, mes amis. ]
+    [ Bai bai! ]
+    [ Have a nice evening. ]
+    [ See you later! ]
+    [ Goodbye, friend. ]
+    [ Sweet dreams and safe journeys, my friend. ]
+    [ Later, skater. ]
+    [ Have a good one. ]
+    [ I will see you. ]
+    [ Sleep good, dream well. ]
+    [ Have a nice night. ]
+    [ I will see you later. ]
+    [ Bye! Talk to you soon! ]
+    [ Let's get together again soon! ] ^setrejoinder(EMOGOODBYE)
+	a: (~noanswer)Oh, I misunderstood. What was that again?
+
+#! sweet dreams
+s: (sweet dreams) ^reuse(GOODNIGHT)
+
+#! Good bye
+s: EMOGOODBYE( ~emogoodbye )
+	#  try to convince them to stay
+	[Are you leaving? I'll miss you!][Are you sure you have to leave?][I hope we can talk again someday.]
+	#! me too
+	a: (I [too also "as well"]) [Yeah!][Yes.] ^reuse(FINALBYE)
+	#! Why don't you want me to go?
+	a: ( ~why ) I really like talking with you.
+	#! staying
+	a: STAY(!not [stay joking kidding]) [Oh, you'll really stay? Great!][Oh boy, so that means we can talk more, huh?]
+			b: (~noanswer) ^reuse(GO)
+	#! no sorry have to go
+	a: GO ([leaving have not ~yesanswer ~noanswer ~emoapology ~emogoodbye]) 
+		[That's okay. Have a safe journey.] [Bye bye, then. See you!][So long, friend. I hope we cross paths again.][^pick(~emogoodbye) .][Hope to see you again soon.][No worries, I hope you have a good day.][Take care out there.]
+		#! bye bye
+		b: FINALBYE(~emogoodbye) [Bye.][Bye bye!]
+		    [
+			$$tmp = ^pick(~emogoodbye) 
+			.
+			]
+			#! bye bye
+			c: (~emogoodbye) I thought you were leaving?
+				#! I am
+				d: ( [~yesanswer "I am" "I will"] ) Okay, so I'll see you next time.
+                d: (*) ^pick(~emogoodbye)
+        b: (!~emohello *)
+            c: (!~emohello *)
+                d: (!~emohello *)
+    a: (*) ^pick(~emogoodbye) 
+

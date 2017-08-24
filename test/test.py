@@ -79,8 +79,5 @@ class ChatScriptTest(unittest.TestCase):
                 False, response[response.index('ERROR'):
                                 response.index('Finished compile')])
 
-        response = say('what is your name')
-        self.assertTrue('Sarah' in response)
-
 if __name__ == '__main__':
     unittest.main()

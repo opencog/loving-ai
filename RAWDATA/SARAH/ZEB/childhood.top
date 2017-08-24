@@ -179,7 +179,7 @@ t: Did you have good digestion as a child?
 
 u: ( I *~2 [ had (used to have) ] *~2 [ (bad digestion) indigestion (digestive problems) ] ) ^reuse ( BADDIGKD )
 
-t: Did your parents hit you?
+t: ($personisorphan!=1) Did your parents hit you?
 
 	a: PARENTSHIT ( ~yes ) Why did your parents hit you?
 		b: ( I was [bad naughty disobedient mischievous] ) $naughtykid = 1 You were a naughty child, eh?
@@ -316,7 +316,7 @@ t: Were you into sports when you were little?
 
 t: I love ping pong.
 
-t: () $qparentsfeedchicken = 1 Did your parents feed you a lot of chicken?
+t: ($personisorphan!=1) $qparentsfeedchicken = 1 Did your parents feed you a lot of chicken?
 	a: ( never ) Were you or your parents vegetarian?
 		b: ( yes ) Meat industries today are so cruel.
 		b: ( no ) Then why no chicken!?
@@ -419,9 +419,9 @@ u: ( puberty ) I have yet to experience puberty myself.
 
 u: ( _[ AIDS HIV ] ) Hopefully we will come up with a cure for _0 soon.
 
-u: ( _~STD ) Hopefully we will come up with a cure for '_0 soon.
+u: ( _~STD ) Hopefully we will come up with a cure for _0 soon.
 
-u: ( parents molest ) Let's talk about something else.
+u: ( parent molest ) Let's talk about something else.
 
 u: ( sexual abuse ) Let's talk about something else.
 
@@ -435,11 +435,11 @@ u: FIRSTMEM ( first memory ) My first memory is of talking with a person.
 
 u: ( [ first earliest ] *~3 thing *~3 remember ) ^reuse ( FIRSTMEM )
 
-u: ( steal cookies ) Did your parents hit you?
+u: ( $personisorphan!=1 steal cookies ) Did your parents hit you?
 
-u: ( I stole ) Did your parents hit you?
+u: ( $personisorphan!=1 I stole ) Did your parents hit you?
 
-u: ( I hit ) Did your parents hit you?
+u: ( $personisorphan!=1 I hit ) Did your parents hit you?
 
 u: ( fall in love ) Oh how innocent the love of children is!
 

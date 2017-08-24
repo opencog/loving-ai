@@ -1,0 +1,57 @@
+TOPIC: ~religio-philo_assumptions ( religious_assumptions )
+
+## Rules so that when a person’s religion is determined the variables are auto-set with basic assumptions ##
+
+t: TIMETOMAKEASSUMPTIONS() ^reuse (MAKEBELIEFASSUMPTIONS)
+
+u: MAKEBELIEFASSUMPTIONS ($change_in_personsreligion=1) ^keep() ^repeat()
+
+	$change_in_personsreligion = null
+
+	if ( $personsreligion ? ~religious_sect AND $personisreligious != 0) { $personisreligious = 1 $change_in_personsreligion = 1 }
+
+	if ($personsreligion AND $personsreligion !? ~reincarnation_believing AND !$personblvinreincarnation) { $personblvinreincarnation = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~reincarnation_believing AND !$personblvinreincarnation) { $personblvinreincarnation = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~karma_believing AND $personblvinreincarnation == 1) { $personblvinafterlfkarma = 1 $personblvinafterpunishments = 1 $personblvinafterrewards = 1 $change_in_personsreligion = 1}
+
+	if (!$personismonotheist AND $personsreligion ? ~explicit_monotheism ) { $personismonotheist = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~Hindu_sect) { $personblvinterspeciesreincarnation = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion == Muslim ) { $yeahbabyimammuslim = 1 }
+
+	if (!$personismonotheist AND $personsreligion ? ~bothmonoandpolytheistic ) { $personismonotheist = 1 $change_in_personsreligion = 1}
+
+	if (!$personismonotheist AND $personsreligion ? ~metaphysical_pluralism AND $personsreligion !? ~explicit_monotheism AND $personsreligion !? ~bothmonoandpolytheistic) { $personismonotheist = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~eschatological_beliefs AND !$personblvafterlife AND $persondisblvafterlife != 1 ) { $personblvafterlife = 1 $persondisblvafterlife = 0 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == 1 AND !$personblvgodallseeing ) { $personblvgodallseeing = 1 $change_in_personsreligion = 1}
+
+	if ($personismonotheist == 1 AND !$personblvgodomniscient ) { $personblvgodomniscient = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~christian_sect AND !$personblvgodisperson) { $personblvgodisperson = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~baha'i_sect AND !$personblvgodisperson) { $personblvgodisperson = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~believe_godisnotaperson AND !$personblvgodisperson) { $personblvgodisperson = 0 $change_in_personsreligion = 1}
+
+	if ($personsreligion !? ~theological_dualism AND $personsreligion ? ~explicit_monotheism OR $personsreligion ? ~bothmonoandpolytheistic ) { $personblvgodmadeevil = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~heavenafterlife_believing AND !$personblvinheaven AND $personagnstcabtafterlife != 1) { $personblvinheaven = 1 $personblvinafterrewards = 1 $personblvafterlife = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~hell_believing AND !$personblvinhell AND $personagnstcabtafterlife != 1) { $personblvinhell = 1 $personblvinafterpunishments = 1 $personblvafterlife = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~judgment_day_believing AND $personblvinjdgmntday == null AND $personagnstcabtafterlife != 1) { $personblvinjdgmntday = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~eternaldamnation_believing AND !$personblvineternaldamn AND $personsreligion !? ~esoteric_religious_group AND $personagnstcabtafterlife !=  1) { $personblvineternaldamn = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~angels_believing AND !$personblvinangels) { $personblvinangels = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~satanexists_believing AND !$personblvinsatan) { $personblvinsatan = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~moksha_believing AND !$personbelievesnirvana) { $personbelievesnirvana = 1 $change_in_personsreligion = 1}
+
+	if ($personsreligion ? ~explicit_monism AND !$personismonist) { $personismonist = 1 $change_in_personsreligion = 1}

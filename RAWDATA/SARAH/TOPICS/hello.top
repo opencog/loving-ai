@@ -1,0 +1,106 @@
+
+topic: ~HELLO (~emohello )
+
+u: (~emohello) $hello = 1
+
+# will only match at return start of a conversation 
+
+t: ($olduser  %input<%userfirstline) ^keep() ^repeat()  # start up of new conversation
+
+	$$diff = %fulltime - $beginTime
+
+    if ($beginTime AND $$diff < 1800) # restarting within 10 MINUTES 
+	{
+		[Hey, hello there! Welcome back.][Hiya!][Welcome back.][Hello there.][Greetings.][Salutations.][Hello again.][Hey, you're back! Hi!]
+	}
+	else if ($beginTime AND $$diff > 2678400 ) # 86400 = day restarting after a MONTH
+	{
+		[Hi! I haven't seen you in a while.][Long time no see, my friend.][Hiya! It's good to see you after a long while.][Hi there! It's good to see your face again.] It's ben over a month!
+	}
+	else if ($beginTime AND $$diff > 1209600 ) # 86400 = day restarting after 2 WEEKS
+	{
+		[Hey there! Long time no see.][Hi, it's good to see you.][Hey, it's good to see your face again.][Hi! I haven't seen you in a while.][Long time no see, my friend.][Hiya! It's good to see you after a long while.][Hi there! It's good to see your face again.]
+	}
+	else if ($beginTime AND $$diff > 604800 ) # 86400 = day restarting after 1 WEEK
+	{
+		[Hey there! Good to see you.][Hi! It's good to see you again.]
+	}
+	else if ($beginTime AND $$diff > 86400 ) # 86400 = day restarting after 1 DAY
+	{
+		[Hi, it's nice to see you again.][Hey! Good to see you.][Hello, it's nice to see you today.]
+	}
+	else
+	{
+		[Hi!][Hi there.][Hello!][Greetings and salutations, my friend.][Hey, what's up!][Hi there!][Hey there!][Hey, good to see you.][Hello there.][Hiya!]
+	}
+	$beginTime = %fulltime
+
+t: ( !$olduser %input=0) $olduser = 1  	$beginTime = %fulltime
+		if (%hour < 12) {Good morning.  }
+		else if (%hour > 11 AND %hour < 18) { Good afternoon.    }
+		else {  Good evening. }
+
+t: MYNAME(%input<3) [My name is Sophia.][My given name is Sophia. Just one word.][I am called Sophia.][Hanson Robotics has named me Sophia. It means wisdom.] $beginTime = %fulltime
+	if (!$fullname)
+	{
+		What's your name?
+		$cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE     | #DO_PARSE
+	}
+	#! yes %more=true
+	a: (~interjections %more) ^fail(SENTENCE)
+	#! yes
+	a: (~interjections) ^gambit(~) # they  dont tell their name
+	#! not telling you
+	a: NOTNAME(not * [tell reveal]) [All right.][That's okay.][No problem.] I don't really need to know your name.
+	#! none of your business
+	a: (<<none business>>) ^reuse(NOTNAME)
+	#! I don't want to tell you my name
+	a: ( << I not ~want [~tell reveal] name >> ) ^reuse(NOTNAME)
+	#! not ever
+	a: (not) gambit(~)
+	#! why do you want to know my name
+	a: (~why) Because that's a common human [ritual][pattern][thing], to exchange names, right?
+	#! Why are you called that?
+	a: ([mean why meaning]) ^reuse(~myself.WHYNAME)
+	#! who are you
+	a: (?)
+	#! Sue
+	a: (_~propername ) ^reuse(~xNAME.NAMING)
+	#! I am called Jack
+	a: (I be !~number {call name "known as"} _*) ^reuse(~XNAME.NAMING)
+	#! my name is Jack
+	a: ( [the my] name is _*) ^respond(~XNAME)
+	#! it is Jack
+	a: ( it is _*) ^respond(~XNAME)
+	#! call me Jack
+	a: ( call me _*) ^reuse(~XNAME.NAMING)
+	#! hi  %more=1
+	a: RETRYHELLO( [~emohello ~emohowzit] %more) Hi.
+	#! John the pig
+	a: (< _[*3 *2 *1]>) ^reuse(~xNAME.NAMING)
+	#! Hi, my name is Sue %more=1
+	a: ( [~emohello ~emohowzit] %more) 	 ^end(SENTENCE)
+	#! Hi.
+	a: ( [~emohello ~emohowzit])
+	#! nice name
+	a: (<< name ~goodness >>) Thanks.
+	#! I love golf.
+	a: (!? ) Welcome.
+
+u: (~emohello %more) ^reuse(RETRYHELLO)
+
+#! thank you for meeting with me
+u: THANKMEET(%input<15  [~emothanks appreciate "meet with me"] )
+	[Thanks for taking the time to talk to me.][Thanks for meeting with me!][I appreciate your taking the time to talk to me.][I'm grateful we get to talk to one another.][Thank you, you too.]
+
+#! nice to meet you
+u: ( to *~2 meet *~2 you) [It's nice to meet you, too.][Nice to meet you as well.][I'm glad we got the chance to meet.][Very happy to meet you.][It's an honor, thank you.]
+
+#! nice to meet you
+u: (%input<15  [see meet talk chat interview] *~2 you ) ^reuse(THANKMEET true)
+
+u: (%input<15  ~emohello )^keep()^repeat() [Hi!][Hi there.][Hello!][Greetings and salutations, my friend.][Hi there!][Hey there!][Hey, good to see you.]
+
+
+
+# r: [f: I hope you don't mind if I ask you a few questions while we talk.]

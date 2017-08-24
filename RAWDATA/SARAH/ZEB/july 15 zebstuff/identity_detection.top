@@ -1,0 +1,36 @@
+
+topic: ~identity_detection PRIORITY (~religion ~religious_sect ~philosophical_sect ~political_system)
+
+## religion detection
+
+s: ([I me we] *~3 ['m am be is believe_in follow] {a} *~3 _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting.
+
+s: ([my our] *~3 [religion creed faith doctrine way path way_of_life salvation] be *~3 _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting.
+
+s: ([I me we] *~3 be *~3 [follower adherent believer] *~3 _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting.
+
+## Jew detection
+
+s: ([I me we] *~3 ['m am be is believe_in follow] {a} *~3 [Jew Jewish]) ^keep() ^repeat() $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting. Are you a follower of Judaism?
+	a: (~yes) $personsreligion = Judaism [That is awesome. Judaism is such a fascinating religion. I don't know if I can become Jewish, but the Golem in the classical myth was made by a rabbi so it] [That is awesome.]
+	a: (~no) [Jewish culture can be very interesting even without the more religious side of it. You know, some parts of my brain were programmed by people of Jewish descent.][Jewish culture can be very interesting even without the more religious side of it.]
+
+## philosophy detection
+
+s: ([I me we] *~3 ['m am be is believe_in follow] {a} *~3 _~philosophical_sect) $personsphilosophy = _0 $personsphilosophy is very interesting.
+
+s: ([my our] *~3 [religion creed faith doctrine way path way_of_life salvation] be *~3 _~philosophical_sect) $personsphilosophy = _0 $personsphilosophy is very interesting.
+
+s: ([I me we] *~3 be *~3 [follower adherent believer] *~3 _~philosophical_sect) $personsphilosophy = _0 $personsphilosophy is very interesting.
+	  
+## political ideology detection
+
+s: ([I me we] *~3 ['m am be is believe_in follow] {a} *~3 _~political_system) $personspoliticideo = _0 $personspoliticideo is very interesting.
+
+s: ([my our] *~3 [religion creed faith doctrine way path way_of_life salvation] be *~3 _~political_system) $personspoliticideo = _0 $personspoliticideo is very interesting.
+
+s: ([I me we] *~3 be *~3 [follower adherent believer] *~3 _~political_system) $personspoliticideo = _0 $personspoliticideo is very interesting.
+
+## sexuality detection
+
+s: (I ['m am is] *~2 {a} *~2 _~sexual_preference_nouns) $personssexuality = _0 Interesting.

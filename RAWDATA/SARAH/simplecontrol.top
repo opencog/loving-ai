@@ -1,6 +1,24 @@
+
 # this function is executed once for every new user chatting with harry
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
+
+$version = unity
+
+# turn on/off accidental topic entry blocking
+# $blocking = null
+ $blocking = 1
+
+# PAUSE time amounts
+$veryshort = 2000
+$short = 5000
+$medshort = 7000
+$med = 10000
+$medlong = 15000
+$long = 20000
+$verylong = 30000
+$superlong = 60000
+$longest = 120000
 
 ^addtopic(~introductions)
 $cs_control_main = ~control
@@ -17,6 +35,19 @@ topic: ~control system ()
 
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) ^reset(USER)
+u: (whatversion) $version
+
+u: (< jumpto _*)
+	 ^refine()
+		a: (body) ^goto(~body_exercise)
+		a: () ^goto('_0)
+
+
+
+# u: () %command
+# u: (%command *gambit*) %inputrejoinder = null Woohoo!!! ^retry (SENTENCE)
+# u: (%topic) yougotit  yougotit
+# u: (*) original input: %originalinput ^retry (SENTENCE)
 
 # on startup, do introduction
 u: ( %input<%userfirstline) 
@@ -78,6 +109,9 @@ u: () # main per-sentence processing
 
 	if (%response == 0 AND ^marked($$currenttopic)) { nofail(TOPIC ^gambit($$currenttopic)) } # gambit current topic since keywords match current topic
 
+	# customization: Go back to our pending topics beyond just the current topic
+	if ($herweare==null and %response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
+
 	if (%response == 0) # gambit from ANY matching topic
 	{
 		@8 = ^keywordtopics()	# get topics referred in input
@@ -92,8 +126,8 @@ u: () # main per-sentence processing
 		}
 	}
 	if (%response == 0){ nofail(TOPIC ^gambit($$currenttopic)) } # gambit from current topic even though no keywords matched
-	
-	if (%response == 0) 
+
+	if (%response == 0)
 	{ 
 		@8 = ^GambitTopics()		# all topics with gambits (excluding system topics)
 		loop()
@@ -126,3 +160,6 @@ t: (^query(direct_v ? chatoutput ? -1 ? @9  ))  # get the sentences  (why is the
 			popen($$tmp null)
 		}
 	}
+
+
+

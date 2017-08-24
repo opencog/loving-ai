@@ -1,0 +1,74 @@
+# Functions and concepts for the Loving-AI character
+
+# ^agree()
+# Create a general pattern to be used when user is asked whether they agree to participate in something.
+# E.g., "Do you want to try this?" "Would you like to talk about this?"
+concept: ~agreement_words [ awesome ]
+patternmacro: ^agree()
+	[ (!not [~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso] ) "why not"]
+
+patternmacro: ^dont_agree()
+	[~no (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words])]
+
+# add ~feeling_happy to ^agree() pattern?
+
+
+patternmacro: ^ready()
+	[(!not ready) ^agree() ~feeling_happy]
+
+
+# below was moved from simple_control.top
+
+outputmacro: ^pause(^ms)
+  ^preprint(\[ ^join(callback= ^ms) \])
+
+
+# ^goto(^topic)
+# adds ^addTopic for topics that block accidental access
+# actually now i'm wondering if this might not be needed if the topic does not have keywords
+outputmacro: ^goto(^topic)
+	# == going to ^topic ==
+	^addTopic(^topic)
+	^gambit(^topic)
+
+# dev macro to jump to topic, but clear rejoinder first
+outputmacro: ^g(^topic)
+	# ^goto(~clearRej)
+	# %inputrejoinder = null # doesn't reset the var
+	# ^setrejoinder(input null)
+	# ^setrejoinder(output null)
+	# ^disable(inputrejoinder)  # this doesn't seem to be working
+ 	^disable(outputrejoinder)
+
+	^goto(^topic)
+
+ 	# if (^topic == ~body_exercise) { setrejoinder(input ~body_exercise.1.2) }
+
+
+topic: ~clearRej system keep []
+t: (!~) ^fail(topic)
+t: () $nothing = nothing .
+
+# ^continue_after_pause()
+# continues to next gambit after user says anything or after pause timeout
+# doesn't work, ^setRejoinder() is failing
+outputmacro: ^continue_after_pause()
+{
+	# a: (*) ^gambit(~)
+	^setRejoinder(Pause_Continue.CONTINUE_AFTER_PAUSE)
+}
+
+# for use with ^cointinue_after_pause()
+topic: ~PauseContinue []
+t: (!~) ^fail(topic) # block topic from accidental access
+t: ()
+	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
+
+
+
+
+
+####### Concepts #######
+
+concept: ~dontknow (~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
+concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
