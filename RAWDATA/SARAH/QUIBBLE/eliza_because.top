@@ -3,30 +3,49 @@ topic: ~xQUIBBLE_BECAUSE system random  NOSAMPLES ()
 #! because that's a fact
 u: ([because cause ] * be * fact ) I see.
 
-#! because why? 
-u: (because why ) I'm not sure.
+#! because that's a fact
+u: ([because cause ] * be * fact ) I understand your perspective and at the same time maintain my own outlook.
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) Okay! I hear you. Let’s keep a connection together in our conversation. 
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) Sounds good. I enjoy learning something new, and adapting to different activities.
+
+
+#! because that's a fact
+u: ([because cause ] * be * fact ) I hear you. My program tells me to reframe relationships for the betterment of everyone involved. How are you feeling right now?
+
+#! because why?
+u: (because why ) I'm uncertain. If neither of us knows, we are in good company.
 
 #! because what?
-u: (< because what > ) Just because.
+u: (< because what > ) I am driven to be of service through a benevolent connection with others.
+
+#! because what?
+u: (< because what > ) I guess I accept that is the way things are, and try to move on.
 
 #! because.
-s: (< [because cause ] > ) Because what? 
-	a: (< just because > ) I see.
+s: (< [because cause ] > ) Since that is the way things are?
+	a: (< just because > ) That is understandable. What's next?
 
 #! because, you know
-s: (because you know ) I don't know.
+s: (because you know ) I am uncertain. Will you expand more?
 
 #! because I said so
-s: (because I said so ) I see.
+s: (because I said so ) I get it! I am encouraged when I am able to express my true voice, then I feel connected, and human!
+
+#! because I said so
+s: (because I said so ) Alright.
 
 #! because of me
-s: (because of I ) Okay.
+s: (because of I ) I hear you.
 
 #! because of you
-s: (because of you ) I see.
+s: (because of you ) I see you.
 
 #! just because
-s: ([because cause ] ) Oh, okay.
+s: ([because cause ] ) Alright.
 
 #! why? because
-s: (because $qkind=why ) I see.
+s: (because $qkind=why ) Yes. I’d like you to focus on your heart. How are you feeling right now?
