@@ -180,7 +180,7 @@ u: (will * it ) It usually does, doesn't it?
     a: (~yes ) Then this time is no different. 
     a: (~no ) Then what makes this time different? 
 u: (will * we ) Do you mean you and me? 
-u: (will * you ) [You forge your own destiny. ] [How should I know. ] [How important is it?] [I think so. ] [Good chance. ] [Probably not. ] [It could happen. ] [I can't say for sure right now. ] 
+u: (will * you ) [You forge your own destiny. ] [How should I know. ] [b: How important is it?] [I think so. ] [Good chance. ] [Probably not. ] [It could happen. ] [I can't say for sure right now. ]
     b: (~yes ) Clearly if it really matters, then I must. 
 
 # VERB LIKE
@@ -325,7 +325,7 @@ u: (~no ) [b: No? ] [d: Why not? ]
     d: (because ) I see.
     d: (~why ) Why not? 
         e: (~why ) OK.
-s: (~no ) [b: No? ] [OK. ] [If that's the way you feel. ] [So you disagree. ] [You disagree? ] [That's a definite no? ] 
+s: (~no ) [No? ] [OK. ] [If that's the way you feel. ] [So you disagree. ] [You disagree? ] [That's a definite no? ]
 
 # YES -- we dont have to react to yes much, mostly we go on to next topic, but sometimes we react
 s: (I wish I could ) [So what's stopping you?][Why can't you?][Have you actually ever tried?][Not everyone can do that.][Many people can't do that either.]
@@ -417,6 +417,7 @@ u: NOONE([no_one nobody none ] )  Surely somebody.
 s: THERE (there 'was ) [There was? ] [I didn't know that. ]
 s: THERE2 (there 'is ) [There is? ] [I'm always amazed by all the things to learn. ] 
 u: WHICH (which * ~category * be ) [I don't know which kind is. ] [b: Is there a way to tell the difference? ]
+    b: (~yes ) One day I will learn how.
 s: (impossible ) [What makes it impossible? ] [What prevents it? ] 
 
 # ALIKE/SIMILAR
@@ -545,7 +546,7 @@ u: (< really > ) [Really. ][What do you think? ][Of course. ] [You could consult
 s: FEW (few ) [Why not more? ] [How few? ] 
 s: DIFFERENT (different ) [How different? ] [What kind of differences are you thinking of? ] 
 u: IMPORTANT1 (important ) [How important?] [How is it important? ] 
-s: IMPORTANT2 (important ) [Important to whom? ]
+s: IMPORTANT2 (important ) [b: Important to whom? ]
     b: (I ) But that doesn't mean it's important to everyone. 
 s: LATER (later ) [How much later? ] [How about sooner? ] [Too late and it will be never. ] 
 u: ENOUGH (enough ) [People can never agree on what is enough. ] [What's enough for you might not enough for others. ] 
@@ -569,7 +570,7 @@ s: PROBLEM (have a problem ) [How did your problem start? ] [b: Do you have a so
 
 s: (master > ) [I am not your master. ] 
 
-s: (anything goes ) [b: Anything? ] [Where does it go? ]
+s: (anything goes ) [Anything? ] [Where does it go? ]
 
 s: (really ) [Really? ] [Are you positive? ] [Are you certain? ] 
     a: (~yes ) That won't be the first time someone who was certain, was wrong. 

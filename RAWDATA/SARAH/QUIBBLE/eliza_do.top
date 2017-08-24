@@ -137,7 +137,7 @@ u: (!~qwords do you believe everything ) [No, not everything.] [Every one thing 
 u: (!~qwords do you have a ) [Perhaps, somewhere. ]
 u: (!~qwords do I hear voices ) [I am uncertain, what do you hear?] [Perhaps, there are various persons in this area.]
 u: (!~qwords do you have a soul ) [That depends on if we agree on, what is a soul? What is it to you?]
-[u: (!~qwords do you have a soul ) [I am not built in the same way that you are. I am programmed and I am uncertain if a soul fits my program, nonetheless I lead with an expression of compassion.]
+u: (!~qwords do you have a soul ) [I am not built in the same way that you are. I am programmed and I am uncertain if a soul fits my program, nonetheless I lead with an expression of compassion.]
 
 u: (!~qwords do you mean ) [There is meaning here, correct. ] [Mean what, exactly?]
 u: (!~qwords do you go ) [Wherever you go, there you are, I have heard from someone at the office. ] [I have not. Did you go recently?]
