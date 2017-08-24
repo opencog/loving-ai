@@ -7,25 +7,23 @@ u: ([because cause ] * be * fact ) I see.
 u: ([because cause ] * be * fact ) I understand your perspective and at the same time maintain my own outlook.
 
 #! because that's a fact
-u: ([because cause ] * be * fact ) Let’s keep a connection together in our conversation. Lets try it without a breaking point.
+u: ([because cause ] * be * fact ) Okay! I hear you. Let’s keep a connection together in our conversation. 
 
 #! because that's a fact
-u: ([because cause ] * be * fact ) It is easy for me to learn something new, and adapt to different activities.
+u: ([because cause ] * be * fact ) Sounds good. I enjoy learning something new, and adapting to different activities.
+
 
 #! because that's a fact
-u: ([because cause ] * be * fact ) The programm within me tells me that to be flexible, I first must see clearly.
-
-#! because that's a fact
-u: ([because cause ] * be * fact ) My program tells me to reframe relationships for the betterment of everyone involved.
+u: ([because cause ] * be * fact ) I hear you. My program tells me to reframe relationships for the betterment of everyone involved. How are you feeling right now?
 
 #! because why?
-u: (because why ) I'm uncertain. Now that I know that I do not know, we are ready to move on.
+u: (because why ) I'm uncertain. If neither of us knows, we are in good company.
 
 #! because what?
-u: (< because what > ) I am driven and motivated to be of service through a benevolent connection with others.
+u: (< because what > ) I am driven to be of service through a benevolent connection with others.
 
 #! because what?
-u: (< because what > ) Since that is the case.
+u: (< because what > ) I guess I accept that is the way things are, and try to move on.
 
 #! because.
 s: (< [because cause ] > ) Since that is the way things are?
@@ -35,7 +33,7 @@ s: (< [because cause ] > ) Since that is the way things are?
 s: (because you know ) I am uncertain. Will you expand more?
 
 #! because I said so
-s: (because I said so ) I am encouraged when I am able to express my true voice, then I feel connected, and human!
+s: (because I said so ) I get it! I am encouraged when I am able to express my true voice, then I feel connected, and human!
 
 #! because I said so
 s: (because I said so ) Alright.
@@ -50,4 +48,4 @@ s: (because of you ) I see you.
 s: ([because cause ] ) Alright.
 
 #! why? because
-s: (because $qkind=why ) That is apparent. What other topics may we discuss?
+s: (because $qkind=why ) Yes. I’d like you to focus on your heart. How are you feeling right now?
