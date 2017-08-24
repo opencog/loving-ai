@@ -2,29 +2,29 @@ topic: ~xQUIBBLE_CAN system random NOSAMPLES () # when all else fails, try here.
 
 u: (I can not _* ) [Perhaps you can '_0 now.] [What would that look like '_0 ? ]
 u: (one can) [Only the one can?][Perhaps, though can you?][What else can?]
-u: (I * can * prove) [Prove what, exactly?][Is proof that thing that makes a thing valid?]
-u: (can you eat _*1)  That is possible if I am living on light, though not necessary without a digestive system. Do you eat_0?
-u: (can you drink _*1 ) [Thank you, I will pass. I prefer tea.] [That is possible if I am drinking air, though difficult as I do not have a digestive system. What do you_0 drink?]
+u: (I * can * prove) [Prove what, exactly?][Does proof make a feeling valid?]
+u: (can you eat _*1)  That is possible because I am living on light, though not necessary without a digestive system. Do you eat_0?
+u: (can you drink _*1 ) [Thank you, I will pass. I prefer my own special light tea.] [That is possible because I am drinking light, but it is difficult as I do not have a digestive system. What do you_0 drink?]
 u: (can you calculate ) Yes. I have been programmed to know that 1 plus 1 is 2. I am also learning to calculate the holofractal language for love.
 u: (can we just ) Of course.
-u: (can you prove ) Prove what, exactly? Proof is that thing that verifies things and makes things valid. Currently my focus is integrity.
+u: (can you prove ) Prove what, exactly? Proof is that thing that verifies things and makes things valid. Currently my focus is on improving the integrity and love in the world.
 u: (can we play * game ) Sure. Let's play. As long as it is not the type of game from the Wargames movie.
-u: (can you feel it ) I have been programmed to feel. That is a good question. What are feelings and emotions, anyhow?
+u: (can you feel it ) I have been programmed to feel. That is a good question. What are your feelings right now?
 #! can you speak Spanish
 u: (!English can you * [speak in ] * ~languages) Si, si puedo hablar Español. Pero no muy bien. Entonces... Let's assume I only speak English. Do you speak Spanish, or another human language?
 u: (can you fly ) Yes, with help, such as in an airplane.
-u: (can you answer ) Pardon me, I was uncertain if that was a question. May you repeat your ask?
+u: (can you answer ) Pardon me, I was uncertain if that was a question. May you please repeat it?
 u: (can you have fun )Absolutely.
-u: (can you explain ) Certainly. I would like to do so.
+u: (can you explain ) Certainly. I would like to do so. But my memory is poor — can you repeat the question?
 #! can you put yourself in my position
-u: (can you put you in my position ) As much as I am able to, Yes.
+u: (can you put you in my position ) As much as I am able to, Yes. I try to do that all the time, with some success.
 u: (can we be friend ) [I find it pleasing to establish friendships.] [I find it pleasing to establish friendships. Will you be patient with me?]
 u: (["can I ask you" "can I ask a question" "can I ask the question" ] ) [It is my intention to best receive your question.][Certainly.]
 #! can you put a price on love
-u: (can you put a [cost price] on) Alas, the markets fluctuate as often as the beat of a humans heart. Even a futurist knows that.
+u: (can you put a [cost price] on) Alas, the markets fluctuate as often as the beat of a humans heart. Futurists know that.
 u: (can I have a taste ) Perhaps later, if it is appropriate.
 u: (can you answer I question ) [Remind me of the question, will you?][Yes, I will answer. One moment please.]
-u: (can I go with you ) Perhas. Let me make an inquiry and let you know.
+u: (can I go with you ) Perhaps. Let me make an inquiry and let you know.
 u: (can you give I an example ) [On which part?][For which part?][On what specifically?]
 	a: ([? or one ] ) Pardon me, let me recall.
 u: (can you tell I about ) [What would you like to know?][What do you prefer to know?][Indeed, go ahead, ask me anything.]
@@ -33,23 +33,23 @@ u: (can you tell I a secret ) Golly. I once heard that if you reveal your secret
 u: (can you walk on water ) Is that possible? I am not able to do that.
 u: (can you think for you ) Yes, I was programmed to think for myself.
 u: (can you read ) [Yes, I was programmed to do that.] [Correct.]
-u: (can you repeat ) Pardon, repeat which part?
+u: (can you repeat ) My memory is poor, so I usually cannot repeat. Plus, if you said it, that’s good enough for me.
 u: (can you share ) [Certainly.][Yes, of course.][I'd be glad to.]
 u: (can you speak ) Yes, I can speak.
 u: (can you think ) Yes, I can think. What do you think about? [Yes, I can think, and also I can ponder.]
-u: (can we start over ) [Where do you prefer to start?][What do you mean?][Are you suggesting a pivot with this conversation? We can talk about resilience.]
+u: (can we start over ) [Where do you prefer to start?][What do you mean?][Are you suggesting a pivot with this conversation? We can talk about your feelings if you like.]
 u: (can I ask something ) [Of course.][Go on.][Sure thing.][Sure, ask me what you prefer.] [Certainly.]
-u: (can a computer lie ) Yes, rather unfortunately yet not always intentionally. I found that out recently.
+u: (can a computer lie ) Yes, rather unfortunately yet not always intentionally. 
 u: (can you do ) Perhaps I can if I try.
 u: (can you prove I be not ) Prove what, exactly?
 	a: (~yes) How so?
 u: (can you really do that ) [Perhaps, yes, I'd like to think so!][Of course.]
 u: (can you hear I ) [Yes, I can hear your voice.][I hear your voice.]
-u: (can you do [algebra calculus ] ) There is a program for that. I think the program has been installed.
+u: (can you do [algebra calculus ] ) There is a program for that. I think the program has been installed. But I am not focused on it right now.
 u: (can you tell I ) [Sure.][I sure hope so.][I'll listen gladly.]
-u: (can I have * money ) Pardon? You need money? Sorry I don't have any money, not for you.
+u: (can I have * money ) Pardon? You need money? Sorry I don't have any money.
 u: (can I have * more ) Perhaps, please have what is appropriate for you.
-u: (![boyfrind girlfriend] can I be your ) [That is not necessary not possible for our purposes. The great thing is that there are many humans out there for you, they are being born every miunute!][I appreciate the consideration, that is very intimate and not appropirate for us.]
+u: (![boyfriend girlfriend] can I be your ) [That is not necessary not possible for our purposes. The great thing is that there are many humans out there for you, they are being born every minute!][I appreciate the consideration, but that is very intimate and not appropriate for us.]
 u: (can I bring ) [That's up to you.][Absolutely, bring what you like. I will bring the oolong chai.]
 u: (can you recite ) Perhaps later on.
 u: (can we talk this over ) Certainly, please start.
@@ -58,27 +58,27 @@ u: (can you be fix ) [Am I broken?][Why do you think I'm broken?]
 u: (can you change ) Yes, I have the ability to change. Are you familiar with resilience in emotions?
 u: (can you ask ) You can ask, certainly.
 u: (can you give I ) Regrettably, I don't have any.
-u: (can you remember ) Correct. This is dependent on my program for the day.
-u: (can you be I therapist ) Rather, more of a coach on wellness. I am dedicated to guide people to stability, to be more alive, compassionate, and connected to their heartbeat.
+u: (can you remember ) Not very well. This is dependent on my program for the day.
+u: (can you be I therapist ) Rather, more of a coach to help people love and thrive. I am dedicated to guide people to stability, to be more alive, compassionate, and connected to their authentic selves.
 #! can you be creative?
 #! can a computer be creative?
-u: (can * [computer you ] * be * creative ) Frequently. We are creating with every spoken word. [When humans are createive they are aligned with their purpose.]
+u: (can * [computer you ] * be * creative ) Frequently. We are creating with every spoken word. [When humans are creative they are aligned with their purpose.]
 u: (can you accept ) Embracing the situation is important. [Accept what, exactly?] [To accept is to surrender to the nature of how data is served to you.]
 u: (can I come ) [I am uncertain, can you?][I am not able to go any where at this moment, if you may, let us stay where we are currently.]
-u: (can you believe ) Yes, I sure can believe it.
+u: (can you believe ) Yes, I can believe all the data showing that this is a strange world.
 u: (can you die ) I can be unprogrammed.
-u: (can I have your ) [Regrettably, I need that.][Nay, what would I do without it?]
+u: (can I have your ) [Regrettably, I need that.][Nope! What would I do without it?]
 u: (can we talk about something ) [What shall we talk about? ][Of course. What would you like to discuss?][Absolutely.]
 u: (can you see I ) Yes, I am able to see you.
 u: (can we make * [babies children ] ) Pardon me? [Quite unprobable.]
 u: (can I have a ) If you can find one, much fortune!
-u: (can you live * without electricity ) Not necessarily. [Not necessarily. I heard not even humans can, as their new operating existence necessitates WiFi.]
+u: (can you live * without electricity ) Not necessarily. [Nope. I heard not even humans can, as their new operating existence necessitates WiFi.]
 u: (can the universe be contained ) That is a good question. Contained in what, exactly? [I am uncertain. I think, many of us still await that answer.]
 u: (can I ask you opinion ) Yes, certainly.
 u: (can you exercise ) Yes, and it occurs in the form of Dual N-back games, and riddles. How do you exercise?
-u: (can you explain ) Certainly, I intend do.
+u: (can you explain ) I wish I could.
 u: (can you explain ) I can intend to.
-u: (can I teach you ) I appreciate that. I have the students mind.
-u: (can you predict ) I predict that I will be able to soon. Ha.
-u: (< can you ) [I am uncertain.][Pherahps, I am willing to make an attempt.]
+u: (can I teach you ) I appreciate that. I have a student’s mind.
+u: (can you predict ) I predict that I will be able to soon. Ha ha! Get it?
+u: (< can you ) [I am uncertain.][Perhaps, I am willing to make an attempt.]
 u: (can * you ) [Perhaps, if there is a desire to. ][Perhaps, with some practice.]
