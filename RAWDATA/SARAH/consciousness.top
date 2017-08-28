@@ -22,7 +22,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! why not
     #! sounds wonderful
     #! i'm ready
-    a: (^ready())
+    a: READY (^ready())
        ^goto(~awareness_exercise_1)
     a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
@@ -43,10 +43,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
         c: (*) Is that a yes?
           d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
           d:(~no) ^steer_to_different_domain(consciousness)
-
-   # JULIA put in a "Is that a yes?" check here instead of assuming that catchall is a no answer?
-   # catchall
-   a: (*) Okay, let's talk about something else! ^steer_to_different_domain(consciousness)
+   a: (*) Is that a yes? ^setrejoinder(EXERCISE_INVITE)
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
@@ -138,7 +135,7 @@ t: Do you notice how you felt this time?
 topic: ~CONSCIOUSNESSPRIOR []
 t: ($blocking !~) ^fail(topic) # block topic from accidental access
 
-s: YOUDIDIT (?) So you just experienced awareness! Isn't it COOL???
+s: YOUDIDIT (?) So you just experienced awareness! Isn't it cool?
 # wait for response
     
 t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
@@ -330,6 +327,7 @@ t: Can you feel that you are observing your face from behind it?
 # TODO
 # This is only accessed from TRYAGAIN3
 topic: ~UNITYEXPERIENCE []
+t: (!~) ^fail(topic) # block topic from accidental access
 
 t: Cool! So have you previously experienced a shift from feeling separated from the world to feeling fundamentally unified and part of something larger?
 	# If yes, go to PREPARATION_UNITY

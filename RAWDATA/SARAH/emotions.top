@@ -6,6 +6,9 @@ concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adje
 
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware !meaning)
+# TODO not sure if we want to block topic at this level from more random access
+t: (!~) ^fail(topic) # block topic from accidental access
+
 # << Old emotions2 topic keywords, replacing with concepts
 # (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
 # frustrated afraid worried anxious anxiety fear lonely lit down)
@@ -15,7 +18,7 @@ topic: ~EMOTIONS2 (~emotions ~feeling_words !aware !meaning)
 # If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
 # If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
-t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
+t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) You know what, I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
 	# a: (*) # ^next(gambit)
 
 t: May I ask, how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?

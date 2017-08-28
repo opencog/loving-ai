@@ -10,7 +10,7 @@ t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS)
 
-s: TO_UNIQUENESS (?) Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
+t: TO_UNIQUENESS () Ok $name, let's try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
@@ -25,7 +25,7 @@ s: TO_UNIQUENESS (?) Ok $name, let's try this. Every once and awhile it's useful
 
 # MORE_QUESTIONS
 # JULIA I wonder how many people will answer yes to this, might be pretty small
-t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you one more question. Do feel you're generally present and connected with your awareness?
+t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you another question. Do feel you're generally present and connected with your awareness?
   # if no go to FROM_OTHERTOPIC_TO_CONSCIOUSNESS
   a: (~no) ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
   a: (^agree()) ^reuse(IM_AWARE)
