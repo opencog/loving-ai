@@ -37,7 +37,7 @@ topic: ~special_requests system ()
 topic: ~control system ()
 
 #! resetmenow to reset the conversational history of the user
-u: (< resetmenow >) ^reset(USER)
+u: (< resetmenow >) Okay, I'm resetting the user. ^reset(USER)
 u: (whatversion) $version
 
 u: (< jumpto _*)
@@ -45,7 +45,7 @@ u: (< jumpto _*)
 		a: (body) ^goto(~body_exercise)
 		a: () ^goto('_0)
 
-
+u: (doitnow) \[ will this come through \] blah blah blah ^keep() ^repeat()
 
 # u: () %command
 # u: (%command *gambit*) %inputrejoinder = null Woohoo!!! ^retry (SENTENCE)
@@ -69,9 +69,9 @@ u: (< alarm test) \[ alarm=5000 \] Alarm requested.
 
 u: () # main per-sentence processing
 
-	$$currenttopic = %topic		# get the current topic at start of volley
+	# ^respond(~special_requests)
 
-	^respond(~special_requests)
+	$$currenttopic = %topic		# get the current topic at start of volley
 
 	if ( %response == 0 ) {nofail(TOPIC ^rejoinder())}	# try for rejoinders. might generate an answer directly from what we are looking for.
 
