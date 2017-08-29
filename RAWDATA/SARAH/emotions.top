@@ -1,8 +1,8 @@
 concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeling_fearful ~bad_quality_adjectives ~badness !not !nothing !meaning)
 # ~badness: e.g., horrible, down, pissed off
 
-concept: ~positive_emotion (~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
-
+concept: ~positive_emotion (!~negative_emotion ~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
+# the !~negative_emotion above is to rule out neg emotion words that are in ~feeling_attracted
 
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware !meaning)

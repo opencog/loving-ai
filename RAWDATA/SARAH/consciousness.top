@@ -76,7 +76,7 @@ t: ^pause($medlong) Okay, now notice what is left. See if you can notice how tha
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause($medlong) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Tell me when you're ready.
+  a: (^agree()) ^pause($verylong) Awesome! This is your awareness. I'll be quiet for for a bit so you can continue to feel it. You can tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
@@ -142,7 +142,7 @@ t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. 
   # if yes, go to ~EXERCISE_ALT
   a: (^agree()) ^goto(~EXERCISE_ALT)
 
-  a: (*) Well, your awareness is a deep part of who you are will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
+  a: (*) Well, your awareness is a deep part of who you are and will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
       b: (^agree()) ^goto(~EXERCISE_ALT)
       b: (^dont_agree()) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
           c: (^agree()) ^goto(~EXERCISE_ALT)
@@ -290,7 +290,7 @@ t: Notice how you feel about your entire body and everything around you right no
 # wait for person to say something, then move on
 
 t: Do you notice a larger field of awareness even beyond your face?
-  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for a bit so you can continue to feel it. Please open your eyes when you’re ready.
 
   a: (~no) ^addtopic(~TRYAGAIN3)
   # if yes, then go to CONSCIOUSNESSPRIOR
