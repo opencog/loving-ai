@@ -36,7 +36,7 @@ t: BOND ()  Great to meet you $name! Thanks so much for taking the time to come 
 t: I imagine you'll be talking with more and more robots as time goes on.
 
 
-t: BUY-IN () Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm hoping you will be interested in talking about some of these.
+t: Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm hoping you will be interested in talking about some of these.
     a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 

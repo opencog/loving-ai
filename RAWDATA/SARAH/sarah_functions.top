@@ -15,12 +15,12 @@ patternmacro: ^dont_agree()
 
 # add ~feeling_happy to ^agree() pattern?
 
+# fix to have "no plus words after it" match (~no)
+concept: ~no MORE (no)
 
 patternmacro: ^ready()
 	[(!not ready) ^agree() ~feeling_happy]
 
-
-# below was moved from simple_control.top
 
 outputmacro: ^pause(^ms)
   ^preprint(\[ ^join(callback= ^ms) \])
