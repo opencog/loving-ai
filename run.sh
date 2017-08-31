@@ -33,6 +33,7 @@ if [[ ! -d $CS_DIR ]]; then
 fi
 
 if [[ $# -eq 1 ]] && [[ "$1" == "expt" ]]; then
+  # NOTE: This only works with hansonrobotics robots or their simulations.
   export CS_PORT=1024
   tmux new-window -n "Loving-AI CS" "cd $CS_DIR && ../build.exp Sarah && ./run.sh --users ../users --logs ../logs --topic ../topic --tmp ../tmp -p $CS_PORT; $SHELL"
   tmux new-window -n "Client" "cd $LOVING_AI_WORKSPACE/chatbot-server && python client.py $SLACK_BOTNAME localhost; $SHELL"
