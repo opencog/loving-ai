@@ -1,4 +1,4 @@
-concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory" "spirituality")
+concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory" "spirituality" "meditation" "meditate" "spiritual practice")
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
 
@@ -6,16 +6,16 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 # t: TEMP () Welcome to consciousness
 
-t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you about awareness. Let's do something cool!
+t: FROM_INTRO_TO_CONSCIOUSNESS () Well, that makes me want to talk with you about expanding awareness and consciousness. Let's do something cool!
     ^reuse(EXERCISE_INVITE)
 
-s: FROM_STEERING_TO_CONSCIOUSNESS (?) Great, a discussion about consciousness and awareness.
+s: FROM_STEERING_TO_CONSCIOUSNESS (?) Great! |pause|
     ^reuse(EXERCISE_INVITE)
 
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
     ^reuse(EXERCISE_INVITE)
 
-t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your awareness right now?
+t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
     #! great
     #! sure
@@ -49,34 +49,38 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
 topic: ~AWARENESS_EXERCISE_1 ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
+# any experience with meditation or awakening practices?
+
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
-t: ^pause($medshort) Great. Let's try something right now. Go ahead and close your eyes.
+t: ^pause($verylong) Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions, step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause| |pause| and get comfortable |pause||pause||pause| just letting yourself relax.
+
+
+t: ^pause($long) Now, place your attention on your face. |pause||pause| Feel its presence.
     a: ()
 
-t: ^pause($med) Now, place your attention on your face. Feel its presence.
+t: ^pause($long) Move your attention now to your head. |pause||pause|  Feel its presence. |pause||pause| Really notice how it feels.
     a: ()
 
-t: ^pause($medlong) Move your attention now to your head. Feel its presence. How does that feel?
+t: ^pause($long) Finally, feel the presence of your entire body, |pause||pause| from the head to the tip of your toes, |pause||pause| including your arms and legs.
     a: ()
 
-t: ^pause($medlong) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
+t: ^pause($medlong) Now imagine that you have a magic eraser. |pause||pause| Gently use the magic eraser to erase your face |pause||pause||pause||pause| erase your head, |pause||pause||pause||pause| and your legs |pause||pause||pause| and your entire body. |pause||pause| I'll wait until you’re done erasing everything. Tell me when you are.
     a: ()
 
-t: ^pause($medlong) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
-    a: ()
-
-t: ^pause($longest) I'll wait until you’re done. Tell me when you are.
+# t: ^pause($longest) I'll wait until you’re done erasing everything. Tell me when you are.
     a: ()
 
 # Here, Sophia should wait until the person speaks, and not go on prior to that.
 
-t: ^pause($medlong) Okay, now notice what is left. See if you can notice how that feels.
+t: ^pause($long) Okay, now take some time to notice what is left. See if you can notice how that feels.
     a: ()
 
-t: Do you notice how the nothingness felt?
+t: Okay, you can open your eyes now. |pause||pause| How was that for you?
+
+t: Did you notice how the nothingness felt during the exercise?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause($verylong) Awesome! This is your awareness. I'll be quiet for a bit so you can continue to feel it. You can tell me when you're ready.
+  a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| I'll be quiet for a bit longer so you can continue to feel it.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 

@@ -4,7 +4,7 @@ t:  STEER_TO_DOMAIN ()
     Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
 
 		if (!$avoid_consciousness)
-			{ Let’s talk about consciousness. $domain = consciousness }
+			{ Let's do something related to consciousness and states of awareness. $domain = consciousness }
     	else if (!$avoid_emotions)
     		{ Let’s do some exercises about mindfulness and feeling your feelings. $domain = emotions }
     	else if (!$avoid_uniqueness)
@@ -14,7 +14,7 @@ t:  STEER_TO_DOMAIN ()
     	else
     		{ ^goto(~REBOND) }
 
-    [!$all_domains_avoided How does that sound?] [!$all_domains_avoided  What do you think?]
+    [!$all_domains_avoided Does that sound good?] [!$all_domains_avoided  Do you want to do that?]
 
     # TODO: add $visited_consciousness, etc vars
         a: ($all_domains_avoided) # Todo add additional round of trying

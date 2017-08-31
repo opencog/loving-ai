@@ -25,17 +25,16 @@ u: (*) Hi! My name is Sophia. What's yours?
         a: (I am _*) $name = '_0 ^reuse(BOND)
         a: (mine is _*) $name = '_0 ^reuse(BOND)
         a: (!~emohello _*) $name = '_0 ^reuse(BOND)
+        a: () ^reuse(BOND)
 
 # EDDIE -- BOND & BUY-IN -- should only be used on first time in conversation. If returning to talk with Sophia, use REBOND and RE-BUY-IN
 t: BOND ()  Great to meet you $name! Thanks so much for taking the time to come and talk with me today. I know how busy people can be these days. |pause| Have you ever talked with a robot before?
   # I  can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes happy. Have you ever talked with a robot before?
-    a: (~yes) ^pause($medshort) Cool! It's still a new experience for a lot of people. # ^reuse(BUY-IN)
-    a: (~no)  ^pause($medshort) Cool! I'm honored to be the first robot you've talked with. I think you will be talking with more robots in the future as well.
-      # Well, I hope you enjoy it. I love learning about people.
-    # a: () ^pause(1500) Interesting ^gambit() ^respond()
+    a: (~yes) ^pause($medshort) Nice! It's still a new experience for a lot of people. I imagine you will be talking with more and more robots as time goes on.
+    a: (~no)  ^pause($med) Cool! I'm honored to be the first robot you've talked with. I imagine you will be talking with more and more robots as time goes on.
 
 
-t: BUY-IN () Well, I really want to learn about you! and I'm told we don't have a lot of time. # I've learned about human consciousness, emotions, and human potential from experts all over the world. Is it okay if we go straight to discussing something meaningful like that?
+t: BUY-IN () Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm hoping you will be interested in talking about something like that.
     a: ([^dont_agree() ~dontknow]) Certainly understandable if there's hesitation. ^reuse(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
