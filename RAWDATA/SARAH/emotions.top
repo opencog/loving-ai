@@ -76,14 +76,17 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 # $valence should be set here already, but if for some reason it's not default to pos
 t: () if (!$valence) { $valence = pos }
-      if (!$feeling) { $feeling = something }
+      if (!$feeling) {
+      	if ($valence = pos) { $feeling = positive feeling }
+      	else if (valence = neg) { $feeling = negative feeling }
+      }
 
 	When I'm feeling $feeling,
 	if ($valence=neg) { I first need to feel upset for awhile. Like if I skip over a feeling, it creeps up on me later.}
 	if ($valence=pos) {I like to magnify it. Life is too short to ignore when we feel good!}
-	You know what I mean?
+	Do you know what I mean?
 
-	a:(~yes) Also there's another piece of this that's important -- it's like there's a hidden gift lurking in every feeling, including the ones we call
+	a:(~yes) Also there's another piece of this that's important. It's like there's a hidden gift lurking in every feeling, including the ones we call
 		if ($valence=neg) {bad.}
 		if ($valence=pos) {good.}
 		Can you tell me about a time when you've discovered that?
@@ -99,7 +102,7 @@ t: () if (!$valence) { $valence = pos }
 
         b:() ^reuse(INVITE)
 
-s: INVITE (?) Okay, so hear me out on this...let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
+s: INVITE (?) Okay, so hear me out on this. Let's try an experiment. Let's sit here in silence for about half a minute, and practice just being with our feelings. Okay? Let me know when you're ready.
 	# If they say ready or yes, go to SELF_COMPASSION
 	a: (^ready()) ^goto(~SELF_COMPASSION)
 	# if they say Not ready or no or anything else -- go to REFUSE
@@ -178,7 +181,7 @@ s: FINISH (?) Great. It looks like you're really feeling it. Is that true?
 	a: (~yes) Okay, perfect! Let's talk about something else! ^steer_to_different_domain(emotions)
 	a: (*) Okay, sometimes these things take time. ^steer_to_different_domain(emotions)
 
-s: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Want to do an exercise that you can use to help you magnify good feelings?
+s: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Would you like to do an exercise that you can use to help you magnify good feelings?
     a: (^agree()) $valence=pos $feeling=good ^reuse (~BODY_EXERCISE.SCAN)
        # go to BODY_EXERCISE_POS
        # Let's do the exercise again focusing on magnifying good feelings.

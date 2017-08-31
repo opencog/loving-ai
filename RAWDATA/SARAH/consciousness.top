@@ -24,7 +24,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to have a glimpse of your aw
     #! i'm ready
     a: READY (^ready())
        ^goto(~awareness_exercise_1)
-    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh okay. Is there something that you're afraid of?
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh, okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
@@ -57,10 +57,10 @@ t: ^pause($medshort) Great. Let's try something right now. Go ahead and close yo
 t: ^pause($med) Now, place your attention on your face. Feel its presence.
     a: ()
 
-t: ^pause($long) Move your attention now to your head. Feel its presence. How does that feel?
+t: ^pause($medlong) Move your attention now to your head. Feel its presence. How does that feel?
     a: ()
 
-t: ^pause($med) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
+t: ^pause($medlong) Finally, feel the presence of your entire body, from the head to the tip of your toes, including your arms and legs.
     a: ()
 
 t: ^pause($medlong) Now, imagine that you have a magic eraser. Gently use the magic eraser to erase your face, your head, your legs and your entire body.
@@ -76,7 +76,7 @@ t: ^pause($medlong) Okay, now notice what is left. See if you can notice how tha
 
 t: Do you notice how the nothingness felt?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause($verylong) Awesome! This is your awareness. I'll be quiet for for a bit so you can continue to feel it. You can tell me when you're ready.
+  a: (^agree()) ^pause($verylong) Awesome! This is your awareness. I'll be quiet for a bit so you can continue to feel it. You can tell me when you're ready.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 

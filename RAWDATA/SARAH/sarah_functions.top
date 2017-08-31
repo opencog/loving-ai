@@ -5,13 +5,13 @@
 # E.g., "Do you want to try this?" "Would you like to talk about this?"
 concept: ~agreement_words [ awesome ]
 patternmacro: ^agree()
-	[ (!not [~yes yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso] ) "why not"]
+	[ (!not [~yes yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso] ) ~emomaybe "why not"]
 
 # Note: Added word 'yes' above to match things like "lots of things, yes", which
 #       ~yes doesn't match for some reason
 
 patternmacro: ^dont_agree()
-	[~no ~bad_quality_adjectives (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words])]
+	[~no ~bad_quality_adjectives (not *~2 [~good_quality_adjectives ~verbal_agree ~agreement_words]) (i *~2 don't want) ]
 
 # add ~feeling_happy to ^agree() pattern?
 

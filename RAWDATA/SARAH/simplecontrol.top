@@ -31,10 +31,12 @@ table: defaultbot (^name)
 DATA:
 harry
 
-topic: ~special_requests system ()
+# topic: ~special_requests system ()
 
 
 topic: ~control system ()
+
+# u: (doit) This is a pause here. |pause| and another one for 5 seconds |pause:5| and one for 2 seconds |pause:2| and that's all.
 
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) Okay, I'm resetting the user. ^reset(USER)
