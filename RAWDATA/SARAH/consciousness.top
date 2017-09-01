@@ -76,7 +76,7 @@ t: ^pause($longest) Now imagine that you have a magic eraser. |pause||pause| Gen
 t: ^pause($verylong) Okay, now take some time to notice what is left after erasing everything. |pause||pause||pause| Notice what it feels like with everything erased.
     a: ()
 
-t: Okay, you can open your eyes now. |pause||pause||pause| So, how was that for you? 
+t: Okay, you can open your eyes now. |pause||pause||pause| So, how was that for you?
 
 t: Did you notice how the nothingness felt during the exercise?
   # if yes, then go to CONSCIOUSNESSPRIOR

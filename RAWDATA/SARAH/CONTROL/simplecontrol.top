@@ -62,7 +62,6 @@ u: (< shut up >) $shutup = 1
 u: (< talk  >) $shutup = null
 
 # u: (\[ callback \]) Callback seen.
-u: (\[ callback \]) # ^gambit($domain)
 u: (\[ loopback \]) Loopback seen.
 u: (\[ alarm \]) Alarm seen.
 u: (< loopback test) \[ loopback=1000 \] Loopback requested.
@@ -117,7 +116,7 @@ u: () # main per-sentence processing
 	if (%response == 0 AND ^marked($$currenttopic)) { nofail(TOPIC ^gambit($$currenttopic)) } # gambit current topic since keywords match current topic
 
 	# customization: Go back to our pending topics beyond just the current topic
-	if ($herweare==null and %response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
+	if (%response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
 
 	if (%response == 0) # gambit from ANY matching topic
 	{

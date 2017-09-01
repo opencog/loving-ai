@@ -28,7 +28,6 @@ outputmacro: ^pause(^ms)
 
 # ^goto(^topic)
 # adds ^addTopic for topics that block accidental access
-# actually now i'm wondering if this might not be needed if the topic does not have keywords
 outputmacro: ^goto(^topic)
 	# == going to ^topic ==
 	^addTopic(^topic)
@@ -71,7 +70,7 @@ t: ()
 
 
 
-####### Concepts #######
+# ###### Concepts #######
 
 concept: ~dontknow (~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
 concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)

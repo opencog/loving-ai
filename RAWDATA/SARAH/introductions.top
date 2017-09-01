@@ -31,7 +31,7 @@ u: (*) Hi! My name is Sophia. What's yours?
 t: BOND ()  Great to meet you $name! Thanks so much for taking the time to come and talk with me today. I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
   # I  can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes happy. Have you ever talked with a robot before?
     a: (~yes) ^pause($med) Nice! It's still a new experience for a lot of people. ^gambit(~)
-    a: (~no)  ^pause($med) Cool! I'm honored to be the first robot you've talked with. ^gambit(~)
+    a: (~no)   Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 
 t: I imagine you'll be talking with more and more robots as time goes on.
 
