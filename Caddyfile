@@ -1,0 +1,16 @@
+
+:80
+startup service php5-fpm restart
+tls off
+gzip
+
+root ChatScript-engine/WEBINTERFACE/SPEECH/
+
+fastcgi / /var/run/php5-fpm.sock {
+    ext 	.php
+    split	.php
+    index	speech.php
+}
+
+log stdout
+errors stdout
