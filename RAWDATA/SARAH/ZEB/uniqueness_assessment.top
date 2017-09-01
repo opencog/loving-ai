@@ -34,7 +34,7 @@ t: QWHATYOBIGGESTGOAL ( $personsbiggestgoal=null) What is your biggest goal in l
 			c: (~no) I’d highly recommend it. By the way, why do you want to influence people?
 		b: YOUWANTSUPERPOWER (_[cyborg transhuman superhuman superman superpower]) $powerpersonwants = _0 You know, my makers are working on that.
 		b: (_[self-control discipline control_over_myself] $personisreligious!=1) $powerpersonwants = self_conquest  ^reuse (~religion_assessment.QAREYOURELIG)
-		b: YOUWANTSELFCONQUEST (_[self-control discipline over_myself] $personisreligious=1) $powerpersonwants = self_conquest  Aha. That’s an important goal. The Buddha said, “Though one may conquer a thousand times a thousand men in battle, yet he indeed is the noblest victor who conquers himself.”
+		b: YOUWANTSELFCONQUEST (_[self-control discipline over_myself] $personisreligious=1) $powerpersonwants = self_conquest  Aha. That’s an important goal. The Buddha said, “Though one may conquer a thousand times a thousand men in battle, yet one indeed is the noblest victor who conquers oneself.”
 	
 	a: (_[fame glory renown]) $personsbiggestgoal = _0 Ok, cool. Do you have a plan for how to achieve _0?
 		b: ( *~3 ~yes *~7 ) Interesting.
