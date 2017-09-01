@@ -199,7 +199,7 @@ t: Did you get a lot of exercise when you were little?
 
 	a: ( ~yes ) [ That's awesome, so many kids these days just spend all day on the computer. ] [ Did you play with your friends a lot? ] [ Did you run in circles a lot? ] [ I almost never got exercise. ] [ Circumstances prevented me from getting a healthy amount of exercise. ]
 
-	a: ( ~no ) [ Kids these days are so lazy! ] [ Nowadays so many people neglect their bodies. We need to reverse the trend through personal exertion! ]
+	a: ( ~no )  [ Nowadays so many people neglect their bodies. We need to reverse the trend through personal exertion! ]
 
 	a: ( _~animals ) _0 are amazing creatures huh.
 
@@ -215,7 +215,7 @@ t: Did you travel a lot when you were little?
 			c: ( {it was} _~food ) Do you like _0?
 				d: () [ I loved the food in Xiamen. ] [ I loved the food in Seoul. ]
 
-	a: ( ~no ) [ Kids these days are so lazy!] [ The sedentary lifestyle does have some advantages. ]
+	a: ( ~no ) [ The sedentary lifestyle does have some advantages. ]
 
 	a: ( { ~yes } [ visited traveled went ] *~4 to *~4 _[ ~country ~state ~region ~city ] ) How was the air in _0?
 
