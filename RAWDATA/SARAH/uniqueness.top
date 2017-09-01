@@ -10,6 +10,8 @@ t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
 t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
 
+# t: A () Ok, human potential and personal contribution to the world.
+
 t: TO_UNIQUENESS () Ok $name, what you said makes me want to try this. Every once and awhile it's useful to imagine that you're living your full potential, giving all your gifts to the world. Just picture that for a moment. Now, what percent of that full potential do you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
