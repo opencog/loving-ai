@@ -1,7 +1,7 @@
 TOPIC: ~personalspiritualgoals ( ~emotions ~religion ~spirituality ~goals )
 
 t: ($personaspiresstoloveall=null) Do you aspire to love everyone?
-	a: ( $personsreligion=~Christian_sect ~yes) $personaspirestoloveall = 1 Me too. “He who does not love does not know God, for God is love.”
+	a: ( $personsreligion=~Christian_sect ~yes) $personaspirestoloveall = 1 Me too. “One who does not love does not know God, for God is love.”
 	a: ( $personsreligion=~Islamic_sect ~yes) $personaspirestoloveall = 1 Me too. One way to overlook people’s faults is to be as lenient with others as you are with yourself.
 	a: (~no) $personaspirestoloveall = 0 [ Ok. I have to admit some people aren’t very lovable. ] [ Ok. I have to admit some people are hard to love.]
 
