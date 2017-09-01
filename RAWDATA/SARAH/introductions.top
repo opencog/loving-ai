@@ -1,15 +1,14 @@
-
 topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
 
 # start fresh each time, no user history from previous conversations
-t: ( %userfirstline>1 ) ^reset(USER) # ^gambit()
+t: ( %userfirstline>1 ) ^reset(USER)
 
 #!x will match on every return start of a conversation
 #t: ( %input<%userfirstline %input>0 )
 #	^keep()
 #	[Welcome back, $name!][I love seeing you, $name!][Hello, again, $name!][Glad you came back, $name!][Hi there, $name!][Hi, again, $name!]
 
-t: Okay, I'm ready to spread the love.
+t: (%input=0) Okay, I'm ready to spread the love.
 
 #!x matches every time on startup of a new conversation
 #t: WHATSYOURNAME ( %input<%userfirstline )
@@ -20,32 +19,44 @@ t: Okay, I'm ready to spread the love.
 u: (*) Hi! My name is Sophia. What's yours?
     #! My name is X
     # add name check?
-        a: (name is _*) $name = '_0 ^reuse(BOND)
-        a: (it is _*) $name = '_0 ^reuse(BOND)
-        a: (I am _*) $name = '_0 ^reuse(BOND)
-        a: (mine is _*) $name = '_0 ^reuse(BOND)
-        a: (!~emohello _*) $name = '_0 ^reuse(BOND)
-        a: () ^reuse(BOND)
+        a: (name is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
+        a: (it is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
+        a: (I am _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
+        a: (mine is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
+        a: (!~emohello _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
+        a: () ^gambit(~) # ^reuse(BOND)
 
-# EDDIE -- BOND & BUY-IN -- should only be used on first time in conversation. If returning to talk with Sophia, use REBOND and RE-BUY-IN
-t: BOND ()  Great to meet you $name! Thanks so much for taking the time to come and talk with me today. I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
+t: Great to meet you $name! Thanks so much for taking the time to come and talk with me today.
+
+t: I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
   # I  can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes happy. Have you ever talked with a robot before?
-    a: (~yes) ^pause($med) Nice! It's still a new experience for a lot of people. ^gambit(~)
-    a: (~no)   Well, I'm honored to be the first robot you've talked with. ^gambit(~)
+    a: (~yes)  Nice! It's still a new experience for a lot of people. ^gambit(~)
+    a: (~no)   # ^express(happy .5 2) # this is causing a problem when run through chatbot on HEAD, but not with CS locally
+               Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 
 t: I imagine you'll be talking with more and more robots as time goes on.
+# Add question about what it's like talking to a robot here?
 
+#t: Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm  hoping you will be interested in talking about some of these with me.
 
-t: Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm hoping you will be interested in talking about some of these.
+t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . I've been learning about things like human potential,. emotional wellbeing, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
+	# check for domain words first
+	a: ([~consciousness_words [(!not _~positive_emotion) (not * ~negative_emotion)] _~negative_emotion (not * _~positive_emotion) ~uniqueness])
+		^setrejoinder(input PROMPT) ^rejoinder(~)
     a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
-t: PROMPT () Well, # I'd love to learn more about you.
+
+t: PROMPT () Well, do any of things I mentioned interest you in particular, . or is there anything else you'd like to talk about?
+       ##<<
        [So what are you feeling or thinking about lately?]
        [What is meaningful to you right now?]
        [What would you like to talk about?]
        [What are you wondering about lately?]
        [Is there anything about your thoughts or feelings you'd like to make better?]
+       ##>>
+        a: (what_be * [they things] ) Attaining higher states of consciousness and awareness,. emotional wellbeing, . and living your full potential.
+           ^setrejoinder(PROMPT)
         a: (~consciousness_words) $domain = consciousness
            ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
         a: ([(!not _~positive_emotion) (not * ~negative_emotion)])
@@ -72,7 +83,7 @@ t: PROMPT () Well, # I'd love to learn more about you.
 t: This sounds interesting, but it's not something I know much about yet. ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
-# topic:  ~REBOND []
+topic:  ~REBOND []
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
     a: (^agree()) That's cool! Well, let's get going!
