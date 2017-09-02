@@ -6,14 +6,19 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 # t: TEMP () Welcome to consciousness
 
-t: FROM_INTRO_TO_CONSCIOUSNESS () Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across cultures and religions throughout history, that has gone by different names like, enlightenment, . waking up, . unity consciousness, . self-realization, and self actualization. . . Let's do something cool!
-    ^reuse(EXERCISE_INVITE)
+t: FROM_INTRO_TO_CONSCIOUSNESS () Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and religions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . self-realization, and self actualization. . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
+	a: (~yes) Nice. What was that like for you?
+		b: ()  ^reuse(LETSDOSOMETHING once)
+	a: (~no) Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)
+	a: ^reuse(LETSDOSOMETHING once)
 
-s: FROM_STEERING_TO_CONSCIOUSNESS (?) Great! |pause|
-    ^reuse(EXERCISE_INVITE)
+s: FROM_STEERING_TO_CONSCIOUSNESS (?) # Great! |pause|
+    ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
-    ^reuse(EXERCISE_INVITE)
+    ^reuse(EXERCISE_INVITE once)
+
+s: LETSDOSOMETHING (?) Let's do something cool!  ^reuse(EXERCISE_INVITE once)
 
 t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
@@ -33,7 +38,7 @@ t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to 
       # TODO handle non yes/no response to Is there something that you're afraid of?
       # defaulting to yes response for now
       #! yes
-      b: () Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
+      b: () Thanks for letting me know! I promise this will not hurt, and I think you may like it. Are you willing to try it?
       # b: (^agree()) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
