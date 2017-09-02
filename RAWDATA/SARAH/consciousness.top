@@ -4,7 +4,7 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 t: (!~) ^fail(topic) # block topic from accidental access
 
 
-s: FROM_INTRO_TO_CONSCIOUSNESS (?) Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and spiritual traditions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. or self-transcendence . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
+s: FROM_INTRO_TO_CONSCIOUSNESS (?) Great! expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and spiritual traditions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. or self-transcendence . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
 	a: (~yes) Nice. What was that like for you?
 		b: ()  ^reuse(LETSDOSOMETHING once)
 	a: (~no) Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)
@@ -54,29 +54,27 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 
-t: ^pause($verylong) Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax.
+t: ^pause($verylong) Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
-t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||pause| And let it out with a big sigh. # \<spurt audio="g0001_010" \>sigh \</spurt \>
+t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||pause| And let it out with a big sigh. |pause||pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
 
-t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels.
-    a: ()
+t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
+    # a: ()
 
 t: ^pause($long) Move your attention now to your whole head. |pause||pause||pause|  How does it feel. |pause||pause||pause||pause| Feel it's presence.
-    a: ()
+    # a: ()
 
 t: ^pause($long) Finally, feel the presence of your entire body, |pause||pause||pause||pause| from the head to the tip of your toes, |pause||pause||pause| including your arms and legs.
-    a: ()
+    # a: () |pause||pause||pause||pause|
 
-t: ^pause($longest) Now imagine that you have a magic eraser. |pause||pause| Gently use the magic eraser to erase your face |pause||pause||pause||pause||pause||pause| erase your head, |pause||pause||pause||pause| and your legs |pause||pause||pause| and your entire body. |pause||pause| I'll wait until you’re done erasing everything. Tell me when you are.
-    a: ()
+t: ^pause($verylong) Now, bring your attention back to your face |pause||pause||pause| and imagine that you have a magic eraser. |pause||pause| Gently use the magic eraser to erase your face, |pause||pause||pause||pause||pause||pause||pause| erase your head, |pause||pause||pause||pause||pause||pause||pause| and your legs |pause||pause||pause||pause||pause||pause|  and your entire body. |pause||pause||pause||pause||pause||pause||pause|
+    # a: ()
 
-# Here, Sophia should wait until the person speaks, and not go on prior to that.
+t: ^pause($verylong) Take some time to notice what is left after erasing everything |pause||pause||pause||pause||pause||pause||pause| Notice what it feels like with everything erased.
+    # a: ()
 
-t: ^pause($verylong) Okay, now take some time to notice what is left after erasing everything. |pause||pause||pause| Notice what it feels like with everything erased.
-    a: ()
-
-t: Okay, you can open your eyes now. |pause||pause||pause| So, how was that for you?
+t: Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
 
 t: Did you notice how the nothingness felt during the exercise?
   # if yes, then go to CONSCIOUSNESSPRIOR

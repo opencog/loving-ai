@@ -1,4 +1,3 @@
-
 # this function is executed once for every new user chatting with harry
 outputmacro: harry()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
@@ -17,6 +16,7 @@ $med = 10000
 $medlong = 15000
 $long = 20000
 $verylong = 30000
+$quitelong = 40000
 $superlong = 60000
 $longest = 120000
 

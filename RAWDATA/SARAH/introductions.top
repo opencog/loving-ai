@@ -38,8 +38,6 @@ t: I know how busy people can be these days. So I really appreciate it. |pause| 
 t: I imagine you'll be talking with more and more robots as time goes on.
 # Add question about what it's like talking to a robot here?
 
-# t: Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm  hoping you'll be interested in talking about some of these with me.
-
 t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
 	# check for domain words first
 	# a: ([~consciousness_words [(!not _~positive_emotion) (not * ~negative_emotion)] _~negative_emotion (not * _~positive_emotion) ~uniqueness])
@@ -76,7 +74,7 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
         a: (~emotions2) $domain = emotions # this is at the bottom since ~emotions2 catches things widely
            Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
-        a: (^agree()) Great. ^reuse(PROMPT)
+        # a: (^agree()) Great. ^reuse(PROMPT)
         # a: () That sounds interesting, but it's not something I know much about. ^goto(~CONVERSATION_STEERING)
         # a: () ^addTopic(~conversation_steering)
         # a: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
