@@ -1,18 +1,16 @@
-concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory" "spirituality" "meditation" "meditate" "spiritual practice" "one with the universe")
+concept: ~consciousness_words (awareness universe "repeating numbers" "waking up" "wake up" awoke "dark night" "feel lost" consciousness experience mindfulness "unity experience" nonduality God "ultimate reality" "simulation theory" "spirituality" "meditation" "meditate" "spiritual practice" "one with the universe" "self-transcendence")
 
 topic: ~CONSCIOUSNESS [~consciousness_words]
+t: (!~) ^fail(topic) # block topic from accidental access
 
-# This is for dev purposes, workaround needed to reset the rejoinder placeholder
-# variable when manually jumping here from another topic.
-# t: TEMP () Welcome to consciousness
 
-t: FROM_INTRO_TO_CONSCIOUSNESS () Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and religions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
+s: FROM_INTRO_TO_CONSCIOUSNESS (?) Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and spiritual traditions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. or self-transcendence . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
 	a: (~yes) Nice. What was that like for you?
 		b: ()  ^reuse(LETSDOSOMETHING once)
 	a: (~no) Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)
-	a: ^reuse(LETSDOSOMETHING once)
+	a: () ^reuse(LETSDOSOMETHING once)
 
-s: FROM_STEERING_TO_CONSCIOUSNESS (?) # Great! |pause|
+s: FROM_STEERING_TO_CONSCIOUSNESS (?)
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
@@ -22,9 +20,6 @@ s: LETSDOSOMETHING (?) Let's do something cool!  ^reuse(EXERCISE_INVITE once)
 
 t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
-    #! great
-    #! sure
-    #! why not
     #! sounds wonderful
     #! i'm ready
     a: READY (^ready())
@@ -142,7 +137,7 @@ t: Do you notice how you felt this time?
 
 
 topic: ~CONSCIOUSNESSPRIOR []
-t: ($blocking !~) ^fail(topic) # block topic from accidental access
+t: (!~) ^fail(topic) # block topic from accidental access
 
 s: YOUDIDIT (?) So you just experienced awareness! Isn't it cool?
 # wait for response

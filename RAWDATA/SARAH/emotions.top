@@ -200,6 +200,8 @@ s: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Would yo
 # TODO use NEEDS_SUPPORT if either the keywords, video or voice feeds show signs of negative emotion in the user
 # NEEDS_SUPPORT
 topic: ~NEEDS_SUPPORT []
+t: (!~) ^fail(topic) # block topic from accidental access
+
 
 t: [Looks like you need some support. What are you feeling now?] [I'm right here. Can you say more about how you're feeling?]
    # (*) Pause until they speak

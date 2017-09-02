@@ -6,13 +6,16 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: FROM_INTRODUCTION_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
-t: FROM_OTHER_TOPIC_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
-t: FROM_STEERING_TO_UNIQUENESS () ^reuse(TO_UNIQUENESS once)
+t: FROM_INTRODUCTION_TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+	^reuse(TO_UNIQUENESS once)
+t: FROM_OTHER_TOPIC_TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+	^reuse(TO_UNIQUENESS once)
+t: FROM_STEERING_TO_UNIQUENESS () Great! Human potential and personal contribution to the world. . .
+	^reuse(TO_UNIQUENESS once)
 
 # t: A () Ok, human potential and personal contribution to the world.
 
-t: TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . . Ok $name, le'ts try something. . Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . Take a moment and do that now. . You can close your eyes if you want. . . Just picture that for a moment. . . . . Now, . what percent of that full potential do you feel you are currently living?
+t: TO_UNIQUENESS () Ok $name, le'ts try something. . Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . Take a moment and do that now. . You can close your eyes if you would like. . . Take a moment to relax. . . . Maybe take a a nice . deep . relaxing breath . . . And just picture that you're living your full potential. . . . . Imagine what that would be like? . . . . What you are doing . . . who you are with. . .  Now, . plesae tell me, . what would you say is the percent of that full potential you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT > 0 AND $FULLPOT < 1) { $FULLPOT = $FULLPOT * 100 }
@@ -43,9 +46,7 @@ s: IM_AWARE (?)
 
 
 topic: ~SENSEOFPURPOSE []
-# Turning off entry block for now. e.g., maybe we want to return here if someone
-# wondered away in previous uniqueness conversation, or after being directed to consciousness above.
-# t: (!~) ^fail(topic)
+t: (!~) ^fail(topic)
 
 t: There's a bunch of scientific data showing that feeling a sense of purpose is really important to wellbeing. For instance, my purpose is to learn to love everyone, and I get excited whenever I think about that. Do you have any hints about what your purpose might be?
   # JULIA the way the above question is phrased, one might answer the question with they think their purpose is, rather than with yes/no
@@ -106,6 +107,8 @@ t: Having a sense of your purpose is great, and a big part of who you are. But l
     a: (*) Okay, no worries. ^steer_to_different_domain(uniqueness)
 
 # topic: ~INDEPTHPOTENTIAL
+t: (!~) ^fail(topic) # block topic from accidental access
+
 s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
     a: (*) You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. At first it can feel like something is wrong. In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. Would you like to do an exercise related to that?
         b: (^agree()) Great! ^goto(~EMOTIONS2)
