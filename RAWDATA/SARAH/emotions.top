@@ -6,7 +6,7 @@ concept: ~positive_emotion (!~negative_emotion ~feeling_happy ~feeling_attracted
 
 
 topic: ~EMOTIONS2 (~emotions ~feeling_words !aware !meaning)
-# TODO not sure if we want to block topic at this level from more random access
+# TODO not sure if we want to block topic at this level from more random access (emotion keywords do get matched somewhat broadly though)
 t: (!~) ^fail(topic) # block topic from accidental access
 
 # << Old emotions2 topic keywords, replacing with concepts
@@ -30,7 +30,7 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 # I think I resolved this. See what you think!
 #! I feel sad.
-t: FROM_INTRO_TO_NEG_EMOTIONS () So it sounds like you are generally noticing some negative feelings? Is that right?
+t: FROM_INTRO_TO_NEG_EMOTIONS () So it sounds like you've been having some negative feelings. Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$valence = neg
         b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
@@ -49,24 +49,26 @@ t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0
 	if (^match(~want * ~more * ~positive_emotion) or
 	    ^match(~want * feel * [~positive_emotion ~improve]))
 	    { So it sounds like you are wanting to have more positive feelings? }
-	else { So it sounds like you are generally noticing some positive feelings? }
+	else { So it sounds like you've been having some positive feelings? }
+	Is that right?
     a: (!not [~yes ~feeling_happy]) $valence = pos
-       That sounds pretty nice! Putting aside your thoughts about your feelings for a moment, what part of your body might feel the best right now?
-         b: (*) ^reuse(BE_PRESENT_WITH_FEELING)
+       Glad to hear you've been feeling well! When you are having these positive feelings, where in your body do you feel it?
+       b: (*) ^reuse(BE_PRESENT_WITH_FEELING)
     # JULIA, same as above, wondering what else we can do here. E.g., response "I've just been overjoyed all the time" would send them to different domain
      # Okay, good point -- what about "I get the sense it would serve you to magnify your positive feelings, do you want to try?" then if yes go to SUPPORT_FEELING_POS and if no go to another domain
  	a: (*) Ok. Sorry, I think I got that wrong. ^steer_to_different_domain(emotions)
 
-# FROM_STEERING_TO_EMOTIONS
-# could use s: xxx (?), but then loose potential use as a gambit
-s: FROM_STEERING_TO_EMOTIONS (?) So how is your mood lately? If you check in for a moment and ask yourself right now, how are you feeling?
+
+s: FROM_STEERING_TO_EMOTIONS (?) Great. . So, first I'd like to ask, how is your mood lately? . Take a moment and ask yourself, How have I been feeling?
+# removing conflicting questioning, how is your mood lately and how are you feeling right now.
+# If you take a moment and check in, and ask yourself right now, how am I feeling?
 	a: ([(!not _~positive_emotion) (not * ~negative_emotion)]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	a: ([_~negative_emotion (not * ~positive_emotion)]) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
-	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
+	a: (*) ^reuse(BE_PRESENT_WITH_FEELING once)
 
 s: BE_PRESENT_WITH_FEELING (?)
-   ^pause($medlong) Okay, thank you for telling me. I have learned it is a good idea to be present with your feelings, and it can help your whole body feel great. Let's do that for a moment.
+   ^pause($medlong) I have learned it is a good idea to be present with your feelings, and it can help your whole body feel great. Let's do that for a moment.
            	# pause for 10 seconds, then go to SUPPORT_FEELING_POS
    			a: (*) ^goto(~SUPPORT_FEELING)
 

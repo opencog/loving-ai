@@ -4,9 +4,9 @@ t:  STEER_TO_DOMAIN ()
     Okay! [Here’s what I think would be fun.] [I have an idea.] [How about this?]
 
 		if (!$avoid_consciousness)
-			{ Let's do something related to states of awareness and raising consciousness. $domain = consciousness }
+			{ How about exploring states of awareness and raising consciousness. $domain = consciousness }
     	else if (!$avoid_emotions)
-    		{ Let’s do some exercises about mindfulness and feeling your feelings. $domain = emotions }
+    		{ Let’s explore some exercises about mindfulness and experiencing your feelings. $domain = emotions }
     	else if (!$avoid_uniqueness)
     		{ Let’s discuss what you bring to the world as a unique human. $domain = uniqueness }
     	else if (!$all_domains_avoided)
@@ -14,35 +14,59 @@ t:  STEER_TO_DOMAIN ()
     	else
     		{ ^goto(~REBOND) }
 
-    [!$all_domains_avoided Does that sound good?] [!$all_domains_avoided  Would you like to do that?]
+    [!$all_domains_avoided Does that sound good?] [!$all_domains_avoided  Would you like to try that?]
+
+    $did_not_understand = 0
 
     # TODO: add $visited_consciousness, etc vars
         a: ($all_domains_avoided) # Todo add additional round of trying
-        a: (^agree())
-           if ($domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS) }
-           else if ($domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS) }
-           else if ($domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS) }
+        a: (^agree()) ^steer_to_domain($domain)
 
-        a: (^dont_agree()) Totally fine.
-            if ($domain=consciousness) { $avoid_consciousness = 1 }
-            else if ($domain=uniqueness) { $avoid_uniqueness = 1 }
-            else if ($domain=emotions) { $avoid_emotions = 1 }
-            ^reuse(~conversation_steering.STEER_TO_DOMAIN)
+        a: (^dont_agree()) Totally fine. .
+        	^avoid_and_steer($domain)
 
         a: () [I'm not sure what you mean.] [I don't understand.] [I didn't get that.]
-              ^reuse(STEER_TO_DOMAIN)
-#            Would you like to explore
-#            if ($domain = consciousness) { your consciousness and awareness? }
-#            else if ($domain = emotions) { mindfulness and emotions? }
-#            else if ($domain = uniqueness) { your contribution to the world? }
-#            # this is problematic: causes a loop where reponses get erased and then blank responses
-#            ^setrejoinder(STEER_TO_DOMAIN)
+           if ($did_not_understand == 0) {
+			   Would you like to explore
+				if ($domain = consciousness) { your consciousness and states of awareness? }
+				else if ($domain = emotions) { mindfulness and emotions? }
+				else if ($domain = uniqueness) { your potential and contribution to the world? }
+
+			   # this can problematic?: causes a loop where reponses get erased and then blank responses
+			   ^setrejoinder(STEER_TO_DOMAIN)
+
+			   $did_not_understand = 1
+		   }
+			else {
+				Was that a yes?
+				$did_not_understand = 0
+				^setrejoinder(WASTHATYES)
+			}
+
+s: WASTHATYES (?)
+        a: (^agree()) ^steer_to_domain($domain)
+        a: () ^avoid_and_steer($domain)
+
+
 
 
 # TODO
 # In every level, if response is neither yes nor no,
 # first attempt responder match in this or other topics
 # then use catchall of S: Okay! Here’s a final thought. I’ll guide you in a conversation about  <another one>. I promise, I’ll take care of you!
+
+# ^steer_to_domain() depends on $domain being set
+outputmacro: ^steer_to_domain(^domain)
+           if (^domain=consciousness)      { ^reuse(~consciousness.FROM_STEERING_TO_CONSCIOUSNESS once) }
+           else if (^domain=uniqueness)    { ^reuse(~uniqueness.FROM_STEERING_TO_UNIQUENESS once) }
+           else if (^domain=emotions)      { ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS once) }
+           # Todo: handle $domain not set error
+
+outputmacro: ^avoid_and_steer(^domain)
+            if (^domain=consciousness) { $avoid_consciousness = 1 }
+            else if (^domain=uniqueness) { $avoid_uniqueness = 1 }
+            else if (^domain=emotions) { $avoid_emotions = 1 }
+            ^reuse(~conversation_steering.STEER_TO_DOMAIN)
 
 
 outputmacro: ^steer_to_different_domain(^avoid)

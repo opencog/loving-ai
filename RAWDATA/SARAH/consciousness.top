@@ -6,7 +6,7 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 # variable when manually jumping here from another topic.
 # t: TEMP () Welcome to consciousness
 
-t: FROM_INTRO_TO_CONSCIOUSNESS () Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and religions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . self-realization, and self actualization. . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
+t: FROM_INTRO_TO_CONSCIOUSNESS () Great, expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and religions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
 	a: (~yes) Nice. What was that like for you?
 		b: ()  ^reuse(LETSDOSOMETHING once)
 	a: (~no) Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)

@@ -40,7 +40,7 @@ t: I imagine you'll be talking with more and more robots as time goes on.
 
 # t: Well, I really want to learn about you! I've learned about human consciousness, emotions, and human potential from experts all over the world. I'm  hoping you'll be interested in talking about some of these with me.
 
-t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . I've been learning about things like human potential,. emotional wellbeing, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
+t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
 	# check for domain words first
 	# a: ([~consciousness_words [(!not _~positive_emotion) (not * ~negative_emotion)] _~negative_emotion (not * _~positive_emotion) ~uniqueness])
 	# removing the emotion domain keywords because they are being caught too broadly here
@@ -74,7 +74,7 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
         a: (~dontknow) Well, I can offer some suggestions. There are a few things I really enjoy talking about with people.
             ^goto(~CONVERSATION_STEERING)
         a: (~emotions2) $domain = emotions # this is at the bottom since ~emotions2 catches things widely
-           What you said makes me think perhaps talking about emotions would be good.
+           Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
         a: (^agree()) Great. ^reuse(PROMPT)
         # a: () That sounds interesting, but it's not something I know much about. ^goto(~CONVERSATION_STEERING)
@@ -84,7 +84,7 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
         # a: () : This sounds interesting, but it's not something I know much about yet.
         # ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
-t: This sounds interesting, but it's not something I know much about yet. ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+t: This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []
