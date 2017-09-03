@@ -1,5 +1,4 @@
 # underlying conversation system
-../RAWDATA/SARAH/CONTROL
 ../RAWDATA/SARAH/
 ../RAWDATA/SARAH/TOPICS/
 
