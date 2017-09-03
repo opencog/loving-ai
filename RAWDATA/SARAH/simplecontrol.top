@@ -62,6 +62,7 @@ u: ( %input<%userfirstline)
 u: (< shut up >) $shutup = 1
 u: (< talk  >) $shutup = null
 
+u: (\[ callback \])
 # u: (\[ callback \]) Callback seen.
 u: (\[ loopback \]) Loopback seen.
 u: (\[ alarm \]) Alarm seen.
