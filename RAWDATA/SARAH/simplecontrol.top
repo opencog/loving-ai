@@ -31,11 +31,12 @@ table: defaultbot (^name)
 DATA:
 harry
 
-# topic: ~special_requests system ()
+topic: ~special_requests system ()
+
+u: (Sophia *~2 [time ready] *~2 [end finish done] ) ^goto(~ending)
 
 
 topic: ~control system ()
-
 
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) Okay, I'm resetting the user. ^reset(USER)
@@ -62,7 +63,7 @@ u: ( %input<%userfirstline)
 u: (< shut up >) $shutup = 1
 u: (< talk  >) $shutup = null
 
-u: ( \[ callback \])
+# u: ( \[ callback \])
 # u: (\[ callback \]) Callback seen.
 u: (\[ loopback \]) Loopback seen.
 u: (\[ alarm \]) Alarm seen.
@@ -73,6 +74,7 @@ u: (< alarm test) \[ alarm=5000 \] Alarm requested.
 u: () # main per-sentence processing
 
 	# ^respond(~special_requests)
+	if (%response == 0) { nofail(TOPIC ^respond(~special_requests) }
 
 	$$currenttopic = %topic		# get the current topic at start of volley
 

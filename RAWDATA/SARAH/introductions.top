@@ -109,9 +109,11 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 
 # u: (~emotions) $domain = emotions ^gambit(~emotions2)
 # u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
-
-# U: feelings, consciousness, uniqueness -> or steering.
-
-
 #! what is your name 
 # u: ( what is your name ) My name is Sarah.
+
+
+topic: ~ENDING ()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
