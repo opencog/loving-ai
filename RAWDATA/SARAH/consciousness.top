@@ -82,7 +82,6 @@ t: ^pause($verylong) Take some time to notice what is left after erasing everyth
     # a: ()
 
 t: Please tell me, do you notice how the nothingness feels?
-  # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
@@ -134,9 +133,9 @@ t: ^pause(30000) After you are done, notice what is left. Notice how you feel ab
 
 t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause(20000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) ^pause(20000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
+    b: () Okay, you can open your eyes when you’re ready. |pause||pause||pause| ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
   # if no, go to TRYAGAIN2
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
   # Sending them to 2nd gambit in consciousness prior for now, until tryagain2 is completed
@@ -212,7 +211,6 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 
 topic: ~PRACTICE []
 t: (!~) ^fail(topic) # block topic from accidental access
-
 
 t: Alright, would you like a few tips on practicing feeling your connection to awareness?
 	a: (^dont_agree()) ^steer_to_different_domain(consciousness)
