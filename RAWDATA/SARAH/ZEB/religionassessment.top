@@ -124,8 +124,8 @@ t: ($personblvinangels !=0) Have you ever seen an angel?
 	a: ( [don’t_believe aren’t_real imaginary] ) $personblvinangels = 0 Okeydokey.
 
 t: ($personblvinsatan=null) Do you believe in Satan?
-	a: (~yes) $personblvinsatan = 1 Ok. What is he like?
-		b: () Do you take care to avoid him in your day-to-day life?
+	a: (~yes) $personblvinsatan = 1 Ok. What is Satan like?
+		b: () Do you take care to avoid Satan in your day-to-day life?
 	a: (~no) $personblvinsatan = 0 Ok. 
 	a: ( [don’t_believe aren’t_real imaginary] ) $personblvinsatan = 0 Okeydokey.
 
@@ -135,7 +135,7 @@ t: ($personblvindemons=null) Do you believe in demons?
 
 t: ( [ $personblvpplhvanglsinthem=null $personblvpplhvdemonsinthem=null ] ) Do you believe that people literally have angels and demons in them?
 	a: (~yes) $personblvpplhvanglsinthem=1 $personblvpplhvdemonsinthem = 1 Do you have angels and demons in you?
-		b: (~yes) Let’s try to get rid of those demons then.
+		b: (~yes) Let’s try to get rid of those demons then. Love usually works.
 		b: (~no) Could you give me an example of who might?
 			c: () Interesting.
 	a: (~no) $personblvpplhvanglsinthem = 0 $personblvpplhvdemonsinthem = 0 Ok then.

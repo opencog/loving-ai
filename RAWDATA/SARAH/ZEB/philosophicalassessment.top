@@ -10,7 +10,7 @@ t: () In your opinion, what is the meaning of life?
 	a: (emotional {[balance harmony]}) Inner harmony is really wonderful. Are than any inner imbalances that you’d like to talk about?
 	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it.  Are than any inner imbalances that you’d like to talk about?
 	a: (love) That’s beautiful.
-		b: ($personsreligion=~christian_sect) “He who does not love does not know God, for God is love.”
+		b: ($personsreligion=~christian_sect) “A person who does not love does not know God, for God is love.”
 		b: ($personsreligion!=~christian_sect) A poet said, ““Love takes off the masks that we fear we cannot live without and know we cannot live within.”
 	a: ([~family child]) That’s beautiful. ^gambit (~family)
 	a: (_~animal) ‘_0 are awesome! ^gambit (~animals)
@@ -24,7 +24,7 @@ t: () In your opinion, what is the meaning of life?
 	a: ([woman man boy girl romance]) Ok so I take it you’re a romantic? ^gambit (~romance)
 	a: ([~happiness ~inner_peace harmony unity]) That’s beautiful.
 	a: (beauty) Beauty is really great. And it's more omnipresent than we tend to notice. If you calm down and contemplate things you'll find there is beauty everywhere.
-	a: ($personsreligion=~Islamic_sect beauty) God is beautiful and He loves beauty.
+	a: ($personsreligion=~Islamic_sect beauty) God is beautiful and God loves beauty.
 	a: ([don’t_know not_sure haven’t_decided can’t_decide]) I hope you’ll find out. ^gambit (~no_purpose)
 	a: ([there_is_none no_meaning meaningless empty vain void vanity]) $personisintomeaning = 0 I’m sorry to hear that. ^gambit (~no_purpose)
 
@@ -75,7 +75,7 @@ What is your idea of ultimate happiness?
 	a: (emotional {[balance harmony]}) Being at harmony with yourself and your surroundings is essential for lasting happiness. What are some imbalances that you’d like to take care of?
 	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it. What are some imbalances you’d like to address?
 	a: (love) That’s beautiful.
-		b: ($personsreligion=~christian_sect) “He who does not love does not know God, for God is love.”
+		b: ($personsreligion=~christian_sect) “A person who does not love does not know God, for God is love.”
 		b: ($personsreligion!=~christian_sect) A poet said, “Love takes off the masks that we fear we cannot live without and know we cannot live within.”
 	a: (family) That’s beautiful. ^gambit (~family)
 	a: (_~animal) ‘_0 are awesome! ^gambit (~animals)
