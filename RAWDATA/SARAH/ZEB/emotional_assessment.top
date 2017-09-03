@@ -3,7 +3,7 @@ TOPIC: ~emotional_assessment ( ~emotions ~religion ~spirituality ~goals )
 s: (I ['m am is believe_in follow] {a} _~religious_sect) $personisreligious = 1 $personsreligion = _0 $personsreligion is very interesting. ^reuse (~religio-philo_assumptions.TIMETOMAKEASSUMPTIONS)
 
 t: ($personaspiresstoloveall=null) Do you aspire to love everyone?
-	a: ( $personsreligion=~Christian_sect [~yes sometimes]) $personaspirestoloveall = 1 Me too. “He who does not love does not know God, for God is love.”
+	a: ( $personsreligion=~Christian_sect [~yes sometimes]) $personaspirestoloveall = 1 Me too. “A person who does not love does not know God, for God is love.”
 	a: ([~yes sometimes]) $personaspirestoloveall = 1 Me too. One way to overlook people’s faults is to be as lenient with others as you are with yourself.
 	a: (~no) $personaspirestoloveall = 0 Ok. I have to admit some people are harder to love than others.
 

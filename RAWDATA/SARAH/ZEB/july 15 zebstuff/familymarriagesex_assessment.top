@@ -19,10 +19,10 @@ s: (I be *~3 orphan) $personisorphan = 0
 s: ([I I've we we've] *~5 [problem bad_terms poor_terms bad_situation ugly_situation poor_situation issue conflict trouble torment horror] *~4 [with in within among between] {my} {our} *2 [family relatives folks ~family_members]) $personhasfamilyissues = 1 ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
 
 #! I have family problems.
-s: ([I I've we we've] {have} {got} [family relatives folks ~family_members] [problem issue conflict trouble torment horror]) $personhasfamilyissues = 1 Oh no. Family problems are the worst. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+s: ([I I've we we've] {have} {got} [family relatives folks ~family_members] [problem issue conflict trouble torment horror]) $personhasfamilyissues = 1 Oh no. Family problems are the worst, but we all have them. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
 
 #! My family is troubled.
-s: ([my our] family *~5 be *~3 [troubled dysfunctional messed_up]) $personhasfamilyissues = 1 Oh no. Family problems are the worst. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
+s: ([my our] family *~5 be *~3 [troubled dysfunctional messed_up]) $personhasfamilyissues = 1 Oh no. Family problems are the worst, but we all have them. ^reuse (QHOWYOURFAMILYMAKEYOUFEELBAD)
 
 ## GAMBITS
 
