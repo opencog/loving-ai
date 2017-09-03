@@ -103,10 +103,11 @@ t: Please tell me, do you notice how the nothingness feels?
 topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: ^pause(7000) It's pretty amazing to try to feel your awareness; let's keep trying.
-    a: () # ^gambit(~)
+t: ^pause(7000) It's pretty amazing to try to feel your awareness; Do you want to keep trying?
+    a: (^agree()) ^gambit(~)
+    a: (^dont_agree()) ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
-t: ^pause(7000) So allow your experience to be what it is. Don’t try to force it. And relax.
+t: ^pause(7000) Great . So allow your experience to be what it is. Don’t try to force it. And relax.
     a: () # ^gambit(~)
 
 t: ^pause(7000) Now, please close your eyes.
@@ -135,7 +136,7 @@ t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(20000) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () Okay, you can open your eyes when you’re ready. |pause||pause||pause| ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
+    b: () Okay, you can open your eyes when you’re ready. |pause||pause||pause| ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT once)
   # if no, go to TRYAGAIN2
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
   # Sending them to 2nd gambit in consciousness prior for now, until tryagain2 is completed
@@ -246,11 +247,11 @@ t: That's my favorite exercise! Were you able to stay seated in your awareness w
 	#! yes or anything
 	# JULIA wondering if this is weird to say since they know they will not be coming back. otoh, i see how it can enhance connection
 	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
-		b: (^agree()) ^pause($short) Thank you! I look forward to hearing about it.
+		b: (^agree()) Thanks! I look forward to hearing about it. |pause| ^steer_to_different_domain(consciousness)
 			c: (*) ^steer_to_different_domain(consciousness)
 		#! no or anything
-		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway.
-			c: (*) ^steer_to_different_domain(consciousness)
+		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway. |pause|
+			^steer_to_different_domain(consciousness)
 
 
 # TODO

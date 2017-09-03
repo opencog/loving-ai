@@ -1,6 +1,6 @@
 TOPIC: ~belief_interpersonal ( ~emotions ~religion ~spirituality ~relationships ~family )
 
-t: ( $personisreligious=1 $personsreligion !=~exclusivistic_religious_group $personwantstoconvertall=null ) Do you wish everyone shared your religious beliefs?
+t: ( $personisreligious=1 $personsreligion!=~exclusivistic_religious_group $personwantstoconvertall=null ) Do you wish everyone shared your religious beliefs?
 	a: ( [of_course ~yes duh indeed] ) $personwantstoconvertall = 1 That’s understandable.
 	a: ( ~no ) $personwantstoconvertall = 0 Ok. Tell me why.
 		b: ( [all_good all_fine okay_with_other to_each_his_own] ) That’s a fine attitude.
