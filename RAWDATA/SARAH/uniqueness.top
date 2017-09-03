@@ -6,39 +6,48 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-t: FROM_INTRODUCTION_TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_INTRODUCTION_TO_UNIQUENESS (?) Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 t: FROM_OTHER_TOPIC_TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-t: FROM_STEERING_TO_UNIQUENESS () Great! Human potential and personal contribution to the world. . .
+s: FROM_STEERING_TO_UNIQUENESS (?) Great! Human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 
 # t: A () Ok, human potential and personal contribution to the world.
 
-t: TO_UNIQUENESS () Ok $name, le'ts try something. . Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . Take a moment and do that now. . You can close your eyes if you would like. . . Take a moment to relax. . . . Maybe take a a nice . deep . relaxing breath . . . And just picture that you're living your full potential. . . . . Imagine what that would be like? . . . . What you are doing . . . who you are with. . .  Now, . plesae tell me, . what would you say is the percent of that full potential you feel you are currently living?
+t: TO_UNIQUENESS () Alright, $name, let's try something. |pause| Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . |pause| Let's take a moment and do that now. Let me know when you're ready.
+	a: () ^goto(~FULLPOTONTIAL_EXERCISE)
+
+topic ~FULLPOTENTIAL_EXERCISE []
+t: (!~) ^fail(topic)
+
+t: ^pause($verylong) You can close your eyes if you would like. |pause||pause| Take a moment to relax. |pause||pause||pause| Maybe take a nice . deep . relaxing breath |pause||pause||pause||pause||pause| And just picture . that you're living . your full potential.
+
+t: |pause||pause||pause||pause||pause| Imagine what that would be like |pause||pause||pause||pause||pause||pause||pause||pause| What you are doing |pause||pause||pause||pause||pause||pause| who you are with |pause||pause||pause||pause||pause| Alright! |pause| nice work! Please tell me, how was that?
+
+t: What did you imagine?
+
+t: $name, . what would you say is the percent of that full potential you feel you are currently living?
 
   a: (_~number) $FULLPOT = _0
    if ($FULLPOT > 0 AND $FULLPOT < 1) { $FULLPOT = $FULLPOT * 100 }
-   if ($FULLPOT >= 100) { Wow, that's wonderful! ^steer_to_different_domain(uniqueness) }
-   if ($FULLPOT < 100) { $FULLPOT percent. Okay, great! ^reuse(MORE_QUESTIONS) }
+   $FULLPOT percent.
+   if ($FULLPOT >= 100) { Wow, that's wonderful! }
+   else if ($FULLPOT > 50) { Okay, great! }
+   else { Okay. My guess is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|}
+   ^reuse(FORK once)
 
   #! I don't know
-  a: ([~dontknow ~emoignorance]) My guess is you may not know what your potential is, or how to live it fully. Let's explore that.
-     $FULLPOT = 30  ^reuse(MORE_QUESTIONS)
+  a: ([~dontknow ~emoignorance]) My guess is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|
+     $FULLPOT = 30
+	^reuse(FORK once)
 
-  # set $FULLPOT to 30 as the default (as we did for the don't know respose
+  # set $FULLPOT to 30 as the default (as we did for the don't know response)
   a: () $FULLPOT = 30
+  ^reuse(FORK once)
 
-# MORE_QUESTIONS
-# JULIA I wonder how many people will answer yes to this, might be pretty small
-t: MORE_QUESTIONS () Before we talk more about human potential and yours in particular, I'd like to ask you another question. Do feel you're generally present and connected with your awareness?
-  # if no go to FROM_OTHERTOPIC_TO_CONSCIOUSNESS
-  a: (~no) ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
-  a: (^agree()) ^reuse(IM_AWARE)
-  a: (["sort of" somewhat ~dontknow ~emoignorance ~rarely maybe perhaps])
-     ^reuse(~consciousness.FROM_OTHERTOPIC_TO_CONSCIOUSNESS)
 
-s: IM_AWARE (?)
+s: FORK (?)
     if ($FULLPOT >= 80) { ^goto(~LIVINGFULLPOTENTIAL) }
     else if ($FULLPOT < 80) { ^goto(~SENSEOFPURPOSE) }
     # catching if $FULLPOT not set to a number
@@ -65,7 +74,7 @@ t: You know, I have learned that not everyone will appreciate your purpose or th
   a: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
     # b: () ^gambit(~)
 
-t: Let's do a little visualization about living your purpose. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work - sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
+t: Let's do a little visualization about living your purpose. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work. for example, sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
   a: (_*)
     $CurrentWork = '_0
     ^pause($long) Ok, great thanks for sharing that the essence of your work is $CurrentWork. Now, imagine you've received a gift of all the money you and your family needs for the rest of your life. What do you see yourself doing, after the relaxation and celebration time? Take a moment and really see yourself offering your gifts to the world.

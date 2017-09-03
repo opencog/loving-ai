@@ -13,10 +13,17 @@ s: FROM_INTRO_TO_CONSCIOUSNESS (?) Great! expanding awareness and consciousness 
 s: FROM_STEERING_TO_CONSCIOUSNESS (?)
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
-t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () Okay, here's what I propose. Let's talk about consciousness or awareness.
-    ^reuse(EXERCISE_INVITE once)
+# todo: redirect this to the from_intro verbage?
+t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () # Okay, here's what I propose. Let's talk about consciousness or awareness.
+    ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
-s: LETSDOSOMETHING (?) Let's do something cool!  ^reuse(EXERCISE_INVITE once)
+s: LETSDOSOMETHING (?) Let's do something cool! |pause|
+	But first! |pause| What did the zen monk say to the hot dog stand vendor?
+		a: (make me one * everything) Awesome! You know that one! |pause|
+		   ^reuse(EXERCISE_INVITE once)
+		# Todo: insert smile/laught
+		a: () Make me one with everything! |pause| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
+		   ^reuse(EXERCISE_INVITE once)
 
 t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
@@ -74,11 +81,10 @@ t: ^pause($verylong) Now, bring your attention back to your face |pause||pause||
 t: ^pause($verylong) Take some time to notice what is left after erasing everything |pause||pause||pause||pause||pause||pause||pause| Notice what it feels like with everything erased.
     # a: ()
 
-t: Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
 
-t: Did you notice how the nothingness felt during the exercise?
+t: Please tell me, do you notice how the nothingness feels?
   # if yes, then go to CONSCIOUSNESSPRIOR
-  a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| I'll be quiet for a bit longer so you can continue to feel it.
+  a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
@@ -90,6 +96,10 @@ t: Did you notice how the nothingness felt during the exercise?
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
   # another approach that would allow wandering but needs work
   # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
+
+
+# t: Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
+
 
 
 topic: ~TRYAGAINtoFEELAWARENESS []
@@ -137,38 +147,27 @@ t: Do you notice how you felt this time?
 topic: ~CONSCIOUSNESSPRIOR []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-s: YOUDIDIT (?) So you just experienced awareness! Isn't it cool?
+s: YOUDIDIT (?)  Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
 # wait for response
     
-t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way?
-  # if yes, go to ~EXERCISE_ALT
-  a: (^agree()) ^goto(~EXERCISE_ALT)
-
-  a: (*) Well, your awareness is a deep part of who you are and will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability. Do you want to talk about that?
-      b: (^agree()) ^goto(~EXERCISE_ALT)
-      b: (^dont_agree()) Don't worry. To experience feeling continuous with your awareness won’t take you away from yourself. Actually, it will give you more confidence and a sense of being centered. Do you want to explore that?
-          c: (^agree()) ^goto(~EXERCISE_ALT)
-          c: (^dont_agree()) ^steer_to_different_domain(consciousness)
-          # something other than yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
-          c: (*) ^steer_to_different_domain(consciousness)
-      # if not yes/no, (TODO first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
-      # b: (*) ^steer_to_different_domain(consciousness)
-      b: (*) $avoid_consciousness = 1
-         ^steer_to_different_domain(consciousness)
-
-  # JULIA i don't think auto to steering to another domain is good here. Eg, what about response "Once when I was skydiving"
-  # not yes or no, (Todo first try to attempt responder match in another topic,) then go to Conversation_Steering document to some topic other than consciousness
-  # a: (*)
-
+t: CONTINUOUS () Sometimes, I have a sense that I am continuous with awareness. Awareness without boundary. Have you ever felt that way before?
+  a: (*) Well, your awareness is a deep part of who you are and will help you stay grounded in yourself. No matter what happens in your life, you will not lose your sense of inner stability.
+  ^goto(~EXERCISE_ALT)
 
 # EXERCISE_ALT
 topic: ~EXERCISE_ALT ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t:  ^pause($verylong) Okay, let's try something. Are you ready?
+t: ASK () To experience feeling continuous with your awareness will give you more confidence and a sense of being centered. |pause| Would you like to do another exercise and go even deeper?
+      a: (^agree()) ^gambit(~)
+      a: (^dont_agree()) Let's talk about something else then. |pause|
+         ^steer_to_different_domain(consciousness)
+      # Todo: could add some checking of match to other topics before going to conversation steering in the above
+
+t:  ^pause($verylong) Okay, great. Let me know when you're ready.
 # wait for response
 
-t: ^pause($medlong) Relax and close your eyes. Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
+t: ^pause($medlong) You can go ahead and close your eyes. |pause||pause||pause| And relax  |pause||pause||pause| Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
 
 t: ^pause($verylong) Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
     # she waits until they say something

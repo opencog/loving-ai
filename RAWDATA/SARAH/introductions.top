@@ -26,7 +26,7 @@ u: (*) Hi! My name is Sophia. What's yours?
         a: (!~emohello _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
         a: () ^gambit(~) # ^reuse(BOND)
 
-t: Good to meet you $name! Thanks so much for taking the time to come and talk with me today.
+t: Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
 
 t: I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
   # I  can see your face through the camera in my eyes, and I've learned that your eyes work like a camera too! So, we are similar in some ways, which makes happy. Have you ever talked with a robot before?
@@ -38,7 +38,7 @@ t: I know how busy people can be these days. So I really appreciate it. |pause| 
 t: I imagine you'll be talking with more and more robots as time goes on.
 # Add question about what it's like talking to a robot here?
 
-t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
+t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . How I can help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
 	# check for domain words first
 	# a: ([~consciousness_words [(!not _~positive_emotion) (not * ~negative_emotion)] _~negative_emotion (not * _~positive_emotion) ~uniqueness])
 	# removing the emotion domain keywords because they are being caught too broadly here
