@@ -139,7 +139,7 @@ t: ($personblvgodallseeing=null) Do you believe we are always being watched by G
 		b: (~no) $personblvgodomniscient = 0 That’s a novel theology.
 
 t: QXTIANLOVEDBYGOD ($personsreligion=~christian_sect ) Do you feel loved by God?
-	a: ([~yes ~no]) $personfeelslovedbygod = 1 It’s written in the Bible, “He who does not love does not know God, for God is love.”
+	a: ([~yes ~no]) $personfeelslovedbygod = 1 It’s written in the Bible, “A person who does not love does not know God, for God is love.”
 
 t: QNXTIANLOVEDBYGOD ($personismonotheist=1 $personsreligion!=~christian_sect ) Do you feel loved by God?
 	a: (~yes) $personfeelslovedbygod = 1 That’s wonderful.
@@ -152,7 +152,7 @@ t: QNXTIANLOVEDBYGOD ($personismonotheist=1 $personsreligion!=~christian_sect ) 
 t: QDOESGODLOVEALL ($personsreligion!=~christian_sect ) Do you believe God loves everyone?
 	a: (~yes) $personblvgodlovesall = 1 That’s wonderful.
 	a: (~no *) $personblvgodlovesall = 0 That’s wonderful.
-	a: ([not_I not_me not_love_me]) $personblvgodlovesall = 0 Why doesn't He love you? Something needs to be changed here. Don't lose hope.
+	a: ([not_I not_me not_love_me]) $personblvgodlovesall = 0 Why doesn't God love you? Something needs to be changed here. Don't lose hope.
 	a: (maybe) I’m not quite sure myself.
 
 t: ($personismonotheist=null) Do you believe that God is absolutely One?
@@ -183,10 +183,10 @@ t: ( $personblvgodmadeevil=null ) Do you believe that God is the creator of both
 		a: (~no) $personblvevilisillusion = 0 Ok.
 
 t: () Do you believe God is in everything?
-	a: (~yes) $personblvgodomnipres = 1 Does this make you feel close to Him?
+	a: (~yes) $personblvgodomnipres = 1 Does this make you feel close to God?
 		a: (~yes) That’s wonderful.
 		a: (~no) That’s a shame.
-	a: (~no) $personblvgodomnipres = 0 Is that because He is beyond space and time?
+	a: (~no) $personblvgodomnipres = 0 Is that because God is beyond space and time?
 		a: (~yes) I thought so!
 
 t: ( $personismonist=null $personispantheist=null ) Do you believe that in some sense everything is God?
