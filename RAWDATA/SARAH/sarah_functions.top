@@ -28,7 +28,9 @@ outputmacro: ^pause(^ms)
 # insert commands for triggering robot expressions
 outputmacro: ^express(^expression ^magnitude ^duration)
   # express: ^expression ^magnitude ^duration
-  ^preprint(\[ express=^expression magnitude=^magnitude duration=^duration \])
+  $command = \[ ^join(express= ^expression) ^join(magnitude= ^magnitude) ^join(duration= ^duration) \]
+  # $command
+  ^preprint($command)
 
 
 

@@ -36,7 +36,6 @@ harry
 
 topic: ~control system ()
 
-# u: (doit) This is a pause here. |pause| and another one for 5 seconds |pause:5| and one for 2 seconds |pause:2| and that's all.
 
 #! resetmenow to reset the conversational history of the user
 u: (< resetmenow >) Okay, I'm resetting the user. ^reset(USER)
@@ -47,7 +46,9 @@ u: (< jumpto _*)
 		a: (body) ^goto(~body_exercise)
 		a: () ^goto('_0)
 
-u: (doitnow) \[ will this come through \] blah blah blah ^keep() ^repeat()
+# u: (doit) \[ express=happy magnitude=5 duration=2 \] here it is ^keep() ^repeat()
+# u: (doitnow) \[ will this come through \] blah blah blah ^keep() ^repeat()
+# u: (doitalso) \[ will this come through \] also also also ^keep() ^repeat()
 
 # u: () %command
 # u: (%command *gambit*) %inputrejoinder = null Woohoo!!! ^retry (SENTENCE)

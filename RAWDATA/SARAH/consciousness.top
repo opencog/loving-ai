@@ -81,7 +81,6 @@ t: ^pause($verylong) Now, bring your attention back to your face |pause||pause||
 t: ^pause($verylong) Take some time to notice what is left after erasing everything |pause||pause||pause||pause||pause||pause||pause| Notice what it feels like with everything erased.
     # a: ()
 
-
 t: Please tell me, do you notice how the nothingness feels?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
@@ -167,25 +166,17 @@ t: ASK () To experience feeling continuous with your awareness will give you mor
 t:  ^pause($verylong) Okay, great. Let me know when you're ready.
 # wait for response
 
-t: ^pause($medlong) You can go ahead and close your eyes. |pause||pause||pause| And relax  |pause||pause||pause| Imagine that you are using the magic eraser to erase your body, and even your mind and feelings.
+t: ^pause($verylong) You can go ahead and close your eyes. |pause||pause||pause| And relax  |pause||pause||pause| Imagine that you are using the magic eraser . to erase your body, |pause||pause||pause| and even your mind and feelings.
 
-t: ^pause($verylong) Notice the presence of awareness. Notice when you start to feel a silence or a presence. Let me know when you do, I'll be silent until then.
+t: ^pause($superlong) Notice the presence of awareness. |pause||pause||pause| Notice when you start to feel a silence or a presence. |pause||pause||pause| Let me know when you do, I'll be silent until then.
     # she waits until they say something
     a: (*) ^gambit(~)
 
-t: ^pause(10000) Great. Now out loud or in your mind, say: “I am this.” Feel the truth of that statement.
-    a: (*) ^pause ($superlong) What does that feel like?
-        # wait for the person to say something, then move on
-        # JULIA for questions like this, especially in a closed-eye practice, it's quite possible the person won't say anything,
-        #      e.g., if it's interpretted as an "instruction" to notice how it's feeling rather than a question to be answered
-        #      anyway, as it's set up, it will work whether or not the person says something
-        b: (*) ^gambit(~)
+t: ^pause($superlong) Great. |pause||pause| Now out loud, or in your mind, say: |pause| I am this. |pause||pause||pause||pause| Feel the truth of that statement. |pause||pause||pause||pause| Please tell me, what does that feel like?
 
 t: Do you feel continuous with awareness?
-  a: (~no) ^pause($superlong) No problem! Now with your eyes closed, notice your face from the inside of your being. See if you can notice that your face is something you're aware of and also that you are the awareness of your face.
-    b: (*) Are you feeling that you are the awareness that registers your face?
-      # if no, go to PRACTICEatHOME.
-      c: (~no) ^goto(~PRACTICEatHOME)
+  a: (~no) ^pause($superlong) No problem. Now with your eyes closed, notice your face from the inside of your being. |pause| See if you can notice that your face is something you're aware of and also that you are the awareness of your face. |pause||pause||pause||pause| Are you feeling that you are the awareness that registers your face?
+      b: (~no) ^goto(~PRACTICEatHOME)
       # if yes or anything else, go to CONFIDENCE
       c: (*) ^goto(~CONFIDENCE)
   #! yes or anything else
