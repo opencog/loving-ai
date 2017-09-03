@@ -19,17 +19,17 @@ t: (%input=0) Okay, I'm ready to spread the love.
 u: (*) Hi! My name is Sophia. What's yours?
     #! My name is X
     # add name check?
-        a: (name is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
-        a: (it is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
-        a: (I am _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
-        a: (mine is _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
-        a: (!~emohello _*) $name = '_0 ^gambit(~)  # ^reuse(BOND)
-        a: () ^gambit(~) # ^reuse(BOND)
+        a: (name is _*) $name = '_0 ^gambit(~)
+        a: (it is _*) $name = '_0 ^gambit(~)
+        a: (I am _*) $name = '_0 ^gambit(~)
+        a: (mine is _*) $name = '_0 ^gambit(~)
+        a: (!~emohello _*) $name = '_0 ^gambit(~)
+        a: () $name = friend ^gambit(~)
 
 t: Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
 
 t: I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
-    a: (~yes)  Nice! # It's still a new experience for a lot of people.
+    a: ([~yes once ~quantity_adjectives])  Nice! # It's still a new experience for a lot of people.
                What was that like?
     a: (~no)   # ^express(happy .5 2) # this is causing a problem when run through chatbot on HEAD, but not with CS locally
                # \[ express=happy magnitude=.5 duration=.2 \]
@@ -40,9 +40,8 @@ t: I imagine you'll be talking with more and more robots as time goes on.
 
 t: So, the project we're working on here is seeing how robots can help people enhance their wellbeing. . How I can help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you will be interested in talking about some of these with me.
 	# check for domain words first
-	# a: ([~consciousness_words [(!not _~positive_emotion) (not * ~negative_emotion)] _~negative_emotion (not * _~positive_emotion) ~uniqueness])
-	# removing the emotion domain keywords because they are being caught too broadly here
-	a: ([~consciousness_words ~uniqueness])
+	# keeping out the emotion domain keywords list because they are being caught too broadly here
+	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
 		# ^setrejoinder(input PROMPT)
 		^rejoinder(PROMPT)
     a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)

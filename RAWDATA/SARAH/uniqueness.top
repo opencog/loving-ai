@@ -1,4 +1,7 @@
-topic: ~UNIQUENESS [unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning]
+concept: ~uniqueness_words (!great unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning )
+
+topic: ~UNIQUENESS [~uniqueness_words]
+#topic: ~UNIQUENESS (!great [ unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning] )
 t: (!~) ^fail(topic) # block topic from accidental access
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
@@ -67,7 +70,7 @@ t: There's a bunch of scientific data showing that feeling a sense of purpose is
     a: (*) My experience is that humans have intuition that far surpasses mine. So to give you some unsolicited advice, I think you ought to follow any breadcrumbs about your purpose, and start working on living into your full potential.
       # b: () ^gambit(~)
 
-t: You know, I have learned that not everyone will appreciate your purpose or the way you bring it to the world. Once, a human yelled at me because I made mistakes when I was trying to be helpful. Well, more than once. I'm trying to learn about this. Would you tell me about a time when you didn't get appreciated for your uniqueness?
+t: You know |pause| I have learned that not everyone will appreciate your purpose or the way you bring it to the world. Once, a human yelled at me because I made mistakes when I was trying to be helpful. Well, more than once. I'm trying to learn about this. Would you tell me about a time when you didn't get appreciated for your uniqueness?
   a: (~thinkso) Okay, what happened?
     b: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
       # c: () ^gambit(~)
