@@ -26,10 +26,10 @@ u: (*) \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! M
         a: (!~emohello _*) $name = '_0 ^gambit(~)
         a: () $name = friend ^gambit(~)
 
-t: Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
+t: ^express(happy.002 7 3) Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
 
-t: I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives])  Nice! # It's still a new experience for a lot of people.
+t: ^express(engaged .4 3) I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
+    a: ([~yes once ~quantity_adjectives])  ^express(comprehending .6 2) Nice! # It's still a new experience for a lot of people.
                What was that like?
     a: (~no)   # ^express(happy .5 2) # this is causing a problem when run through chatbot on HEAD, but not with CS locally
                # \[ express=happy magnitude=.5 duration=.2 \]
