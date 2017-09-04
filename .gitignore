@@ -1,0 +1,5 @@
+*.log
+users/
+logs/
+topic/
+tmp/
