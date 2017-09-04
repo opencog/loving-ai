@@ -8,6 +8,10 @@ MOUNT_POINT="/host"
 sed -i -e 's/^$host = "1.22.08.4"/$host = "localhost"/g' \
   "$MOUNT_POINT/ChatScript-engine/WEBINTERFACE/SPEECH/ui.php"
 
+# Set the chatbot name.
+sed -i -e "s/^var botName = 'Rose'/var botName = 'Sophia'/g"  \
+  "$MOUNT_POINT/ChatScript-engine/WEBINTERFACE/SPEECH/speech.php"
+
 # Start the server.
 nohup caddy -conf "$MOUNT_POINT/server/Caddyfile" > /dev/null 2>&1 \
   > "$MOUNT_POINT/server/caddy.log" &
