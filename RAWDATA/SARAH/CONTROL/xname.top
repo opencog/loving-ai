@@ -1,0 +1,164 @@
+topic: ~xname system repeat priority nosamples (name call "known as" "family name" "first name" "middle name" "last name" surname "1st name")
+
+#! call me an ambulance
+u: (call me a) ^fail(TOPIC)
+
+#! I'm calling 911
+u: (calling) ^fail(TOPIC)
+
+#!!K I am 19.
+u: (I be ~number) ^fail(TOPIC) # age
+
+#! I call to my girlfriend
+s: ( 'I * call * ~preposition) ^fail(TOPIC)
+
+#! my friend is called Roger
+u: (![surname name] ~possessive_bits) ^fail(TOPIC)
+
+u: (I be here) ^fail(TOPIC)
+
+u: () if ($firstname) {$$holdname = $firstname }
+
+############## THEY ASK IF WE KNOW THEIR NAME
+
+#! what is my name $firstname=null
+?: NONAME (what * my name !$firstname) You haven't told me yet.
+	#! yes I have 
+	a: ( [~yesanswer "I have" "I did"]) Could you tell me again please?
+		$cs_token = #DO_INTERJECTION_SPLITTING   | #DO_SUBSTITUTE_SYSTEM  | #DO_NUMBER_MERGE    | #DO_PARSE 
+		#! Henry
+		b: (_~propername) ^reuse(NAMING)
+
+#! what is my name $firstname=nicky
+?: NAME (![surname "family name" "last name" letter] my [first_name name] $firstname) Your name is $firstname.
+	
+#! what is my full name $fullname=null
+?: FULLNAME (my full name !$fullname) ^reuse(NONAME)
+
+#! what is my full name $fullname=nicky
+?: FULLNAME (my full name $fullname) Your full name is $fullname.
+
+#! my name is not Geg
+s: ASKME ( << not my name >> !%more) OK. So what is your name? $fullname = null $firstname = null
+	$cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE    | #DO_PARSE
+	a: (I be [name call "known as"] _*1 _0!?~adjective >)  ^reuse(NAMING)
+	a: (my name be _[*4 *3 *2 *1] >)  ^reuse(NAMING) 
+	a: ( ["my name" I ] be _~propername the _* ) 
+		_0 = join ('_0 the '_1)
+		^reuse(NAMING) 
+	a: ( ["my name" I ] be _~propername)  ^reuse(NAMING) 
+	a: (my name be _*) ^reuse(NAMING) 
+	a: ( am called _[*2 *1] >) ^reuse(NAMING)
+	a: (< _[ *3 *2 *1] >)  ^reuse(NAMING) 
+
+#### THEY OFFER THEIR NAME
+
+#!!K I am Roale
+s: ( < 'I am _~noun_proper_singular > ) ^reuse(NAMING)
+
+u: ( < ~emohello ~botnames 'I am _~noun_proper_singular > ) ^reuse(NAMING)
+
+#! call me jorge david please
+s: ( call me _*1 ) ^reuse(NAMING)
+
+#! I am known as George, by the way.
+s:  ('I be [name call "known as"] {the} _* , ) ^reuse(NAMING)
+
+#!  I am called Bruce the magnficient
+s: NAMING ('I be [name call "known as"] {the} _*  >)
+	if (_0 == null) {end(TOPIC)}
+
+	if ($cs_token == $stdtoken) # shift to raw mode and try again, so we dont get it wrong via spelling correction
+	{
+		$cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE    | #DO_PARSE
+		^retry(SENTENCE)
+	}
+	if (_0 ? ~interjections) # preserve interjection status
+	{
+		$fullname = _0
+		$firstname = _0
+	}
+	else
+	{
+		$fullname = ^pos(capitalize '_0 )
+
+		_1 = ^burst($fullname )
+		$firstname = _1
+		if (Properties($firstname) >= 0 AND HasAllProperty($firstname NOUN_TITLE) AND _2) { $firstname = _2 } # Mr Elliot Richardson
+		if (!_2){}
+		else if (_2 AND _3 == NULL) { $lastname = _2 }
+		else if (_3 AND _4 == NULL) { $lastname = _3 }
+		# burst by _  (in case merged)
+		_1 = ^burst($firstname  )
+		if (_2)
+		{
+			$firstname = _1
+			if (Properties($firstname) >= 0 AND HasAllProperty($firstname NOUN_TITLE) AND _2) { $firstname = _2 } # Mr Elliot Richardson
+			else {$lastname = _2}
+		}
+
+		$firstname = ^pos(capitalize $firstname)
+		if (properties($firstname) >= 0 AND HasAnyProperty($firstname NOUN_HE)) {$genderGuess = male}
+		else if (properties($firstname) >= 0 AND HasAnyProperty($firstname NOUN_SHE)) {$genderGuess = female}
+	}
+	^reuse(RESTOFNAMING) 
+
+s: RESTOFNAMING(?) 
+	$$lcname = Pos(lowercase $firstname)
+ 	if ($$lcname  ? ~sexual_preference_nouns OR $$lcname  ? ~male OR $$lcname  ? ~female)  # I am gay or male or female  -- assume we are here by accident
+	{
+		^END(TOPIC)
+	}
+	else if ($$holdname == $firstname) { Yes, I know your name is ^pos(capitalize $firstname) . }
+    else if ($$holdname)
+    {
+        Sorry. I thought your name was ^pos(capitalize $$holdname) . I will call you ^pos(capitalize $firstname) from now on. 
+    }
+    else 
+	{ 
+		[a: Nice to meet you, ^Pos(uppercase $firstname ) .]   
+
+		if (query(direct_sv $firstname  nickname ?)) { ^reuse(NICKNAME)}
+	}
+    #! you too
+    a: ("you too") Thank you.
+    #! why
+    a: (![call name] ~why ) Because.
+    #! same
+    a: ([same agree]) ^donextgambit()
+
+# nicknamed
+s: NICKNAME(?) Is that short for something?
+	#! no
+	a: NO (~noanswer) Okay, I'll just call you $firstname. 
+	if (%more) 
+	{ 
+		^next(INPUT)
+		$$tmp = %response
+		setinputrejoinder(NICKNAME)
+		nofail(topic rejoinder())
+		if ($$tmp == %response){ RETRY(SENTENCE) }
+	}
+	#! not nickname
+	a: ( << not nickname >>) OK. You're $firstname. 
+	#! hate nickname
+	a: ( << ~badness nickname >>)  I'll make sure to call you $firstname , then.
+	#! it's short for Harriet
+	a: ( << short for >>) Got it. I'll use $firstname.
+	#! yes
+	a: (~yesanswer) Alright.
+
+#!  My name is Roger Dalton, by the way
+s: (my ["first name" name "1st name"] be _* ,)  ^reuse(NAMING) 
+
+#!  My name is Roger Dalton
+s: (my ["first name" name "1st name"] be _* >)  ^reuse(NAMING) 
+
+#!  Roger Dalton is my name
+s: (_* be my ["first name" "1st name" name] )  ^reuse(NAMING) 
+
+#!!BK  I am Harold the best man  
+s: ( 'I be ~propername < I be _* )  ^reuse(NAMING)  # avoiding "I am” descriptions
+
+#!!B I am called Less
+s: ( am [named called] _*) ^reuse(NAMING)
