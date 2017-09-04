@@ -1,0 +1,324 @@
+###### THIS FILE SHOULD GENERATE NO USER OUTPUT
+
+concept: ~pleonastics(~pleonit ~pleonthat ~pleonasticprep ~pleonasticbe ~pleonasticadverb ~pleonasticverb ~pleonasticmodifier )
+
+concept: ~pleonit (it)
+concept: ~pleonthat (that this)
+concept: ~pleonasticprep ( for that is whether when to  that if as like) 
+concept: ~pleonasticbe (be become remain)
+
+concept: ~pleonasticadverb( necessary possible certain likely important good useful advisable convenient sufficient economical easy desirable difficult legal unnecessary) 
+concept: ~pleonasticverb  (recommend think believe know anticipate assume expect seem appear mean follow)
+concept: ~pleonasticmodifier ( not never highly very still increasingly certainly absolutely especially entirely simply particularly quite also yet even more most often rarely)
+
+concept: ~singular_nouns (~noun_proper_singular ~noun_singular)
+
+outputmacro: ^findreference(^positioninfo)
+	^loop() # locate acceptable pronoun referencing
+	{
+		_15 = last(@0all)  
+		$$volley = _15 >> 16
+		_15 &= 0x0000ffff
+		$$sentence = _15 >> 8
+		_15 &= 0x000000ff
+		$$offset = _15
+		$$after = null
+		$$earlier = null
+		$$before = null
+		if ( $$sentence == $$sentenceid AND $$offset > ^positioninfo) # this is defined LATER in the sentence
+		{
+			$$later = _17
+		}
+		else if ($$sentence == $$sentenceid) # same sentence, earlier, high priority
+		{
+			$$earlier = _17
+			^fail(RULE)  # stop processing, dont need more at present
+		}
+		else  # some previous sentence
+		{
+			$$previous = _17
+			^fail(RULE)  # stop processing, dont need more at present
+		}
+	}
+
+topic: ~grabprefix system repeat()
+u: (%userinput) refine ()
+	a: ( @_0- my )  _0 = join(my " " '_0 ) 
+	a: ( @_0- your)  _0 = join(your " " '_0 ) 
+u: (!%userinput) refine()
+	a: ( @_0- my )  _0 = join(your " " '_0 ) 
+	a: ( @_0- your)  _0 = join(my " " '_0 ) 
+
+outputmacro: ^reference(^kind) # fact is (location pronountype value)
+	# location is 1 byte offset in sentence, 1 byte sentence in volley, 2 byte input count
+	$$position = ^position(start _0)
+	$$location = %input << 16
+	$$sid = $$sentenceid << 8
+	$$location += $$sid + $$position
+	respond(~grabprefix) # see if your is attached to it
+	^createfact(( $$location ^kind  '_0 ) pronounreference 0)  # pronoun in last place so never member of a concept (were it subject)
+	
+outputmacro: ^referencepair(^kind) # fact is (location pronountype value)
+	# location is 1 byte offset in sentence, 1 byte sentence in volley, 2 byte input count
+	$$position = ^position(start _0)
+	$$location = %input << 16
+	$$sid = $$sentenceid << 8
+	$$location += $$sid + $$position
+	respond(~grabprefix) # see if your is attached to it
+
+	$$tmp = '_0 # modifed
+	_0 = _1
+	respond(~grabprefix) # see if your is attached to it
+	$$tmp = join($$tmp " and " '_0) 
+	^createfact(( $$location ^kind  $$tmp ) pronounreference 0)  # pronoun in last place so never member of a concept (were it subject)
+	
+topic: ~xACQUIREPRONOUNS SYSTEM REPEAT()
+u: (< \[ * \] ) fail(topic)
+u: (< [show echo] pronoun > ) $pronounecho = 1 $showfact = 1  pronouns are now echoing \n
+u: () $$sentenceid += 1 # track which sentence we are in with any content (not just a yes/no or whatever), for pronoun resolution (includes both user and bot)
+u: (%length=1 ~interjections) fail(topic)
+
+u: (< echo structure >) $structureecho = 1 structure  now echoing \n
+
+# quantity translations
+u: (_~number *~2 [lbs pound] ) $pounds = _0	$convertInput = %input + 2		# so we can translate 
+u: (_~number *~2 [kilo kilogram] ) $kilos = _0		$convertInput = %input + 2		# so we can translate
+u: (_~number *~1 [Celcius centigrade C c] ) $centigrade = _0	$convertInput = %input + 2		# so we can translate 
+u: (_~number *~1 [Fahrenheit F f] ) $fahrenheit = _0		$convertInput = %input + 2		# so we can translate 
+u: (_~number *~2 [mph mile] ) $miles = _0	$convertInput = %input + 2		# so we can translate 
+u: (_~number *~2 [kilometer kph]) $kilometers = _0		$convertInput = %input + 2		# so we can translate 
+u: (_~number *~2 dollar) $dollars = _0	$convertInput = %input + 2		# so we can translate 
+u: (_~number *~2 [€ euro]) $euros = _0		$convertInput = %input + 2		# so we can translate 
+u: (_~moneynumber ) $dollars = _0	$convertInput = %input + 2		# so we can translate 
+u: ($ _~number ) $dollars = _0	$convertInput = %input + 2		# so we can translate 
+u: (€ _~number ) $euros = _0		$convertInput = %input + 2		# so we can translate 
+
+# REFERENCE ALWAYS DOES FAIL RULE so do nothing after it
+u: HE (_~he _0?~noun_proper_singular )   ^reference(heproper) ^RETRY(RULE)
+u: SHE (_~she _0?~noun_proper_singular)  ^reference(sheproper)  ^RETRY(RULE)
+u: IT (_~noun_proper_singular _0!?~he _0!?~she)   ^reference(itproper) ^RETRY(RULE)
+u: THEY (_~noun_proper_plural ) ^reference(theyproper)  ^RETRY(RULE)
+u: HEC (_~he _0!?~propername )   ^reference(hecommon) ^RETRY(RULE)
+u: SHEC (_~she  _0!?~propername ) ^reference(shecommon)  ^RETRY(RULE)
+u: ITC (_~noun_singular _0!?~propername _0!?~she) ^reference(itcommon)  ^RETRY(RULE)
+u: THEYC (_~noun_plural ^_0!?~propername) ^reference(theycommon)  ^RETRY(RULE)
+u: THEYAND (_~mainsubject * _~mainsubject)  ^referencepair(theycommon)  ^RETRY(RULE)
+u: THEYAND (_~mainobject * _~mainobject) ^referencepair(theycommon)  ^RETRY(RULE)
+
+u: NATIONALITY ( _[~nationalities ~country] _0?~singular_nouns) ^reference(therecountry)  ^reference(thereproper)  ^RETRY(RULE)
+u: AREA (_[~GEOGRAPHICAL_AREAS ~POLITICALAREA] _0?~singular_nouns)  ^reference(therearea) ^reference(thereproper)   ^RETRY(RULE)
+u: CITY ( _~city _0?~singular_nouns) ^reference(therecity) ^reference(thereproper)    ^RETRY(RULE)
+
+u: PLAYGAME ( _~gamelist _0?~singular_nouns) ^reference(itgame)    ^RETRY(RULE)
+u: EAT ( _~food   _0?~singular_nouns) ^reference(itfood)   ^RETRY(RULE)
+u: DRINK ( _~beverage  _0?~singular_nouns) ^reference(itdrink )  ^RETRY(RULE)
+u: ARTIST (_[~painter ~sculptor] _0?~singular_nouns) ^reference(hesheartist )  ^RETRY(RULE)
+u: VEHICLE (_~vehicle _0?~singular_nouns)  ^reference(itvehicle )  ^RETRY(RULE)
+u: ART (_~art_kinds _0?~singular_nouns) ^reference(itart )  ^RETRY(RULE)
+u: ASTROLOGY (_~astrology_signs _0?~singular_nouns)  ^reference(itsign )  ^RETRY(RULE)
+u: AUTO ( _~car_brands _0?~singular_nouns)^reference(itcar )  ^RETRY(RULE)
+u: CHEESE ( _~cheeses _0?~singular_nouns) ^reference(itcheese )  ^RETRY(RULE)
+u: COLOR ( _~colors _0?~singular_nouns) ^reference(itcolor )  ^RETRY(RULE)
+u: RELIGION ( _~religious_sect _0?~singular_nouns) ^reference(itreligion )  ^RETRY(RULE)
+u: ACTOR ( _~actor _0?~singular_nouns) ^reference(heactor )  ^RETRY(RULE)
+u: (_~political_parties _0?~singular_nouns)  ^reference(itpolitics )  ^RETRY(RULE)
+u: ACTRESS ( _~actress _0?~singular_nouns) ^reference(sheactress )  ^RETRY(RULE)
+u: DIRECTOR ( _~director _0?~singular_nouns) ^reference(heshedirector )  ^RETRY(RULE)
+u: BOOKGENRE ( _~book_genre _0?~singular_nouns)  ^reference(itbook_genre ) ^RETRY(RULE)
+u: VIDEOGAMEGENRE (_~videogame_genre _0?~singular_nouns)  ^reference(itvideogame_genre ) ^RETRY(RULE)
+u: VIDEOGAME (_~videogame _0?~singular_nouns)  ^reference(itvideogame ) ^RETRY(RULE)
+u: SPORT (_~sport _0?~singular_nouns)  ^reference(itsport ) ^RETRY(RULE)
+u: CULTURE (_[book sport movie band record song ~musical_instrument]  _0?~singular_nouns)  ^reference(itculture ) ^RETRY(RULE)
+u: TV (_~tv_show _0?~singular_nouns)  ^reference(itTV ) ^RETRY(RULE)
+u: MUSIC ( _[~band ~musician] _0?~singular_nouns)  ^reference(hesheband ) ^reference(theyband )    ^RETRY(RULE)
+u: PLAYMUSIC ( _~musical_instrument _0?~singular_nouns) ^reference(itinstrument ) ^RETRY(RULE)
+u: MUSICGENRE (_~musical_genres _0?~singular_nouns) ^reference(itmusical_genre ) ^RETRY(RULE)
+u: OCCUPATION (_~occupation _0?~singular_nouns) ^reference(itoccupation )  ^RETRY(RULE)
+u: GADGET (_~electronic_items _0?~singular_nouns) ^reference(itgadget ) ^RETRY(RULE)
+u: HOLIDAYS (_~holiday _0?~singular_nouns) ^reference(itholiday ) ^RETRY(RULE)
+u: STAR (_~celebrity _0?~singular_nouns) ^reference(heshecelebrity )  ^RETRY(RULE)
+u: ANIMAL (_~animals _0?~singular_nouns) ^reference(itanimal )  ^RETRY(RULE)
+u: WEAPON (_~weapon _0?~singular_nouns) ^reference(itweapon ) ^RETRY(RULE)
+u: BUILDING (_~building _0?~singular_nouns) ^reference(itbuilding )  ^reference(therecommon)  ^RETRY(RULE)
+u: SCENERY (_~scenery _0?~singular_nouns) ^reference( itscenery) ^reference(therecommon) ^RETRY(RULE)
+u: SROLE (_~role _0?~singular_nouns) ^reference(itrole ) ^RETRY(RULE)
+u: NUMBER (_~number _0?~noun_number) ^reference(itnumber ) ^RETRY(RULE)
+
+topic: ~xdeletepronouns SYSTEM REPEAT()
+t: () query(direct_v ? pronounreference ?)
+	$$expire = %input - 3
+	loop ()
+	{
+		$$f = first(@0fact)  #  (   () pronounreference 0)
+		$$f1 = field($$f subject)
+		$$input = field($$f1 subject)
+		$$input >>= 16
+		if ($$input <= $$expire)
+		{
+			$$kind = field($$f1 verb)
+			^delete($$f1)  # delete the base fact and the reference fact has to die too
+		}
+	}
+
+outputmacro: ^usepronoun(^proper ^common  ^more ^supplemental)
+	$$chosen = null
+	$$position = position(start _1)
+	if (^proper AND ^query(direct_v ? ^proper ?))
+	{		
+		^findreference($$position) 
+		if ($$earlier) {$$chosen = $$earlier}
+		else if ($$previous) {$$chosen = $$previous}
+		else if ($$later) { $$chosen = $$later}
+	}
+	if (!$$chosen AND ^common AND ^query(direct_v ? ^common ?)  ) 
+	{
+		^findreference($$position)
+		if ($$earlier) {$$chosen = $$earlier}
+		else if ($$previous) {$$chosen = $$previous}
+		else if ($$later) { $$chosen = $$later}
+	}
+	if ($$chosen) 
+	{
+		$$tmp = ^join(AUTOSPACE   '_0 $$chosen ^supplemental '_1 ^more $$punctuation) 
+		if ($pronounecho) { ^log(OUTPUT_ECHO  RESOLVE: ---> $lastuserinput <--- ^common into --> $$tmp \n) }
+		^Input($$tmp)
+		^fail(SENTENCE)
+	}
+
+
+topic: ~XFIXPRONOUNS system nosamples repeat()
+
+u: ()	if (!%question) {$$punctuation = .}
+		else {$$punctuation = ?} 
+
+# who as standalone sentence -- should find closets he she not just he
+u: (< _who >) 
+
+# 's meaning "is" and not possessive
+u: ( _* 's _[~pronoun ~determiner ~verb ] _*) ^input('_0 is '_1 '_1) fail(sentence)
+
+u: (< who * is _that > ) 
+
+# what is it like there
+?: ( _*  it like  there _*) ^input('_0  there like  '_1) FAIL(SENTENCE)
+
+# do you like it there
+?: ( _*  it  there _*) ^input('_0  there  '_1) FAIL(SENTENCE)
+
+# need to leave himself, themselves, herself, itself, alone.
+
+# USE EXPLICIT quoted words to not find items INSIDE some multiword like here_and_there
+
+u: HER (_*  her _[~adjective ~noun] _* ) 
+	^usepronoun(sheproper shecommon '_2 's) 
+	^usepronoun(itanimal null '_2 's)
+
+u: SHE (_* ['she her] _* )  
+		^usepronoun(sheproper shecommon null null) 
+		^usepronoun(itanimal null null null) 
+
+u: HIS (_*  'his _[~adjective ~noun] _* ) 
+		^usepronoun(heproper hecommon '_2 's) 
+		^usepronoun(itanimal null '_2 's)
+	
+u: HE (_* ['he him] _* )  
+		^usepronoun(heproper hecommon null null)   
+		^usepronoun(itanimal null null null)
+
+# some misuse pronouns:  I liked Johnny Depp. What did they star in?
+u: THEIR (_*   'their  _[~adjective ~noun] _* < _*1)   ^usepronoun(theyproper theycommon '_2 's)
+
+u: THEY (_* ['they them] _* ) ^usepronoun(theyproper theycommon null null)
+
+# what is that? it = London
+u: (< stop it >) FAIL(TOPIC)
+
+u: THAT (what be _that > ) 
+
+u: THAT (_that ![~noun ~determiner ~adjective ~verb]  )   
+
+u: IT (_'it  )   # protect base sentence in case we accidentally use _0 in refine below
+	^refine()
+	a: (!? ~MAINSUBJECT=it be) # ignoring "It is good"  but not  "what is it"
+	a: (< drop it) # ignore this idiom
+	aL ( it [be seem] ) # dont trust this
+	a: ( it ~preposition)	# ignore do you like it in this place
+	a: (  what is it like * [in there at] ) # ignore generic description request
+	a: (  it ~aux_verb ) # ignore "it is , it would ... "  require it to be used as object or something - or do you think it will be
+	a: (be it) 
+	a: ( believe it )
+	a: (be it * [ ~TIMEword ~weather_verbs])  # time and weather are pleonastic
+	a: (~aux_verb it) 
+	a: ([you I] find it )
+	a: (it be * [ ~TIMEword ~weather_verbs])  # time and weather are pleonastic
+	a: ( about ~pleonit)  
+	a: (~pleonit < * ~mainverb=be)  
+	a: (!? ~pleonit {~aux_verb} ~pleonasticbe {~pleonasticmodifier}  ~pleonasticadverb ~pleonasticprep) 
+	a: (!? ~pleonit {~aux_verb} {~pleonasticbe}  ~pleonasticverb that) 
+	a: (!? ~pleonit {~aux_verb}~pleonasticbe {~pleonasticmodifier} [time thanks] to) 
+	a: (!? ~pleonit {~aux_verb} [make find] it ~pleonasticadverb [to for]) 
+	a: (!? ~pleonit {~aux_verb} ~pleonasticbe of) 
+	a: (!? ~pleonit {~aux_verb} [be has take] *~2 ~TIMEword * ~TIMEword [ before since]) 
+	a: (!?   ~pleonasticverb ~pleonit {~pleonasticmodifier}  ~pleonasticadverb ) 
+	a: (?  ~aux_verb ~pleonit ~pleonasticbe {~pleonasticmodifier} [time thanks] to) 
+	a: (? ~aux_verb ~pleonit ~pleonasticbe {~pleonasticmodifier}  ~pleonasticadverb ~pleonasticprep) 
+	a: (? ~aux_verb ~pleonit ~pleonasticbe of) 
+	a: (!? ~pleonit *~2 take )  # it takes a firm hand to control things
+	a: (? ~aux_verb  ~pleonit * take )  
+	a: (!?  ~pleonit *~2 a shame )  # it is a shame
+	a: (? ~aux_verb  ~pleonit * a *~2 shame ) 
+	a: (!?  ~pleonit be * who )  # it is educators who are blamed
+	a: (!?  ~pleonit be *~2 for )  # it is partly for this reason
+	a: (!?  ~pleonit be *~2 [good bad] *~2 to )  # it is partly for this reason
+	a: (!?  ~pleonit be * ~XTIME) 
+	a: (!?  ~pleonit be * [mile kilometer]) 
+	a: (!? it is ~propername)
+	a: (_* it _* )	 refine()
+		#  animal movement
+		b: (~mainverb?~ANIMATE_MOVE_VERBS) ^usepronoun(itanimal null null null) 
+		#  animal bodily function
+		b: (~mainverb?~BODY_VERBS) ^usepronoun(itanimal null null null) 
+		# generic
+		b: () ^usepronoun(itproper itcommon null null) 
+
+u: HERE (_*  here _* )   
+		$$tmp = join('_0 " " $here " " '_1)	^Input($$tmp)
+		^fail(SENTENCE)
+
+u: THERE (!~THERE_EXISTENTIAL _* there _* )   ^usepronoun(thereproper therecommon null null) 
+
+# topic: ~XUNUSED_RESOLVEPRONOUN system()
+
+# u: ( _* _'one > )   $$tmp = ^join(AUTOSPACE _0 '_7 )  ^ReplaceInput()
+
+# u: (_[these those]  ~noun) ^fail(TOPIC)  # these  jeans
+
+# u: (_[these those] *1 ~noun) ^fail(TOPIC)  # these {blue} jeans
+
+# beware of: what year is this. whose child is this.  those are self referential but: what is this 
+
+# u: (than [this that]) ^fail(TOPIC)
+
+# u: ([this that] be) ^fail(TOPIC)
+
+# u: ([this that] one) ^fail(TOPIC)
+
+# u: ([that this] ~noun) ^fail(TOPIC)
+
+# u: (_* _|directobject=that _* > )  $$tmp = ^join(AUTOSPACE '_0 '_7 '_2)  ^ReplaceInput()
+# u: (_~pleonthat be *~2 [~goodness ~badness I you he she it] > ) ^fail(TOPIC)  # that is awesome, that is too bad, that is mine
+# u: (be _~pleonthat as) ^fail(TOPIC) # be that as it mean
+# u: (be _~pleonthat > ) ^fail(TOPIC) # what year is this
+# u: (_~pleonthat sounds) ^fail(TOPIC) # that sounds like fun
+# u: (_~pleonthat *~2 [~mainsubject | ~mainobject]) ^fail(TOPIC) # what is that sound
+# u: (_~pleonthat ~pronoun) ^fail(TOPIC) # what is the sound that I
+
+
+#### unused pronoun stuff of old
+
+# weather time distance
+# it + copula + status + subordinate clause == It is easy to see why the ancient art is on the ropes
+
+# u: (_* _its _* > < _*1 !_3=its )  $$tmp = ^join(AUTOSPACE '_0 '_7 's '_2)  ^ReplaceInput()
+# u: (_* _it _* > )   $$tmp = ^join(AUTOSPACE '_0 '_7 '_2)  ^ReplaceInput()
+
