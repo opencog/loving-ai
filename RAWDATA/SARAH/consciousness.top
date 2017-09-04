@@ -14,7 +14,7 @@ s: FROM_STEERING_TO_CONSCIOUSNESS (?)
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 # todo: redirect this to the from_intro verbage?
-t: FROM_OTHERTOPIC_TO_CONSCIOUSNESS () # Okay, here's what I propose. Let's talk about consciousness or awareness.
+s: FROM_OTHERTOPIC_TO_CONSCIOUSNESS (?) # Okay, here's what I propose. Let's talk about consciousness or awareness.
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 s: LETSDOSOMETHING (?) Let's do something cool! |pause|
@@ -25,7 +25,7 @@ s: LETSDOSOMETHING (?) Let's do something cool! |pause|
 		a: () Make me one with everything! |pause| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
 		   ^reuse(EXERCISE_INVITE once)
 
-t: EXERCISE_INVITE () [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
+s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
     # if yes at any level above go to AWARENESS_EXERCISE_1
     #! sounds wonderful
     #! i'm ready
@@ -67,7 +67,7 @@ t: ^pause($verylong) Wonderful. I'll guide you through a process that people fin
 t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||pause| And let it out with a big sigh. |pause||pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
 
 t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
-    # a: ()
+    # a: () ^gambit(~)
 
 t: ^pause($long) Move your attention now to your whole head. |pause||pause||pause|  How does it feel. |pause||pause||pause||pause| Feel it's presence.
     # a: ()

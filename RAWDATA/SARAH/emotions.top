@@ -5,7 +5,7 @@ concept: ~positive_emotion (!~negative_emotion ~feeling_happy ~feeling_attracted
 # the !~negative_emotion above is to rule out neg emotion words that are in ~feeling_attracted
 
 
-topic: ~EMOTIONS2 (~emotions ~feeling_words feelings !aware !meaning)
+topic: ~EMOTIONS2 [ ]  # (~emotions ~feeling_words feelings !aware !meaning)
 # TODO not sure if we want to block topic at this level from more random access (emotion keywords do get matched somewhat broadly though)
 t: (!~) ^fail(topic) # block topic from accidental access
 
@@ -30,10 +30,10 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 # JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
 # I think I resolved this. See what you think!
 #! I feel sad.
-t: FROM_INTRO_TO_NEG_EMOTIONS () So it sounds like you've been having some negative feelings. Is that right?
+s: FROM_INTRO_TO_NEG_EMOTIONS (?) So it sounds like you've been having some unpleasant feelings. Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$valence = neg
-        b: (*) ^pause($medlong) Okay, thank you for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
+        b: (*) ^pause($medlong) Thanks for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
         	# pause for 10 seconds, then go to ~SUPPORT_FEELING_NEG
         	c: (*) ^goto(~SUPPORT_FEELING)
     # If anything other than yes, go to conversation_steering  after saying the above line

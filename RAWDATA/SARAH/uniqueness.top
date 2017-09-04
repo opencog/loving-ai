@@ -1,7 +1,6 @@
 concept: ~uniqueness_words (!great unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning )
 
-topic: ~UNIQUENESS [~uniqueness_words]
-#topic: ~UNIQUENESS (!great [ unique purpose potential ~ability_adjectives ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give gifts mistakes ideal ~meaningless_praise_words perfect ~different ~societal_data meaning] )
+topic: ~UNIQUENESS [ ]   # [~uniqueness_words]
 t: (!~) ^fail(topic) # block topic from accidental access
 
 # if coming from Introduction or other chatscript file, go to FROM_INTRODUCTION_TO_UNIQUENESS
@@ -11,14 +10,12 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 s: FROM_INTRODUCTION_TO_UNIQUENESS (?) Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-t: FROM_OTHER_TOPIC_TO_UNIQUENESS () Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_OTHER_TOPIC_TO_UNIQUENESS (?) Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 s: FROM_STEERING_TO_UNIQUENESS (?) Great! Human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 
-# t: A () Ok, human potential and personal contribution to the world.
-
-t: TO_UNIQUENESS () Alright, $name, let's try something. |pause| Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . |pause| Let's take a moment and do that now. Let me know when you're ready.
+s: TO_UNIQUENESS (?) Alright, $name, let's try something. |pause| Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . |pause| Let's take a moment and do that now. Let me know when you're ready.
 	a: () ^goto(~FULLPOTONTIAL_EXERCISE)
 
 topic ~FULLPOTENTIAL_EXERCISE []
