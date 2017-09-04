@@ -61,7 +61,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 
-t: ^pause($verylong) Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
+t: ^pause($verylong) Wonderful. I'l22l guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
 t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||pause| And let it out with a big sigh. |pause||pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
