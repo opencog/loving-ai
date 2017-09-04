@@ -1,5 +1,5 @@
 # this function is executed once for every new user chatting with harry
-outputmacro: harry()  # you get harry by default
+outputmacro: sarah()  # you get harry by default
 $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE | #DO_DATE_MERGE  | #DO_PROPERNAME_MERGE  | #DO_SPELLCHECK  | #DO_PARSE 
 
 $version = hk
@@ -35,7 +35,22 @@ $botprompt = ^"SARAH: "
 table: defaultbot (^name)
 ^createfact(^name defaultbot defaultbot)
 DATA:
-harry
+sarah
+
+topic: ~pre_control system()	# executed exactly once BEFORE any user input is processed
+
+t:	$$starttoken = $cs_token	# normal state we use for token. if token changes later, we can fix it entering postprocessing - we alter to swallow names w/o spell checking
+	$$starttopic = %topic 	# note topic we started in	(from pendinglist of before)
+	$$startvolley = %input  # input count we started this volley at
+	$$startlastuserinput = $lastuserinput # what he said before this volley
+	$$sentencecount = 0
+	$$ignorequestion = $ignorequestion 
+	$$questionasked = $questionasked 
+	$$askedus = $askedus 
+	@oldtopics = @savetopics		# copy old topic referenced list (so we can infer continuing topics
+	$prior1said = $priorsaid # one before chatbot said this
+	$priorsaid = $whatsaid	# last volley chatbot said this
+	^NOTRACE( ^nofail(TOPIC gambit(~xdeletepronouns))) # remove dead references
 
 topic: ~special_requests system ()
 
@@ -162,6 +177,28 @@ u: () # main per-sentence processing
 		 ^repeat() 
 		 I don't know what to say. 
 	}
+
+
+# WHAT I JUST SAID OR WHAT YOU JUST SAID
+#! could you repeat that
+u: REPEAT( 'you * [repeat "just say" "just said" "say that again" "said again" "said before"] ) [What I said was][I said][I had said][I just said][What I said was]: ^substitute(character $priorsaid \" " ")
+		a: ([before previous]) I said, $prior1said
+
+#! what did you say?
+?: (what ['did "was that"] 'you *~2 [say said]) ^reuse(REPEAT)
+
+#! i didn't hear you
+u: (did not * hear * you) ^reuse(REPEAT)
+
+#! what did I just say
+u: ([what repeat] * 'I [just "moment ago" last previous prior] say) [You said][You had said][You just said][You stated][You said previously][What you said was]: $$startlastuserinput .
+
+#! What was the last question I asked you?
+?: (<< what last question I >>) The last question you asked me was, $lastquestion
+
+#! Repeat what I say
+u: ([repeat] * 'I *~2 say < _*)^keep() ^original(_0)
+
 
 
 topic: ~XPOSTPROCESS system () # gambits only - not allowed to write to  output - generates speech on windows -- for Linux you'd want to install Festival (or equivalent) and call that instead.
