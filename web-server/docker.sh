@@ -17,7 +17,7 @@ case $1 in
     docker rm -v "$CONTAINER_NAME"
     docker run -d --name "$CONTAINER_NAME" -p 55555:80 \
       -v "$PWD/..":"$MOUNT_POINT" -w "$MOUNT_POINT" -it "$IMAGE_NAME" \
-      bash /host/server/start.sh
+      bash /host/web-server/start.sh
     ;;
   s) docker stop "$CONTAINER_NAME" ;;
   *) help ;;
