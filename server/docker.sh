@@ -15,7 +15,7 @@ case $1 in
   b) docker build -t "$IMAGE_NAME" . ;;
   r) docker stop "$CONTAINER_NAME"
     docker rm -v "$CONTAINER_NAME"
-    docker run --name "$CONTAINER_NAME" -p 55555:80 \
+    docker run -d --name "$CONTAINER_NAME" -p 55555:80 \
       -v "$PWD/..":"$MOUNT_POINT" -w "$MOUNT_POINT" -it "$IMAGE_NAME" \
       bash /host/server/start.sh
     ;;
