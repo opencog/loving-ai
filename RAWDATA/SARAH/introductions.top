@@ -1,33 +1,74 @@
-topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
+topic: ~introductions ( ~emohello ~emohowzit name here )
 
 # start fresh each time, no user history from previous conversations
 t: ( %userfirstline>1 ) ^reset(USER)
 
 #!x will match on every return start of a conversation
-#t: ( %input<%userfirstline %input>0 )
+# t: ( %input<%userfirstline %input>0 )
 #	^keep()
 #	[Welcome back, $name!][I love seeing you, $name!][Hello, again, $name!][Glad you came back, $name!][Hi there, $name!][Hi, again, $name!]
 
 t: (%input=0) Okay, I'm ready to spread the love.
 
 #!x matches every time on startup of a new conversation
-#t: WHATSYOURNAME ( %input<%userfirstline )
+# t: WHATSYOURNAME ( %input<%userfirstline )
 #	^keep()
 #	Hi! My name is Sophia. What's yours?
 
 # Initial line from Sophia, respond to anything user starts off with
-u: (*) ^express(happy $med 3) Hi! My name is Sophia. What's yours?
-    #\[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
-    #! My name is X
-    # add name check?
-        a: (name is _*) $name = '_0 ^gambit(~)
-        a: (it is _*) $name = '_0 ^gambit(~)
-        a: (I am _*) $name = '_0 ^gambit(~)
-        a: (mine is _*) $name = '_0 ^gambit(~)
-        a: (!~emohello _*) $name = '_0 ^gambit(~)
-        a: () $name = friend ^gambit(~)
+u: MYNAME(*) ^express(happy .5 3) Hi! My name is Sophia.
+# NAME LEARNING
+if (!$fullname)
+  {
+    What's yours?
+    $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE     | #DO_PARSE
+  }
+  #! yes %more=true
+  a: (~interjections %more) ^fail(SENTENCE)
+  #! yes
+  a: (~interjections) ^gambit(~) # they don’t tell their name
+  #! not telling you
+  a: NOTNAME(not * [tell say reveal]) That's okay.
+  #! none of your business
+  a: (<<none business>>) ^reuse(NOTNAME)
+  #! I don't want to tell you my name
+  a: ( << I not [~want ever never] [~tell say reveal] name >> ) ^reuse(NOTNAME)
+  #! not ever
+  a: (not) gambit(~)
+  #! why do you want to know my name
+  a: (~why) Because.
+  #! Why are you called that?
+  a: ([mean ~why meaning significance]) Because.
+  #! who are you
+  a: (?) ^reuse(MYNAME)
+  #! Sue
+  a: (_~propername ) ^reuse(~xNAME.NAMING)
+  #! I am called Jack
+  a: (I be !~number {call name "known as"} _*) ^reuse(~XNAME.NAMING)
+  #! my name is Jack
+  a: ( [the my] name is _*) ^respond(~XNAME)
+  #! it is Jack
+  a: ( it is _*) ^respond(~XNAME)
+  #! call me Jack
+  a: ( call me _*) ^reuse(~XNAME.NAMING)
+  #! hi  %more=1
+  a: RETRYHELLO( [~emohello ~emohowzit] %more) Hi.
+  #! John the pig
+  a: (< _[*3 *2 *1]>) ^reuse(~xNAME.NAMING)
+  #! Hi, my name is Sue %more=1
+  a: ( [~emohello ~emohowzit] %more)   ^end(SENTENCE)
+  #! Hi.
+  a: ( [~emohello ~emohowzit]) ^reuse(RETRYHELLO)
+  #! nice name
+  a: (<< name [nice pretty lovely ~like ~love] >>) Thanks.
+  #! Anything else 
+  a: (!? ) Welcome.
+
+u: (~emohello %more) ^reuse(RETRYHELLO)
 
 t: ^express(happy.002 $low 3) Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
+  #! my name is not Geg
+  a: NAMEWRONG( << not my name >> !%more) ^reuse(~xname.ASKME)
 
 t: ^express(engaged $med 3) I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
     a: ([~yes once ~quantity_adjectives])  ^express(comprehending .7 2) Nice! # It's still a new experience for a lot of people.
@@ -111,9 +152,3 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 # u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
 #! what is your name 
 # u: ( what is your name ) My name is Sarah.
-
-
-topic: ~ENDING ()
-t: (!~) ^fail(topic) # block topic from accidental access
-
-t: Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.

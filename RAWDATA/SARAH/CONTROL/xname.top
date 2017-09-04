@@ -39,7 +39,7 @@ u: () if ($firstname) {$$holdname = $firstname }
 ?: FULLNAME (my full name $fullname) Your full name is $fullname.
 
 #! my name is not Geg
-s: ASKME ( << not my name >> !%more) OK. So what is your name? $fullname = null $firstname = null
+s: ASKME ( << not my name >> !%more) Sorry. What is your name? $fullname = null $firstname = null
 	$cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE    | #DO_PARSE
 	a: (I be [name call "known as"] _*1 _0!?~adjective >)  ^reuse(NAMING)
 	a: (my name be _[*4 *3 *2 *1] >)  ^reuse(NAMING) 
