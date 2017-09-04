@@ -17,7 +17,7 @@ t: (%input=0) Okay, I'm ready to spread the love.
 
 # Initial line from Sophia, respond to anything user starts off with
 u: (*) ^express(happy $med 3) Hi! My name is Sophia. What's yours?
-    #\[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
+    # \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
     #! My name is X
     # add name check?
         a: (name is _*) $name = '_0 ^gambit(~)
