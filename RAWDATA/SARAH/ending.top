@@ -1,7 +1,7 @@
 topic: ~ENDING priority ( finish wrap end ~emogoodbye)
 
 #! Ok Sophia, we're ready to finish up now.
-u: ([Okay OK] Sophia *~5 [finish wrap end] *~3 [now today tonight]) Alright, I suppose it's time to wind down this session. ^gambit(~)
+u: ENDSESSION([Okay OK] Sophia *~5 [finish wrap end] *~3 [now today tonight]) Alright, I suppose it's time to wind down this session. ^gambit(~)
 
 u: (~emogoodbye) ^gambit(~)
 
