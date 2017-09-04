@@ -1,0 +1,8 @@
+topic: ~ENDING priority ( finish wrap end ~emogoodbye )
+
+#! Ok Sophia, we're ready to finish up now.
+u: ENDSESSION([Okay OK] Sophia *~5 [finish wrap end] *~3 [now today tonight]) Alright, I suppose it's time to wind down this session. ^gambit(~)
+
+u: (~emogoodbye) ^gambit(~)
+
+t: Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
