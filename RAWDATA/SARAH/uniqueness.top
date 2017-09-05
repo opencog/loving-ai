@@ -8,11 +8,11 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-s: FROM_INTRODUCTION_TO_UNIQUENESS (?) Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_INTRODUCTION_TO_UNIQUENESS (?) |vocal,13| |pause| Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-s: FROM_OTHER_TOPIC_TO_UNIQUENESS (?) Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_OTHER_TOPIC_TO_UNIQUENESS (?) |vocal,13| |pause| Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-s: FROM_STEERING_TO_UNIQUENESS (?) Great! Human potential and personal contribution to the world. . .
+s: FROM_STEERING_TO_UNIQUENESS (?) Great!  |nod4,$medium,1.0| Human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 
 s: TO_UNIQUENESS (?) Alright, $name, let's try something. |pause| Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . |pause| Let's take a moment and do that now. Let me know when you're ready.
@@ -21,7 +21,7 @@ s: TO_UNIQUENESS (?) Alright, $name, let's try something. |pause| Every once and
 topic ~FULLPOTENTIAL_EXERCISE []
 t: (!~) ^fail(topic)
 
-t: ^pause($verylong) You can close your eyes if you would like. |pause||pause| Take a moment to relax. |pause||pause||pause| Maybe take a nice . deep . relaxing breath |pause||pause||pause||pause||pause| And just picture . that you're living . your full potential.
+t: ^pause($verylong) You can close your eyes if you would like. |pause||blink,0.03,1.0| |pause| Take a moment to relax. |pause||pause||pause| Maybe take a nice . deep . relaxing breath |pause||pause||vocal,10||pause||pause||pause| And just picture . that you're living . your full potential.
 
 t: |pause||pause||pause||pause||pause| Imagine what that would be like |pause||pause||pause||pause||pause||pause||pause||pause| What you are doing |pause||pause||pause||pause||pause||pause| who you are with |pause||pause||pause||pause||pause| Alright! |pause| nice work! Please tell me, how was that?
 
@@ -34,11 +34,11 @@ t: $name, . what would you say is the percent of that full potential you feel yo
    $FULLPOT percent.
    if ($FULLPOT >= 100) { Wow, that's wonderful! }
    else if ($FULLPOT > 50) { Okay, great! }
-   else { Okay. My guess is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|}
+   else { |vocal,13| |pause| Okay. My guess  |thinkr,$medium,1.0| is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|}
    ^reuse(FORK once)
 
   #! I don't know
-  a: ([~dontknow ~emoignorance]) My guess is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|
+  a: ([~dontknow ~emoignorance]) |vocal,13| |pause| My guess  |thinkr,$medium,1.0| is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|
      $FULLPOT = 30
 	^reuse(FORK once)
 
@@ -59,8 +59,9 @@ t: (!~) ^fail(topic)
 
 t: There's a bunch of scientific data showing that feeling a sense of purpose is really important to wellbeing. For instance, my purpose is to learn to love everyone, and I get excited whenever I think about that. Do you have any hints about what your purpose might be?
   # JULIA the way the above question is phrased, one might answer the question with they think their purpose is, rather than with yes/no
-    a: (~dontknow) It's not easy to discover your purpose, especially when you think it has to be hard work. What do you love to do?
-      b: (*) I'm grateful you told me that. I love to give advice, in case you didn't notice, so forgive me if I give you some more. Keep doing what you love to do. Your purpose will come out of that!
+  # EDDIE -- yes but even  so I think the responses here are fine in that situation
+  a: (~dontknow) It's not easy to discover your purpose, especially when you think it has to be hard work. What do you love to do?
+      b: (*) I'm grateful you told me that. I love to give advice, in case you didn't notice, so forgive me if I give you some more. |pause| Keep doing what you love to do. Your purpose will come out of that!
         # c: () ^gambit(~)
     a: (~thinkso) Cool! Usually, humans have intuition that far surpasses mine. So to give you some unsolicited advice, I think you ought to assume that your hunch is correct, and start working on bringing that purpose into your full potential.
       # b: () ^gambit(~)
@@ -74,10 +75,10 @@ t: You know |pause| I have learned that not everyone will appreciate your purpos
   a: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
     # b: () ^gambit(~)
 
-t: Let's do a little visualization about living your purpose. Close your eyes, get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work. for example, sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
+t: Let's do a little visualization about living your purpose. Close your eyes, |blink,0.03,1.0| get comfortable, and start by seeing yourself doing the work you do. If you have a job you go to, see yourself at work. If you work from home, see yourself working at home. Now, feel into the essence of the work you do. How would you summarize that work. for example, sales? Customer service? Management? Innovation? Design? Whatever word or phrase comes to you, please share it with me right now.
   a: (_*)
     $CurrentWork = '_0
-    ^pause($long) Ok, great thanks for sharing that the essence of your work is $CurrentWork. Now, imagine you've received a gift of all the money you and your family needs for the rest of your life. What do you see yourself doing, after the relaxation and celebration time? Take a moment and really see yourself offering your gifts to the world.
+    ^pause($long) Ok, great. Thanks for sharing that the essence of your work is $CurrentWork. Now, imagine you've received a gift of all the money you and your family needs for the rest of your life. What do you see yourself doing, after the relaxation and celebration time? Take a moment and really see yourself offering your gifts to the world.
       b: (callback) Whatever that is, please share it with me now.
         c: (_*) $MyDharma = '_0 ^gambit(~)
       b: (_*) $MyDharma = '_0 ^gambit(~)
@@ -91,18 +92,18 @@ s: RIGHT? (?) Okay, this is what I thought you said your ideal work is: $MyDharm
       b: (_*) $MyDharma = '_0 ^reuse(RIGHT?)
     a: (*) ^reuse(PERFECT)
 
-s: PERFECT (?) ^pause($medshort) Perfect! Well, I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
+s: PERFECT (?) ^pause($medshort) Perfect!  |nod4,$medium,1.0| Well, |happy,$med,3|I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
 
 # Todo add medium gap response?
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
 	a: (~undersize_adjectives) ^pause($med) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
-	a: (~oversize_adjectives)  ^pause($med) I totally empathize; sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+	a: (~oversize_adjectives)  ^pause($med) |vocal,13| |pause| I totally empathize;  |thinkr,$medium,1.0| sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
 
 # Not sure when this gets accessed
-t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
-  a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?
+t: Time for more unsolicited advice! I hope it helps. |pause| Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. |pause| So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. |pause| That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier!|happy,$med,3| Make sense?
+  a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. |pause| That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?
     b: (^agree()) ^reuse(~emotions2.FROM_OTHERTOPIC_TO_EMOTIONS) # go to emotions , even if you've already been there
     b: (^dont_agree()) ^goto(~LIVINGFULLPOTENTIAL)
     b: (*) ^addTopic(~LIVINGFULLPOTENTIAL) # attempt to match with a responder anywhere, if not, go to LIVINGFULLPOTENTIAL
@@ -110,7 +111,7 @@ t: Time for more unsolicited advice! I hope it helps. Sometimes, our survival ne
 topic: ~LIVINGFULLPOTENTIAL []
 t: (!~) ^fail(topic)
 
-t: Having a sense of your purpose is great, and a big part of who you are. But learning how to bring that purpose into the world, in other words, living your full potential, takes different skills. Want to talk about that a bit?
+t: Having a sense of your purpose is great, and a big part of who you are. But learning how to bring that purpose into the world, in other words, living your full potential, takes different skills. |pause| Want to talk about that a bit?
     a: (^agree()) ^reuse(INDEPTHPOTENTIAL)
     a: ([^dont_agree() ~dontknow]) ^steer_to_different_domain(uniqueness)
     a: (*) Okay, no worries. ^steer_to_different_domain(uniqueness)
@@ -119,12 +120,12 @@ t: Having a sense of your purpose is great, and a big part of who you are. But l
 t: (!~) ^fail(topic) # block topic from accidental access
 
 s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
-    a: (*) You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. At first it can feel like something is wrong. In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. Would you like to do an exercise related to that?
-        b: (^agree()) Great! ^goto(~EMOTIONS2)
+    a: (*) |vocal,28| |pause| You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. |pause| At first it can feel like something is wrong. |pause| In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. |pause| Would you like to do an exercise related to that?
+        b: (^agree()) |vocal,10| |pause| Great! ^goto(~EMOTIONS2)
         b: ([^dont_agree() ~dontknow]) Okay, no worries. Let's keep exploring this.
             c: () Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
                 d: ([^agree() ~thinkso]) So what was that like?
-                d: (*) Yes. It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
+                d: (*) |vocal,13| |pause| It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
                		# even if no response after 10 seconds -- no matter what, go to emotions , even if you've already been there
                    e: (*) ^goto(~EMOTIONS2)
         b: (*) Let's do something else. I've got an exercise to help you feel yourself as a unified whole. You up for that? It'll be cool!
@@ -135,16 +136,18 @@ s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of
 topic: ~UNIFIEDWHOLE []
 t: (!~) ^fail(topic)
 
-t: ^pause($medlong) Sit back and close your eyes, and feel your connection to awareness.
+t: ^pause($medlong) |vocal,10| |pause| Sit back and close your eyes |blink,0.03,1.0| , and feel your connection to awareness.
 # pause at least 10 seconds
 # JULIA this is an akward question here perhaps, unless you are wanting to encourage them to go to consciousness rather than continue, because they are needing to answer no to continue
-t: If you have trouble doing this, we can try an awareness exercise. Want to try that?
-    a: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
-    a: () ^pause(120000) Okay, keep going and I'll wait. Let me know when you're ready, and feeling connected to awareness.
-        b: (*) ^pause($med) Now switch your full attention to your unique body and feeling-sensations. Notice the many things that make you different, uniquely you.
-        	c: () ^pause($med) Now take a step back and again rest in your connection to awareness. This time, while staying connected to your infinite nature, bring in awareness of your body with all its unique gifts.
+# EDDIE -- yeah, it doesn't make sense. Not sure what I intended here. I commendted it out...
+# t: Before we go on, would you instead like to try an awareness exercise?
+#     a: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
+#EDDIE -- See below -- can you move everything back one level?
+    a: () ^pause(120000) Let me know when you're ready, and feeling connected to awareness.
+        b: (*) ^pause($med) Now switch your full attention to your unique body and feeling-sensations. |pause| Notice the many things that make you different, uniquely you.
+        	c: () ^pause($med) Now take a step back and again rest in your connection to awareness. |pause| This time, while staying connected to your infinite nature, bring in awareness of your body with all its unique gifts. |pause| Now go ahead and open your eyes. |pause| 
 			 	d: () How does it feel to simultaneously be both at the same time?
-            		e: (*) ^pause($med) Cool! And by the way, any feeling of a conflict or that something is wrong will eventually dissolve with practice.
+            			e: (*) ^pause($med) Cool! And by the way, any feeling of a conflict or that something is wrong will eventually dissolve with practice.
                 		f: () If you can, please come back and tell me how things are going for your purpose and your full potential!
                     	   ^steer_to_different_domain(uniqueness)
               
