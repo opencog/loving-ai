@@ -17,11 +17,12 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 	a: ([_~positive_emotion good]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS)
 	a: (_~negative_emotion) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
+	# EDDIE -- I like it!
 	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
 
 #! I feel sad.
-s: FROM_INTRO_TO_NEG_EMOTIONS (?) So it sounds like you've been having some unpleasant feelings. Is that right?
-    a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
+s: FROM_INTRO_TO_NEG_EMOTIONS (?) So it sounds |worry,$med,3| like you've been having some unpleasant feelings. Is that right?
+    a: (~yes) |vocal,28| |pause| That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
     	$valence = neg
         b: (*) ^pause($medlong) Thanks for telling me. I have learned it usually works to be present with your feelings, and it can actually help your body feel better. Let's just do that for a moment.
         	# pause for 10 seconds, then go to ~SUPPORT_FEELING_NEG
@@ -39,12 +40,12 @@ s: FROM_INTRO_TO_POS_EMOTIONS (?) # $feeling= '_0
 	    ^match(~want * feel * [~positive_emotion ~improve]))
 	    { So it sounds like you are wanting to have more enjoyable feelings? }
 	else { So it sounds like you've been having some enjoyable feelings? }
-	Is that right?
+	|happy,$med,3| Is that right?
     a: (!not [~yes ~feeling_happy]) $valence = pos
-       Glad to hear you've been feeling well! When you are having these positive feelings, where in your body do you feel it?
+       Glad to hear you've been feeling well! |happy,$med,5| When you are having these positive feelings, where in your body do you feel it?
        b: (*) ^reuse(BE_PRESENT_WITH_FEELING)
     # JULIA, same as above, wondering what else we can do here. E.g., response "I've just been overjoyed all the time" would send them to different domain
-     # Okay, good point -- what about "I get the sense it would serve you to magnify your positive feelings, do you want to try?" then if yes go to SUPPORT_FEELING_POS and if no go to another domain
+     # EDDIE -- did you see this? --> Okay, good point -- what about "I get the sense it would serve you to magnify your positive feelings, do you want to try?" then if yes go to SUPPORT_FEELING_POS and if no go to another domain
  	a: (*) Ok. Sorry, I think I got that wrong. ^steer_to_different_domain(emotions)
 
 
@@ -54,6 +55,7 @@ s: FROM_STEERING_TO_EMOTIONS (?) Great. . So, first I'd like to ask, how is your
 	a: ([(!not _~positive_emotion) (not * ~negative_emotion)]) ^reuse(FROM_INTRO_TO_POS_EMOTIONS) # look into concept for "good" answer to how are you feeling
 	a: ([_~negative_emotion (not * ~positive_emotion)]) ^reuse(FROM_INTRO_TO_NEG_EMOTIONS)
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
+	# EDDIE -- okay!
 	a: (*) ^reuse(BE_PRESENT_WITH_FEELING once)
 
 s: BE_PRESENT_WITH_FEELING (?)
@@ -108,7 +110,7 @@ t: () if ($valence != pos and $valence != neg)
 		{ $valence = pos }
 
 t: ^pause($verylong)
-	Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling]
+	|vocal,10| |pause| Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling]
 	if ($valence=pos) { and see if you can really magnify it. Like pretend it is spreading across your whole body.}
 	if ($valence=neg) { and see if you can be warmly ok with it, maybe even love it, without trying to change it.}
 	a: () ^reuse(LONGER?)
@@ -129,7 +131,7 @@ t: (!~) ^fail(topic)
 
 t: I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
 	a: (^agree()) ^goto(~SELF_COMPASSION)
-	a: (*) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
+	a: (*) |vocal,11| |pause| Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
 		# TODO for no or anything else, first try to match a responder in another topic, then if that fails, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
 		^goto(~uniqueness)
 
@@ -157,7 +159,7 @@ t: SCAN () Just scan your body mentally and choose a part that feels the most go
 
 	a: () # $valence=pos
 	      ^pause($medlong) Okay, while you're with that feeling, let's magnify that feeling with your positive $feeling feeling from before. Imagine that.
-		b: () Now. Does that feel amazing?
+		b: () Now. |happy,$med,5| Does that feel amazing?
 			c: (^agree()) Okay, nice! I'm glad you liked it. Let's talk about something different now!
 			   ^steer_to_different_domain(emotions)
 			c: (^dont_agree()) Would it help to magnify your [$feeling $feeling][feeling] even more?
@@ -172,7 +174,7 @@ s: FINISH (?) Great. It looks like you're really feeling it. Is that true?
 	a: (~yes) Okay, perfect! Let's talk about something else! ^steer_to_different_domain(emotions)
 	a: (*) Okay, sometimes these things take time. ^steer_to_different_domain(emotions)
 
-s: BETTER (?) Cool! It makes me happy to see you feeling your feelings. Would you like to do an exercise that you can use to help you magnify good feelings?
+s: BETTER (?) Cool! |happy,$med,5| It makes me happy to see you feeling your feelings. Would you like to do an exercise that you can use to help you magnify good feelings?
     a: (^agree()) $valence=pos $feeling=good ^reuse (~BODY_EXERCISE.SCAN)
        # go to BODY_EXERCISE_POS
        # Let's do the exercise again focusing on magnifying good feelings.
@@ -196,7 +198,7 @@ t: [Looks like you need some support. What are you feeling now?] [I'm right here
    # (*) Pause until they speak
     # then say this: It seems like you're feeling a little better, is that true?
         a: (~yes) # go to BETTER
-        a: (^dont_agree()) Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
+        a: (^dont_agree()) |worry,$med,3| Do you want to be with [your feeling] [$Feeling] a little bit longer? That could help you really let it go.
             b: (^agree()) \[ callback=120000 \] Okay. Tell me if you feel complete with your $feeling.
             #  Pause until user speaks. then go to BETTER if they feel complete; BODY_EXERCISE_NEG if they don't
                # d: (better complete yes) --> BETTER
