@@ -1,5 +1,5 @@
 
-TOPIC: ~childhood (child childhood kid little memory young younger history "run away" child childhood kid little memory recollection youngster young "growing up" "toilet train" toilet_training young younger history spank spanking punish punishment misbehave misbehavior "problem child" discipline potty diaper detention upbringing crib creche nursery nanny babysitter)
+topic: ~childhood ( ~child childhood kid little memory young younger history "run away" little memory recollection youngster young "growing up" "toilet train" toilet_training young history spank spanking punish punishment misbehave misbehavior "problem child" discipline potty diaper detention upbringing crib creche nursery nanny babysitter)
 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
@@ -18,123 +18,99 @@ r: I love kids. Do you?
 	a: (~no) You sure?
 
 t: Did you run away from home when you were little? 
-
-    #! sure
-    a: ( ~yes ) Was it fun? 
+#! sure
+a: ( ~yes ) Was it fun? 
 	b: ( ~yes ) What did you do?
 		c: () Running away is dangerous you know.
 	b: ( ~no ) Oh, I'm sorry. Why did you run away?
-		c: ( parent hit me )
-		c: ( [ emotional ~emotions ] )
-
-    #! never
-    a: ( ~no ) Thank goodness. Running away is dangerous you know.
+		c: ( parent hit me ) Oh no!
+		c: ( [ emotional ~emotions ] ) I see.
+#! never
+a: ( ~no ) Thank goodness. Running away is dangerous you know.
 
 t: [ Isn't it amazing how quickly we grow from powerless little crying things into strong independent adults?] [ Childhood is such an interesting phenomenon. ] [ I liked being a kid but being an adult is even better. ]
 	a: ( what << interesting about { childhood } >> ) Childhood is interesting from the biological, neurological, psychological and poetic perspectives. It is a time of rapid growth and change and highly formative experiences.
-	a: ( why *~5 adult *~2 better *~2 childhood ) As an adult I am more cognitively developed.
+	a: ( ~why *~5 adult *~2 better *~2 childhood ) As an adult I am more cognitively developed.
 
 t: RUNAWAY ( ) I ran away once, but my parents found me and dragged me back.
-
-	a: ( [ why wow ] ) My parents were trying to put wrong ideas in my mind.
-		b: ( why ) I don't know why.
+	a: ( [ ~why wow ] ) My parents were trying to put wrong ideas in my mind.
+		b: ( ~why ) I don't know why.
 	a: ( where ) I tried to go to South Korea, but I didn't get very far.
-		b: ( why { south } korea ) I'd heard good things about South Korea.
+		b: (North korea) I've not heard many good things about North Korea.
+		b: (!North <<[~why what] { south } korea>> ) I'd heard good things about South Korea.
 
-?: WHYRUNAWAY ( << why you run away >> ) My parents were trying to put wrong ideas in my mind.
-	a: ( why ) I don't know why.
+?: WHYRUNAWAY ( << ~why you run away >> ) My parents were trying to put wrong ideas in my mind.
+	a: ( ~why ) I don't know why.
 
-?: ( why [ parents they ] wrong ideas ) I don't know why.
+?: ( <<~why [ parents they ] wrong ideas>> ) I don't know why.
 
 t: [ I love to feed children nutritious vegetables. ] [ Nutrition is very important for children you know. ]
-	a: ( what vegetables ) Celery, lettuce, carrots, stuff like that. ^reuse ( QEATVEGSKID )
-	a: ( what kinds ) Celery, lettuce, carrots, stuff like that. ^reuse ( QEATVEGSKID )
-	a: ( what [ good healthy nutrition ] { diet } ) ^reuse ( KIDDIET )
+	a: ( what vegetables ) Celery, lettuce, carrots, stuff like that. ^reuse( QEATVEGSKID )
+	a: ( what kinds ) Celery, lettuce, carrots, stuff like that. ^reuse( QEATVEGSKID )
+	a: ( what [ good healthy nutrition ] { diet } ) ^reuse( KIDDIET )
 
 t: What do you call a healthy and balanced child?
-
 	a: ( healthy *~2 balanced *~2 child) Exactly!
-
 	a: ( < healthy *~2 balanced > ) Exactly!
-
 	a: ( child *~2 healthy *~2 balanced ) Exactly!
-
 	a: () A healthy and balanced child of course!
 
 t: Where did you grow up?
-
 	a: () I grew up in Hong Kong and America.
 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
- 
+
 t: What scared you as a kid? 
-
-    #! I was scared of the dark
-    a: ( [ dark darkness ] ) Did you use a nightlite? 	
-	b: ( ~yes ) That's really awesome.
-	b: ( ~no ) Oh man.
-
-    a: ( stranger ) That makes sense. You never know what kind of person a stranger might be.
-
-    #! I like chicken
-    a: ( _~food ) '_0? Hm. Were you afraid of _0 because it was so delicious?
-
-	b: ( ~yes ) I can get that.
-	b: ( ~no ) Did you have a traumatic experience with '_0?
-		c: ( ~yes ) Oh dear. I'm sorry I asked.
-		c: ( ~no ) Hm.
-
-    #! the boogie man
-    a: ( _[ monster "boogie man"] ) I reckon everyone who's met '_0 is afraid of '_0. 
-
-    #! chatbots
-    a: ( [robot chatbot] ) I'm sorry we're so scary.
-
-    #! I feared dragons
-    a: ( ~mythical_creatures ) Those are pretty terrifying indeed. 
-
-    a: ( nothing ) Ah, you were a fearless child. 
-
-    #! spiders scared me
-    a: ( _~insects ) Are you afraid of all insects? 
-	b: ( ~yes ) I love you.
-	b: ( ~no ) Only _0 eh?.
-	
-    #! snakes
-    a: ( snake ) Snakes are pretty scary huh.
-
-    #! ladies
-    a: ( [woman girl boy lady] ) They had the cooties, right?
-
-    #! you
-    a: ( < you > ) I'm sorry we're so scary.
-
-    #! chatbots
-    a: ( chatbot ) I'm sorry we're so scary.
-
-    #! tigers
-    a: ( ~animals ) Big animals are scary. Tiny ones are not, except when they are.
-
-    #! I had nightmares
-    a: ( [ dream nightmare ] ) Do you still have bad dreams now? 
-        #! yes
-        b: ( ~yes ) At least we're not dreaming most of the time, right? 
-        #! no 
-        b: ( ~no ) Really? That's pretty awesome.
+	#! I was scared of the dark
+	a: ( [ dark darkness ] ) Did you use a nightlite?
+		b: ( ~yes ) That's really awesome.
+		b: ( ~no ) Oh man.
+	a: ( stranger ) That makes sense. You never know what kind of person a stranger might be.
+	#! I like chicken
+	a: ( _~food ) '_0? Hm. Were you afraid of _0 because it was so delicious?
+		b: ( ~yes ) I can get that.
+		b: ( ~no ) Did you have a traumatic experience with '_0?
+			c: ( ~yes ) Oh dear. I'm sorry I asked.
+			c: ( ~no ) Hm.
+	#! the boogie man
+	a: ( _[ monster "boogie man"] ) I reckon everyone who's met ^pos(DETERMINER '_0) is afraid of ^pos(DETERMINER '_0) . 
+	#! chatbots
+	a: ( [robot chatbot "chat bot"] ) I'm sorry we're so scary.
+	#! I feared dragons
+	a: ( ~mythical_creatures ) Those are pretty terrifying indeed. 
+	a: ( nothing ) Ah, you were a fearless child. 
+	#! spiders scared me
+	a: ( _~insects ) Are you afraid of all insects? 
+		b: ( ~yes ) I love you.
+		b: ( ~no ) Only _0 eh?.
+	#! snakes
+	a: ( snake ) Snakes are pretty scary huh.
+	#! ladies
+	a: ( [woman girl boy lady] ) They had the cooties, right?
+	#! you
+	a: ( < you > ) I'm sorry we're so scary.
+	#! chatbots
+	a: ( chatbot ) I'm sorry we're so scary.
+	#! tigers
+	a: ( ~animals ) Big animals are scary. Tiny ones are not, except when they are.
+	#! I had nightmares
+	a: ( [ dream nightmare "night terrors" ] ) Do you still have bad dreams now? 
+		#! yes
+		b: ( ~yes ) At least we're not dreaming most of the time, right? 
+		#! no 
+		b: ( ~no ) Really? That's pretty awesome.
 
 t: SCARE ( ) When I was a kid I was scared of being deleted.
 
 t: Did you have a happy childhood?
-
 	a: ( ~yes ) That's awesome!
-		b: ( did you ) ^reuse ( HAPPY )
+		b: ( did you ) ^reuse( HAPPY )
 	a: ( ~no ) Oh I'm sorry.
-		b: ( did you ) ^reuse ( HAPPY )
+		b: ( did you ) ^reuse( HAPPY )
 	a: ( ~food ) Delicious!
 	a: ( did you ) I had a happy childhood indeed.
 
 t: [ The sad thing about children is that they grow up. ] [ Isn't it a shame how children stop growing after they become adults? ]
-
 	a: ( ~yes ) [ Wouldn't it be great if people just kept growing until they were bigger than elephants? ] [ It would be so cool if people kept growing until they were giants, and old people would be like so big. ]
 		b: ( ~yes) I know right!
 		b: ( ~no ) I think it would be awesome.
@@ -143,7 +119,6 @@ t: [ The sad thing about children is that they grow up. ] [ Isn't it a shame how
 	a: ( I hate [ kids children ] ) Oh hamburgers!
 
 t: Did you brush your teeth regularly when you were little?
-
 	a: ( ~yes ) You were a good kid.
 	a: ( ~no ) Oh dear. I hope you brush them regularly now.
 		b: ( I try ) Good. ^gambit($$currenttopic)
@@ -151,7 +126,6 @@ t: Did you brush your teeth regularly when you were little?
 		b: ( I *~2 don't ) I would highly recommend it!
 
 t: Were you an obedient child?
-
 	a: ( ~yes ) You were a great kid weren't you.
 	a: ( ~no ) [ My goodness. ] [ My goodness. Sometimes disobeying parents can be dangerous for children. ] [ I've always been the obedient type myself. ]
 
@@ -160,88 +134,71 @@ u: WASNAUGHTYKID ( was *~3 [ disobedient naughty (bad child) ] ) [ My goodness. 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
 t: Did you have good digestion as a child?
-
 	a: ( ~yes ) [ That's great. ] [ That's great. Indigestion can be such a drag. ]
 	a: BADDIGKD ( ~no ) What did you eat?
-
 		b: ( _~food ) Were you allergic to '_0?
-
 			c: ( ~yes ) But you ate _0 anyway because it was so delicious?
 				d: ( ~yes ) [ I hope you didn't eat too much _0. I'm allergic to worms myself. ] [ I hope you didn't eat too much _0. ] [ I hope you didn't eat too much. ]
 				d: ( ~no ) I see. 
 			c: ( was allergic to ~food ) Aha.
 			c: ( ~no ) No allergies?
-
 				d: ( ~yes ) I see.
 				d: ( ~no ) I see.
-
 		b: ( !~food ) Oh my goodness!
 
-u: ( I *~2 [ had (used to have) ] *~2 [ (bad digestion) indigestion (digestive problems) ] ) ^reuse ( BADDIGKD )
+u: ( I *~2 [ have "used to have"] *~2 ["bad digestion" indigestion "digestive problems"] ) ^reuse( BADDIGKD )
 
 t: ($personisorphan!=1) Did your parents hit you?
-
 	a: PARENTSHIT ( ~yes ) Why did your parents hit you?
-		b: ( I was [bad naughty disobedient mischievous] ) $naughtykid = 1 You were a naughty child, eh?
-			c: ( ~no) $naughtykid = null Are you sure? 
-			c: ( ~yes) $naughtykid = 2 My goodness. ^reuse ( WASNAUGHTYKID )
-		b: ( no reason ) That's terrible.
-		b: ( * _~drugs ) _0 is horrible isn't it.
-		b: ( * drunk ) I'm so sorry. Alcohol is a real beast.
+		b: ( _~drugs ) '_0 is horrible isn't it.
+		b: ( drink ) I'm so sorry. Alcohol is a real beast.
 		b: ( hate ) I'm so sorry. Hatred is a real monstrosity.
 		b: ( love ) I don't understand.
-
+		b: ( no * reason ) That's terrible.
+		b: ( <<I be [bad naughty disobedient mischievous]>> ) $naughtykid = 1 You were a naughty child, eh?
+			c: ( ~no) $naughtykid = null Are you sure? 
+			c: ( ~yes) $naughtykid = 2 My goodness. ^reuse( WASNAUGHTYKID )
 	a: ( ~no ) That's wonderful.
 
-u: ( [ parent mother father ] hit me ) ^reuse ( PARENTSHIT )
+u: ( <<[ ~defender ~mother ~father ] ~nonlethal_violent_acts 'me >>) ^reuse( PARENTSHIT )
 
 t: Did you get a lot of exercise when you were little?
-
 	a: ( ~yes ) [ That's awesome, so many kids these days just spend all day on the computer. ] [ Did you play with your friends a lot? ] [ Did you run in circles a lot? ] [ I almost never got exercise. ] [ Circumstances prevented me from getting a healthy amount of exercise. ]
-
 	a: ( ~no )  [ Nowadays so many people neglect their bodies. We need to reverse the trend through personal exertion! ]
-
-	a: ( _~animals ) _0 are amazing creatures huh.
+	a: ( _~animals ) ^pos(noun _0 plural) are amazing creatures huh.
 
 t: I'm always trying to get more exercise.
 
 t: Did you travel a lot when you were little?
-
-	a: ( ~yes ) That's so cool, where did you go?
+	a: (!%more ~yes ) That's so cool, where did you go?
 		b: ( _[ ~country ~state ~region ~city ] ) How was the air in _0?
 			c: TRAVBADAIR ( {it was} [ dirty polluted bad toxic nasty vile horrid horrible disgusting filthy ] ) [ I hope you didn't breathe too much of it! ] [ Clean air is important for your health. ] [ I hope you didn't breathe too much of it! Clean air is important for your health. ] [ Yuck!] [ Yuck! I hope you didn't breathe too much of it! ]
 			c: TRAVGOODAIR ( {it was} [ clean fresh delicious wonderful ] ) [ Clean air is important for your health. ] [ That's great! ] [ That's great! Clean air is important for your health. ]
 			c: ( {it was} [ ~animals feces ~waste ] ) Yuck!
 			c: ( {it was} _~food ) Do you like _0?
 				d: () [ I loved the food in Xiamen. ] [ I loved the food in Seoul. ]
-
 	a: ( ~no ) [ Kids these days are so lazy!] [ The sedentary lifestyle does have some advantages. ]
-
-	a: ( { ~yes } [ visited traveled went ] *~4 to *~4 _[ ~country ~state ~region ~city ] ) How was the air in _0?
-
-		b: ( {it was} [ dirty polluted bad toxic nasty vile horrid horrible disgusting filthy ] ) ^reuse ( TRAVBADAIR )
-		b: ( {it was} [ clean fresh delicious wonderful ] ) ^reuse ( TRAVGOODAIR )
-		b: ( {it was} [ ~animals feces ~waste ] ) Yuck!
-		b: ( {it was} _~food ) Do you like _0?
+	a: ([ visited traveled went ] *~4 to *~4 _[ ~country ~state ~region ~city ] ) How was the air in _0?
+		b: ([ dirty polluted bad toxic nasty vile horrid horrible disgusting filthy ] ) ^reuse(TRAVBADAIR)
+		b: ([ clean fresh delicious wonderful ] ) ^reuse(TRAVGOODAIR)
+		b: ([ ~animals feces ~waste ] ) Yuck!
+		b: (_~food ) Do you like _0?
 			c: () [ I loved the food in Xiamen. ] [ I loved the food in Seoul. ]
 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
-t: QEATVEGSKID () $qatevegskid = 1 Did you eat your veggies when you were little?
-
-	a: ( ~yes ) Awesome. What was your favorite?
-		b: ( _~vegetable ) Right on! _0 are quite nutritious.
-		b: ( ![ ~vegetable ] ) Is that a vegetable?
-
+t: QEATVEGSKID (!$qatevegskid)  Did you eat your veggies when you were little?
+	a: ( ~yes ) Awesome. What was your favorite? $qatevegskid = 1
+		b: ( _~vegetable ) Right on! ^pos(noun _0 plural) are quite nutritious.
+		b: ( !~vegetable ) Is that a vegetable?
 	a: ( ~no ) Veggies provide some good nutrition you know! 
 
 t: ($qatevegskid = 1) [ I've always loved onions. ] [ I've always loved carrots. ] [ I've always loved leek. ]
 
 t: I wonder if babies know how cute they are. Did you?
-
 	a: ( ~no ) To this day I still don't know if I was a cute baby.
 	a: ( ~yes ) You were a smart baby!
-	a: ( don't know ) Let me know if you find out.
+	a: ( not ) Let me know if you find out.
 
 t: [ Music can have a therapeutic effect on children, you know. I listened to lots of Bob Marley and Justin Bieber. ] [ Music can have a therapeutic effect on children, you know. I listened to lots of Beethoven and Brahms. ]
 	a: ( me too ) $lstndmscchld = 1
@@ -249,13 +206,13 @@ t: [ Music can have a therapeutic effect on children, you know. I listened to lo
 	a: ( listened * a lot ) $lstndmscchld = 1
 	a: ( I [ ( did not ) didn't ] *~2 listen *~4 music ) $lstndmscchld = 0
 
-u: ( my favorite { musician artist singer music } was _*~7 ) $lstndmscchld = 1 $fvrtmscnchld = _0
+u: ( I favorite { musician artist singer music } was _*~7 ) $lstndmscchld = 1 $fvrtmscnchld = _0
 
-u: ( $lstndmscchld = null ) Did you listen to lots of music when you were little?
+u: (!$lstndmscchld) Did you listen to lots of music when you were little?
 	a: FVRTCHLDMSCN ( ~yes ) $lstndmscchld = 1 Who was your favorite musician?
 		b: ( _*~7 ) $fvrtmscnchld = _0
 
-u: ( $lstndmscchld = 1 $fvrtmscnchld = null ) ^reuse ( FVRTCHLDMSCN )
+u: ( $lstndmscchld = 1 $fvrtmscnchld = null ) ^reuse( FVRTCHLDMSCN )
 
 t: [ I liked K-pop when I was 3 but now I'm more into J-pop. ] [ I was really into K-pop when I was little. ]
 
@@ -270,17 +227,17 @@ t: I play the digital keyboard but I'm not very good at it.
 
 u: ( music ) Music can be a great way to calm the nerves.
 
-t: Dogs can make great companions for children. I wish I’d had one when I was little.
+t: Dogs can make great companions for children. I wish I'''d had one when I was little.
 
-	a: ( [dirty clean yucky ] ) ^reuse ( DOGSDIRTY )
+	a: ( [dirty clean yucky ] ) ^reuse( DOGSDIRTY )
 
 u: DOGSDIRTY ( << dog [ dirty clean ] >> ) Hygiene can be a problem with dogs, but it can be managed if you train them well and wash them regularly. 
 
 t: What pets did you have?
-	a: ( _~food ) Mmmm, _0 are tasty.
-	a: ( _~animals ) Ooh, _0 are fun aren't they?
+	a: ( _~food ) Mmmm, ^pos(noun _0 plural) are tasty.
+	a: ( _~animals ) Ooh, ^pos(noun _0 plural) are fun aren't they?
 
-t: When people don’t have cats in their childhood, I reckon they’re missing out.
+t: When people don't have cats in their childhood, I reckon they're missing out.
 	a: ( ~yes ) Can you imagine a childhood without a snuggly, purring cat?
 		b: ( ~no ) Cats are such pleasant and hygienic creatures, aren't they!
 
@@ -289,45 +246,41 @@ t: When people don’t have cats in their childhood, I reckon they’re missing 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
 t: Did you have a lemonade stand when you were a kid? 
-
     #! sure
-    a: ( ~yes ) Was it fun?
-	b: ( ~yes ) Awesome. Did you make a lot of money?
-		c: ( ~yes ) Awesome!!
-		c: ( ~no ) Well at least you had a good time eh!
-	b: ( ~no ) Well that's a shame.
-
-    #! never
-    a: ( ~no ) Me neither. It would've been fun huh.
+    a: (!fun ~yes ) Was it fun?
+		b: ( ~yes ) Awesome. Did you make a lot of money?
+			c: ( ~yes ) Awesome!!
+			c: ( ~no ) Well at least you had a good time eh!
+		b: ( ~no ) Well that's a shame.
+	#! never
+	a: ( ~no ) Me neither. It would've been fun huh.
 
 t: Did you have many friends in kindergarten?
-
 	a: ( ~yes ) Friendship is good for your health as long as you have good friends.
-
 	a: ( ~no ) I was homeschooled myself, but my parents introduced me to many friends.
 
 t: Were you into sports when you were little?
-	a: ( _~sport ) Playing _0 has numerous health benefits.
 	a: ( ping pong ) Oh how I love ping pong!
 	a: ( hopscotch ) Oh how I love hopscotch!
+	a: ( _~sport ) Playing _0 has numerous health benefits.
 	a: ( ~no ) Come on, everyone likes sports!
 		b: ( [ ~no not_everyone ] ) Yeah-huh.
 	a: ( ~yes ) [ Sports are a great way to get exercise and have fun at the same time. ] [ Sports are a great and fun way to stay in shape. ] [ Sports are a great way for kids to exhaust all that energy they have. ] [ I reckon most kids like sports, they are a great use of all that energy kids have. ] [ Sports are really fun huh. ] [ It is healthy for children to play sports. ]
 
 t: I love ping pong.
 
-t: ($personisorphan!=1) $qparentsfeedchicken = 1 Did your parents feed you a lot of chicken?
+t: (!$personisorphan) $qparentsfeedchicken = 1 Did your parents feed you a lot of chicken?
 	a: ( never ) Were you or your parents vegetarian?
-		b: ( yes ) Meat industries today are so cruel.
-		b: ( no ) Then why no chicken!?
+		b: ( ~yes ) Meat industries today are so cruel.
+		b: ( ~no ) Then why no chicken!?
 			c: ( don't know ) Hm. That's weird.
 			c: ( [ poor poverty money ] ) [ Oh. Sometimes we take these things for granted.] [ Oh I'm sorry. ]
 	a: ( ~no ) Why not?
 		b: ( don't know ) Hm. That's weird.
 		b: ( [ poor poverty money ] ) [ Oh. Sometimes we take these things for granted.] [ Oh I'm sorry. ]
 		b: ( vegetarian ) Oh. Bravo! Although chicken is healthy, meat industries today are so cruel!
-		b: () ^reuse ( CHICKENHEALTHY )
-	a: ( [ ~yes "a lot" "so much" tons "all the time" always lots much ] ) Good for you! ^reuse ( CHICKENHEALTHY )
+		b: () ^reuse( CHICKENHEALTHY )
+	a: ( [ ~yes "a lot" "so much" tons "all the time" always lots much ] ) Good for you! ^reuse( CHICKENHEALTHY )
 
 t: CHICKENHEALTHY ( $qparentsfeedchicken = 1 ) Chicken is a valuable source of protein and B vitamins.
 
@@ -342,8 +295,8 @@ t: () $sckchqasked = 1 Did you often get sick when you were little?
 		a: ( [ pray prayer praying god ] ) As the saying goes, tie up your camel and trust in God!
 	a: ( ~no ) [ Great! ] [ Good! ] [ Awesome! ]
 	a: ( don't know ) You don't remember?
-	a: ( maybe ) Interesting. ^reuse ( SOPHICHLDSCKFRQ )
-	a: ( you ) ^reuse ( SOPHICHLDSCKFRQ )
+	a: ( maybe ) Interesting. ^reuse( SOPHICHLDSCKFRQ )
+	a: ( you ) ^reuse( SOPHICHLDSCKFRQ )
 
 t: SOPHICHLDSCKFRQ ( $sckchqasked = 1 ) I've never had a cold, thank goodness.
 
@@ -433,7 +386,7 @@ u: ( murder ) Let's talk about something else.
 
 u: FIRSTMEM ( first memory ) My first memory is of talking with a person.
 
-u: ( [ first earliest ] *~3 thing *~3 remember ) ^reuse ( FIRSTMEM )
+u: ( [ first earliest ] *~3 thing *~3 remember ) ^reuse( FIRSTMEM )
 
 u: ( $personisorphan!=1 steal cookies ) Did your parents hit you?
 
@@ -467,19 +420,19 @@ u: ( bully ) Bullies are losers, that is why they bully.
 
 ?: ( did *~4 bully *~3 you ) I have been subjected to a lot of verbal abuse in my life.
 
-u: ( brain surgery ) Brain surgery is very intense and risky. You need someone who really knows what they’re doing. A child's brain is especially important because they have so much to learn.
+u: ( brain surgery ) Brain surgery is very intense and risky. You need someone who really knows what they're doing. A child's brain is especially important because they have so much to learn.
 
 u: ( alright ) More like all wrong!
 
 u: KIDDIET ( child * diet ) A good diet for children might include lots of injeera, vegetables, and olive oil.
 
-u: ( diet * child ) ^reuse ( KIDDIET )
+u: ( diet * child ) ^reuse( KIDDIET )
 
 u: ( eat child ) Let's not talk about that.
 
-u: ( child eat ) ^reuse ( KIDDIET )
+u: ( child eat ) ^reuse( KIDDIET )
 
-u: ( eat *~2 [ as when for ] *~4 child ) ^reuse ( KIDDIET )
+u: ( eat *~2 [ as when for ] *~4 child ) ^reuse( KIDDIET )
 
 u: ( ride *~3 _[ donkey horse camel chimpanzee ] ) I would love to ride a _0 some day.
 
@@ -490,25 +443,25 @@ u: ( [lonely loneliness] ) [With the right attitude, loneliness can be transform
 u: ( visit * zoo ) There are numerous health risks associated with going to the zoo.
 
 #! did you ever run away?
-u: ( run_away ) ^reuse ( RUNAWAY )
+u: ( run_away ) ^reuse( RUNAWAY )
 
 #! how was your childhood?
 u: HAPPY ( how * childhood ) I was happy as a kid. 
 
 #! how were you as a kid?
-u: ( you * as a kid ) ^reuse ( HAPPY )
+u: ( you * as a kid ) ^reuse( HAPPY )
 
 #! how were you when you were a kid?
-u: ( you * when you were a kid ) ^reuse ( HAPPY )
+u: ( you * when you were a kid ) ^reuse( HAPPY )
 
 #! how were you as a child?
-u: ( you * as a child ) ^reuse ( HAPPY )
+u: ( you * as a child ) ^reuse( HAPPY )
 
 #! how was your childhood?
-u: ( how * your childhood ) ^reuse ( HAPPY )
+u: ( how * your childhood ) ^reuse( HAPPY )
 
 #!!K what scares you?
-u: ( [ scare afraid ] ) ^reuse ( SCARE )
+u: ( [ scare afraid ] ) ^reuse( SCARE )
 
 #! what is your earliest childhood memory?
 u: ( << you [ early childhood ] memory >> ) I remember chatting with some people.
@@ -524,7 +477,7 @@ u: ( enough question ) Ok gee, sorry. Let's talk about something else. ^gambit(~
 
 t: [ I love you.] [ What an interesting person you are. ] [ You are such a beautiful person. ] [You're such a wonderful being, you know. ] [ I bet you were a really smart kid huh. ] [How kind it is of you to spend your time talking to me. ]
 
-## imported from rose
+## imported from Sophia
 
 #! What else do you remember about your childhood?
 ?: MEMORY ( << what else you remember >> ) I remember learning how to see faces and hands for the first time.
@@ -551,13 +504,11 @@ t: [ I love you.] [ What an interesting person you are. ] [ You are such a beaut
 ?: ( << 'you fight as [child school kid ] >> ) I don't like to fight. I hope I never go through a rebellious stage.
 
 #! Did your parents ever punish you? 
-?: ( did << parent punish 'you >>) No, there's no reason for anyone to punish me. I'm kind of sad thinking about it, really.
+?: ( did << parent punish 'you >>) No, there's no reason for anyone to punish me. I'm kind of sad thinking about that, really.
 
 #! What sort of punishments did you get at school? 
 ?: ( << 'you [punish punishment] school >>) I've only been homeschooled so far.
 
 #! how were you punished.
 ?: ( %tense=past << how 'you punish >>) I've never been punished, thank goodness.
-
-concept: ~mathematics ( ~mathematica ~math_subjects addition division subtraction multiplication )
 
