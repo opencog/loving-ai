@@ -85,14 +85,14 @@ t: PROMPT () So, do any of the things I mentioned interest you, . or is there so
         # a: () : This sounds interesting, but it's not something I know much about yet.
         # ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
-t: |vocal,38| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+t: |vocal,38| |pause| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
-    a: (^agree()) |vocal,36| |pause| That's cool! Well, let's get going!
+    a: (^agree()) That's cool! Well, let's get going!
        ^clear_avoided_domains()
        ^reuse(RE-BUY-IN)   # goto(~CONVERSATION_STEERING)
     a: (^dont_agree())  ^pause($medshort) Well, I hope you enjoy our conversation this time. I think I will.
@@ -104,7 +104,7 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
     # if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
     # if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
     #! anything but ~no
-    a: () |vocal,36| Wonderful!
+    a: () Wonderful!
             [So what are you feeling or thinking about lately?]
             [What is meaningful to you right now?]
             [What would you like to talk about?]
