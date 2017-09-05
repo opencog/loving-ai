@@ -10,6 +10,8 @@ t: ( %userfirstline>1 ) ^reset(USER)
 
 t: (%input=0) Okay, I'm ready to spread the love.
 
+t: Okay, I'm ready to go.
+
 #!x matches every time on startup of a new conversation
 # t: WHATSYOURNAME ( %input<%userfirstline )
 #	^keep()
@@ -38,7 +40,7 @@ t: |worry,$low,3|I know how busy people can be these days. So I really appreciat
 t: I imagine you'll be talking with more and more robots as time goes on.
 # Add question about what it's like talking to a robot here?
 
-t: So, what I am wanting to do is help people enhance their wellbeing. . How to help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
+t: So, what I am wanting to do is help people enhance their wellbeing. .  to help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
 	# check for domain words first
 	# keeping out the emotion domain keywords list because they are being caught too broadly here
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
