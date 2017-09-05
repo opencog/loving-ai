@@ -33,7 +33,7 @@ u: (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
 t: |happy,$high,2| Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
 
 t: |worry,$low,3|I know how busy people can be these days. So I really appreciate your time. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives]) |vocal,27| Nice! # It's still a new experience for a lot of people.
+    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! # It's still a new experience for a lot of people.
                What was that like?
     a: (~no)   |happy,$low,3|
                Well, I'm honored to be the first robot you've talked with. ^gambit(~)
@@ -92,14 +92,14 @@ topic:  ~REBOND []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
-    a: (^agree()) |vocal,36| That's cool! Well, let's get going!
+    a: (^agree()) |vocal,36| |pause| That's cool! Well, let's get going!
        ^clear_avoided_domains()
        ^reuse(RE-BUY-IN)   # goto(~CONVERSATION_STEERING)
     a: (^dont_agree())  ^pause($medshort) Well, I hope you enjoy our conversation this time. I think I will.
 
 
 t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feelings, and human potential. Does that sound interesting to you?
-    a: (^dont_agree())  |vocal,38| Okay, what would you like to talk about?
+    a: (^dont_agree())  |vocal,38| |pause| Okay, what would you like to talk about?
     # if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
     # if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
     # if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
@@ -120,4 +120,4 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 topic: ~ENDING ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: |vocal,10| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
+t: |vocal,10| |pause| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
