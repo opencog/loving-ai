@@ -18,7 +18,7 @@ s: FROM_OTHERTOPIC_TO_CONSCIOUSNESS (?) # Okay, here's what I propose. Let's tal
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 s: LETSDOSOMETHING (?) Let's do something cool! |pause|
-	But first! |vocal,21| What did the zen monk say to the hot dog stand vendor?
+	But first! . What did the zen monk say to the hot dog stand vendor?
 		a: (make me one * everything) |vocal,24| Awesome! You know that one! |pause|
 		   ^reuse(EXERCISE_INVITE once)
 		a: () Make me one with everything! |pause| |vocal,24| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
