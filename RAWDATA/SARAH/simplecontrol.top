@@ -39,6 +39,8 @@ harry
 
 topic: ~special_requests system ()
 
+u: ( %userfirstline>1 ) ^reset(USER)
+
 u: (Sophia *~2 [time ready] *~2 [end finish done] ) ^goto(~ending)
 
 

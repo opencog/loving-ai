@@ -1,7 +1,7 @@
 topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
 
 # start fresh each time, no user history from previous conversations
-t: ( %userfirstline>1 ) ^reset(USER)
+# t: ( %userfirstline>1 ) ^reset(USER)
 
 #!x will match on every return start of a conversation
 # t: ( %input<%userfirstline %input>0 )
@@ -10,7 +10,8 @@ t: ( %userfirstline>1 ) ^reset(USER)
 
 t: (%input=0) Okay, I'm ready to spread the love.
 
-t: Okay, I'm ready to go.
+# This line is to compensate for problem where HEAD chatbot does not give first response from Chatscript
+u: (*) Okay, I'm ready to go.
 
 #!x matches every time on startup of a new conversation
 # t: WHATSYOURNAME ( %input<%userfirstline )
