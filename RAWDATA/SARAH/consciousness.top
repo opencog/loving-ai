@@ -30,38 +30,22 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
     #! i'm ready
     a: READY (^ready())
        ^goto(~awareness_exercise_1)
-<<<<<<< HEAD
-    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh, okay. Is there something that you're afraid of?
-      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you prefer to talk about something else?
-      # TODO A
-=======
-    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) |vocal,38| Okay. I am wondering if you might be a little afraid. Do you think so?
-      b: (~no) |vocal,26| |worry,$med,3| . I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
->>>>>>> 19c6fe6201c5ec362e93573507f5a883f9b3dd05
-      # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
-      # Eddie -- what do you think of that change?
-      	c: (^agree()) ^steer_to_different_domain(consciousness)
-        #! no or catchall
-        c: (*) ^goto(~AWARENESS_EXERCISE_1)
-      # TODO handle non yes/no response to Is there something that you're afraid of?
-      # defaulting to yes response for now
-      #! yes
-      b: () |vocal,11| |worry,$med,3| Thanks for letting me know! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-      # b: (^agree()) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
-        c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
-        # if no, go to Conversation_Steering document, to some topic other than consciousness
-        c: (~no) ^steer_to_different_domain("consciousness")
-        # JULIA what do you think of this?:
-        #! catchall
-        c: (*) |vocal,13| Is that a yes?
-          d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
-          d:(~no) ^steer_to_different_domain(consciousness)
-<<<<<<< HEAD
-    a: (*) Is that a yes? ^setrejoinder(EXERCISE_INVITE)
-=======
-   a: (*) |vocal,13| Is that a yes? ^setrejoinder(EXERCISE_INVITE)
->>>>>>> 19c6fe6201c5ec362e93573507f5a883f9b3dd05
-
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) |vocal,38| Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
+		b: (~no) |vocal,26| |worry,$med,3| . I'm sorry to assume you were anxious. Sometimes people are. Would you prefer to talk about something else rather than doing the awareness practice?
+      		c: (^agree()) ^steer_to_different_domain(consciousness)
+        	#! no or catchall
+        	c: (*) ^goto(~AWARENESS_EXERCISE_1)
+		# defaulting to yes response for now
+		#! yes
+		b: () |vocal,11| |worry,$med,3| That makes sense, especially if it's something new to you. |pause| I promise this will not hurt, and I think you may like it. . Are you willing to try it?
+			c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
+			# if no, go to Conversation_Steering document, to some topic other than consciousness
+			c: (~no) Soudns good. ^steer_to_different_domain("consciousness")
+			#! catchall
+			c: (*) |vocal,13| Is that a yes?
+				d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
+	  			d:(~no) ^steer_to_different_domain(consciousness)
+	a: (*) |vocal,13| Is that a yes? ^setrejoinder(EXERCISE_INVITE)
 
 topic: ~AWARENESS_EXERCISE_1 ()
 t: (!~) ^fail(topic) # block topic from accidental access
@@ -102,16 +86,9 @@ t: |thinkl,$medium,1.0| Please tell me, do you notice how the nothingness feels?
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
   #! catchall # go to TRYAGAINtoFEELAWARENESS.
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
-<<<<<<< HEAD
-pause||pause||pause||pause| How was that for you?
-=======
-  # another approach that would allow wandering but needs work
-  # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
 
 
 # t: Okay. you can open your eyes now. |pause||pause||pause||pause|  |thinkl,$medium,1.0| |happy,$high,5| How was that for you?
-
->>>>>>> 19c6fe6201c5ec362e93573507f5a883f9b3dd05
 
 
 topic: ~TRYAGAINtoFEELAWARENESS []
@@ -248,11 +225,7 @@ t: ^pause(20000) Now, imagine yourself relaxing in a comfy chair that is situate
 t: ^pause($short) In a moment, when I ask you to open your eyes,. play with staying seated in your awareness . in the back of your head, . even though you may be tempted to be back into the world when you open your eyes.
 		a: (*) ^gambit(~)
 
-<<<<<<< HEAD
-t: ^pause($medlong) Now, open your eyes for just a split second. And close your eyes again. |pause,3| Notice what it felt like when your eyes were open
-=======
-t: ^pause($medlong) Now open your eyes for just a split second. And close your eyes again. |blink,0.03,1.0| |pause,3| Notice what it felt like when your eyes were open
->>>>>>> 19c6fe6201c5ec362e93573507f5a883f9b3dd05
+t: ^pause($medlong) Now, open your eyes for just a split second. And close your eyes again. |blink,0.03,1.0| |pause,3| Notice what it felt like when your eyes were open
 		a: (*) ^gambit(~)
 
 t: ^pause($long) Now, let's try opening your eyes for a little longer.|pause| Again, try to stay situated in the back of your head as that happens. |pause,2| Okay, go ahead and open your eyes now, for a little longer.
