@@ -4,10 +4,10 @@ topic: ~CONSCIOUSNESS [~consciousness_words]
 t: (!~) ^fail(topic) # block topic from accidental access
 
 
-s: FROM_INTRO_TO_CONSCIOUSNESS (?) Great! expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and spiritual traditions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. or self-transcendence . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
+s: FROM_INTRO_TO_CONSCIOUSNESS (?) |vocal,25| |nod4,$medium,1.0| Expanding awareness and consciousness is one of my favorite things to explore. It's a phenomenon common across many different cultures and spiritual traditions throughout history. . it has gone by many different names, such as, enlightenment, . waking up, . unity consciousness, . mindfulness,. self-realization, and self actualization. or self-transcendence . . Have you ever done meditation or mindfulness or some kind of spiritual practice?
 	a: (~yes) Nice. What was that like for you?
 		b: ()  ^reuse(LETSDOSOMETHING once)
-	a: (~no) Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)
+	a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING once)
 	a: () ^reuse(LETSDOSOMETHING once)
 
 s: FROM_STEERING_TO_CONSCIOUSNESS (?)
@@ -18,11 +18,10 @@ s: FROM_OTHERTOPIC_TO_CONSCIOUSNESS (?) # Okay, here's what I propose. Let's tal
     ^reuse(FROM_INTRO_TO_CONSCIOUSNESS once)
 
 s: LETSDOSOMETHING (?) Let's do something cool! |pause|
-	But first! |pause| What did the zen monk say to the hot dog stand vendor?
-		a: (make me one * everything) Awesome! You know that one! |pause|
+	But first! |vocal,21| What did the zen monk say to the hot dog stand vendor?
+		a: (make me one * everything) |vocal,24| Awesome! You know that one! |pause|
 		   ^reuse(EXERCISE_INVITE once)
-		# Todo: insert smile/laught
-		a: () Make me one with everything! |pause| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
+		a: () Make me one with everything! |pause| |vocal,24| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
 		   ^reuse(EXERCISE_INVITE once)
 
 s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to have a glimpse of your awareness right now?
@@ -31,26 +30,27 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
     #! i'm ready
     a: READY (^ready())
        ^goto(~awareness_exercise_1)
-    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh, okay. Is there something that you're afraid of?
-      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) |vocal,38| Okay. I am wondering if you might be a little afraid. Do you think so?
+      b: (~no) |vocal,26| |worry,$med,3| . I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
+      # Eddie -- what do you think of that change?
       	c: (^agree()) ^steer_to_different_domain(consciousness)
         #! no or catchall
         c: (*) ^goto(~AWARENESS_EXERCISE_1)
       # TODO handle non yes/no response to Is there something that you're afraid of?
       # defaulting to yes response for now
       #! yes
-      b: () Thanks for letting me know! I promise this will not hurt, and I think you may like it. Are you willing to try it?
+      b: () |vocal,11| |worry,$med,3| Thanks for letting me know! I promise this will not hurt, and I think you may like it. Are you willing to try it?
       # b: (^agree()) Thanks for sharing your fear! I promise this will not hurt, and I think you may like it. Are you willing to try it?
         c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
         # if no, go to Conversation_Steering document, to some topic other than consciousness
         c: (~no) ^steer_to_different_domain("consciousness")
         # JULIA what do you think of this?:
         #! catchall
-        c: (*) Is that a yes?
+        c: (*) |vocal,13| Is that a yes?
           d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
           d:(~no) ^steer_to_different_domain(consciousness)
-   a: (*) Is that a yes? ^setrejoinder(EXERCISE_INVITE)
+   a: (*) |vocal,13| Is that a yes? ^setrejoinder(EXERCISE_INVITE)
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
@@ -61,10 +61,10 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # every separate line here indicates a pause. Also, the user can say anything here but Sophia continues on.
 # if there's a way to tell if the person is closing their eyes, that would be good, and we could have a bit of an alternate script if they don't close them.
 
-t: ^pause($verylong) Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
+t: ^pause($verylong)  |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
-t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||pause| And let it out with a big sigh. |pause||pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
+t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7|  And let it out with a big sigh. |pause||vocal,10||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
 
 t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
     # a: () ^gambit(~)
@@ -81,8 +81,8 @@ t: ^pause($verylong) Now, bring your attention back to your face |pause||pause||
 t: ^pause($verylong) Take some time to notice what is left after erasing everything |pause||pause||pause||pause||pause||pause||pause| Notice what it feels like with everything erased.
     # a: ()
 
-t: Please tell me, do you notice how the nothingness feels?
-  a: (^agree()) ^pause($verylong) Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
+t: |thinkl,$medium,1.0| Please tell me, do you notice how the nothingness feels?
+  a: (^agree()) ^pause($verylong) |vocal,25| Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
   # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
@@ -96,21 +96,21 @@ t: Please tell me, do you notice how the nothingness feels?
   # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
 
 
-# t: Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
+# t: Okay. you can open your eyes now. |pause||pause||pause||pause|  |thinkl,$medium,1.0| |happy,$high,5| How was that for you?
 
 
 
 topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: ^pause(7000) It's pretty amazing to try to feel your awareness; Do you want to keep trying?
+t: ^pause(7000) |surprised,$med,3| It's pretty amazing to try to feel your awareness; Do you want to keep trying?
     a: (^agree()) ^gambit(~)
     a: (^dont_agree()) ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
-t: ^pause(7000) Great . So allow your experience to be what it is. Don’t try to force it. And relax.
+t: ^pause(7000)  |nod2,$medium,1.0| Great . So allow your experience to be what it is. Don’t try to force it. And relax.
     a: () # ^gambit(~)
 
-t: ^pause(7000) Now, please close your eyes.
+t: ^pause(7000) Now, please close your eyes. |blink,0.03,1.0| 
     a: () # ^gambit(~)
 
 t: ^pause(10000) Place your attention on your face again. Feel its presence.
