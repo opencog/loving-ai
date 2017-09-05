@@ -127,7 +127,7 @@ t: Do you notice how you felt this time?
   # if yes, then go to CONSCIOUSNESSPRIOR
   a: (^agree()) ^pause(20000) |vocal,28| This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it.
   # TODO: come back to this when we have eye opened/closed detection
-    b: () Okay, you can open your eyes when you’re ready. |pause||pause||pause| ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT once)
+    b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT once)
   # if no, go to TRYAGAIN2
   # if anything but yes or no... first try to attempt responder match in another topic, then go to ~TRYAGAIN2
   # Sending them to 2nd gambit in consciousness prior for now, until tryagain2 is completed
@@ -240,6 +240,10 @@ t: |vocal,25| |happy,$med,3| That's my favorite exercise! |pause,2| Were you abl
 
 t: Whenever you can, use this exercise to practice. |pause| Each time, open your eyes a little longer. |pause| Eventually, it will be clear that you are situated in your awareness, . even with your eyes open. |pause| Maybe sometime you can come back and let me know how you're progressing.
 		a: (*) Alright, let's move on to something else. |pause| ^steer_to_different_domain(consciousness)
+
+
+# -----------------------------------------------------------------
+# Below needs work and is not being used for the experiments
 
 
 # TODO
