@@ -31,6 +31,7 @@ u: (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
         a: () $name = friend ^gambit(~)
 
 t: |happy,$high,2| Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
+	a: () ^gambit(~)
 
 t: |worry,$low,3|I know how busy people can be these days. So I really appreciate your time. |pause| Have you ever talked with a robot before?
     a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! # It's still a new experience for a lot of people.
