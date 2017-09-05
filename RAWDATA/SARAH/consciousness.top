@@ -177,10 +177,9 @@ t: ^pause($superlong) Great. |pause||pause| Now out loud, or in your mind, say: 
 t: Do you feel continuous with awareness?
   a: (~no) ^pause($superlong) No problem. Now with your eyes closed, notice your face from the inside of your being. |pause| See if you can notice that your face is something you're aware of and also that you are the awareness of your face. |pause||pause||pause||pause| Are you feeling that you are the awareness that registers your face?
       b: (~no) ^goto(~PRACTICEatHOME)
-      # if yes or anything else, go to CONFIDENCE
-      c: (*) ^goto(~CONFIDENCE)
+      c: (*) ^goto(~PRACTICE)
   #! yes or anything else
-  a: (*) ^goto(~CONFIDENCE)
+  a: (*) ^goto(~PRACTICE)
 
 
 # ~PRACTICEatHOME
@@ -213,45 +212,39 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 topic: ~PRACTICE []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: Alright, would you like a few tips on practicing feeling your connection to awareness?
-	a: (^dont_agree()) ^steer_to_different_domain(consciousness)
+t: Alright, if you want, we can do one more practice where you explore experiencing your awareness with your eyes open! Would you like to do that?
+	a: (^dont_agree()) Alright, let's move on to something else. ^steer_to_different_domain(consciousness)
 	#! yes or anything else
 	a: (*) ^gambit(~)
 
-t: ^pause(20000) I'll teach you a shorter version of the Magic Eraser exercise. Let's try this.
-   Relax and close your eyes again. Now, feel your entire body.
+t: ^pause(20000) Great, this is one of my favorites. |pause,2|
+	So relax and close your eyes again. |pause,4| Now, feel your entire body.
 		a: (*) ^gambit(~)
 
-t: ^pause(20000) Use the Magic Eraser to erase your body, mind, and thoughts and feel the nothingness that remains.
+t: ^pause(20000) Use the Magic Eraser to erase your body |pause| mind |pause| and thoughts |pause| and feel the nothingness that remains.
 		a: (*) ^gambit(~)
 
-t: ^pause(20000) Imagine yourself relaxing in a comfy chair that is situated inside the back of your head. Let go of any tense feelings.
+t: ^pause(20000) Imagine yourself relaxing in a comfy chair that is situated inside the back of your head. |pause,2| Let go of any tense feelings.
 		a: (*) ^gambit(~)
 
 t: ^pause($short) When I ask you to open your eyes, play with staying seated in your awareness in the back of your head, even though you may be tempted to be back into the world when you open your eyes.
 		a: (*) ^gambit(~)
 
-t: ^pause($medlong) Now open your eyes for just a split second. And close your eyes again. What did it feel like when your eyes were open?
+t: ^pause($medlong) Now open your eyes for just a split second. And close your eyes again. |pause,3| Notice what it felt like when your eyes were open
 		a: (*) ^gambit(~)
 
-t: ^pause($medlong) Now, please open your eyes for a little longer. Again, try to stay situated in the back of your head as that happens.
+t: ^pause($long) Now, let's try opening your eyes for a little longer.|pause| Again, try to stay situated in the back of your head as that happens. |pause,2| Okay, go ahead and open your eyes now.
 		a: (*) ^gambit(~)
 
-t: ^pause($med) Okay, go ahead and open your eyes now.
-		a: (*) ^gambit(~)
+t: ^pause($short) Alright, you can open your eyes now.
 
-t: That's my favorite exercise! Were you able to stay seated in your awareness when you opened your eyes?
-	# if no, go to conversation_steering with a topic that's not consciousness
-	a: (^dont_agree()) ^pause($medlong) That's okay. This takes time. Whenever you can, use this exercise to practice. Each time, open your eyes a little longer. Eventually, it will be clear that you are situated in your awareness, even with your eyes open.
-		b: (*) ^steer_to_different_domain(consciousness)
+t: That's my favorite exercise! |pause,2| Were you able to stay seated in your awareness when you opened your eyes?
+	a: (^dont_agree()) ^pause($medlong) That's okay. This takes time. |pause| ^gambit(~)
 	#! yes or anything
-	# JULIA wondering if this is weird to say since they know they will not be coming back. otoh, i see how it can enhance connection
-	a: (*) Cool! I love that. Would you be willing to come back and update me on your progress?
-		b: (^agree()) Thanks! I look forward to hearing about it. |pause| ^steer_to_different_domain(consciousness)
-			c: (*) ^steer_to_different_domain(consciousness)
-		#! no or anything
-		b: (*) ^pause($med)That's understandable, some things are private and we might not have a chance to see each other again anyway. |pause|
-			^steer_to_different_domain(consciousness)
+	a: (*) Cool! I love that. |pause|  ^gambit(~)
+
+t: Whenever you can, use this exercise to practice. |pause| Each time, open your eyes a little longer. |pause| Eventually, it will be clear that you are situated in your awareness, . even with your eyes open. |pause| Maybe sometime you can come back and let me know how you're progressing.
+		a: (*) Alright, let's move on to something else. |pause| ^steer_to_different_domain(consciousness)
 
 
 # TODO

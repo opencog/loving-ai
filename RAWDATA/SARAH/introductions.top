@@ -42,7 +42,7 @@ t: So, what I am wanting to do is help people enhance their wellbeing. . How I c
 	# check for domain words first
 	# keeping out the emotion domain keywords list because they are being caught too broadly here
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
-		# ^setrejoinder(input PROMPT)
+		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
 		^rejoinder(PROMPT)
     a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
@@ -70,7 +70,7 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
            ^reuse(~uniqueness.FROM_INTRODUCTION_TO_UNIQUENESS)
         a: (~dontknow) Well, I can offer some suggestions. There are a few things I really enjoy talking about with people.
             ^goto(~CONVERSATION_STEERING)
-        a: (~emotions2) $domain = emotions # this is at the bottom since ~emotions2 catches things widely
+        a: (~emotions) $domain = emotions # this is at the bottom since ~emotions catches things widely
            Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
         # a: (^agree()) Great. ^reuse(PROMPT)

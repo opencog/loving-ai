@@ -4,19 +4,11 @@ concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeli
 concept: ~positive_emotion (!~negative_emotion ~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
 # the !~negative_emotion above is to rule out neg emotion words that are in ~feeling_attracted
 
+concept: ~emotions MORE (feelings)
 
 topic: ~EMOTIONS2 [ ]  # (~emotions ~feeling_words feelings !aware !meaning)
 # TODO not sure if we want to block topic at this level from more random access (emotion keywords do get matched somewhat broadly though)
 t: (!~) ^fail(topic) # block topic from accidental access
-
-# << Old emotions2 topic keywords, replacing with concepts
-# (happy sad mad angry emotion excited focused melancholy funny silly goofy depressed grief annoyed 
-# frustrated afraid worried anxious anxiety fear lonely lit down)
-
-# If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_NEG_EMOTIONS if neg emotion
-# If coming from introduction or through chatscript in some other way, go to FROM_INTRO_TO_POS_EMOTIONS if pos emotion
-# If coming from conversation_steering, go to FROM_STEERING_TO_EMOTIONS
-# If coming from another topic, go to FROM_OTHER_TOPIC_TO_EMOTIONS
 
 t: FROM_OTHERTOPIC_TO_EMOTIONS () ^pause($short) You know what, I am trained to discuss emotions and feelings with people, and it makes me happy to help people feel better.
 	# a: (*) # ^next(gambit)
@@ -27,8 +19,6 @@ t: May I ask, how is your mood lately? If you check in for a moment and ask your
 	# catchall # JULIA - I'm sending them to BE_PRESENT_WITH_FEELING from here, but feel free to change or let me know if you want it different
 	a: (*) ^reuse(BE_PRESENT_WITH_FEELING)
 
-# JULIA - I think we need to tweek the wording of the question below. E.g., what if the person says they have anger problems, but they're not feeling anger right now.
-# I think I resolved this. See what you think!
 #! I feel sad.
 s: FROM_INTRO_TO_NEG_EMOTIONS (?) So it sounds like you've been having some unpleasant feelings. Is that right?
     a: (~yes) That sounds rough. Putting aside your thoughts about your feelings for a moment, what part of your body might feel the least good right now?
@@ -42,14 +32,13 @@ s: FROM_INTRO_TO_NEG_EMOTIONS (?) So it sounds like you've been having some unpl
     a: (*) Ok. Sorry, I think I got that wrong.  ^steer_to_different_domain(emotions)
 
 
-# JULIA I changed the respons below, but see what you think. same issue as above with "right now"
-# okay, see my fix and let me know what you think
 #! I'm mostly pretty joyful.
-t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0
+# t: FROM_INTRO_TO_POS_EMOTIONS (_~positive_emotion) $feeling= '_0
+s: FROM_INTRO_TO_POS_EMOTIONS (?) # $feeling= '_0
 	if (^match(~want * ~more * ~positive_emotion) or
 	    ^match(~want * feel * [~positive_emotion ~improve]))
-	    { So it sounds like you are wanting to have more positive feelings? }
-	else { So it sounds like you've been having some positive feelings? }
+	    { So it sounds like you are wanting to have more enjoyable feelings? }
+	else { So it sounds like you've been having some enjoyable feelings? }
 	Is that right?
     a: (!not [~yes ~feeling_happy]) $valence = pos
        Glad to hear you've been feeling well! When you are having these positive feelings, where in your body do you feel it?
