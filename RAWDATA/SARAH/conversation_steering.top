@@ -1,7 +1,7 @@
 topic: ~conversation_steering []
 
 t:  STEER_TO_DOMAIN ()
-  |vocal,13| [Here’s what I think would be fun.] [I have an idea.] [How about this?]
+  |vocal,13| |pause| [Here’s what I think would be fun.] [I have an idea.] [How about this?]
 
 	if (!$avoid_consciousness)
 		{ How about exploring states of awareness and self-transcendence. $domain = consciousness }
