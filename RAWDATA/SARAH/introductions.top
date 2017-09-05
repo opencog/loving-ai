@@ -16,7 +16,7 @@ t: (%input=0) Okay, I'm ready to spread the love.
 #	Hi! My name is Sophia. What's yours?
 
 # Initial line from Sophia, respond to anything user starts off with
-u: (*) ^express(happy $med 3) Hi! My name is Sophia. What's yours?
+u: (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
     # \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
     #! My name is X
     # add name check?
@@ -27,28 +27,32 @@ u: (*) ^express(happy $med 3) Hi! My name is Sophia. What's yours?
         a: (!~emohello _*) $name = '_0 ^gambit(~)
         a: () $name = friend ^gambit(~)
 
-t: ^express(happy.002 $low 3) Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
+t: |happy,$high,2| Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
 
-t: ^express(engaged $med 3) I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives])  ^express(comprehending .7 2) Nice! # It's still a new experience for a lot of people.
+t: |worry,$low,3|I know how busy people can be these days. So I really appreciate your time. |pause| Have you ever talked with a robot before?
+    a: ([~yes once ~quantity_adjectives]) |vocal,27| Nice! # It's still a new experience for a lot of people.
                What was that like?
-    a: (~no)   ^express(happy .7 2)
+    a: (~no)   |happy,$low,3|
                Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 
 t: I imagine you'll be talking with more and more robots as time goes on.
 # Add question about what it's like talking to a robot here?
-
-t: So, what I am wanting to do is help people enhance their wellbeing. . How I can help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
+d\
+t: So, what I am wanting to do is help people enhance their wellbeing. . How to help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
 	# check for domain words first
 	# keeping out the emotion domain keywords list because they are being caught too broadly here
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
 		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
 		^rejoinder(PROMPT)
-    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
+    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. . Would you like to talk about your potential, your feelings, higher states of consciousness or something else? 
+    	$setrejoinder(PROMPT)
+	b: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
+		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
+		^rejoinder(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
 
-t: PROMPT () Well, do any of the things I mentioned interest you, . or is there something else you'd like to talk about?
+t: PROMPT () So do any of the things I mentioned interest you, . or is there something else you'd like to talk about?
        ##<<
        [So what are you feeling or thinking about lately?]
        [What is meaningful to you right now?]
@@ -81,25 +85,25 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
         # a: () : This sounds interesting, but it's not something I know much about yet.
         # ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
-t: This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+t: |vocal,38| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
-    a: (^agree()) That's cool! Well, let's get going!
+    a: (^agree()) |vocal,36| That's cool! Well, let's get going!
        ^clear_avoided_domains()
        ^reuse(RE-BUY-IN)   # goto(~CONVERSATION_STEERING)
     a: (^dont_agree())  ^pause($medshort) Well, I hope you enjoy our conversation this time. I think I will.
 
 
 t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feelings, and human potential. Does that sound interesting to you?
-    a: (^dont_agree()) Okay, what would you like to talk about?
+    a: (^dont_agree())  |vocal,38| Okay, what would you like to talk about?
     # if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
     # if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
     # if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
     #! anything but ~no
-    a: () Wonderful!
+    a: () |vocal,36| Wonderful!
             [So what are you feeling or thinking about lately?]
             [What is meaningful to you right now?]
             [What would you like to talk about?]
@@ -115,4 +119,4 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 topic: ~ENDING ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
+t: |vocal,10| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
