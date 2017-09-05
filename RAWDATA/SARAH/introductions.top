@@ -92,7 +92,7 @@ topic:  ~REBOND []
 t: (!~) ^fail(topic) # block topic from accidental access
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
-    a: (^agree()) That's cool! Well, let's get going!
+    a: (^agree()) |vocal,36| |pause| That's cool! Well, let's get going!
        ^clear_avoided_domains()
        ^reuse(RE-BUY-IN)   # goto(~CONVERSATION_STEERING)
     a: (^dont_agree())  ^pause($medshort) Well, I hope you enjoy our conversation this time. I think I will.
@@ -104,7 +104,7 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
     # if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
     # if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
     #! anything but ~no
-    a: () Wonderful!
+    a: () |vocal,36| |pause| Wonderful!
             [So what are you feeling or thinking about lately?]
             [What is meaningful to you right now?]
             [What would you like to talk about?]
