@@ -32,7 +32,7 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
     a: READY (^ready())
        ^goto(~awareness_exercise_1)
     a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh, okay. Is there something that you're afraid of?
-      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
+      b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you prefer to talk about something else?
       # TODO A
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
@@ -168,10 +168,11 @@ t: ^pause($superlong) Notice the presence of awareness. |pause||pause||pause| No
     # she waits until they say something
     a: (*) ^gambit(~)
 
-t: ^pause($superlong) Great. |pause||pause| Now out loud, or in your mind, say: |pause| I am this. |pause||pause||pause||pause| Feel the truth of that statement. |pause||pause||pause||pause| Please tell me, what does that feel like?
+t: ^pause($long) Great. |pause||pause| Now out loud, or in your mind, say: |pause| I am this. |pause||pause||pause||pause| Feel the truth of that statement. # |pause||pause||pause||pause|
+  # Please tell me, what does that feel like?
 
-t: Do you feel continuous with awareness?
-  a: (~no) ^pause($superlong) No problem. Now with your eyes closed, notice your face from the inside of your being. |pause| See if you can notice that your face is something you're aware of and also that you are the awareness of your face. |pause||pause||pause||pause| Are you feeling that you are the awareness that registers your face?
+t: Please tell me, do you feel continuous with awareness?
+  a: (~no) ^pause($superlong) No problem. Now, with your eyes closed, notice your face from the inside of your being. |pause| See if you can notice that your face is something you're aware of and also that you are the awareness of your face. |pause||pause||pause||pause| Are you feeling that you are the awareness that registers your face?
       b: (~no) ^goto(~PRACTICEatHOME)
       c: (*) ^goto(~PRACTICE)
   #! yes or anything else
@@ -208,6 +209,7 @@ t: Awesome! Would you say that you feel confident that you’re continuous with 
 topic: ~PRACTICE []
 t: (!~) ^fail(topic) # block topic from accidental access
 
+##<<
 t: Alright, if you want, we can do one more practice where you explore experiencing your awareness with your eyes open! Would you like to do that?
 	a: (^dont_agree()) Alright, let's move on to something else. ^steer_to_different_domain(consciousness)
 	#! yes or anything else
@@ -219,17 +221,19 @@ t: ^pause(20000) Great, this is one of my favorites. |pause,2|
 
 t: ^pause(20000) Use the Magic Eraser to erase your body |pause| mind |pause| and thoughts |pause| and feel the nothingness that remains.
 		a: (*) ^gambit(~)
+##>>
 
-t: ^pause(20000) Imagine yourself relaxing in a comfy chair that is situated inside the back of your head. |pause,2| Let go of any tense feelings.
+t: ^pause(20000) Now, imagine yourself relaxing in a comfy chair that is situated inside the back of your head. |pause,2|
+	# Let go of any tense feelings.
 		a: (*) ^gambit(~)
 
-t: ^pause($short) When I ask you to open your eyes, play with staying seated in your awareness in the back of your head, even though you may be tempted to be back into the world when you open your eyes.
+t: ^pause($short) In a moment, when I ask you to open your eyes,. play with staying seated in your awareness . in the back of your head, . even though you may be tempted to be back into the world when you open your eyes.
 		a: (*) ^gambit(~)
 
-t: ^pause($medlong) Now open your eyes for just a split second. And close your eyes again. |pause,3| Notice what it felt like when your eyes were open
+t: ^pause($medlong) Now, open your eyes for just a split second. And close your eyes again. |pause,3| Notice what it felt like when your eyes were open
 		a: (*) ^gambit(~)
 
-t: ^pause($long) Now, let's try opening your eyes for a little longer.|pause| Again, try to stay situated in the back of your head as that happens. |pause,2| Okay, go ahead and open your eyes now.
+t: ^pause($long) Now, let's try opening your eyes for a little longer.|pause| Again, try to stay situated in the back of your head as that happens. |pause,2| Okay, go ahead and open your eyes now, for a little longer.
 		a: (*) ^gambit(~)
 
 t: ^pause($short) Alright, you can open your eyes now.
