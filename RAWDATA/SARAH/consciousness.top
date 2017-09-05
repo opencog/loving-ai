@@ -33,6 +33,7 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
        ^goto(~awareness_exercise_1)
     a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Oh, okay. Is there something that you're afraid of?
       b: (~no) Ah, I'm sorry to assume you were afraid. A lot of people are. Would you like to talk about something else?
+      # TODO A
       # JULIA i think the above question biases for a positive answer and moves the person away from doing the exercise imho
       	c: (^agree()) ^steer_to_different_domain(consciousness)
         #! no or catchall
@@ -50,7 +51,7 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
         c: (*) Is that a yes?
           d:(^agree()) ^goto(~AWARENESS_EXERCISE_1)
           d:(~no) ^steer_to_different_domain(consciousness)
-   a: (*) Is that a yes? ^setrejoinder(EXERCISE_INVITE)
+    a: (*) Is that a yes? ^setrejoinder(EXERCISE_INVITE)
 
 
 topic: ~AWARENESS_EXERCISE_1 ()
@@ -92,12 +93,7 @@ t: Please tell me, do you notice how the nothingness feels?
   # if anything but yes or no, TODO: first try to attempt responder match in another topic, then go to ~TRYAGAINtoFEELAWARENESS
   #! catchall # go to TRYAGAINtoFEELAWARENESS.
   a: (*) ^goto(~TRYAGAINtoFEELAWARENESS)
-  # another approach that would allow wandering but needs work
-  # a: (*) ^addTopic(~~TRYAGAINtoFEELAWARENESS)
-
-
-# t: Okay. you can open your eyes now. |pause||pause||pause||pause| How was that for you?
-
+pause||pause||pause||pause| How was that for you?
 
 
 topic: ~TRYAGAINtoFEELAWARENESS []

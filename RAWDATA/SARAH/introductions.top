@@ -44,11 +44,12 @@ t: So, what I am wanting to do is help people enhance their wellbeing. . How I c
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
 		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
 		^rejoinder(PROMPT)
-    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
+    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. |pause| Would you like to talk about your feelings, your potential, higher states of consciousness or something else?
+    ^setrejoinder(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
 
-t: PROMPT () Well, do any of the things I mentioned interest you, . or is there something else you'd like to talk about?
+t: PROMPT () So, do any of the things I mentioned interest you, . or is there something else you'd like to talk about?
        ##<<
        [So what are you feeling or thinking about lately?]
        [What is meaningful to you right now?]
@@ -85,6 +86,7 @@ t: This sounds interesting, but it's not something I know much about yet. . ^reu
 
 # When should this get used
 topic:  ~REBOND []
+t: (!~) ^fail(topic) # block topic from accidental access
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
     a: (^agree()) That's cool! Well, let's get going!
