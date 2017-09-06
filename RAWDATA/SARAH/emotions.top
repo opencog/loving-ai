@@ -215,7 +215,7 @@ s: SUBJECTIVEISSUE (?) Earlier in the conversation, I got that you were feeling 
     a: (~yes) ^reuse(EXPLORETHEFEAR)
     a: (*) ^reuse(LETSBESURE)
 
-s: LETSBESURE (?) I just want to be sure about this part because inner resistance to feeling can often be subtle or even unconscious. So if you find yourself becoming really busy with doing things when it's time to relax, checking your phone a lot, it’s possible something is bothering you or there’s something uncomfortable you don’t want to feel. Does that seem familiar to you?
+s: LETSBESURE (?) I just want to be sure about this part because inner resistance to feeling can often be subtle or even unconscious. So if you find yourself becoming really busy with doing things when it's time to relax, checking your phone a lot, it's possible something is bothering you or there’s something uncomfortable you don’t want to feel. Does that seem familiar to you?
     a: (^dont_agree()) ^reuse(NOTRESISTING)
     a: (*) Ok, are you open to exploring this a little deeper with me? Emotions are so human and beautiful!
         b: (~yes) ^reuse(EXPLORETHEFEAR)
