@@ -94,11 +94,11 @@ t: |thinkl,$medium,1.0| Please tell me, do you notice how the nothingness feels?
 topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: ^pause(7000) |surprised,$med,3| It's pretty amazing to try to feel your awareness; Do you want to keep trying?
+t: ^pause($med) |surprised,$med,3| It's pretty amazing to try to feel your awareness; Do you want to keep trying?
     a: (^agree()) ^gambit(~)
     a: (^dont_agree()) ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
-t: ^pause(7000)  |nod2,$medium,1.0| Great . So allow your experience to be what it is. Don’t try to force it. And relax.
+t: ^pause($med)  |nod2,$medium,1.0| Great . So allow your experience to be what it is. Don’t try to force it. And relax.
     a: () # ^gambit(~)
 
 t: ^pause(7000) Now, please close your eyes. |blink,0.03,1.0| 
