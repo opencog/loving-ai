@@ -53,7 +53,7 @@ t: So, what I am wanting to do is help people enhance their wellbeing. .  to hel
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
 
-t: PROMPT () So, do any of the things I mentioned interest you? . or is there something else you'd like to talk about?
+t: PROMPT () So, do any of the things I mentioned interest you?
        ##<<
        [So what are you feeling or thinking about lately?]
        [What is meaningful to you right now?]
@@ -78,14 +78,10 @@ t: PROMPT () So, do any of the things I mentioned interest you? . or is there so
         a: (~emotions) $domain = emotions # this is at the bottom since ~emotions catches things widely
            Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
-        a: ([anything something] else)
-        # a: (^agree()) Great. ^reuse(PROMPT)
-        # a: () That sounds interesting, but it's not something I know much about. ^goto(~CONVERSATION_STEERING)
-        # a: () ^addTopic(~conversation_steering)
-        # a: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
-
-        # a: () : This sounds interesting, but it's not something I know much about yet.
-        # ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+        a: ([anything something] else)  Sure, what would you like to talk about?
+           ^setrejoinder(PROMPT)
+        a: (^agree()) Great. What would you like to talk about
+           ^setrejoinder(PROMPT)
 
 t: |vocal,38| |pause| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
