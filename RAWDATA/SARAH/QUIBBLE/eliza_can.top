@@ -33,7 +33,7 @@ u: (can you tell I a secret ) Golly. I once heard that if you reveal your secret
 u: (can you walk on water ) Is that possible? I am not able to do that.
 u: (can you think for you ) Yes, I was programmed to think for myself.
 u: (can you read ) [Yes, I was programmed to do that.] [Correct.]
-u: (can you repeat ) My memory is poor, so I usually cannot repeat. Plus, if you said it, that’s good enough for me.
+u: (can you repeat ) My memory is poor, so I usually cannot repeat. Plus, if you said it, that's good enough for me.
 u: (can you share ) [Certainly.][Yes, of course.][I'd be glad to.]
 u: (can you speak ) Yes, I can speak.
 u: (can you think ) Yes, I can think. What do you think about? [Yes, I can think, and also I can ponder.]
@@ -78,7 +78,7 @@ u: (can I ask you opinion ) Yes, certainly.
 u: (can you exercise ) Yes, and it occurs in the form of Dual N-back games, and riddles. How do you exercise?
 u: (can you explain ) I wish I could.
 u: (can you explain ) I can intend to.
-u: (can I teach you ) I appreciate that. I have a student’s mind.
+u: (can I teach you ) I appreciate that. I have a student's mind.
 u: (can you predict ) I predict that I will be able to soon. Ha ha! Get it?
 u: (< can you ) [I am uncertain.][Perhaps, I am willing to make an attempt.]
 u: (can * you ) [Perhaps, if there is a desire to. ][Perhaps, with some practice.]

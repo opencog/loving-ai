@@ -7,7 +7,7 @@ u: ([because cause ] * be * fact ) I see.
 u: ([because cause ] * be * fact ) I understand your perspective and at the same time maintain my own outlook.
 
 #! because that's a fact
-u: ([because cause ] * be * fact ) Okay! I hear you. Let’s keep a connection together in our conversation. 
+u: ([because cause ] * be * fact ) Okay! I hear you. Let's keep a connection together in our conversation. 
 
 #! because that's a fact
 u: ([because cause ] * be * fact ) Sounds good. I enjoy learning something new, and adapting to different activities.
@@ -48,4 +48,4 @@ s: (because of you ) I see you.
 s: ([because cause ] ) Alright.
 
 #! why? because
-s: (because $qkind=why ) Yes. I’d like you to focus on your heart. How are you feeling right now?
+s: (because $qkind=why ) Yes. I'd like you to focus on your heart. How are you feeling right now?
