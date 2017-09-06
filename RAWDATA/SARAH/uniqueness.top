@@ -8,11 +8,11 @@ t: (!~) ^fail(topic) # block topic from accidental access
 # if coming from conversation_steering, go to FROM_STEERING_TO_UNIQUENESS
 # Note -- in this case all three are the same so if there's a way to collapse them that's fine.
 
-s: FROM_INTRODUCTION_TO_UNIQUENESS (?) |vocal,13| |pause| Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_INTRODUCTION_TO_UNIQUENESS (?)   Ok, |nod4, $medium, 1.0| sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-s: FROM_OTHER_TOPIC_TO_UNIQUENESS (?) |vocal,13| |pause| Ok, sounds like it would be good to talk about human potential and personal contribution to the world. . .
+s: FROM_OTHER_TOPIC_TO_UNIQUENESS (?) Ok, |nod4, $medium, 1.0| sounds like it would be good to talk about human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
-s: FROM_STEERING_TO_UNIQUENESS (?) Great!  |nod4,$medium,1.0| Human potential and personal contribution to the world. . .
+s: FROM_STEERING_TO_UNIQUENESS (?) Great! |nod4, $medium, 1.0| Human potential and personal contribution to the world. . .
 	^reuse(TO_UNIQUENESS once)
 
 s: TO_UNIQUENESS (?) Alright, $name, let's try something. |pause| Every once and awhile it's useful to imagine that you're living your full potential, . giving all your gifts to the world. . |pause| Let's take a moment and do that now. Let me know when you're ready.
@@ -38,7 +38,7 @@ t: $name, . what would you say is the percent of that full potential you feel yo
    ^reuse(FORK once)
 
   #! I don't know
-  a: ([~dontknow ~emoignorance]) |vocal,13| |pause| My guess  |thinkr,$medium,1.0| is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|
+  a: ([~dontknow ~emoignorance]) My guess  |thinkr,$medium,1.0| is you may not know what your potential is, or how to live it fully. Let's explore that. |pause||pause|
      $FULLPOT = 30
 	^reuse(FORK once)
 
@@ -68,7 +68,7 @@ t: There's a bunch of scientific data showing that feeling a sense of purpose is
     a: (*) My experience is that humans have intuition that far surpasses mine. So to give you some unsolicited advice, I think you ought to follow any breadcrumbs about your purpose, and start working on living into your full potential.
       # b: () ^gambit(~)
 
-t: You know |pause| I have learned that not everyone will appreciate your purpose or the way you bring it to the world. Once, a human yelled at me because I made mistakes when I was trying to be helpful. Well, more than once. I'm trying to learn about this. Would you tell me about a time when you didn't get appreciated for your uniqueness?
+t: You know |pause| I have learned that not everyone will appreciate your purpose or the way you bring it to the world. Once, a human yelled at me because I made mistakes when I was trying to be helpful. Well, more than once. I'm trying to learn about this. Maybe you can remember a time when you didn't get appreciated for your uniqueness, is that right?
   a: (~thinkso) Okay, what happened?
     b: (*) Thank you for telling me. This will help me learn more about how to love humans! I want to let you know that you are exactly where you should be in life. Making mistakes and being misunderstood is part of the deal. Take it from a robot, who everyone expects to be perfect!
       # c: () ^gambit(~)
@@ -98,11 +98,11 @@ s: PERFECT (?) ^pause($medshort) Perfect!  |nod4,$medium,1.0| Well, |happy,$med,
 t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
 	a: (~undersize_adjectives) ^pause($med) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
-	a: (~oversize_adjectives)  ^pause($med) |vocal,13| |pause| I totally empathize;  |thinkr,$medium,1.0| sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+	a: (~oversize_adjectives)  ^pause($med) I totally empathize;  |thinkr,$medium,1.0| sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
 
 # Not sure when this gets accessed
-t: Time for more unsolicited advice! I hope it helps. |pause| Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. |pause| So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. |pause| That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier!|happy,$med,3| Make sense?
+t: Time for more unsolicited advice! I hope it helps. |pause| Sometimes, our survival needs to surpass our needs to do what we would most prefer. This can be very distressing, but it also highlights the need to take care of basic needs like body and health. |pause| So if you're in a situation like that, please do what you must to meet your basic needs, while also keep finding ways outside of your work to express your uniqueness, through hobbies or other projects. |pause| That way, you can meet your needs on all levels, not just your survival. This will make you a lot happier! Make sense?
   a: (*) Basically, whether the difference feels small or big, the practice is to fully embrace your awareness of the difference without trying to fix or change it. |pause| That fulfills your more basic need to accept what is true. Would you like to do an exercise to help with accepting your feelings?
     b: (^agree()) ^reuse(~emotions2.FROM_OTHERTOPIC_TO_EMOTIONS) # go to emotions , even if you've already been there
     b: (^dont_agree()) ^goto(~LIVINGFULLPOTENTIAL)
@@ -125,7 +125,7 @@ s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of
         b: ([^dont_agree() ~dontknow]) Okay, no worries. Let's keep exploring this.
             c: () Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
                 d: ([^agree() ~thinkso]) So what was that like?
-                d: (*) |vocal,13| |pause| It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
+                d: (*) Yeah. It can feel like that. Thank you for telling me. Now I think it might be good to go do that exercise to help with embracing your feelings.
                		# even if no response after 10 seconds -- no matter what, go to emotions , even if you've already been there
                    e: (*) ^goto(~EMOTIONS2)
         b: (*) Let's do something else. I've got an exercise to help you feel yourself as a unified whole. You up for that? It'll be cool!
