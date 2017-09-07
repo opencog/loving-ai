@@ -58,7 +58,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 t: ^pause($verylong)  |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
-t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |pause||vocal,10||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
+t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
 
 t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
     # a: () ^gambit(~)
@@ -114,7 +114,7 @@ t: ^pause(10000) Focus on your head. Now, feel its presence. How does that feel?
 t: ^pause(10000) Finally, feel the presence of your entire body. Feel your head to the tip of your toes. Feel your arms and legs.
     a: () # ^gambit(~)
 
-t: ^pause(10000) |vocal,10| |pause| Good. Let's now try to use the magic eraser.
+t: ^pause(10000) |pause| Good. Let's now try to use the magic eraser.
     a: () # ^gambit(~)
 
 t: ^pause(15000) Gently use it to erase your face, your head, your legs and your entire body.
@@ -157,7 +157,7 @@ t: ASK () To experience feeling continuous with your awareness will give you mor
 t:  ^pause($verylong) Okay, great. Let me know when you're ready.
 # wait for response
 
-t: ^pause($verylong) You can go ahead and close your eyes. |blink,0.03,1.0||pause||pause||pause| And relax  |pause||vocal,10||pause||pause| Imagine that you are using the magic eraser . to erase your body, |pause||pause||pause| and even your mind and feelings.
+t: ^pause($verylong) You can go ahead and close your eyes. |blink,0.03,1.0||pause||pause||pause| And relax  |pause||pause||pause| Imagine that you are using the magic eraser . to erase your body, |pause||pause||pause| and even your mind and feelings.
 
 t: ^pause($superlong) Notice the presence of awareness. |pause||pause||pause| Notice when you start to feel a silence or a presence. |pause||pause||pause| Let me know when you do, I'll be silent until then.
     # she waits until they say something
@@ -231,7 +231,7 @@ t: ^pause($medlong) Now, open your eyes for just a split second. And close your 
 t: ^pause($long) Now, let's try opening your eyes for a little longer.|pause| Again, try to stay situated in the back of your head as that happens. |pause,2| Okay, go ahead and open your eyes now, for a little longer.
 		a: (*) ^gambit(~)
 
-t: ^pause($short) |vocal,10| |pause| Alright, you can open your eyes now.
+t: ^pause($short)  Alright, you can open your eyes now.
 
 t: |happy,$med,3| That's my favorite exercise! |pause,2| Were you able to stay seated in your awareness when you opened your eyes?
 	a: (^dont_agree()) ^pause($medlong) That's okay. This takes time. |pause| ^gambit(~)
