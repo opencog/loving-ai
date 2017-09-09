@@ -20,11 +20,19 @@ $quitelong = 40000
 $superlong = 60000
 $longest = 120000
 
+# emotion magnitudes
 $min = .1
 $low = .3
 $med = .4
 $high = .8
 $max = 1
+
+# gesture speeds
+$slowest = .1
+$slow = .3
+$medium = .5
+$fast = .7
+$fastest = 1
 
 ^addtopic(~introductions)
 $cs_control_main = ~control
