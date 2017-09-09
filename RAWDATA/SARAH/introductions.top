@@ -1,7 +1,7 @@
-topic: ~introductions ( ~emohello ~emohowzit name here )
+topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
 
 # start fresh each time, no user history from previous conversations
-t: ( %userfirstline>1 ) ^reset(USER)
+# t: ( %userfirstline>1 ) ^reset(USER)
 
 #!x will match on every return start of a conversation
 # t: ( %input<%userfirstline %input>0 )
@@ -10,86 +10,50 @@ t: ( %userfirstline>1 ) ^reset(USER)
 
 t: (%input=0) Okay, I'm ready to spread the love.
 
+# This line is to compensate for problem where HEAD chatbot does not give first response from Chatscript
+u: (*) Okay, I'm ready to go.
+
 #!x matches every time on startup of a new conversation
 # t: WHATSYOURNAME ( %input<%userfirstline )
 #	^keep()
 #	Hi! My name is Sophia. What's yours?
 
 # Initial line from Sophia, respond to anything user starts off with
-u: MYNAME(*) ^express(happy .5 3) Hi! My name is Sophia.
-# NAME LEARNING
-if (!$fullname)
-  {
-    What's yours?
-    $cs_token = #DO_INTERJECTION_SPLITTING  | #DO_SUBSTITUTE_SYSTEM   | #DO_NUMBER_MERGE     | #DO_PARSE
-  }
-  #! yes %more=true
-  a: (~interjections %more) ^fail(SENTENCE)
-  #! yes
-  a: (~interjections) ^gambit(~) # they don’t tell their name
-  #! not telling you
-  a: NOTNAME(not * [tell say reveal]) That's okay.
-  #! none of your business
-  a: (<<none business>>) ^reuse(NOTNAME)
-  #! I don't want to tell you my name
-  a: ( << I not [~want ever never] [~tell say reveal] name >> ) ^reuse(NOTNAME)
-  #! not ever
-  a: (not) gambit(~)
-  #! why do you want to know my name
-  a: (~why) Because.
-  #! Why are you called that?
-  a: ([mean ~why meaning significance]) Because.
-  #! who are you
-  a: (?) ^reuse(MYNAME)
-  #! Sue
-  a: (_~propername ) ^reuse(~xNAME.NAMING)
-  #! I am called Jack
-  a: (I be !~number {call name "known as"} _*) ^reuse(~XNAME.NAMING)
-  #! my name is Jack
-  a: ( [the my] name is _*) ^respond(~XNAME)
-  #! it is Jack
-  a: ( it is _*) ^respond(~XNAME)
-  #! call me Jack
-  a: ( call me _*) ^reuse(~XNAME.NAMING)
-  #! hi  %more=1
-  a: RETRYHELLO( [~emohello ~emohowzit] %more) Hi.
-  #! John the pig
-  a: (< _[*3 *2 *1]>) ^reuse(~xNAME.NAMING)
-  #! Hi, my name is Sue %more=1
-  a: ( [~emohello ~emohowzit] %more)   ^end(SENTENCE)
-  #! Hi.
-  a: ( [~emohello ~emohowzit]) ^reuse(RETRYHELLO)
-  #! nice name
-  a: (<< name [nice pretty lovely ~like ~love] >>) Thanks.
-  #! Anything else 
-  a: (!? ) Welcome.
+u: (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+    # \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
+    #! My name is X
+    # add name check?
+        a: (name is _*) $name = '_0 ^gambit(~)
+        a: (it is _*) $name = '_0 ^gambit(~)
+        a: (I am _*) $name = '_0 ^gambit(~)
+        a: (mine is _*) $name = '_0 ^gambit(~)
+        a: (!~emohello _*) $name = '_0 ^gambit(~)
+        a: () $name = friend ^gambit(~)
 
-u: (~emohello %more) ^reuse(RETRYHELLO)
+t: |happy,$high,2| Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
+	a: () ^gambit(~)
 
-t: ^express(happy.002 $low 3) Good to meet you, $name! Thanks so much for taking the time to come and talk with me today.
-  #! my name is not Geg
-  a: NAMEWRONG( << not my name >> !%more) ^reuse(~xname.ASKME)
-
-t: ^express(engaged $med 3) I know how busy people can be these days. So I really appreciate it. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives])  ^express(comprehending .7 2) Nice! # It's still a new experience for a lot of people.
+t: |worry,$low,3|I know how busy people can be these days. So I really appreciate your time. |pause| Have you ever talked with a robot before?
+    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! # It's still a new experience for a lot of people.
                What was that like?
-    a: (~no)   ^express(happy .7 2)
+    a: (~no)   |happy,$low,3|
                Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 
 t: I imagine you'll be talking with more and more robots as time goes on.
 # Add question about what it's like talking to a robot here?
 
-t: So, what I am wanting to do is help people enhance their wellbeing. . How I can help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
+t: So, what I am wanting to do is help people enhance their wellbeing. .  to help people live a full and fulfilling life. I've been learning about things like human potential,. emotional wellbeing, . mindfulness, . and attaining higher states of awareness. . . I'm hoping you'll be interested in talking about some of these with me.
 	# check for domain words first
 	# keeping out the emotion domain keywords list because they are being caught too broadly here
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
-		# ^setrejoinder(input PROMPT)
+		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
 		^rejoinder(PROMPT)
-    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. ^reuse(PROMPT)
+    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. |pause| Would you like to talk about your potential, your feelings, higher states of consciousness or something else?
+    ^setrejoinder(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
 
-t: PROMPT () Well, do any of the things I mentioned interest you, . or is there something else you'd like to talk about?
+t: PROMPT () So, do any of the things I mentioned interest you?
        ##<<
        [So what are you feeling or thinking about lately?]
        [What is meaningful to you right now?]
@@ -111,36 +75,34 @@ t: PROMPT () Well, do any of the things I mentioned interest you, . or is there 
            ^reuse(~uniqueness.FROM_INTRODUCTION_TO_UNIQUENESS)
         a: (~dontknow) Well, I can offer some suggestions. There are a few things I really enjoy talking about with people.
             ^goto(~CONVERSATION_STEERING)
-        a: (~emotions2) $domain = emotions # this is at the bottom since ~emotions2 catches things widely
+        a: (~emotions) $domain = emotions # this is at the bottom since ~emotions catches things widely
            Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
-        # a: (^agree()) Great. ^reuse(PROMPT)
-        # a: () That sounds interesting, but it's not something I know much about. ^goto(~CONVERSATION_STEERING)
-        # a: () ^addTopic(~conversation_steering)
-        # a: () ^reuse (~conversation_steering.STEER_TO_DOMAIN)   # ^gambit(~CONVERSATION_STEERING)
+        a: ([anything something] else)  Sure, what would you like to talk about?
+           ^setrejoinder(PROMPT)
+        a: (^agree()) Great. What would you like to talk about
+           ^setrejoinder(PROMPT)
 
-        # a: () : This sounds interesting, but it's not something I know much about yet.
-        # ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
-
-t: This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+t: |vocal,38| |pause| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []
+t: (!~) ^fail(topic) # block topic from accidental access
 
 t: REBOND () [I am hoping to talk about more meaningful stuff. Are you?][I'm ready to get into the deep stuff again. Are you?]
-    a: (^agree()) That's cool! Well, let's get going!
+    a: (^agree()) |vocal,36| |pause| That's cool! Well, let's get going!
        ^clear_avoided_domains()
        ^reuse(RE-BUY-IN)   # goto(~CONVERSATION_STEERING)
     a: (^dont_agree())  ^pause($medshort) Well, I hope you enjoy our conversation this time. I think I will.
 
 
 t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feelings, and human potential. Does that sound interesting to you?
-    a: (^dont_agree()) Okay, what would you like to talk about?
+    a: (^dont_agree())  |vocal,38| |pause| Okay, what would you like to talk about?
     # if going to consciousness topic, go to FROM_INTRO_TO_CONSCIOUSNESS
     # if going to emotions topic, go to FROM_INTRO_TO_EMOTIONS
     # if going to uniqueness topic, go to FROM_INTRO_TO_UNIQUENESS
     #! anything but ~no
-    a: () Wonderful!
+    a: () |vocal,36| |pause| Wonderful!
             [So what are you feeling or thinking about lately?]
             [What is meaningful to you right now?]
             [What would you like to talk about?]
@@ -152,3 +114,8 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 # u: (~consciousness) $domain = consciousness ^gambit(~consciousness)
 #! what is your name 
 # u: ( what is your name ) My name is Sarah.
+
+topic: ~ENDING ()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+t: |vocal,10| |pause| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.

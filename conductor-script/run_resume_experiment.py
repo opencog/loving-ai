@@ -22,9 +22,9 @@ NR_SUBJECTS = 100
 IN_PROGRESS_FILE = "./experiments_inprogress.txt"
 COMPLETED_FILE = "./experiments_completed.txt"
 
-COMMAND_A = "hr run lai --autobody --stt --layout --tracker realsense"
-COMMAND_B = "hr run sophia12 --autobody --stt --layout --tracker realsense"
-COMMAND_STOP = "hr stop && ~/hansonrobotics/opencog/loving-ai/stop.sh"
+COMMAND_A = "~/hansonrobotics/private_ws/scripts/robot.sh lai --autobody --stt --layout --tracker realsense >> log"
+COMMAND_B = "~/hansonrobotics/private_ws/scripts/robot.sh sophia6 --autobody --stt --layout --tracker realsense >> log"
+COMMAND_STOP = "~/hansonrobotics/private_ws/scripts/stop.sh && ~/hansonrobotics/opencog/loving-ai/stop.sh >> log"
 
 try:
     fobj = open(IN_PROGRESS_FILE)
@@ -62,6 +62,7 @@ else:
 raw_input("Press Enter to complete experiment...")
 
 #print(COMMAND_STOP)
+os.system(COMMAND_STOP)
 os.system(COMMAND_STOP)
 
 try:
