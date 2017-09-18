@@ -83,3 +83,5 @@ t: ()
 
 concept: ~dontknow (~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure" "don't know" "what are you saying" "not clear" "already did" ~no)
 concept: ~thinkso ("think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes)
+
+concept: ~emotions MORE (feelings !please)
