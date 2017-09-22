@@ -4,8 +4,6 @@ concept: ~negative_emotion (~negativeemotions ~feeling_sad ~feeling_angry ~feeli
 concept: ~positive_emotion (!~negative_emotion ~feeling_happy ~feeling_attracted ~good_quality_adjectives)  # add ~yes (see issue about "wonderful")
 # the !~negative_emotion above is to rule out neg emotion words that are in ~feeling_attracted
 
-concept: ~emotions MORE (feelings)
-
 topic: ~EMOTIONS2 [ ]  # (~emotions ~feeling_words feelings !aware !meaning)
 # TODO not sure if we want to block topic at this level from more random access (emotion keywords do get matched somewhat broadly though)
 t: (!~) ^fail(topic) # block topic from accidental access
