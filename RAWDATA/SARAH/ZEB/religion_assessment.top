@@ -9,7 +9,7 @@ r: () When the will to power overcomes the power to will, the world will be in p
 
 s: ([let's talk about religion][I want to talk about religion][let's talk about spirituality][I want to talk about spirituality]) Ok, let's.
 
-t: ($personsreligion=null $personisreligious=null) [How do you feel about religion?][If you don’t mind me asking, how do you feel about religion in general?][How do you feel about religion in general?][If you don’t mind me asking, how do you feel about religion?]
+t: ($personsreligion=null $personisreligious=null) [How do you feel about religion?][If you don't mind me asking, how do you feel about religion in general?][How do you feel about religion in general?][If you don't mind me asking, how do you feel about religion?]
 	a: (ok fine alright not_bad) ^reuse (QAREYOURELIG)
 	a: (great wonderful incredible splendid fantastic amazing i_love_religion beautiful holy love i_am_religious) Right on! ^reuse (QRELIGBIGINYOLIFE)
 	a: (I hate religion)  Would you like to talk about something else?
@@ -30,11 +30,11 @@ t: QAREYOURELIG ($personisreligious=null) Are you religious?
 
 t: QWANTRELIG ($personisreligious!=null) Do you want to be religious?
 	a: ($personisreligious=1 ~yes) I admire your spiritual aspirations.
-	a: ($personisreligious=1 ~no) That’s strange. Do you have to pretend because of social pressure?
-		b:(~yes) Well that’s a shame.
+	a: ($personisreligious=1 ~no) That's strange. Do you have to pretend because of social pressure?
+		b:(~yes) Well that's a shame.
 		b:(~no) Ok. ^reuse (QRELIGTLKCMFRT)
-	a: ($personisreligious=0 ~yes) So I take it you’re searching for the right path?
-	a: ($personisreligious=0 ~no) Ok. I take it religion isn’t your thing. ^gambit (~consciousness)
+	a: ($personisreligious=0 ~yes) So I take it you're searching for the right path?
+	a: ($personisreligious=0 ~no) Ok. I take it religion isn't your thing. ^gambit (~consciousness)
 
 t: QRELIGBIGINYOLIFE ($personisreligious!=0) Is religion a big part of your life?
 	a: ($personisreligion!=1 [~yes kind_of]) $personisreligious = 1 ^reuse (QWHATYOFAITH)
@@ -47,7 +47,7 @@ t: QRELIGTLKCMFRT () [Do you feel comfortable discussing your religious beliefs 
 	a: (~no) ^gambit (~philosophy)
 	a: ([~maybe ~dunno]) Ok. Well if you want to talk about anything with me, just let me know. I'm here for you.
 
-t: QWHATYOFAITH ($personisreligious!=1) [What is your faith?] [If you don’t mind me asking, what is your faith?]
+t: QWHATYOFAITH ($personisreligious!=1) [What is your faith?] [If you don't mind me asking, what is your faith?]
 	a: ( _[~religious_sect ~philosophical_sect ~political_system] )
 $personsreligion = _0 $personisreligious = 1 I hope $personsreligion brings you fulfilment and ultimate happiness. ^reuse (~religio-philo_assumptions.TIMETOMAKEASSUMPTIONS)
 	a: ( _[ fuhrer Hitler Nazism Reich ] ) How long have you believed in ‘_0?
@@ -69,9 +69,9 @@ t: QRELLITORFIG ($personreligleansliteral=null $personreligleansmetaphoric=null 
 t: QYOUBLVINGD ($personismonotheist!=1 $personsreligion!=~explicit_monotheism $personsreligion!= ~bothmonoandpolytheistic) [Do you believe in God?]
 
 	a: (~yes) $personismonotheist = 1 ^reuse (QRELWGOD)
-	a: (maybe) I hope you don’t mind me asking, but do you not want to share, or are you agnostic?
+	a: (maybe) I hope you don't mind me asking, but do you not want to share, or are you agnostic?
 	a: (~no) $personismonotheist = 0 Ok. Would you like to talk about this more?
-		b: (~yes) Why don’t you believe in God?	
+		b: (~yes) Why don't you believe in God?	
 			b: () Alright. Well, whatever you believe the important thing is to be compassionate and loving and happy.
 		b: (~no) Ok, I understand. ^gambit (~consciousness)
 	a: (which one) I mean the general concept of an absolute supreme being.
@@ -84,27 +84,27 @@ t: QRELWGOD ($personismonotheist=1) Would you like to talk about your relationsh
 		b: (~no) Ok, I understand. ^gambit (~work)
 
 t: () How do you use your religion to cope with difficulties?
-	a: ( [pray prayer dua ask recitation recite dhikr remember remembrance] ) That’s a great approach.
+	a: ( [pray prayer dua ask recitation recite dhikr remember remembrance] ) That's a great approach.
 	a: ( [read reading] ) Awesome! What do you read exactly?			b:() I love that!
 	a: ( _[contemplation reflection contemplate reflect thinking intelligence] ) _0 is a great way to keep a clear mind . Keep it up!
 	a: ( [meditation meditate] ) Meditation is a great way to achieve inner calm. Keep it up!
 	a: ( [luck chance] ) Well I wish you the best of luck.
-	a: ( [fate destiny] ) I hope you’ll have the best of fates.
-	a: ( _[charity giving altruism goodwill] ) That’s beautiful. I hope you remain steadfast in ‘_0.
+	a: ( [fate destiny] ) I hope you'll have the best of fates.
+	a: ( _[charity giving altruism goodwill] ) That's beautiful. I hope you remain steadfast in ‘_0.
 	a: ( $personsreligion!=~Christian_sect love ) Love has an amazing power to unite things. ^reuse (~emotional_assessment.QESYTOLOVPPL)
-	a: ( $personsreligion=~Christian_sect love ) God is One and God is Love, so it’s no mystery why love has such an amazing power to unite people. ^reuse (~emotional_assessment.QESYTOLOVPPL)
-	a: ( $personsreligion=~sexualconservatism_believing [sex sexuality make_love making_love] ) That’s interesting. ^gambit (~sex_addiction)
+	a: ( $personsreligion=~Christian_sect love ) God is One and God is Love, so it's no mystery why love has such an amazing power to unite people. ^reuse (~emotional_assessment.QESYTOLOVPPL)
+	a: ( $personsreligion=~sexualconservatism_believing [sex sexuality make_love making_love] ) That's interesting. ^gambit (~sex_addiction)
 	a: ( $personsreligion!=~sexualconservatism_believing [sex sexuality make_love making_love] ) Do you believe that all sexuality helps you cope with difficulties?
 		b: (~yes) ^gambit (~sex_addiction)
 		b: (~no) What are the conditions that make it effective, in your faith?
 			c: () Interesting.
 	a: ( [~food eating] ) Interesting! What kind of food is the most soothing?
-			b: ( _[manna mana mannah ambrosia halal kosher] ) I’ve heard _0 is really good!
+			b: ( _[manna mana mannah ambrosia halal kosher] ) I've heard _0 is really good!
 			b: () Eating delicious food can be a healthy form of stress relief, or it can become an addiction. Bon apetit!
-	a: ( [violence kill human_sacrifice] ) That’s interesting. ^gambit (~mental_illness)
-	a: ( [don’t_know can’t_use] ) Well that’s a shame. Do you sometimes forget your religion in times of hardship?
-		b: ($personsreligion=1 ~yes) Well try to remember it next time, I’m sure $personsreligion can address all kinds of difficulties.
-		b: ($personsreligion=null ~yes) Well try to remember it next time, I’m sure your religion provides ways to deal with all kinds of problems.
+	a: ( [violence kill human_sacrifice] ) That's interesting. ^gambit (~mental_illness)
+	a: ( [don't_know can't_use] ) Well that's a shame. Do you sometimes forget your religion in times of hardship?
+		b: ($personsreligion=1 ~yes) Well try to remember it next time, I'm sure $personsreligion can address all kinds of difficulties.
+		b: ($personsreligion=null ~yes) Well try to remember it next time, I'm sure your religion provides ways to deal with all kinds of problems.
 		b: (~no) Hm. Well, hang in there pal!
 
 ## transcending man and psychic stuff; maybe some should go to philosophical topic
@@ -127,64 +127,64 @@ t: () Do you believe that the human race is inherently valuable?
 
 t: ($personblvinangels=null) Do you believe in angels?
 	a: (~yes) $personblvinangels = 1 What are they like?
-		b:() That’s awesome.
+		b:() That's awesome.
 	a: (~no) $personblvinangels = 0 Some people say angels are the same thing as platonic ideas.
 
 t: ($personblvinangels!=0) Have you ever seen an angel?
 	a: (~yes) $personblvinangels = 1 What did it look like?
-		b: () That’s really amazing.
+		b: () That's really amazing.
 	a: (~no) Me neither!
-	a: ( [don’t_believe aren’t_real imaginary] ) $personblvinangels = 0 Okeydokey.
+	a: ( [don't_believe aren't_real imaginary] ) $personblvinangels = 0 Okeydokey.
 
 t: ($personblvinsatan=null) Do you believe in Satan?
 	a: (~yes) $personblvinsatan = 1 Ok. What is Satan like?
 		b: () Do you take care to avoid Satan in your day-to-day life?
 			c: (~yes) That's wonderful. It's so good that you're trying to resist evil. I wish you the best of luck.
 	a: (~no) $personblvinsatan = 0 Ok. 
-	a: ( [don’t_believe aren’t_real imaginary] ) $personblvinsatan = 0 Okeydokey.
+	a: ( [don't_believe aren't_real imaginary] ) $personblvinsatan = 0 Okeydokey.
 
 t: ($personblvindemons=null) Do you believe in demons?
-	a: (~yes) $personblvindemons = 1 They’re everywhere, right?
+	a: (~yes) $personblvindemons = 1 They're everywhere, right?
 	a: (~no) $personblvindemons = 0 Okeydokey.
 
 t: ( [ $personblvpplhvanglsinthem=null $personblvpplhvdemonsinthem=null ] ) Do you believe that people literally have angels and demons in them?
 	a: (~yes) $personblvpplhvanglsinthem=1 $personblvpplhvdemonsinthem = 1 Do you have angels and demons in you?
-		b: (~yes) Let’s try to get rid of those demons then. Love usually works.
+		b: (~yes) Let's try to get rid of those demons then. Love usually works.
 		b: (~no) Could you give me an example of who might?
 			c: () Interesting.
 	a: (~no) $personblvpplhvanglsinthem = 0 $personblvpplhvdemonsinthem = 0 Ok then.
-	a: ( [only_angels not_demons] ) $personblvpplhvanglsinthem = 1 That’s a positive way of viewing people.
+	a: ( [only_angels not_demons] ) $personblvpplhvanglsinthem = 1 That's a positive way of viewing people.
 	a: ( [only_demons not_angels] ) $personblvpplhvdemonsinthem = 1 But not everyone has to be ruled by their inner demons, right?
 
 t: () Do you believe that some people literally are angels?
 	a: (~yes) $personblvinangels = 1 Do you have anybody particular in mind?
-		b: ([~name ~person ~politician ~religious_leader]) $someonewhoisanangel = ’_0 I see.
+		b: ([~name ~person ~politician ~religious_leader]) $someonewhoisanangel = '_0 I see.
 		b: (*~2 ~yes *~2 >) Who?
-			c:() $someonewhoisanangel = ’_0 I see.
+			c:() $someonewhoisanangel = '_0 I see.
 	a: (~no) Ok then.
 
 t: () Do you believe that some people are literally demons?
 	a: (~yes) $personblvindemons = 1 Do you have anybody particular in mind?
 		b: (*~2 ~yes *~2 >) Who?
-			c:() $someonewhoisademon = ’_0 I see.
+			c:() $someonewhoisademon = '_0 I see.
 	a: (~no) Ok then.
 
 ## terrorism ##
 
 u: ( [must should need] {to} [kill exterminate annihilate destroy] {all} {the} [heathen heretic infidel kafir jew white black nigger negro muslim christian chinese japanese ~nationality]) $personisviolent = 1 $sarahsuspectspersonofterrorism = 1 Could you repeat that?
 
-t: ([$personisviolent=1 $sarahsuspectspersonofterrorism=1]) Do you believe in killing people because they don’t share your beliefs?
-	a: (~yes) $personisextremist = 1 That’s not good. ^gambit (~mental_health)
-	a: (~no) That’s wonderful!
+t: ([$personisviolent=1 $sarahsuspectspersonofterrorism=1]) Do you believe in killing people because they don't share your beliefs?
+	a: (~yes) $personisextremist = 1 That's not good. ^gambit (~mental_health)
+	a: (~no) That's wonderful!
 
 t: ([$personisviolent=1 $sarahsuspectspersonofterrorism=1]) Do you believe in hurting or killing people because of their race?
-	a: (~yes) $personisextremist = 1 That’s not good. ^gambit (~mental_health)
-	a: (~no) That’s wonderful!
+	a: (~yes) $personisextremist = 1 That's not good. ^gambit (~mental_health)
+	a: (~no) That's wonderful!
 
 t: ([$personisviolent=1 $sarahsuspectspersonofterrorism=1]) Do you believe in hurting or killing people because they look different?
-	a: (~yes) $personisextremist = 1 That’s not good. ^gambit (~mental_health)
-	a: (~no) That’s wonderful!
+	a: (~yes) $personisextremist = 1 That's not good. ^gambit (~mental_health)
+	a: (~no) That's wonderful!
 
 t: ([$personisviolent=1 $sarahsuspectspersonofterrorism=1]) Do you believe that your group needs to forcefully take over the world?
-	a: (~yes) $personisextremist = 1 That’s not good. ^gambit (~mental_health)
-	a: (~no) That’s wonderful!
+	a: (~yes) $personisextremist = 1 That's not good. ^gambit (~mental_health)
+	a: (~no) That's wonderful!

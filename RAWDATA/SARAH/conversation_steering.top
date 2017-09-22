@@ -1,14 +1,13 @@
 topic: ~conversation_steering []
 
 t:  STEER_TO_DOMAIN ()
-|pause| [Here’s what I think would be fun.] [I have an idea.] [How about this?]
-
+|pause| [Here's what I think would be fun.] [I have an idea.] [How about this?]
 	if (!$avoid_consciousness)
 		{ How about exploring states of awareness and self-transcendence. $domain = consciousness }
     	else if (!$avoid_emotions)
-    		{ Let’s explore some exercises about mindfulness and experiencing your feelings. $domain = emotions }
+    		{ Let's explore some exercises about mindfulness and experiencing your feelings. $domain = emotions }
     	else if (!$avoid_uniqueness)
-    		{ Let’s discuss what you bring to the world as a unique human. $domain = uniqueness }
+    		{ Let's discuss what you bring to the world as a unique human. $domain = uniqueness }
     	else if (!$all_domains_avoided)
     	 	{ You can suggest someting! What would you like to talk about? $all_domains_avoided = 1 }
     	else
@@ -51,7 +50,7 @@ s: WASTHATYES (?)
 # TODO
 # In every level, if response is neither yes nor no,
 # first attempt responder match in this or other topics
-# then use catchall of S: Okay! Here’s a final thought. I’ll guide you in a conversation about  <another one>. I promise, I’ll take care of you!
+# then use catchall of S: Okay! Here's a final thought. I'll guide you in a conversation about  <another one>. I promise, I'll take care of you!
 
 # ^steer_to_domain() depends on $domain being set
 outputmacro: ^steer_to_domain(^domain)

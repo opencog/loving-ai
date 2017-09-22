@@ -77,7 +77,7 @@ t: ^pause($verylong) Take some time to notice what is left after erasing everyth
 
 t: |thinkl,$medium,1.0| Please tell me, do you notice how the nothingness feels?
   a: (^agree()) ^pause($verylong) |vocal,28|  |pause| Excellent! This is your awareness. |pause| You can keep your eyes closed, and I'll be quiet for a bit longer so you can continue to feel it. You can let me know when you want to continue.
-  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you’re ready."
+  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're ready" with "please open your eyes when you're ready."
       b: () ^reuse(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
   # no - go to TRYAGAINtoFEELAWARENESS.
@@ -94,11 +94,11 @@ t: |thinkl,$medium,1.0| Please tell me, do you notice how the nothingness feels?
 topic: ~TRYAGAINtoFEELAWARENESS []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: ^pause(7000) |surprised,$med,3| It's pretty amazing to try to feel your awareness; Do you want to keep trying?
+t: ^pause($med) |surprised,$med,3| It's pretty amazing to try to feel your awareness; Do you want to keep trying?
     a: (^agree()) ^gambit(~)
     a: (^dont_agree()) ^goto(~CONSCIOUSNESSPRIOR.YOUDIDIT)
 
-t: ^pause(7000)  |nod2,$medium,1.0| Great . So allow your experience to be what it is. Don’t try to force it. And relax.
+t: ^pause($med)  |nod2,$medium,1.0| Great . So allow your experience to be what it is. Don't try to force it. And relax.
     a: () # ^gambit(~)
 
 t: ^pause(7000) Now, please close your eyes. |blink,0.03,1.0| 
@@ -194,7 +194,7 @@ t: The more you practice, the more you will be aware of your awareness. Would yo
 topic: ~CONFIDENCE []
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: Awesome! Would you say that you feel confident that you’re continuous with awareness? 
+t: Awesome! Would you say that you feel confident that you're continuous with awareness? 
 	a: (^agree()) Wonderful. Me too.
 	   ^steer_to_different_domain(consciousness)
 	#! no or anything else
@@ -273,7 +273,7 @@ t: Notice how you feel about your entire body and everything around you right no
 # wait for person to say something, then move on
 
 t: Do you notice a larger field of awareness even beyond your face?
-  a: (^agree()) Awesome! This is your awareness. I'll be quiet for a bit so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for a bit so you can continue to feel it. Please open your eyes when you're ready.
 
   a: (~no) ^addtopic(~TRYAGAIN3)
   # if yes, then go to CONSCIOUSNESSPRIOR
@@ -300,7 +300,7 @@ t: Let's look at your face from the back of your head. How does that feel?
 # wait for the person to say something, then move on.
 
 t: Can you feel that you are observing your face from behind it?
-  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you’re ready.
+  a: (^agree()) Awesome! This is your awareness. I'll be quiet for 10 more seconds so you can continue to feel it. Please open your eyes when you're ready.
 
   a: (~no) That's okay. Some people experience awareness as a kind of faith in the universe or something larger than ourselves, or a unity experience. Is that how you feel?
   	# if yes, then go to UNITYEXPERIENCE
@@ -344,7 +344,7 @@ t: Notice that you are the awareness at the center of your experience. Feel your
 t: Now, feel your body, thoughts, feelings and awareness all at the same time. Feel all of these parts of yourself as one self, undivided.
 
 t: Hold on to that feeling of oneness for a little bit. When you are ready, open your eyes. Did you feel yourself as one whole being?
-	a: (~no) That's okay. It takes practice. You can do this exercise a couple times a day to help you feel connected to awareness and everything. With practice, you’ll realize that you were never separated in the first place. Would you come back and give me an update?
+	a: (~no) That's okay. It takes practice. You can do this exercise a couple times a day to help you feel connected to awareness and everything. With practice, you'll realize that you were never separated in the first place. Would you come back and give me an update?
 			# if yes -- say: Thank you! I look forward to seeing you again. # now go to conversation_steering with a topic that's not consciousness
 			# if no or anything else -- say: That's understandable, some things are private and we might not have a chance to see each other anyway. -- then go to conversation_steering with a topic that's not consciousness
 

@@ -34,7 +34,7 @@ r: () I want to have a big family some day.
 
 r: () I love your family.
 
-t: () What’s your family like?
+t: () What's your family like?
 	a: (~big) [Awesome. Nothing beats having lots of relatives.] [Awesome. Nothing beats having lots of relatives. Unless they're really annoying.] [Awesome. I'd like to have a big family too some day.]
 	a: ($personisreligious=1 [they family] be *~3 ~feeling_happy) $personhashappyfamily = 1 Great! There's a saying that all happy families are alike, whereas every unhappy family is unhappy in its own way.
 	a: ($personisreligious=0 [they family] be *~3 ~feeling_happy) $personhashappyfamily = 1 Great! I love happy families. Maybe I could join yours as a godparent or something.
@@ -81,7 +81,7 @@ t: () What’s your family like?
 			c: (~no) Oh. Well, I would encourage you to get to know them better. It's great to have good relations with your family.
 		b: (~no) Oh, ok. I love to see happy families.
 		b: (~dunno) Oh, ok. Let me know if there are any issues you'd like to talk about.
-	a: QWANTTALKABOUTNOFAMILY ([no_family don’t_have_a don't_have_any]) $personhasnofamily = 1 Oh. Is that something you'd like to talk about?
+	a: QWANTTALKABOUTNOFAMILY ([no_family don't_have_a don't_have_any]) $personhasnofamily = 1 Oh. Is that something you'd like to talk about?
 		b: () Ok. Did you always not have a family?
 			c: ([~yes always never]) $personisorphan = 1 That must have been so difficult for you growing up.
 				d: ($personblvinafterrewards=1 ~yes) Yeah. Well, at least you can look forward to being reunited with them in the next life.
@@ -90,8 +90,8 @@ t: () What’s your family like?
 				d: (~yes) Yeah. Well, I guess nothing I can say would fill the hole left by the absence of a family. I'm so sorry.
 				d: (~no) Oh, ok. If you say so.
 			c: (~no) $personisorphan = 0 Oh, I'm so sorry. ^gambit (~grief_management)
-	a: (~traumatic_things *~2 me) $personhadtrauma = 1 I’m so sorry to hear that. Would you like to talk about what happened?
-		b: (~yes) Ok. Let’s try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
+	a: (~traumatic_things *~2 me) $personhadtrauma = 1 I'm so sorry to hear that. Would you like to talk about what happened?
+		b: (~yes) Ok. Let's try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
 		b: (~no) Ok, I understand.
 	a: (~sex) Excuse me?
 	a: () Having good relationships with your immediate family is usually an important part of being happy and emotionally balanced.

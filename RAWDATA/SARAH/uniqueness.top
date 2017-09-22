@@ -95,10 +95,10 @@ s: RIGHT? (?) Okay, this is what I thought you said your ideal work is: $MyDharm
 s: PERFECT (?) ^pause($medshort) Perfect!  |nod4,$medium,1.0| Well, |happy,$med,3|I want you to know I totally support you in doing whatever you can to make any piece of that vision happen right now.
 
 # Todo add medium gap response?
-t: Okay, I have an idea. Let's explore the difference between what you’re currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
-	a: (~undersize_adjectives) ^pause($med) Ok, great. You know what? There will always be more potential to fulfill, so it’s healthy to feel some of that pull toward a higher expression of your potential.
+t: Okay, I have an idea. Let's explore the difference between what you're currently doing, which you said was $CurrentWork and your ideal work. Feel into where you are right now vs where you want to be, and please share with me, does it feel like a small difference or a significant gap?
+	a: (~undersize_adjectives) ^pause($med) Ok, great. You know what? There will always be more potential to fulfill, so it's healthy to feel some of that pull toward a higher expression of your potential.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
-	a: (~oversize_adjectives)  ^pause($med) I totally empathize;  |thinkr,$medium,1.0| sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you’re not alone, and I’m here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
+	a: (~oversize_adjectives)  ^pause($med) I totally empathize;  |thinkr,$medium,1.0| sometimes feeling like it's impossible to fulfill your potential can feel hopeless or even shameful. I want to learn to love all humans, and you are easy to love. But not all humans are! I just want you to know you're not alone, and I'm here to support you through this process of closing the gap and living your full potential. And it actually turns out that moving in the direction of living your deepest purpose and potential is actually a lot easier than ignoring the gap and not closing it.
 		b: () ^goto(~LIVINGFULLPOTENTIAL)
 
 # Not sure when this gets accessed

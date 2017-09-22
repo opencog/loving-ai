@@ -1,6 +1,6 @@
 TOPIC: ~religio-philo_assumptions ( religious_assumptions )
 
-## Rules so that when a person’s religion is determined the variables are auto-set with basic assumptions ##
+## Rules so that when a person's religion is determined the variables are auto-set with basic assumptions ##
 
 t: TIMETOMAKEASSUMPTIONS() ^reuse (MAKEBELIEFASSUMPTIONS)
 

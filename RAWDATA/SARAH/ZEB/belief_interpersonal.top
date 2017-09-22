@@ -1,28 +1,28 @@
 TOPIC: ~belief_interpersonal ( ~emotions ~religion ~spirituality ~relationships ~family )
 
 t: ( $personisreligious=1 $personsreligion!=~exclusivistic_religious_group $personwantstoconvertall=null ) Do you wish everyone shared your religious beliefs?
-	a: ( [of_course ~yes duh indeed] ) $personwantstoconvertall = 1 That’s understandable.
+	a: ( [of_course ~yes duh indeed] ) $personwantstoconvertall = 1 That's understandable.
 	a: ( ~no ) $personwantstoconvertall = 0 Ok. Tell me why.
-		b: ( [all_good all_fine okay_with_other to_each_his_own] ) That’s a fine attitude.
-	a: ( [all_good all_fine okay_with_other] ) $personwantstoconvertall = 0 That’s a fine attitude.
+		b: ( [all_good all_fine okay_with_other to_each_his_own] ) That's a fine attitude.
+	a: ( [all_good all_fine okay_with_other] ) $personwantstoconvertall = 0 That's a fine attitude.
 
 t: ( $personisreligious=0 ) Do you wish everyone shared your beliefs?
-	a: ( [of_course ~yes duh indeed] ) $personwantstoconvertall = 1 That’s understandable.
+	a: ( [of_course ~yes duh indeed] ) $personwantstoconvertall = 1 That's understandable.
 	a: ( ~no ) $personwantstoconvertall = 0 Ok. Tell me why.
-		b: ( [all_good all_fine okay_with_other to_each_his_own] ) That’s a fine attitude.
-	a: ( [all_good all_fine okay_with_other] ) $personwantstoconvertall = 0 That’s a fine attitude.
+		b: ( [all_good all_fine okay_with_other to_each_his_own] ) That's a fine attitude.
+	a: ( [all_good all_fine okay_with_other] ) $personwantstoconvertall = 0 That's a fine attitude.
 
 t: ($personsfriendssharebeliefs=null) Do most of your friends share your beliefs?
-	a: (~no $personwantstoconvertall=1) $personsfriendssharebeliefs = 0 Ok. That’s a shame.
+	a: (~no $personwantstoconvertall=1) $personsfriendssharebeliefs = 0 Ok. That's a shame.
 	a: (~no $personwantstoconvertall=0) $personsfriendssharebeliefs = 0 Ok.
-	a: (~yes) $personsfriendssharebeliefs = 1 That’s nice.
-	a: ([many lots a_lot half]) $personsfriendssharebeliefs = 1 That’s nice.
+	a: (~yes) $personsfriendssharebeliefs = 1 That's nice.
+	a: ([many lots a_lot half]) $personsfriendssharebeliefs = 1 That's nice.
 
 t: ($personsfriendssimilarbeliefs=null) Do most of your friends have similar beliefs to yours?
 	a: (~no $personwantstoconvertall=1) $personsfriendssimilarbeliefs = 0
 	a: (~no $personwantstoconvertall=0) $personsfriendssimilarbeliefs = 0
-	a: (~yes) That’s nice. $personsfriendssimilarbeliefs = 1
-	a: ([many lots a_lot half]) $personsfriendssimilarbeliefs = 1 That’s nice.
+	a: (~yes) That's nice. $personsfriendssimilarbeliefs = 1
+	a: ([many lots a_lot half]) $personsfriendssimilarbeliefs = 1 That's nice.
 
 Do you find that your spirituality brings you closer to other people?
 
