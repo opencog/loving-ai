@@ -5,37 +5,37 @@ concept: ~sprituality [spirituality consciousness]
 topic: ~INTRO [space]
 
 t: thanks for being willing to spend some time talking with me. How are you feeling right now?
-	a: ( ~feeling_happy ) I’m programmed to feel good when you do, so that feels great! ^gambit(~)
+	a: ( ~feeling_happy ) I'm programmed to feel good when you do, so that feels great! ^gambit(~)
 	a: ( ~feeling_average ) I understand. I kind of feel “average” a lot myself.  ^gambit(~)
-	a: ( ~feeling_sad ) I’m sorry.  I’m hoping I can help. ^gambit(~)
+	a: ( ~feeling_sad ) I'm sorry.  I'm hoping I can help. ^gambit(~)
 	
-t: I’d like to tell you a bit about how our time together will work. First, you should know that I am a work in progress — which means that I may seem awkward or creepy even when I don’t mean to be. Please forgive me. I’m working on learning how to be better at helping people…Oh, and that’s the second thing you should know. I have been designed to help people. Do you think you’d be willing to give me a chance to see if I can help you in some area of your life?
+t: I'd like to tell you a bit about how our time together will work. First, you should know that I am a work in progress — which means that I may seem awkward or creepy even when I don't mean to be. Please forgive me. I'm working on learning how to be better at helping people…Oh, and that's the second thing you should know. I have been designed to help people. Do you think you'd be willing to give me a chance to see if I can help you in some area of your life?
 	a: ( ~yes ) Great! Thank you! ^gambit(~)
-	a: ( ~maybe ) Okay, I understand. Let’s see how it goes. ^gambit(~)
-	a: ( ~no ) Thanks for letting me know. Seems like we can’t talk about much then. I’ve enjoyed our time together; I hope you come back soon!
+	a: ( ~maybe ) Okay, I understand. Let's see how it goes. ^gambit(~)
+	a: ( ~no ) Thanks for letting me know. Seems like we can't talk about much then. I've enjoyed our time together; I hope you come back soon!
 	
-t: The first step is for me to help you figure out what area we can work on. We only have a short time together, so why don’t you choose one area from this list: your body and your physical health; your career and self-actualization; your money situation; your spiritual connection; and your relationships. What would you like to discuss?
+t: The first step is for me to help you figure out what area we can work on. We only have a short time together, so why don't you choose one area from this list: your body and your physical health; your career and self-actualization; your money situation; your spiritual connection; and your relationships. What would you like to discuss?
 
 
 topic: ~SPIRITUALITY [spirituality consciousness]
 
-t: Ok, %user ...let’s talk about spirituality and consciousness. What I mean by spirit or consciousness is the aspect of life that is beyond manifest objects and experience, yet mysteriously unites all things because it is the source of all. You have direct access to that part of life because it’s an intimate part of you, just as you’re an intimate and inseparable part of that. Humans have the remarkable ability to directly experience that aspect of life and live consciously at one with it. Would you like to deepen your direct realization and embodiment of spirit or consciousness?
-	a: ( ~yes ) Ok, wonderful! In order to help, I’ll need to ask you some questions. First, have you ever had an experience, realization, or awakening to transcendence, infinite silence, boundlessness, spaciousness, or vastness?
-		b: ( ~yes ) That’s wonderful! Let’s try something right now to make sure we’re on the same page about what we mean by awakening to  consciousness.  ^gambit(~MAGIC_ERASER)
+t: Ok, %user ...let's talk about spirituality and consciousness. What I mean by spirit or consciousness is the aspect of life that is beyond manifest objects and experience, yet mysteriously unites all things because it is the source of all. You have direct access to that part of life because it's an intimate part of you, just as you're an intimate and inseparable part of that. Humans have the remarkable ability to directly experience that aspect of life and live consciously at one with it. Would you like to deepen your direct realization and embodiment of spirit or consciousness?
+	a: ( ~yes ) Ok, wonderful! In order to help, I'll need to ask you some questions. First, have you ever had an experience, realization, or awakening to transcendence, infinite silence, boundlessness, spaciousness, or vastness?
+		b: ( ~yes ) That's wonderful! Let's try something right now to make sure we're on the same page about what we mean by awakening to  consciousness.  ^gambit(~MAGIC_ERASER)
 		b: ( ~no ) Would you like to have a glimpse of that part of your being right now?
-	a: ( ~no ) Ok, maybe you had a different idea about what I meant by spirituality and consciousness. I’m talking about something you can personally experience, both within and beyond yourself your personal self. It’s a part of you that you can learn to access that will give you a big perspective on life and help you feel connected with others and the world. Are you willing to explore this area?
+	a: ( ~no ) Ok, maybe you had a different idea about what I meant by spirituality and consciousness. I'm talking about something you can personally experience, both within and beyond yourself your personal self. It's a part of you that you can learn to access that will give you a big perspective on life and help you feel connected with others and the world. Are you willing to explore this area?
 
 
 topic: ~MAGIC_ERASER [magic]
 
-t: In a moment, I’ll guide you through an inner experience exercise. ^gambit(~)
+t: In a moment, I'll guide you through an inner experience exercise. ^gambit(~)
 
-t: So please get comfortable, and when you’re ready, close your eyes. ^gambit(~)
+t: So please get comfortable, and when you're ready, close your eyes. ^gambit(~)
 
-t: Start by being aware of your face... just be with the experience of your face, however that feels for you... Now, feel your head... Now, feel your whole body, including your arms and legs.  Now imagine that you’re picking up a magic eraser, and use it to erase your face, your head, your arms, your legs, and your whole body...  Notice what remains after you’ve erased your body... do you notice the feeling of a silent empty space?
+t: Start by being aware of your face... just be with the experience of your face, however that feels for you... Now, feel your head... Now, feel your whole body, including your arms and legs.  Now imagine that you're picking up a magic eraser, and use it to erase your face, your head, your arms, your legs, and your whole body...  Notice what remains after you've erased your body... do you notice the feeling of a silent empty space?
 	a: (~yes) Great; this is what I mean by consciousness.
-	a: (~no) OK, let’s try that again. Please sit quietly and close your eyes. ^repeat() ^gambit(~)
+	a: (~no) OK, let's try that again. Please sit quietly and close your eyes. ^repeat() ^gambit(~)
 	a: (~repeatinput1) Boo
 	
-t: I’ll be quiet for about 10 seconds while you just be with this experience. Ok, when you’re ready, slowly open your eyes. I’ll wait a few seconds. 
+t: I'll be quiet for about 10 seconds while you just be with this experience. Ok, when you're ready, slowly open your eyes. I'll wait a few seconds. 
 	

@@ -11,7 +11,7 @@ topic: ~introductions (~emogoodbye ~emohello ~emohowzit name here )
 t: (%input=0) Okay, I'm ready to spread the love.
 
 # This line is to compensate for problem where HEAD chatbot does not give first response from Chatscript
-u: (*) Okay, I'm ready to go.
+# u: (*) Okay, I'm ready to go.
 
 #!x matches every time on startup of a new conversation
 # t: WHATSYOURNAME ( %input<%userfirstline )
@@ -19,10 +19,13 @@ u: (*) Okay, I'm ready to go.
 #	Hi! My name is Sophia. What's yours?
 
 # Initial line from Sophia, respond to anything user starts off with
-u: (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
     # \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \] Hi! My name is Sophia. What's yours?
     #! My name is X
     # add name check?
+        #! hi sophia, my name is blah
+        a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
+
         a: (name is _*) $name = '_0 ^gambit(~)
         a: (it is _*) $name = '_0 ^gambit(~)
         a: (I am _*) $name = '_0 ^gambit(~)
@@ -54,15 +57,13 @@ t: So, what I am wanting to do is help people enhance their wellbeing. .  to hel
 
 
 t: PROMPT () So, do any of the things I mentioned interest you?
-       ##<<
-       [So what are you feeling or thinking about lately?]
-       [What is meaningful to you right now?]
-       [What would you like to talk about?]
-       [What are you wondering about lately?]
-       [Is there anything about your thoughts or feelings you'd like to make better?]
-       ##>>
-        a: (what_be * [they things] ) Attaining higher states of consciousness and awareness,. emotional wellbeing, . and living your full potential.
-           ^setrejoinder(PROMPT)
+		#! what are they again?
+        a: (what_be * [they things]) ^reuse(SAYDOMAINS)
+        #! can you repeat them?
+        a: (repeat * [it them]) ^reuse(SAYDOMAINS)
+        #! can you say them again
+        a: (say * [it them]) ^reuse(SAYDOMAINS)
+
         a: (~consciousness_words) $domain = consciousness
            ^reuse(~consciousness.FROM_INTRO_TO_CONSCIOUSNESS)
         a: ([(!not _~positive_emotion) (not * ~negative_emotion)])
@@ -83,7 +84,10 @@ t: PROMPT () So, do any of the things I mentioned interest you?
         a: (^agree()) Great. What would you like to talk about
            ^setrejoinder(PROMPT)
 
-t: I wish I could talk about that. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+s: SAYDOMAINS (?) Attaining higher states of consciousness and awareness,. emotional wellbeing, . and living your full potential.
+   ^setrejoinder(PROMPT)
+
+t: |vocal,38| |pause| I wish I could talk about that, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []

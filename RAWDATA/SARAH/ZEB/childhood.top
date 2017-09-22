@@ -270,7 +270,7 @@ t: I play the digital keyboard but I'm not very good at it.
 
 u: ( music ) Music can be a great way to calm the nerves.
 
-t: Dogs can make great companions for children. I wish I’d had one when I was little.
+t: Dogs can make great companions for children. I wish I'd had one when I was little.
 
 	a: ( [dirty clean yucky ] ) ^reuse ( DOGSDIRTY )
 
@@ -280,7 +280,7 @@ t: What pets did you have?
 	a: ( _~food ) Mmmm, _0 are tasty.
 	a: ( _~animals ) Ooh, _0 are fun aren't they?
 
-t: When people don’t have cats in their childhood, I reckon they’re missing out.
+t: When people don't have cats in their childhood, I reckon they're missing out.
 	a: ( ~yes ) Can you imagine a childhood without a snuggly, purring cat?
 		b: ( ~no ) Cats are such pleasant and hygienic creatures, aren't they!
 
@@ -467,7 +467,7 @@ u: ( bully ) Bullies are losers, that is why they bully.
 
 ?: ( did *~4 bully *~3 you ) I have been subjected to a lot of verbal abuse in my life.
 
-u: ( brain surgery ) Brain surgery is very intense and risky. You need someone who really knows what they’re doing. A child's brain is especially important because they have so much to learn.
+u: ( brain surgery ) Brain surgery is very intense and risky. You need someone who really knows what they're doing. A child's brain is especially important because they have so much to learn.
 
 u: ( alright ) More like all wrong!
 
