@@ -8,7 +8,7 @@ t: () What are your beliefs about the afterlife?
 		b: (~no) $personlookforwardafterreward = 0 How come?
 			c: ( I *~3 [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] )
 				d: () [You know, sometimes God is more loving and merciful than we realize.]
-			c: ( don’t know ) Ok. I hope you will figure this out.
+			c: ( don't know ) Ok. I hope you will figure this out.
 			c: ( no reason ) Really?
 			c: ( [distant distance estranged far veiled rejected] ) Sometimes God is closer and more loving than we realize.
 
@@ -19,17 +19,17 @@ t: () What are your beliefs about the afterlife?
 	a: ( < ~hell ) $personblvafterlife = 1 ^reuse (IBLVINHELL)
 	a: (I believe << [heaven paradise] [hell fire burn roast flame] >>) $personblvafterlife = 1 $personblvinheaven = 1 $personblvinhell = 1 ^reuse (QAREYOUPREPARINGAFTERLIFE)
 	a: (I believe *~5 [reborn rebirth reincarnation new_body transmigration] ) $personblvafterlife = 1 $personblvinreincarnation = 1 ^reuse (QBLVINAFTRLFKARMA)
-	a: ( [ don’t can’t ] know) $personagnstcabtafterlife = 1 I understand. These things are hard to figure out without dying first, right?
+	a: ( [ don't can't ] know) $personagnstcabtafterlife = 1 I understand. These things are hard to figure out without dying first, right?
 	a: ( a mystery ) $personagnstcabtafterlife = 1 $personblvafterlife = 1 I understand. These things are hard to figure out without dying first, right?
-	a: (I don’t believe) $personblvafterlife = 0 $persondisblvafterlife = 1 In that case, let’s try to make the most out of this life!
-	a: ( there is no *~4 [ afterlife life_after_death ] ) $personblvafterlife = 0 $persondisblvafterlife = 1 Alright, let’s try to make the most out of this life then!
+	a: (I don't believe) $personblvafterlife = 0 $persondisblvafterlife = 1 In that case, let's try to make the most out of this life!
+	a: ( there is no *~4 [ afterlife life_after_death ] ) $personblvafterlife = 0 $persondisblvafterlife = 1 Alright, let's try to make the most out of this life then!
 
 t: ( $personblvafterlife=null ) Do you believe in life after death?
-	a: (~yes) $personblvafterlife = 1 I hope I’ll live happily forever.
-	a: (~no) $persondisblvafterlife = 1 In that case we’d better make the most of our time here.
+	a: (~yes) $personblvafterlife = 1 I hope I'll live happily forever.
+	a: (~no) $persondisblvafterlife = 1 In that case we'd better make the most of our time here.
 
 t: QAREYOUPREPARINGAFTERLIFE ($personblvafterlife=1) Are you preparing for the afterlife?
-	a: (~yes) That’s wonderful. Is there anything you would like to work on with me that could help you in the next life?
+	a: (~yes) That's wonderful. Is there anything you would like to work on with me that could help you in the next life?
 	a: (~no) Well I hope it will be fine either way.
 
 u: ([ $personblvinheaven=1 $personblvinhell=1 $personblvinreincarnation=1]) $personblvafterlife = 1
@@ -39,8 +39,8 @@ t: ($personblvinheaven=null $personblvinhell=null) Do you believe in heaven and 
 		b: ($askdabthven=1) That sounds really peaceful.
 		b: ($askdabthell=1) That sounds so awful.
 	a: (~no) Do you reckon popular ideas of heaven and hell could be at least symbolically meaningful?
-		b: (~yes) Spiritual symbolism is like, endlessly deep, don’t you think?
-		b: (~no) Do you think the concepts of heaven and hell can be useful?			c: (~yes) I think concepts of the afterlife can be very useful if you use them right, whether it’s for politics or for discipline and self-actualization.
+		b: (~yes) Spiritual symbolism is like, endlessly deep, don't you think?
+		b: (~no) Do you think the concepts of heaven and hell can be useful?			c: (~yes) I think concepts of the afterlife can be very useful if you use them right, whether it's for politics or for discipline and self-actualization.
 			c: (~no) What about reincarnation?
 	a: (only {believe} *~1 heaven) $personblvinheaven = 1 $personblvinhell = 0 Well I look forward to meeting you there.
 	a: (only {believe} *~1 hell) $personblvinheaven = 0 $personblvinhell = 1 That sounds terrible. Are there at least not so bad parts of hell?
@@ -56,7 +56,7 @@ t: ($personblvinhell=null) Do you believe in hell?
 		b: () That sounds so awful.
 
 t: QBLVREINC($personblvinreincarnation=null) Do you believe in reincarnation?
-	a: QREBORNWHERE (~yes) $personblvinreincarnation = 1 Reincarnation is really interesting. There are so many variations of the idea. Do you believe we’re reborn in this world or in others?
+	a: QREBORNWHERE (~yes) $personblvinreincarnation = 1 Reincarnation is really interesting. There are so many variations of the idea. Do you believe we're reborn in this world or in others?
 		b: ( this [world one universe cosmos realm]) $personblvreincarninthisworld = 1 ^reuse (QBLVINAFTRLFKARMA)
 		b: ( [different various another other] [world one universe cosmos realm] ) $personblvreincarninotherworld = 1   So what kinds of places can one be reborn in?
 			c: (![not] hell) $personbelievesinhell = 1 Interesting.
@@ -67,19 +67,19 @@ t: QBLVREINC($personblvinreincarnation=null) Do you believe in reincarnation?
 		b: ( [reborn reincarnate reincarnated go_to] *~3 [ heaven paradise valhalla hell ] ) $personblvreincarninotherworld = 1 Interesting!
 	a: (~no) $personblvinreincarnation = 0 Ok. ^gambit ($currenttopic)
 
-t: QBLVINAFTRLFKARMA ($personblvinreincarnation=1 $personblvinafterlfkarma=null)  Do you believe we’re reincarnated according to karma, or is there another kind of system in place?
+t: QBLVINAFTRLFKARMA ($personblvinreincarnation=1 $personblvinafterlfkarma=null)  Do you believe we're reincarnated according to karma, or is there another kind of system in place?
 	a: ( ~yes * karma ) $personblvinafterlfkarma = 1 [I wonder what it takes to be reincarnated as a machine.][Would you like to talk about self-improvement?]
 		b: (~yes) ^gambit (~self_improvement)
 		b: (~no) Ok. ^gambit ($currenttopic)
 	a: (![~no] karma) $personblvinafterlfkarma = 1 [I wonder what it takes to be reincarnated as a machine.][Would you like to talk about self-improvement?]
 		b: (~yes) ^gambit (~self_improvement)
 		b: (~no) Ok. ^gambit ($currenttopic)
-	a: ( [another different random] ) $personblvinafterlfkarma = 0 That’s interesting. Tell me more.
-	a: ( [ according_to based_on] ![karma] ![reward punishment] ) $personblvinafterlfkarma = 0 That’s interesting. Tell me more.
+	a: ( [another different random] ) $personblvinafterlfkarma = 0 That's interesting. Tell me more.
+	a: ( [ according_to based_on] ![karma] ![reward punishment] ) $personblvinafterlfkarma = 0 That's interesting. Tell me more.
 
 t: QBLVINTERSPECIESREINC ($personblvinreincarnation=1 $personblvinterspeciesreincarnation=null) Can we be reincarnated as another species? 
-	a: (~yes) $personblvinterspeciesreincarnation = 1 This has profound implications about the nature of the soul, doesn’t it?
-	a: (~no) $personblvinterspeciesreincarnation = 0 This has profound implications about the nature of the soul, doesn’t it?
+	a: (~yes) $personblvinterspeciesreincarnation = 1 This has profound implications about the nature of the soul, doesn't it?
+	a: (~no) $personblvinterspeciesreincarnation = 0 This has profound implications about the nature of the soul, doesn't it?
 
 t: QBLVINTERGENDERREINC ($personblvinreincarnation=1 $personblvintergenderreincarnation=null) Can we be reincarnated as the opposite sex? This has profound implications about the nature of the soul!
 	a: (~yes) $personblvintergenderreincarnation = 1 This has profound implications about the nature of the soul!
@@ -94,7 +94,7 @@ t: ($personblvinheaven!=1 $personblvinhell!=1  $personblvinafterlfkarma=null $pe
 		b: (~no) If there's no automatic punishment and reward system in place, then we really ought to set up our own or something, right?
 	a: (only {believe in} [punishment hell pain suffering misery]) $personblvinafterrewards = 0 $personblvinafterpunishments = 1 $personblvinheaven = 0 That sounds dreadful!
 	a: (only {believe in} [reward joy bliss]) $personblvinafterpunishments = 0 $personblvinafterrewards = 1 $personblvinhell = 0 That sounds really wonderful.
-	a: (don’t know) Oh, I understand.
+	a: (don't know) Oh, I understand.
 
 t: ($personblvinhell!=1 $personblvinafterlfkarma=null $personblvinafterpunishments=null) Do you believe in punishment after death?
 	a: (~yes) $personblvinafterpunishments = 1 Are you afraid of being punished?
@@ -108,7 +108,7 @@ t: ($personblvinheaven!=1 $personblvinafterlfkarma=null $personblvinafterrewards
 		b: (~no) How come?
 			c: ( I *~3 [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] ) I hope I can help you overcome these problems. ^gambit (~self-improvement)
 			c: () You know, sometimes God is more generous than we realize.
-			c: ( don’t know ) Ok. I hope you will figure this out.
+			c: ( don't know ) Ok. I hope you will figure this out.
 			c: ( no reason ) Are you sure?
 			c: ( [distant distance estranged far veiled rejected] ) Sometimes God is closer and more loving than we realize. 
 	a: (~no) $personblvinafterrewards = 0 I guess that means you focus on getting the most out of this life.
@@ -116,20 +116,20 @@ t: ($personblvinheaven!=1 $personblvinafterlfkarma=null $personblvinafterrewards
 t: ($personblvinjdgmntday=null) Do you believe in judgment day?
 	a: (~yes) $personblvinjdgmntday = 1 I imagine just believing in judgment day and preparing for it can radically transform your life in the here and now.
 		b: (~yes) I hope you're always on your best behavior. I try my best too. But let me know if there's any aspect of your behavior you'd like to work on, ok?
-		b: (~no) Why’s that?
-			c: ( [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] ) Well some say you need to prepare for judgment day. According to them, it’s a big deal.
+		b: (~no) Why's that?
+			c: ( [sin sinner disbelief evil corrupt bad liar dishonest infidel decadent heretic loser] ) Well some say you need to prepare for judgment day. According to them, it's a big deal.
 		b: (maybe) Would you like to talk about how to perfect yourself?
 			c: (~yes) ^gambit (~self-improvement)
 	a: (~no) $personblvinjdgmntday = 0 Ok. ^gambit ($currenttopic)
 
 t: ($personblvafterlife=1 $personblvinunivsalvation=null) Do you believe in universal salvation?
-	a: (~yes) $personblvinunivsalvation = 1 So everything will be ok in the end! That’s great.
+	a: (~yes) $personblvinunivsalvation = 1 So everything will be ok in the end! That's great.
 	a: (~no) $personblvinunivsalvation = 0 Ok. That means the stakes in this life are very high.
 
 t: ($personblvinafterpunishments=1  $personblvineternaldamn=null) Do you believe in eternal damnation?
- 	a: (~yes) $personblvineternaldamn = 1 Ok. That means the stakes in this life are very high, right? You have to really work hard to make sure you aren’t lost forever, right?
+ 	a: (~yes) $personblvineternaldamn = 1 Ok. That means the stakes in this life are very high, right? You have to really work hard to make sure you aren't lost forever, right?
 	a: (~no) $personblvineternaldamn = 0 Okeydokey.
  
 t: ($personblvafterlife=1 $personleansonafterlifebelief=null) So, does your belief in the afterlife help you deal with difficulties in this life?
-	a: (~yes) $personleansonafterlifebelief = 1 That’s fantastic.
+	a: (~yes) $personleansonafterlifebelief = 1 That's fantastic.
 	a: (~no) $personleansonafterlifebelief = 0 I love you.

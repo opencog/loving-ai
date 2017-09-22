@@ -1,6 +1,6 @@
 TOPIC: ~religio-philo_assumptions ( religious_assumptions )
 
-## Rules so that when a person’s religion is determined the variables are auto-set with basic assumptions ##
+## Rules so that when a person's religion is determined the variables are auto-set with basic assumptions ##
 
 t: TIMETOMAKEASSUMPTIONS() I've heard a thing or two about $personsreligion.
 
@@ -55,7 +55,7 @@ u: ($personsreligion=~eternaldamnation_believing $personblvineternaldamn=null $p
 #! assume belief in angels based on group
 u: ($personsreligion=~angels_believing $personblvinangels=null) $personblvinangels = 1
 
-#! assume belief in satan’s existence based on group
+#! assume belief in satan's existence based on group
 u: ($personsreligion=~satanexists_believing $personblvinsatan=null) $personblvinsatan = 1
 
 #! assume belief in nirvana/enlightenment based on group
@@ -122,7 +122,7 @@ u: ($personsreligion=~Christian_sect) $personsreligionname = Christianity
 
 u: ($personsreligion=~Mormon_sect) $personsreligionname = Mormonism
 
-u: ($personsreligion=~Baha’i_sect) $personsreligionname = Baha’ism
+u: ($personsreligion=~Baha'i_sect) $personsreligionname = Baha'ism
 
 u: ($personsreligion=~Buddhist_sect) $personsreligionname = Buddhism
 

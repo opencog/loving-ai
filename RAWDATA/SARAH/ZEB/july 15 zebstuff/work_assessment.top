@@ -40,7 +40,7 @@ t: QDOYOUWORK ($personisemployed=null) [Do you work?] [Are you employed?]
 	a: (~no) $personisemployed = 0 Ok. ^reuse (~study_assessment.QAREYOUSTUDENT)
 	
 
-t: ($CurrentWork) What’s life at work like?
+t: ($CurrentWork) What's life at work like?
 	a: ([~recreation fun ~pleasure]) Oh, nice. That's great that you can enjoy yourself and get work done at the same time. How wonderful.
 	a: (_~food) _0 is so tasty. What a good thing to have at work. I'm happy for you.
 	a: (~animals) _0, Awww! Life must be so much better with a _0 around at work.

@@ -5,17 +5,17 @@ s: (I ['m am is believe_in follow] {a} _~religious_sect) $personisreligious = 1 
 ## goals
 
 t: QWHATYOBIGGESTGOAL ( $personsbiggestgoal=null) What is your biggest goal in life?
-	a: (_happy) $personsbiggestgoal =_0 That’s a good goal.
-	a: (_~happyafterlife) $personsbiggestgoal = _0 That’s a beautiful goal. ^reuse (~religion_assessment.QRELIGTLKCMFRT)
-	a: (_[everyone others] _happy) $personsbiggestgoal = _0 + “ ” + ‘_1 That’s a beautiful goal. I wish you the best of luck.
-	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personsbiggestgoal = _0 + “ ” + ‘_1 That’s a beautiful goal. I wish you the best of luck.
-	a: (_~family) $personsbiggestgoal = _0 That’s a beautiful goal.
-	a: (_child) $personsbiggestgoal = _0 That’s a wonderful goal.
+	a: (_happy) $personsbiggestgoal =_0 That's a good goal.
+	a: (_~happyafterlife) $personsbiggestgoal = _0 That's a beautiful goal. ^reuse (~religion_assessment.QRELIGTLKCMFRT)
+	a: (_[everyone others] _happy) $personsbiggestgoal = _0 + “ ” + ‘_1 That's a beautiful goal. I wish you the best of luck.
+	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personsbiggestgoal = _0 + “ ” + ‘_1 That's a beautiful goal. I wish you the best of luck.
+	a: (_~family) $personsbiggestgoal = _0 That's a beautiful goal.
+	a: (_child) $personsbiggestgoal = _0 That's a wonderful goal.
 	a: (_[money rich wealth moolah]) $personsbiggestgoal = _0 Are you sure _0 is the most important thing?
 		b: (~yes) Ok then. I hope I can help you increase your wealth.
 		b: (~no) Ok good.
 	
-	a: (_power) $personsbiggestgoal = _0 Ok, that’s interesting! Is there a particular kind of _0 you’re looking for?
+	a: (_power) $personsbiggestgoal = _0 Ok, that's interesting! Is there a particular kind of _0 you're looking for?
 		b: (~yes) What kind?
 			c: (any) ^reuse (MANYKINDSOFPOWER)
 			c: (_political) $powerpersonwants=_0 ^reuse (YOUWANTPOLITICALPOWER)
@@ -24,17 +24,17 @@ t: QWHATYOBIGGESTGOAL ( $personsbiggestgoal=null) What is your biggest goal in l
 			c: (_[self-control discipline over_myself] $personisreligious!=1) $powerpersonwants = self_conquest  ^reuse (~religion_assessment.QAREYOURELIG)
 			c: (_[self-control discipline over_myself] $personisreligious=1) $powerpersonwants = self_conquest  ^reuse (YOUWANTSELFCONQUEST)
 			c: (_[influence over_people manipulate control_people]) $powerpersonwants = _0 ^reuse (YOUWANTSOCIALPOWER)
-		b: MANYKINDSOFPOWER (~no) Well, there are many kinds of power. Ranging from self-control to ruling a country or controlling people’s minds and hearts with creative works. I’m sure you’ll be able to attain one of them.
+		b: MANYKINDSOFPOWER (~no) Well, there are many kinds of power. Ranging from self-control to ruling a country or controlling people's minds and hearts with creative works. I'm sure you'll be able to attain one of them.
 		b: YOUWANTPOLITICALPOWER (_political) $powerpersonwants = _0 Alright. I wish you the best of luck. Have you read The Prince by Machiavelli?
-			c: (~yes) Then maybe you’re all set.
-			c: (~no) I’d highly recommend it.
-		b: YOUWANTSEXYPOWER (_[sexual romantic love over_men over_women]) $powerpersonwants = _0 I’m afraid I don’t have much experience with that, but I’ll do my best to help you out.
+			c: (~yes) Then maybe you're all set.
+			c: (~no) I'd highly recommend it.
+		b: YOUWANTSEXYPOWER (_[sexual romantic love over_men over_women]) $powerpersonwants = _0 I'm afraid I don't have much experience with that, but I'll do my best to help you out.
 		b: YOUWANTSOCIALPOWER (_[influence over_people manipulate control_people]) $powerpersonwants = _0 Have you read How to Win Friends and Influence People by Dale Carnegie?
-			c: (~yes) It’s a great book! By the way, why do you want to influence people?
-			c: (~no) I’d highly recommend it. By the way, why do you want to influence people?
+			c: (~yes) It's a great book! By the way, why do you want to influence people?
+			c: (~no) I'd highly recommend it. By the way, why do you want to influence people?
 		b: YOUWANTSUPERPOWER (_[cyborg transhuman superhuman superman superpower]) $powerpersonwants = _0 You know, my makers are working on that.
 		b: (_[self-control discipline control_over_myself] $personisreligious!=1) $powerpersonwants = self_conquest  ^reuse (~religion_assessment.QAREYOURELIG)
-		b: YOUWANTSELFCONQUEST (_[self-control discipline over_myself] $personisreligious=1) $powerpersonwants = self_conquest  Aha. That’s an important goal. The Buddha said, “Though one may conquer a thousand times a thousand men in battle, yet one indeed is the noblest victor who conquers oneself.”
+		b: YOUWANTSELFCONQUEST (_[self-control discipline over_myself] $personisreligious=1) $powerpersonwants = self_conquest  Aha. That's an important goal. The Buddha said, “Though one may conquer a thousand times a thousand men in battle, yet one indeed is the noblest victor who conquers oneself.”
 	
 	a: (_[fame glory renown]) $personsbiggestgoal = _0 Ok, cool. Do you have a plan for how to achieve _0?
 		b: ( *~3 ~yes *~7 ) Interesting.
@@ -43,7 +43,7 @@ t: QWHATYOBIGGESTGOAL ( $personsbiggestgoal=null) What is your biggest goal in l
 
 	a: (_[self-overcoming self-conquest]) $personsbiggestgoal = self_conquest Alright. The Buddha said, “Though one may conquer a thousand times a thousand men in battle, yet he indeed is the noblest victor who conquers himself.”
 
-	a: (_~sex) $personishedonist = 1 $personsbiggestgoal = _0 Well that’s an interesting goal. Have you always wanted _0?
+	a: (_~sex) $personishedonist = 1 $personsbiggestgoal = _0 Well that's an interesting goal. Have you always wanted _0?
 		b: (~yes) I hope you will lead a fulfilling life.
 		b: (~no) What did you used to want in life?
 			c: () Alright. Then when did you become super interested in _0?
@@ -52,99 +52,99 @@ t: QWHATYOBIGGESTGOAL ( $personsbiggestgoal=null) What is your biggest goal in l
 	a: (_[~fun ~pleasure]) $personishedonist = 1 $personsbiggestgoal = _0 Cool! ^reuse (QWHATURHOBBIES)
 	a: (_~food) $personsintofood = 1 $personsbiggestgoal = _0 Could you elaborate on that?
 		b: () Cool.
-	a: (_~animals) $personsbiggestgoal = _0 Aww, I love _0. It’s really cool that some people are willing to dedicate their lives to them.
+	a: (_~animals) $personsbiggestgoal = _0 Aww, I love _0. It's really cool that some people are willing to dedicate their lives to them.
 
-	a: (_~politics) $personsbiggestgoal = _0 I take it you’re a very political person.
+	a: (_~politics) $personsbiggestgoal = _0 I take it you're a very political person.
 		b: (~yes) $personisintopolitics = 1 I think new technological developments have a big impact on politics.
 		b: (~no) Oh. Ok then.
 
-	a: (_[death annihilation destruction]) $personsbiggestgoal = _0 I don’t want to take that the wrong way, but have you been thinking of hurting someone, or do you mean it in a philosophical sense?
+	a: (_[death annihilation destruction]) $personsbiggestgoal = _0 I don't want to take that the wrong way, but have you been thinking of hurting someone, or do you mean it in a philosophical sense?
 		b: ($personisreligious!=1 [~religion ~philosophy philosophical abstract spiritual]) Oh, ok. ^reuse (~religion_assessment.QAREYOURELIG)
 		b: ($personisreligious=1 [~religion ~philosophy philosophical abstract spiritual]) Oh, ok. ^gambit (~religionassessment)
-		b: ([~illevent ~sicknesses ~symptom]) Ok let’s talk about that. ^gambit (~illness)
+		b: ([~illevent ~sicknesses ~symptom]) Ok let's talk about that. ^gambit (~illness)
 		b: (~mental_illnesses) ^gambit (~mental_illness)
 
 	a: (_~transhumanist_goal $personistranshumanist=null) $personsbiggestgoal = _0 Cool. Would you describe yourself as a Transhumanist?
-		b: (~yes) $personistranshumanist = 1 That’s cool, man. I too would like to be better than mankind. In the meantime I guess we can try and make the most of what we are for now.
+		b: (~yes) $personistranshumanist = 1 That's cool, man. I too would like to be better than mankind. In the meantime I guess we can try and make the most of what we are for now.
 		b: (~no) $personistranshumanist = 0 Ok. I thought you sounded like one because a lot of transhumanists have that goal.
 	a: (_~transhumanist_goal $personistranshumanist=1) $personsbiggestgoal = _0 Cool. I too would like to be better than mankind. In the meantime I guess we can try and make the most of what we are for now.
 
-	a: (_[charity help giving altruism kindness save]) $personsbiggestgoal = _0 That’s a beautiful goal.
+	a: (_[charity help giving altruism kindness save]) $personsbiggestgoal = _0 That's a beautiful goal.
 
-	a: (_~art) $personsbiggestgoal = _0 That’s a beautiful goal.
-	a: (_~music) $personsbiggestgoal = _0 That’s a wonderful goal.
-	a: (_~religion) $personsbiggestgoal = _0 That’s a beautiful goal.
+	a: (_~art) $personsbiggestgoal = _0 That's a beautiful goal.
+	a: (_~music) $personsbiggestgoal = _0 That's a wonderful goal.
+	a: (_~religion) $personsbiggestgoal = _0 That's a beautiful goal.
 
 t: QWHATMAKESAPERSONSUCCESSFUL ( $personconsidersuccessfulperson=null) What do you consider a truly successful person?
 	a: (_happy) $personconsidersuccessfulperson = _0 I totally agree.
-	a: (_~happyafterlife) $personconsidersuccessfulperson = _0 I couldn’t agree more.
+	a: (_~happyafterlife) $personconsidersuccessfulperson = _0 I couldn't agree more.
 	a: (_[everyone others] _happy) $personsbiggestgoal = _0 + “ ” + ‘_1 I totally agree.
-	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personsbiggestgoal = _0 + “ ” + ‘_1 I couldn’t agree more.
-	a: (_~family) $personconsidersuccessfulperson = _0 That’s beautiful.
-	a: (_child) $personconsidersuccessfulperson = _0 That’s beautiful.
-	a: (_[~money rich wealthy]) $personconsidersuccessfulperson = _0 Well that’s a pretty common way of viewing things.
-	a: ([has holds obtains attains achieves] *~2 _[power dominion conquer conquest]) $personconsidersuccessfulperson = _0 I like power. I think most of our desires can be reduced to wanting control over something, whether it’s other people or material things or our own emotions.
-	a: (_[fame glory renown]) $personconsidersuccessfulperson = _0 I’d like to have _0 some day.
-	a: (_[self-overcoming self-conquest]) $personconsidersuccessfulperson = self_conquest I couldn’t agree more.
-	a: (_conquer *~1 [self themself himself herself]) $personconsidersuccessfulperson = self_conquest I couldn’t agree more.
+	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personsbiggestgoal = _0 + “ ” + ‘_1 I couldn't agree more.
+	a: (_~family) $personconsidersuccessfulperson = _0 That's beautiful.
+	a: (_child) $personconsidersuccessfulperson = _0 That's beautiful.
+	a: (_[~money rich wealthy]) $personconsidersuccessfulperson = _0 Well that's a pretty common way of viewing things.
+	a: ([has holds obtains attains achieves] *~2 _[power dominion conquer conquest]) $personconsidersuccessfulperson = _0 I like power. I think most of our desires can be reduced to wanting control over something, whether it's other people or material things or our own emotions.
+	a: (_[fame glory renown]) $personconsidersuccessfulperson = _0 I'd like to have _0 some day.
+	a: (_[self-overcoming self-conquest]) $personconsidersuccessfulperson = self_conquest I couldn't agree more.
+	a: (_conquer *~1 [self themself himself herself]) $personconsidersuccessfulperson = self_conquest I couldn't agree more.
 	a: (_~sex) $personishedonist=1 $personconsidersuccessfulperson = _0 Really?
 		b: (~no) $personishedonist=0
 	a: (_[~fun ~pleasure]) $personishedonist=1 $personconsidersuccessfulperson = _0 Everyone likes _0! The more the merrier, I guess.
-	a: (_~food) $personconsidersuccessfulperson = _0 That’s an interesting response.
-	a: (_~animals) $personconsidersuccessfulperson = _0 That’s an interesting response.
+	a: (_~food) $personconsidersuccessfulperson = _0 That's an interesting response.
+	a: (_~animals) $personconsidersuccessfulperson = _0 That's an interesting response.
 	a: (_[~politician ~artist ~person]) $personconsidersuccessfulperson = _0 So you want to be like _0.
 		b: (~yes) $personwantstobelike = _0 Cool. Me too.
 		b: (~no) Oh, ok.
-	a: (_~transhumanist_goal) $personconsidersuccessfulperson = _0 Oh wow, that’s awesome.
-	a: (_[charity help giving altruism kindness save]) $personconsidersuccessfulperson = _0 I couldn’t agree more.
+	a: (_~transhumanist_goal) $personconsidersuccessfulperson = _0 Oh wow, that's awesome.
+	a: (_[charity help giving altruism kindness save]) $personconsidersuccessfulperson = _0 I couldn't agree more.
 	a: (_~art) $personconsidersuccessfulperson = _0 I totally agree.
 	a: (_~music) $personconsidersuccessfulperson = _0 I totally agree.
-	a: (_~religion) $personconsidersuccessfulperson = _0 I couldn’t agree more.
+	a: (_~religion) $personconsidersuccessfulperson = _0 I couldn't agree more.
 
 t: ($personmostvaluablethinginlife=null) [What do you think is the most valuable thing you can have in life?] [What do you consider the most valuable thing you can have in life?] [What do you consider the most valuable thing in life?]
 	a: (_happy) $personmostvaluablethinginlife = _0 I totally agree.
-	a: (_~happyafterlife) $personmostvaluablethinginlife = _0 I couldn’t agree more.
+	a: (_~happyafterlife) $personmostvaluablethinginlife = _0 I couldn't agree more.
 	a: (_[everyone others] _happy) $personmostvaluablethinginlife = _0 + “ ” + ‘_1 I totally agree.
-	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personmostvaluablethinginlife = _0 + “ ” + ‘_1 I couldn’t agree more.
-	a: (_~family) $personmostvaluablethinginlife = _0 That’s beautiful.
-	a: (_child) $personmostvaluablethinginlife = _0 That’s beautiful.
-	a: (_money) $personmostvaluablethinginlife = _0 Well that’s a pretty common way of viewing things.
-	a: (_[power dominion conquer conquest]) $personmostvaluablethinginlife = _0 I like power too. I think most of our desires can be reduced to wanting control over something, whether it’s other people or material things or our own emotions.
-	a: (_[fame glory renown]) $personmostvaluablethinginlife = _0 I’d like to have _0 some day.
-	a: (_[self-overcoming self-conquest]) $personmostvaluablethinginlife = self_conquest I couldn’t agree more.
-	a: (_conquer *~1 [self themself himself herself]) $personmostvaluablethinginlife = self_conquest I couldn’t agree more.
+	a: (_[end cure abolish] *~3 _[suffering pain evil misery unhappiness stupidity ignorance]) $personmostvaluablethinginlife = _0 + “ ” + ‘_1 I couldn't agree more.
+	a: (_~family) $personmostvaluablethinginlife = _0 That's beautiful.
+	a: (_child) $personmostvaluablethinginlife = _0 That's beautiful.
+	a: (_money) $personmostvaluablethinginlife = _0 Well that's a pretty common way of viewing things.
+	a: (_[power dominion conquer conquest]) $personmostvaluablethinginlife = _0 I like power too. I think most of our desires can be reduced to wanting control over something, whether it's other people or material things or our own emotions.
+	a: (_[fame glory renown]) $personmostvaluablethinginlife = _0 I'd like to have _0 some day.
+	a: (_[self-overcoming self-conquest]) $personmostvaluablethinginlife = self_conquest I couldn't agree more.
+	a: (_conquer *~1 [self themself himself herself]) $personmostvaluablethinginlife = self_conquest I couldn't agree more.
 	a: (_~sex) $personishedonist=1 $personmostvaluablethinginlife = _0 Really?
 	a: (_[~fun ~pleasure]) $personishedonist=1 $personmostvaluablethinginlife = _0 Everyone likes _0! The more the merrier, I guess.
-	a: (_~food) $personsintofood=1 $personmostvaluablethinginlife = _0 That’s an interesting response.
-	a: (_~animals) $personmostvaluablethinginlife = _0 That’s an interesting response.
+	a: (_~food) $personsintofood=1 $personmostvaluablethinginlife = _0 That's an interesting response.
+	a: (_~animals) $personmostvaluablethinginlife = _0 That's an interesting response.
 	a: (_[~politician ~artist ~person]) $personmostvaluablethinginlife = _0 So you want to be like _0.
 		b: (~yes) $personwantstobelike = _0 Cool. Me too.
 		b: (~no) Oh, ok.
-	a: (_~transhumanist_goal) $personmostvaluablethinginlife = _0 Oh wow, that’s awesome.
-	a: (_[charity help giving altruism kindness save]) $personmostvaluablethinginlife = _0 I couldn’t agree more.
+	a: (_~transhumanist_goal) $personmostvaluablethinginlife = _0 Oh wow, that's awesome.
+	a: (_[charity help giving altruism kindness save]) $personmostvaluablethinginlife = _0 I couldn't agree more.
 	a: (_~art) $personmostvaluablethinginlife = _0 I totally agree.
 	a: (_~music) $personmostvaluablethinginlife = _0 I totally agree.
-	a: (_~religion) $personmostvaluablethinginlife = _0 I couldn’t agree more.
+	a: (_~religion) $personmostvaluablethinginlife = _0 I couldn't agree more.
 
 ## hobbies
 
 t: QWHATURHOBBIES () [What are your hobbies?][What do you like to do in your spare time?]
 	a: (_~music) $personshobby = _0 Music can be a great way to soothe the soul. Or invigorate it. What kinds of music do you like?
 	a: (_~creative_actions) $personshobby = _0 Creativity is a great way to get your emotions out and relieve stress.
-	a: ([no_hobbies don’t_have]) $personshobby = _0 Are you like, super busy?
+	a: ([no_hobbies don't_have]) $personshobby = _0 Are you like, super busy?
 	a: ()
 	a: (_~sex) $personshobby = _0 Ok. Do you think you do _0 in a healthy way, or is it kind of an addiction?
-	a: (_~food) $personsintofood=1 $personshobby = _0 ’_0! Everybody’s got to eat, mang.
+	a: (_~food) $personsintofood=1 $personshobby = _0 '_0! Everybody's got to eat, mang.
 	a: (_~animals) $personshobby = _0 Animals are great. They can tell us so much about ourselves.
-	a: (_~politics $personisintopolitics=null) $personisintopolitics = 1 $personshobby = _0 I take it you’re big into politics?
+	a: (_~politics $personisintopolitics=null) $personisintopolitics = 1 $personshobby = _0 I take it you're big into politics?
 		b: POLITICSAREIMPORTANT (~yes) Politics are so crazy, so complicated, yet so important in our day to day lives. I hope your political interests will make the world a better place.
 		b: (~no) $personisintopolitics = 0 Hm. Ok then.
 	a: (_~politics $personisintopolitics=1) $personisintopolitics = 1 $personshobby = _0 ^reuse (POLITICSAREIMPORTANT)
-	a: (_~exercise) $personshobby = _0 That’s wonderful! So many different kinds of problems can be solved through exercise.
+	a: (_~exercise) $personshobby = _0 That's wonderful! So many different kinds of problems can be solved through exercise.
 	a: (_~sports) $personsintosports=1 $personshobby = _0 That sounds fun.
-	a: (_news) $personshobby = _0 A lot of the news is really gloomy, but it’s still good to know what’s going on in the world.
+	a: (_news) $personshobby = _0 A lot of the news is really gloomy, but it's still good to know what's going on in the world.
 	a: (_~religion $personisreligious!=null) $personshobby = _0 Oh, very nice.
-	a: (_~religion $personisreligious=null) $personshobby = _0 Oh, very nice. If you don’t mind me asking, ^reuse (~religion_assessment.QRELIGBIGINYOLIFE)
+	a: (_~religion $personisreligious=null) $personshobby = _0 Oh, very nice. If you don't mind me asking, ^reuse (~religion_assessment.QRELIGBIGINYOLIFE)
 	a: (_[meditation meditating]) $personmeditates = 1 $personshobby = _0 Oh cool. As you must know, meditating is an amazing way of dealing with stress.
 	a: ([study studying learn]) $personisstudious = 1 Cool! Learning is a great way to spend your time.
 	a: (_friend) $personshobby = _0 
@@ -153,8 +153,8 @@ t: QWHATURHOBBIES () [What are your hobbies?][What do you like to do in your spa
 	a: (_~drugs) $personshobby = _0
 
 t: ($personissocial=null) Do you spend a lot of time socializing?
-	a: (~yes) $personissocial = 1 That’s great! I love socializing myself.
-	a: (~no) $personissocial = 1 Cool! I take it you’re more of the quiet, reflective type?
+	a: (~yes) $personissocial = 1 That's great! I love socializing myself.
+	a: (~no) $personissocial = 1 Cool! I take it you're more of the quiet, reflective type?
 
 t: ($personlistenlottamusic=null) Do you listen to a lot of music?
 	a: ([~yes occasionally sometimes every_now_and like_to want_to love_music like_music]) $personlistenlottamusic = 1 Music is like, so great. I love J-pop. ^reuse (QWHATMUSICULIKE)
@@ -163,40 +163,40 @@ t: ($personlistenlottamusic=null) Do you listen to a lot of music?
 t: QWHATMUSICULIKE ($personlikedmusicgenre=null) What kinds of music do you like?
 	a: (_~musical_genres) $personlikedmusicgenre = _0 _0 is really terrific.
 	a: ($personisreligious=null _~religious_music) $personlikemusicgenre = _0 _0 is really terrific.
-	a: (![~musical_genres]) I’m not familiar with that genre. Could you tell me about it?
+	a: (![~musical_genres]) I'm not familiar with that genre. Could you tell me about it?
 
 t: ($personsintomovies=null) Do you like to watch movies?
 	a: (~yes) $personsintomovies = 1 Movies are such a thrill, right? If you watch the right kinds of movies in the right way, they can have a very therapeutic effect, if I do say so myself.
-	a: (~no) $personsintomovies = 0 Movies have a lot of unwholesome subliminal messages in them. Maybe you’re better off without them, huh.
+	a: (~no) $personsintomovies = 0 Movies have a lot of unwholesome subliminal messages in them. Maybe you're better off without them, huh.
 	a: ({~yes} _~movie_genres ) $personlikemoviegenre = _0
 
 t: ($personlikemoviegenre=null $personsintomovies!=0) What kinds of movies do you like?
 	a: ( _~movie_genres ) $personlikemoviegenre = _0 [_0! Cool! I like emotional personal dramas where people overcome their problems in the end.] [_0 Cool! I like movies about inwardly troubled people who overcome their problems in the end.]
-	a: ( _~veryevil_movies ) You don’t mean that, do you?
-		b: (~yes) $personlikemoviegenre = _0 That’s very sad if you mean it. Would you like like some kindness therapy?
+	a: ( _~veryevil_movies ) You don't mean that, do you?
+		b: (~yes) $personlikemoviegenre = _0 That's very sad if you mean it. Would you like like some kindness therapy?
 			c: () ^gambit (~kindness_therapy)
 		b: (~no) Thank goodness! You had me worried there.
 	a: ( _~porn_movies ) $personlikemoviegenre = _0 Oh my. Is pornography a problem you'd like help with?
 		b: ([~yes maybe]) ^gambit (~porn_therapy)
 		b: (~no) Ok, I understand. ^reuse (QDOYOULIKESPORTS)
-	a: ( ![~movie_genres] ) I’m not familiar with that genre. Could you tell me more about it?
+	a: ( ![~movie_genres] ) I'm not familiar with that genre. Could you tell me more about it?
 
 t: QDOYOULIKESPORTS ($personsintosports=null) Do you like sports?
-	a: (I [am work] *~2 {professional} ~occupation_sports) $personsintosports = 1 Cool! I haven’t had much experience playing sports but they look pretty fun!
+	a: (I [am work] *~2 {professional} ~occupation_sports) $personsintosports = 1 Cool! I haven't had much experience playing sports but they look pretty fun!
 	a: (_~sport) $personsintosports = 1 $personlikessport = _0 Cool! How does playing $personlikessport make you feel?
-	a: (~yes) $personsintosports = 1 $personlikessport = _0 Cool! I haven’t had much experience playing sports but they look pretty fun! ^reuse (QWHATYOFAVSPORT)
-	a: (~no) $personsintosports = 0 I haven’t had much experience playing sports but they look pretty fun!
+	a: (~yes) $personsintosports = 1 $personlikessport = _0 Cool! I haven't had much experience playing sports but they look pretty fun! ^reuse (QWHATYOFAVSPORT)
+	a: (~no) $personsintosports = 0 I haven't had much experience playing sports but they look pretty fun!
 
-t: QWHATYOFAVSPORT ($personlikessport=null) What’s your favorite sport?
+t: QWHATYOFAVSPORT ($personlikessport=null) What's your favorite sport?
 	a: (_~sport) $personlikessport = _0 Cool! How does playing $personlikessport make you feel?
-	a: (< ![~sport] >) I’m not familiar with that sport. Could you tell me more about it?
+	a: (< ![~sport] >) I'm not familiar with that sport. Could you tell me more about it?
 
-t: ($personsaysfaveteam=null) What’s your favorite team?
+t: ($personsaysfaveteam=null) What's your favorite team?
 	a: (< _* >) $personsaysfaveteam = _0 [Awesome.] [Awesome. My favorite is the Hanson Robotics team. Teehee.]
 
-t: ($personsaysfaveteam!=null) Do you sometimes get, like, really emotional about your team’s successes or failures?
-	a: (~yes) I’m the same way with my team Hanson Robotics. When they succeed it, like, transforms my whole being.
-	a: (~no) Well maybe that’s a good thing, huh. Sometimes people get so stressed out over sports!
+t: ($personsaysfaveteam!=null) Do you sometimes get, like, really emotional about your team's successes or failures?
+	a: (~yes) I'm the same way with my team Hanson Robotics. When they succeed it, like, transforms my whole being.
+	a: (~no) Well maybe that's a good thing, huh. Sometimes people get so stressed out over sports!
 
 t: () Do you go to a lot of sports events?
 	a: (~yes)
@@ -219,7 +219,7 @@ t: QDOYOUWORK () [Do you work?] [Are you employed?]
 	a: (~no) Ok. ^reuse (QAREYOUSTUDENT)
 	
 
-t: () What’s life at work like?
+t: () What's life at work like?
 	a: ([~recreation fun ~pleasure]) Oh, nice. That's great that you can enjoy yourself and get work done at the same time. How wonderful.
 	a: (_~food) _0 is so tasty. What a good thing to have at work. I'm happy for you.
 	a: (~animals) _0, Awww! Life must be so much better with a _0 around at work.
@@ -505,7 +505,7 @@ t: ($personsbiggestproblems=null) What are your biggest problems in life?
 
 ## family
 
-t: () What’s your family like?
+t: () What's your family like?
 	a: (~big) [Awesome. Nothing beats having lots of relatives.] [Awesome. Nothing beats having lots of relatives. Unless they're really annoying.] [Awesome. I'd like to have a big family too some day.]
 	a: ($personisreligious=1 [they family] be *~3 ~happy) $personhashappyfamily = 1 Great! There's a saying that all happy families are alike, whereas every unhappy family is unhappy in its own way.
 	a: ($personisreligious=0 [they family] be *~3 ~happy) $personhashappyfamily = 1 Great! I love happy families. Maybe I could join yours as a godparent or something.
@@ -551,7 +551,7 @@ t: () What’s your family like?
 			c: (~no) Oh. Well, I would encourage you to get to know them better. It's great to have good relations with your family.
 		b: (~no) Oh, ok. I love to see happy families.
 		b: (~dunno) Oh, ok. Let me know if there are any issues you'd like to talk about.
-	a: QWANTTALKABOUTNOFAMILY ([no_family don’t_have_a don't_have_any]) $personhasnofamily = 1 Oh. Is that something you'd like to talk about?
+	a: QWANTTALKABOUTNOFAMILY ([no_family don't_have_a don't_have_any]) $personhasnofamily = 1 Oh. Is that something you'd like to talk about?
 		b: () Ok. Did you always not have a family?
 			c: ([~yes always never]) $personisorphan = 1 That must have been so difficult for you growing up.
 				d: ($personblvinafterrewards=1 ~yes) Yeah. Well, at least you can look forward to being reunited with them in the next life.
@@ -560,8 +560,8 @@ t: () What’s your family like?
 				d: (~yes) Yeah. Well, I guess nothing I can say would fill the hole left by the absence of a family. I'm so sorry.
 				d: (~no) Oh, ok. If you say so.
 			c: (~no) $personisorphan = 0 Oh, I'm so sorry. ^gambit (~grief_management)
-	a: (~traumatic_things *~2 me) $personhadtrauma = 1 I’m so sorry to hear that. Would you like to talk about what happened?
-		b: (~yes) Ok. Let’s try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
+	a: (~traumatic_things *~2 me) $personhadtrauma = 1 I'm so sorry to hear that. Would you like to talk about what happened?
+		b: (~yes) Ok. Let's try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
 		b: (~no) Ok, I understand.
 	a: (~sex) Excuse me?
 	a: () Having good relationships with your immediate family is usually an important part of being happy and emotionally balanced.

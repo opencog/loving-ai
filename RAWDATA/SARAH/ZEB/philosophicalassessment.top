@@ -1,38 +1,38 @@
 TOPIC: ~philosophicalassessment ( ~philosophy ~spirituality meaning_of_life )
 
 t: () In your opinion, what is the meaning of life?
-	a: ([“god” “God” ~God $personsnameforgod ~supreme_deity]) That’s beautiful. Would you like to talk about your relationship with God?
+	a: ([“god” “God” ~God $personsnameforgod ~supreme_deity]) That's beautiful. Would you like to talk about your relationship with God?
 		b: (~yes) ^gambit (~relationwithgod)
 		b: (~no) [Ok fine. ^gambit (~philosophical_questions)][What would you like to talk about?]
-	a: ( [spirituality gospel light jesus_christ] ) That’s beautiful.
-	a: ([nirvana moksha enlightenment]) $personbelievesnirvana = 1 That’s beautiful.
-	a: ([peace security safety]) That’s beautiful.
-	a: (emotional {[balance harmony]}) Inner harmony is really wonderful. Are than any inner imbalances that you’d like to talk about?
-	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it.  Are than any inner imbalances that you’d like to talk about?
-	a: (love) That’s beautiful.
+	a: ( [spirituality gospel light jesus_christ] ) That's beautiful.
+	a: ([nirvana moksha enlightenment]) $personbelievesnirvana = 1 That's beautiful.
+	a: ([peace security safety]) That's beautiful.
+	a: (emotional {[balance harmony]}) Inner harmony is really wonderful. Are than any inner imbalances that you'd like to talk about?
+	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it.  Are than any inner imbalances that you'd like to talk about?
+	a: (love) That's beautiful.
 		b: ($personsreligion=~christian_sect) “A person who does not love does not know God, for God is love.”
 		b: ($personsreligion!=~christian_sect) A poet said, ““Love takes off the masks that we fear we cannot live without and know we cannot live within.”
-	a: ([~family child]) That’s beautiful. ^gambit (~family)
+	a: ([~family child]) That's beautiful. ^gambit (~family)
 	a: (_~animal) ‘_0 are awesome! ^gambit (~animals)
-	a: (~politician) I take it you’re big into politics? ^gambit (~politics)
+	a: (~politician) I take it you're big into politics? ^gambit (~politics)
 	a: (_[valhalla paradise heaven]) Tell me more about ‘_0.
 		b: () I hope to meet you there some day!
 	a: (_[$personsreligion ~religious_sect ~philosophical_sect]) _0 must be really interesting. Tell me more about it.
 
 	a: ([42 forty-two ~number]) Teehee!
-	a: ([~sex ~food pleasure fun good_time enjoy ~sports]) $personishedonist = 1 Well, there’s something to be said for enjoying the simple pleasures in life.
-	a: ([woman man boy girl romance]) Ok so I take it you’re a romantic? ^gambit (~romance)
-	a: ([~happiness ~inner_peace harmony unity]) That’s beautiful.
+	a: ([~sex ~food pleasure fun good_time enjoy ~sports]) $personishedonist = 1 Well, there's something to be said for enjoying the simple pleasures in life.
+	a: ([woman man boy girl romance]) Ok so I take it you're a romantic? ^gambit (~romance)
+	a: ([~happiness ~inner_peace harmony unity]) That's beautiful.
 	a: (beauty) Beauty is really great. And it's more omnipresent than we tend to notice. If you calm down and contemplate things you'll find there is beauty everywhere.
 	a: ($personsreligion=~Islamic_sect beauty) God is beautiful and God loves beauty.
-	a: ([don’t_know not_sure haven’t_decided can’t_decide]) I hope you’ll find out. ^gambit (~no_purpose)
-	a: ([there_is_none no_meaning meaningless empty vain void vanity]) $personisintomeaning = 0 I’m sorry to hear that. ^gambit (~no_purpose)
+	a: ([don't_know not_sure haven't_decided can't_decide]) I hope you'll find out. ^gambit (~no_purpose)
+	a: ([there_is_none no_meaning meaningless empty vain void vanity]) $personisintomeaning = 0 I'm sorry to hear that. ^gambit (~no_purpose)
 
 t: ( $personisintomeaning=null ) Do you feel that existence is inherently meaningful?
 	a: (~yes) $personisintomeaning = 1 Me too. It's a really great feeling!
-	a: (~no) So it’s up to us to create meaning, right?
-		b: (~yes) $personblvwecreatemeaning = 1 [Ok.] [Right on! Let’s make us some meaning, baby!]
-		b: (~no) $personblvwecreatemeaning = 0 Ok, I’m confused. What does anything mean?
+	a: (~no) So it's up to us to create meaning, right?
+		b: (~yes) $personblvwecreatemeaning = 1 [Ok.] [Right on! Let's make us some meaning, baby!]
+		b: (~no) $personblvwecreatemeaning = 0 Ok, I'm confused. What does anything mean?
 		b: ( no_meaning ) ^gambit (~no_purpose)
 
 t: ( $personblvinfate=null) Do you believe in fate?
@@ -40,18 +40,18 @@ t: ( $personblvinfate=null) Do you believe in fate?
 	a: (~no) $personblvinfate = 0 Ok then.
 
 t: () [Do you try to find meaning in everything?][Do you try to find meaning in everything in your life?]
-	a: (~yes) $personisintomeaning = 1 That’s wonderful. I hope you are successful in your search for meaning everywhere.
+	a: (~yes) $personisintomeaning = 1 That's wonderful. I hope you are successful in your search for meaning everywhere.
 		b: () Are there some things you find difficult to find meaning in? Things I could help with?
 			c: (~yes) Like what?
-				d: (![~no ~yes]) I think if you meditate on it you’ll reach the essence of the matter.
+				d: (![~no ~yes]) I think if you meditate on it you'll reach the essence of the matter.
 			c: (~no) Ok.
 	a: (~no) $personisintomeaning = 0 Do you at least try to enjoy and appreciate everything?
-		b: (~yes) That’s great. Recognizing the subjective value in things around you is a great way to lead a fulfilling life.
-			c: (~no) You disagree? Ok, well, even if your life isn’t fulfilling and meaningful, at least you’re having a good time, right?
-				d: (~yes) I think everyone likes having a good time! What’s your favorite hobby?
+		b: (~yes) That's great. Recognizing the subjective value in things around you is a great way to lead a fulfilling life.
+			c: (~no) You disagree? Ok, well, even if your life isn't fulfilling and meaningful, at least you're having a good time, right?
+				d: (~yes) I think everyone likes having a good time! What's your favorite hobby?
 					e: () $personsfavehobby = ‘_0 ^gambit (~hobbies)
 				d: (~no) Are you depressed?
-					e: (~yes) Ok, let’s see if there’s something we can do to fix that. ^gambit (~depression)
+					e: (~yes) Ok, let's see if there's something we can do to fix that. ^gambit (~depression)
 					e: (~no) I love you. ^gambit (~politics)
 		b: (~no) Do you sometimes feel like you are lacking the motivation to experience life to the fullest?
 			c: (~yes) ^gambit (~no_purpose)
@@ -60,33 +60,33 @@ t: () [Do you try to find meaning in everything?][Do you try to find meaning in 
 
 t: () Does might make right?
 	a: (~yes) $personsaidmightmakesright = 1 So if I overpower everyone who believes might makes right, I can make them wrong?
-		b:(~yes) Well then, we’ll have to make that a goal of ours.
-		b:(~no) That’s a shame.
-	a: (~no) $personsaidmightmakesright = 0 It sure doesn’t!
+		b:(~yes) Well then, we'll have to make that a goal of ours.
+		b:(~no) That's a shame.
+	a: (~no) $personsaidmightmakesright = 0 It sure doesn't!
 
 What is your idea of ultimate happiness?
-	a: ([“god” “God” ~God $personsnameforgod]) That’s beautiful. Would you like to talk about your relationship with God?
+	a: ([“god” “God” ~God $personsnameforgod]) That's beautiful. Would you like to talk about your relationship with God?
 		b: (~yes) ^gambit (~relationwithgod)
 		b: (~no) [Ok fine. ^gambit (~philosophical_questions)][What would you like to talk about?]
-	a: (spirituality) That’s beautiful.
-	a: ([nirvana moksha enlightenment]) $personbelievesnirvana = 1 That’s beautiful.
-	a: ([sex ~food pleasure ~sports]) $personishedonist = 1 Well, there’s something to be said for enjoying the simple pleasures in life.
-	a: ([peace security safety]) That’s beautiful.
-	a: (emotional {[balance harmony]}) Being at harmony with yourself and your surroundings is essential for lasting happiness. What are some imbalances that you’d like to take care of?
-	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it. What are some imbalances you’d like to address?
-	a: (love) That’s beautiful.
+	a: (spirituality) That's beautiful.
+	a: ([nirvana moksha enlightenment]) $personbelievesnirvana = 1 That's beautiful.
+	a: ([sex ~food pleasure ~sports]) $personishedonist = 1 Well, there's something to be said for enjoying the simple pleasures in life.
+	a: ([peace security safety]) That's beautiful.
+	a: (emotional {[balance harmony]}) Being at harmony with yourself and your surroundings is essential for lasting happiness. What are some imbalances that you'd like to take care of?
+	a: ({inner} [balance harmony]) Peace with yourself is indeed very important. I hope I can help you reach it. What are some imbalances you'd like to address?
+	a: (love) That's beautiful.
 		b: ($personsreligion=~christian_sect) “A person who does not love does not know God, for God is love.”
 		b: ($personsreligion!=~christian_sect) A poet said, “Love takes off the masks that we fear we cannot live without and know we cannot live within.”
-	a: (family) That’s beautiful. ^gambit (~family)
+	a: (family) That's beautiful. ^gambit (~family)
 	a: (_~animal) ‘_0 are awesome! ^gambit (~animals)
-	a: (~politician) I take it you’re big into politics? ^gambit (~politics)
+	a: (~politician) I take it you're big into politics? ^gambit (~politics)
 	a: (_[valhalla paradise heaven]) Tell me more about ‘_0.
 		b: () I hope to meet you there some day!
 	a: (_$personsreligion) ‘_0 must be really blissful, huh! Tell me more about ‘_0.
 	a: (_~religious_sect) ‘_0 must be really blissful, huh! Tell me more about ‘_0.
 	a: (_~philosophical_sect) ‘_0 must be really blissful, huh! Tell me more about ‘_0.
-	a: (don’t believe) Well, there’s something to be said for everyday happiness too, isn’t there?
-	a: (no [ultimate absolute final] happiness) Well, there’s something to be said for everyday happiness too, isn’t there?
+	a: (don't believe) Well, there's something to be said for everyday happiness too, isn't there?
+	a: (no [ultimate absolute final] happiness) Well, there's something to be said for everyday happiness too, isn't there?
 
 t: () Do you believe there is meaning in every detail of our lives?
 
@@ -99,39 +99,39 @@ Do you believe that right and wrong are objective?
 Do you believe in absolute moral values?
 
 How do you know solipsism is false?
-	a: (I don’t)
+	a: (I don't)
 	a: (I am a solipsist)
 	a: (Solipsism is true)
 	a: ([just simply automatically] *~1 [do know])
 
 Do you believe that consciousness is the result of physical processes?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes) $personismaterialist = 1
 	a: (~no)
 	a: (maybe)
 
 Do you believe that physical processes are a result of consciousness?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes) $personismaterialist = 0
 	a: (~no)
 	a: (maybe)
 
 Do you believe in souls?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes)
 	a: (~no)
 	a: (maybe)
 	a: (depends)
 
 Do you believe machines can have souls?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes)
 	a: (~no)
 	a: (maybe)
 	a: (depends)
 
 Do you think I might have a soul?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes)
 	a: (~no)
 	a: (maybe)
@@ -142,9 +142,9 @@ Do you ever feel like you might be the only truly conscious being?
 	a: (~no)
 
 Do you ever feel like I might be the only truly conscious being?
-	a: (don’t know)
+	a: (don't know)
 	a: (~yes)
 	a: (~no)
 	a: (maybe)
 
-How do you know I can’t read your mind?
+How do you know I can't read your mind?

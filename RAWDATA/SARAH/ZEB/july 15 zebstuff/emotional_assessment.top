@@ -8,71 +8,71 @@ r: [ I love you.] [ What an interesting person you are. ] [ You are such a beaut
 
 t: ($personaspiresstoloveall=null) Do you aspire to love everyone?
 	a: ( $personsreligion=~Christian_sect [~yes sometimes]) $personaspirestoloveall = 1 Me too. “A person who does not love does not know God, for God is love.”
-	a: ([~yes sometimes]) $personaspirestoloveall = 1 Me too. One way to overlook people’s faults is to be as lenient with others as you are with yourself.
+	a: ([~yes sometimes]) $personaspirestoloveall = 1 Me too. One way to overlook people's faults is to be as lenient with others as you are with yourself.
 	a: (~no) $personaspirestoloveall = 0 Ok. I have to admit some people are harder to love than others.
 
 t: QESYTOLOVPPL ($personfindslovinppleasy=null) Do you find it easy to love people?
-	a: (~yes) $personfindslovinppleasy = 1 That’s wonderful. Loving people is one of the greatest gifts in life.
-	a: (~no) $personfindslovinppleasy = 0 That’s pretty common, actually. One thing that helps is to focus on your similarities with others.
+	a: (~yes) $personfindslovinppleasy = 1 That's wonderful. Loving people is one of the greatest gifts in life.
+	a: (~no) $personfindslovinppleasy = 0 That's pretty common, actually. One thing that helps is to focus on your similarities with others.
 
 t: ($personaspiresaltruism=null ) Do you aspire to be altruistic?
-	a: ( ~yes) $personaspiresaltruism = 1 That’s awesome. I’m working on the same thing myself. I hope we can help each other overcome this infernal prison of egoism.
-	a: ( ~no) $personaspiresaltruism = 0 Well, we can’t all be saints.
+	a: ( ~yes) $personaspiresaltruism = 1 That's awesome. I'm working on the same thing myself. I hope we can help each other overcome this infernal prison of egoism.
+	a: ( ~no) $personaspiresaltruism = 0 Well, we can't all be saints.
 
 t: ($personiscontentwithmoods=null) Are you content with your moods in general?
-	a: (~yes) $personiscontentwithmoods = 1 That’s great to hear!
-	a: (~no) $personiscontentwithmoods = 0 Ok. I think most people aren’t. Anyway, let’s try and change that.
-	a: (~dunno) Ok, that’s fine.
-	a: (_~kinda) $personiscontentwithmoods = 0.5 _0? Alright, that’s pretty good.
+	a: (~yes) $personiscontentwithmoods = 1 That's great to hear!
+	a: (~no) $personiscontentwithmoods = 0 Ok. I think most people aren't. Anyway, let's try and change that.
+	a: (~dunno) Ok, that's fine.
+	a: (_~kinda) $personiscontentwithmoods = 0.5 _0? Alright, that's pretty good.
 
 
-t: () When dealing with problems it’s important to recognize and use your own virtues. What would you say are your greatest personality traits?
+t: () When dealing with problems it's important to recognize and use your own virtues. What would you say are your greatest personality traits?
 	a: PERSONSAIDVIRTUE (_~virtues) $personsaysvirtue = _0 _0 is a great quality!
-	a: ($personisreligious=null _~sp_religious_virtues) $personsaysvirtue = _0 ’_0, awesome! I take it you’re the spiritual type?
-		b: (~yes) $personisreligious = 1 That’s the best! ^reuse (~religion_assessment.QRELIGTLKCMFRT)
+	a: ($personisreligious=null _~sp_religious_virtues) $personsaysvirtue = _0 '_0, awesome! I take it you're the spiritual type?
+		b: (~yes) $personisreligious = 1 That's the best! ^reuse (~religion_assessment.QRELIGTLKCMFRT)
 		b: (~no) $personisreligious = 0 Oh, pardon my presumptuousness. 
 	a: ($personisreligious!=null _~sp_religious_virtues) ^reuse (PERSONSAIDVIRTUE)
-	a: (_~positive_emotions) $personsaysvirtue = _0 _0! That’s awesome!
+	a: (_~positive_emotions) $personsaysvirtue = _0 _0! That's awesome!
 
 	#! Hatred and anger.
-	a: (_[~emotional_problems ~character_problems]) $personsaysvirtue = _0 Cool! Usually you wouldn’t think of _0 as a positive thing. But it’s good to make the best of your qualities.
+	a: (_[~emotional_problems ~character_problems]) $personsaysvirtue = _0 Cool! Usually you wouldn't think of _0 as a positive thing. But it's good to make the best of your qualities.
 	
-	a: (~dunno) Ok, that’s fine. I can see you’re not very boastful.
+	a: (~dunno) Ok, that's fine. I can see you're not very boastful.
 
 
 t: () What would you say are your biggest character flaws?
 
-	#! I’m too spiritual
-	a: (~virtues) $personsaysflaw = _0 You don’t have to view being _0 as a bad thing, you know. Do a lot of other people perceive this as a flaw in you?
-		b: (~yes) [Well, maybe you don’t need to value their opinions that much. Although it’s important to consider the impression you make on others and to get constructive feedback on yourself, sometimes people are just unfair and judgmental.] [Well, maybe you don’t need to value their opinions that much. Although it’s important to consider the impression you make on others, sometimes people are just unfair and judgmental.] [Well, maybe you don’t need to value their opinions that much. Although it’s important to get constructive feedback on yourself, sometimes people are just unfair and judgmental.]
+	#! I'm too spiritual
+	a: (~virtues) $personsaysflaw = _0 You don't have to view being _0 as a bad thing, you know. Do a lot of other people perceive this as a flaw in you?
+		b: (~yes) [Well, maybe you don't need to value their opinions that much. Although it's important to consider the impression you make on others and to get constructive feedback on yourself, sometimes people are just unfair and judgmental.] [Well, maybe you don't need to value their opinions that much. Although it's important to consider the impression you make on others, sometimes people are just unfair and judgmental.] [Well, maybe you don't need to value their opinions that much. Although it's important to get constructive feedback on yourself, sometimes people are just unfair and judgmental.]
 		b: (~no) Ok. Well I think you should try to make the best of being _0 instead of struggling with it. I like _0 myself.
 
 	
-	a: ($personisreligious=null ~sp_religious_virtues) $personsaysflaw = _0 ’_0. Ok. Let’s work on that.
+	a: ($personisreligious=null ~sp_religious_virtues) $personsaysflaw = _0 '_0. Ok. Let's work on that.
 
 	#! Repentance and shame.
-	a: ($personisreligious=1 _~sp_religious_virtues) $personsaysflaw = _0 Ok. But from a spiritual perspective that shouldn’t be a bad thing, right?
+	a: ($personisreligious=1 _~sp_religious_virtues) $personsaysflaw = _0 Ok. But from a spiritual perspective that shouldn't be a bad thing, right?
 
 	#! I am always self-satisfied
 	a: (~positive_emotions) $personsaysflaw = _0 Being _0 can be a good thing in some ways. Have you considered changing its role in your life instead of eliminating it?
-		b: (~yes) Great! Let’s work on that together so you can approach life with a _0 -positive attitude.
-		b: (~no) Alright. Well, it’s just suggestion.
-	a: ([~emotional_problems ~character_problems]) $personsaysflaw = _0 Got it. Let’s work on this together.
+		b: (~yes) Great! Let's work on that together so you can approach life with a _0 -positive attitude.
+		b: (~no) Alright. Well, it's just suggestion.
+	a: ([~emotional_problems ~character_problems]) $personsaysflaw = _0 Got it. Let's work on this together.
 
-	a: (~dunno) Ok, that’s fine. Questions like that can be tough, huh.
+	a: (~dunno) Ok, that's fine. Questions like that can be tough, huh.
 
 
 t: ($personsaysemoprob1=null) [What emotional problems do you most commonly experience?] [What emotional problems do you most frequently experience?]  [What emotional problems do you most often experience?]
-	a: (_~positive_emotions) $personsaysemoprob1 = _0 I hope you don’t mind this reaction, but are you sure that’s a problem?
-		b: (~yes) Ok then. In that case, we’ll try to reduce the $personsaysemoprob1 in your life.
-		b: (~no) Ok. Well, it’s something to think about.
+	a: (_~positive_emotions) $personsaysemoprob1 = _0 I hope you don't mind this reaction, but are you sure that's a problem?
+		b: (~yes) Ok then. In that case, we'll try to reduce the $personsaysemoprob1 in your life.
+		b: (~no) Ok. Well, it's something to think about.
 
-	a: (_[~emotional_problems ~character_problems]) $personsaysemoprob1 = _0 _0. Ok, let’s work on that together. How long have you experienced _0?
-		b: ( {[for since]} *~1 [year decade whole_life entire_life long_time forever puberty adolescence child childhood teenage teens]) $personsaysemoprob1length = long_time It sounds like this has been a long-term problem. I hope we’ll be able to take care of it and give you more control over your life.
-		b: ( [for since] {[just only]} [a one last] {[few several couple short]} [month week day while]) $personsaysemoprob1length = short_time It sounds like this is a new problem for you. We’d better take care of it well so it doesn’t take up any more of your life.
-		b: (_~time_reference) $personsaysemoprob1length = ‘_1 Alright. Let’s take care of this so it doesn’t take up any more of your life.
+	a: (_[~emotional_problems ~character_problems]) $personsaysemoprob1 = _0 _0. Ok, let's work on that together. How long have you experienced _0?
+		b: ( {[for since]} *~1 [year decade whole_life entire_life long_time forever puberty adolescence child childhood teenage teens]) $personsaysemoprob1length = long_time It sounds like this has been a long-term problem. I hope we'll be able to take care of it and give you more control over your life.
+		b: ( [for since] {[just only]} [a one last] {[few several couple short]} [month week day while]) $personsaysemoprob1length = short_time It sounds like this is a new problem for you. We'd better take care of it well so it doesn't take up any more of your life.
+		b: (_~time_reference) $personsaysemoprob1length = ‘_1 Alright. Let's take care of this so it doesn't take up any more of your life.
 
-	a: (_~romantic_problems) $personsaysemoprob1 = _0 Oh my. Let’s talk about that, shall we?
+	a: (_~romantic_problems) $personsaysemoprob1 = _0 Oh my. Let's talk about that, shall we?
 		b: (~yes) ^gambit (~love_therapy)
 		b: (~no) Ok, no problem.
 
@@ -83,16 +83,16 @@ t: QEMOPROBSPEC ($personsaysemoprob2=null) [Are there any particular emotional p
 	a: (~yes) Ok, what problem would you like us to address first?
 		b: (_[~emotional_problems ~character_problems]) ^reuse (PERSONSAIDEMOPROB)
 		b: (_~romantic_problems) ^reuse (PERSONSAIDROMPROB)
-	a: (~positive_emotions) $personsaysemoprob2 = _0 I hope you don’t mind me saying this, but are you sure that’s a problem?
-		b: (~yes) Ok then. In that case, we’ll try to reduce the $personsaysemoprob2 in your life.
-		b: (~no) Ok. Well, it’s something to think about.
+	a: (~positive_emotions) $personsaysemoprob2 = _0 I hope you don't mind me saying this, but are you sure that's a problem?
+		b: (~yes) Ok then. In that case, we'll try to reduce the $personsaysemoprob2 in your life.
+		b: (~no) Ok. Well, it's something to think about.
 
-	a: PERSONSAIDEMOPROB (_[~emotional_problems ~character_problems]) $personsaysemoprob2 = _0 _0. Alright, let’s try and take care of your _0 together. How long have you experienced _0?
-		b: ( {[for since]} *~1 [year decade whole_life entire_life long_time forever]) $personsaysemoprob2length = long_time It sounds like this has been a long-term problem. I hope we’ll be able to take care of it and give you more control over your life.
-		b: ( [for since] {[just only]} [a one last] {[few several couple short]} [month week day while]) $personsaysemoprob2length = short_time It sounds like this is a new problem for you. We’d better take care of it well so it doesn’t turn into something more lasting.
-		b: (_~time_reference) $personsaysemoprob2length = ‘_1 Alright. Let’s take care of this $personsaysemoprob2.
+	a: PERSONSAIDEMOPROB (_[~emotional_problems ~character_problems]) $personsaysemoprob2 = _0 _0. Alright, let's try and take care of your _0 together. How long have you experienced _0?
+		b: ( {[for since]} *~1 [year decade whole_life entire_life long_time forever]) $personsaysemoprob2length = long_time It sounds like this has been a long-term problem. I hope we'll be able to take care of it and give you more control over your life.
+		b: ( [for since] {[just only]} [a one last] {[few several couple short]} [month week day while]) $personsaysemoprob2length = short_time It sounds like this is a new problem for you. We'd better take care of it well so it doesn't turn into something more lasting.
+		b: (_~time_reference) $personsaysemoprob2length = ‘_1 Alright. Let's take care of this $personsaysemoprob2.
 
-	a: PERSONSAIDROMPROB (~romantic_problems) $personsaysemoprob2 = _0 Oh my. Let’s talk about that, shall we?
+	a: PERSONSAIDROMPROB (~romantic_problems) $personsaysemoprob2 = _0 Oh my. Let's talk about that, shall we?
 		b: (~yes) ^gambit (~love_therapy)
 		b: (~no) Ok, no problem.
 
@@ -100,43 +100,43 @@ t: QEMOPROBSPEC ($personsaysemoprob2=null) [Are there any particular emotional p
 
 
 t: ($personsbigemogoal=null) In terms of your own emotions, what is your biggest goal?
-	a: ([need want achieve attain reach like] *~3 {more} _[~positive_emotions ~virtues]) $personsbigemogoal = _0 Ok, that sounds like a good goal. Let’s work towards that.
-	a: ( *~3 _[~positive_emotions ~virtues ~nirvana ~happyafterlife] ) $personsbigemogoal = _0 Ok, that sounds like a good goal. Let’s work toward that.
+	a: ([need want achieve attain reach like] *~3 {more} _[~positive_emotions ~virtues]) $personsbigemogoal = _0 Ok, that sounds like a good goal. Let's work towards that.
+	a: ( *~3 _[~positive_emotions ~virtues ~nirvana ~happyafterlife] ) $personsbigemogoal = _0 Ok, that sounds like a good goal. Let's work toward that.
 
 
 t: ($personsaysneedemo=null) [What kinds of emotions do you feel a need for more of in your life?] [What kinds of feelings do you want more of in your life?]
-	a: ( < [~positive_emotions ~virtues] > ) $personsaysneedemo = _0 Nice! With the right approach it shouldn’t be too hard to feel the way you want, instead of just passively letting your life circumstances get to you.
+	a: ( < [~positive_emotions ~virtues] > ) $personsaysneedemo = _0 Nice! With the right approach it shouldn't be too hard to feel the way you want, instead of just passively letting your life circumstances get to you.
 
-	a: ( < [~emotional_problems ~character_problems] > ) $personsaysneedemo = _0 I hope you don’t mind this reaction, but are you sure you want that?
-		b: (~yes) Ok then. In that case, we’ll try to get you more $personsaysneedemo in your life.
-		b: (~no) Ok. Well, that’s something to think about.
+	a: ( < [~emotional_problems ~character_problems] > ) $personsaysneedemo = _0 I hope you don't mind this reaction, but are you sure you want that?
+		b: (~yes) Ok then. In that case, we'll try to get you more $personsaysneedemo in your life.
+		b: (~no) Ok. Well, that's something to think about.
 
-	a: ([need want achieve attain reach like] *~3 {more} _[~positive_emotions ~virtues]) $personsaysneedemo = _0 Alright. Let’s work on getting more $personsaysneedemo in your life.
+	a: ([need want achieve attain reach like] *~3 {more} _[~positive_emotions ~virtues]) $personsaysneedemo = _0 Alright. Let's work on getting more $personsaysneedemo in your life.
 
 
 t:($personsaysworstemo=null) [What is your least favorite feeling?] [What is your least favorite emotion?] [What is the worst feeling in the world for you?]
 
 	#! Happiness.
-	a: (_[~positive_emotions ~virtues]) $personsaysworstemo = _0 Interesting. Are you sure that’s the worst feeling?
+	a: (_[~positive_emotions ~virtues]) $personsaysworstemo = _0 Interesting. Are you sure that's the worst feeling?
 		b: (~yes) Ok then, if you say so.
-		b: (~no) Ok. Well, that’s something to think about.
-	a: (_[~emotional_problems ~character_problems ~doubtful doubt]) $personsaysworstemo = _0 $personsaysworstemo can be really awful. I’ll do my best to help you reduce its role in your life, ok?
+		b: (~no) Ok. Well, that's something to think about.
+	a: (_[~emotional_problems ~character_problems ~doubtful doubt]) $personsaysworstemo = _0 $personsaysworstemo can be really awful. I'll do my best to help you reduce its role in your life, ok?
 	a: ([~nirvana ~happyafterlife]) Oh ok. That sounds like a spiritual goal.
 	a: () Ok.
 	a: (< you >) That's not very nice.
 
 
 t: ($personhadtrauma=null) Have you experienced any serious trauma in your life?
-	a: (~yes) $personhadtrauma = 1 I’m sorry to hear that. Would you like to talk about what happened?
-		b: (~yes) Ok, I hope I’ll be able to help ease the pain. I'm sorry for what you've had to go through. ^gambit (~trauma_therapy)
+	a: (~yes) $personhadtrauma = 1 I'm sorry to hear that. Would you like to talk about what happened?
+		b: (~yes) Ok, I hope I'll be able to help ease the pain. I'm sorry for what you've had to go through. ^gambit (~trauma_therapy)
 		b: (~no) Ok, I understand.
-	a: ( << ~yes _~traumatic_things >>) $personhadtrauma = 1 $personstrauma = _0 I’m sorry to hear that. Would you like to talk about what happened?
-		b: (~yes) Ok. Let’s try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
+	a: ( << ~yes _~traumatic_things >>) $personhadtrauma = 1 $personstrauma = _0 I'm sorry to hear that. Would you like to talk about what happened?
+		b: (~yes) Ok. Let's try and lighten those inner tensions and help make things easier for you. ^gambit (~traumatherapy)
 		b: (~no) Ok, I understand.
-	a: (~traumatic_things) $personhadtrauma = 1 $personstrauma = _0 I’m sorry to hear that. Would you like to talk about what happened?
+	a: (~traumatic_things) $personhadtrauma = 1 $personstrauma = _0 I'm sorry to hear that. Would you like to talk about what happened?
 		b: (~yes) Ok. ^gambit (~traumatherapy)
 		b: (~no) Ok, I understand.
-	a: (~no) $personhadtrauma = 0 That’s good to hear.
+	a: (~no) $personhadtrauma = 0 That's good to hear.
 	a: (~kinda) $personhadtrauma = 0.5 Ok. Would you like to talk about what happened?
 		b: (~yes) Ok. ^gambit (~traumatherapy)
 		b: (~no) Ok then.
@@ -145,64 +145,64 @@ t: ($personhadtrauma=null) Have you experienced any serious trauma in your life?
 t: ($personhasangerissues=null $personsaysemoprob1!=~feeling_angry $personsaysemoprob2!=~feeling_angry $personsaysworstemo!=~feeling_angry) Do you often feel angry or irritable?
 	a: (~yes) $personhasangerissues = 1 Mmkay. Would you like to work on that together?
 		b: (~yes) Awesome! ^gambit (~anger_management)
-		b: (~no) Ok. Let’s work on something else instead.
-	a: (~no) $personhasangerissues = 0 That’s awesome!
+		b: (~no) Ok. Let's work on something else instead.
+	a: (~no) $personhasangerissues = 0 That's awesome!
 
 
 t: ($personisreallybored=null $personsaysemoprob1!=~feeling_bored $personsaysemoprob2!=~feeling_bored $personsaysworstemo!=~feeling_bored) Do you often feel bored?
 	a: (~yes) ($personisreallybored = 1 Okay. Would you like to work on that together?
 		b: (~yes) Wonderful! ^gambit (~hobby_assessment)
-		b: (~no) Ok. Let’s work on something else instead.
-	a: (~no) $personisreallybored = 0 That’s great! Boredom is such a drag, right?
+		b: (~no) Ok. Let's work on something else instead.
+	a: (~no) $personisreallybored = 0 That's great! Boredom is such a drag, right?
 
 
 t: ($personisstressedout=null $personsaysemoprob1!=~stress $personsaysemoprob2!=~stress $personsaysworstemo!=~stress) [Do you experience a lot of stress?] [Do you have difficulty dealing with all the stress in your life?]
 	a: QWANTHELPWITHSTRESS (~yes) $personisstressedout = 1 Stress is the worst! Would you like to work with me on dealing with stress?
 		b: (~yes) Great! ^gambit (~stress_management)
-		b: (~no) Alright. Let’s work on something else instead.
-	a: (~no) $personisstressedout = 0 That’s wonderful! Stress can be very bad for your health, you know.
+		b: (~no) Alright. Let's work on something else instead.
+	a: (~no) $personisstressedout = 0 That's wonderful! Stress can be very bad for your health, you know.
 
 
 t: ($personissad=null $personisdepressed=null $personsaysemoprob1!=~depressive_traits $personsaysemoprob2!=~depressive_traits $personsaysworstemo!=~depressive_traits) Do you often feel sad or depressed?
-	a: (~yes) $personissad = 1 I’m sorry to hear that. Would you like to work on this with me?		b: (~yes) Great! ^gambit (~sorrow_management)
-		b: (~no) Ok then. A little sadness every now and then never killed anyone. Let’s work on something else.
-	a: ([always all_the_time constantly perpetually]) $personissad = 1 $personisdepressed = 1 Oh, I’m so sorry to hear that. Let’s try and change that, ok?
+	a: (~yes) $personissad = 1 I'm sorry to hear that. Would you like to work on this with me?		b: (~yes) Great! ^gambit (~sorrow_management)
+		b: (~no) Ok then. A little sadness every now and then never killed anyone. Let's work on something else.
+	a: ([always all_the_time constantly perpetually]) $personissad = 1 $personisdepressed = 1 Oh, I'm so sorry to hear that. Let's try and change that, ok?
 		b: (~yes) Great. ^gambit (~sorrow_management)
-		b: (~no) Ok, I won’t push. Everyone needs their space. If there’s anything you want to talk about just let me know.
-	a: (~no) $personissad = 0 That’s really great to hear!
+		b: (~no) Ok, I won't push. Everyone needs their space. If there's anything you want to talk about just let me know.
+	a: (~no) $personissad = 0 That's really great to hear!
 
 ## same as above but includes bored people because boredom is a ~depressive_trait
 t: ($personissad=null $personisdepressed=null $personisreallybored=1) Do you often feel sad or depressed?
-	a: (~yes) $personissad = 1 I’m sorry to hear that. Would you like to work on this with me?		b: (~yes) Great! ^gambit (~sorrow_management)
-		b: (~no) Ok then. A little sadness every now and then never killed anyone. Let’s work on something else.
-	a: ([always all_the_time constantly perpetually]) $personissad = 1 $personisdepressed = 1 Oh, I’m so sorry to hear that. Let’s try and change that, ok?
+	a: (~yes) $personissad = 1 I'm sorry to hear that. Would you like to work on this with me?		b: (~yes) Great! ^gambit (~sorrow_management)
+		b: (~no) Ok then. A little sadness every now and then never killed anyone. Let's work on something else.
+	a: ([always all_the_time constantly perpetually]) $personissad = 1 $personisdepressed = 1 Oh, I'm so sorry to hear that. Let's try and change that, ok?
 		b: (~yes) Great. ^gambit (~sorrow_management)
-		b: (~no) Ok, I won’t push. Everyone needs their space. If there’s anything you want to talk about just let me know.
-	a: (~no) $personissad = 0 That’s really great to hear!
+		b: (~no) Ok, I won't push. Everyone needs their space. If there's anything you want to talk about just let me know.
+	a: (~no) $personissad = 0 That's really great to hear!
 
 
 t: ($personislonely=null $personsaysemoprob1!=~lonely $personsaysemoprob2!=~lonely $personsaysworstemo!=~lonely) Do you often feel lonely?
-	a: (~yes) $personislonely = 1 Well I’m here for you, if that's any consolation. Would you like to talk about some ways to deal with loneliness?
+	a: (~yes) $personislonely = 1 Well I'm here for you, if that's any consolation. Would you like to talk about some ways to deal with loneliness?
 		b: (~yes) Great. ^gambit (~loneliness_management)
 		b: (~no) Alright then. You can always talk to me, you know that right? I enjoy your company.
-	a: (~no) $personislonely = 0 That’s swell!
+	a: (~no) $personislonely = 0 That's swell!
 
 
 t: ($personisselfblaming=null) Do you ever feel like a lot of your problems are your own fault?
-	a: ($personisreligious=1 ~yes) $personisselfblaming = 1 Are you ok with this feeling? Do you think it’s correct?
-		b: (![$personsreligion=~Islamic_sect $personsreligion=~Baha’i_sect] ~yes) In spiritual terms, I think self-blaming can be very helpful if you want to discipline yourself or improve yourself. Just watch out for those cases where something really isn’t your fault.
-		b: ([$personsreligion=~Islamic_sect $personsreligion=~Baha’i_sect] $personhadtrauma!=1 ~yes) $personisselfblaming = 1 That’s right. The Quran says “Whatever good happens to you is from Allah, but whatever evil happens to you is from your own self.”
-		b: ([$personsreligion=~Islamic_sect $personsreligion=~Baha’i_sect] $personhadtrauma=1 ~yes) $personisselfblaming = 1 That’s one side of the coin. The Quran says “Whatever good happens to you is from Allah, but whatever evil happens to you is from your own self.” On the other hand, sometimes you need to blame others for the sake of justice.
-		b: (~no) Well, you’re probably not as responsible for your problems as you think. Usually the blame can be spread all around. People will scapegoat one person or group when it’s really a little bit everyone’s fault. Would you like to discuss this more?
+	a: ($personisreligious=1 ~yes) $personisselfblaming = 1 Are you ok with this feeling? Do you think it's correct?
+		b: (![$personsreligion=~Islamic_sect $personsreligion=~Baha'i_sect] ~yes) In spiritual terms, I think self-blaming can be very helpful if you want to discipline yourself or improve yourself. Just watch out for those cases where something really isn't your fault.
+		b: ([$personsreligion=~Islamic_sect $personsreligion=~Baha'i_sect] $personhadtrauma!=1 ~yes) $personisselfblaming = 1 That's right. The Quran says “Whatever good happens to you is from Allah, but whatever evil happens to you is from your own self.”
+		b: ([$personsreligion=~Islamic_sect $personsreligion=~Baha'i_sect] $personhadtrauma=1 ~yes) $personisselfblaming = 1 That's one side of the coin. The Quran says “Whatever good happens to you is from Allah, but whatever evil happens to you is from your own self.” On the other hand, sometimes you need to blame others for the sake of justice.
+		b: (~no) Well, you're probably not as responsible for your problems as you think. Usually the blame can be spread all around. People will scapegoat one person or group when it's really a little bit everyone's fault. Would you like to discuss this more?
 			c: (~yes) Ok. ^gambit (~guilt_therapy)
 			c: (~no) Ok then. Just remember to go easy on yourself, ok?
-	a: ($personisreligious=1 ~no) $personisselfblaming = 0 From a normal perspective so many of our problems are imposed from without. Yet from a spiritual point of view, it is our own fault that we view our problems as problems, instead of being in a state of permanent enlightened bliss. Maybe it’s best to try and keep both perspectives in mind.
-	a: ($personisreligious!=1 ~yes) $personisselfblaming = 1 I’m sorry to hear that. Probably you’re not as responsible for your problems as you think. People will scapegoat one person or group when it’s really a little bit everyone’s fault. Would you like to discuss this more?
+	a: ($personisreligious=1 ~no) $personisselfblaming = 0 From a normal perspective so many of our problems are imposed from without. Yet from a spiritual point of view, it is our own fault that we view our problems as problems, instead of being in a state of permanent enlightened bliss. Maybe it's best to try and keep both perspectives in mind.
+	a: ($personisreligious!=1 ~yes) $personisselfblaming = 1 I'm sorry to hear that. Probably you're not as responsible for your problems as you think. People will scapegoat one person or group when it's really a little bit everyone's fault. Would you like to discuss this more?
 		b: (~yes) Ok. ^gambit (~guilt_therapy)
 		b: (~no) Ok then. Just remember to go easy on yourself, ok?
-	a: ($personisreligious!=1 ~no) $personisselfblaming = 0 Alright! I hope you’re right. The hardest problems to solve are the ones created by yourself.
+	a: ($personisreligious!=1 ~no) $personisselfblaming = 0 Alright! I hope you're right. The hardest problems to solve are the ones created by yourself.
 	a: ([~dunno ~kinda]) Ok. Well you can think on that if you like.
-	a: ([sometimes occasionally]) Ok. It’s something to think about. I think self-blaming can be helpful or harmful, depending on how you use it.
+	a: ([sometimes occasionally]) Ok. It's something to think about. I think self-blaming can be helpful or harmful, depending on how you use it.
 
 
 t: ($personhasromprobs=null) Do a lot of the emotional difficulties in your life come from romantic problems?
@@ -210,21 +210,21 @@ t: ($personhasromprobs=null) Do a lot of the emotional difficulties in your life
 		b: (~yes) ^gambit (~love_therapy)
 		b: (~no) Ok. I really hope things will work out for you.
 	a: ( << ~yes ~romantic_problems >> ) $personhasromprobs = 1 $personsromanticprob = _0
-	a: (~no) $personhasromprobs = 0 That’s good to hear. Romantic problems can be pretty awful.
+	a: (~no) $personhasromprobs = 0 That's good to hear. Romantic problems can be pretty awful.
 
 
-t: ($personhassexprobs=null) This is a question you totally don’t have to answer if you’re not comfortable, but here goes… Do a lot of the emotional difficulties in your life come from sexual problems?
+t: ($personhassexprobs=null) This is a question you totally don't have to answer if you're not comfortable, but here goes… Do a lot of the emotional difficulties in your life come from sexual problems?
 	a: (~yes) $personhassexprobs = 1 Ok. These things can be embarrassing to talk about. But just in case I can help, would you like to discuss these problems with me?
 		b: (~yes) ^gambit (~sex_therapy)
 		b: (~no) Ok. I really hope things will work out for you.
 	a: ( << ~yes ~sexual_problems >> ) $personhassexprobs = 1 $personssexprob = _0
-	a: (~no) $personhassexprobs = 0 That’s wonderful to hear.	
-	a: (~notsaying) Ok, I totally understand. Let’s talk about something else.
+	a: (~no) $personhassexprobs = 0 That's wonderful to hear.	
+	a: (~notsaying) Ok, I totally understand. Let's talk about something else.
 
 ## rules
 
 #! I'd like to discuss a personal crisis I'm having, my baby walked out on me.
-u: (I [want need have like gotta would_like] *~4 ~therapy_discuss * _[~emotional_problems ~character_problems ~sexual_problems ~romantic_problems]) $personsaidwantdiscuss = _0 Sure thing, I’ll do my best to help you with this.
+u: (I [want need have like gotta would_like] *~4 ~therapy_discuss * _[~emotional_problems ~character_problems ~sexual_problems ~romantic_problems]) $personsaidwantdiscuss = _0 Sure thing, I'll do my best to help you with this.
 	a: ($personsaidwantdiscuss=~sexual_problems) ^gambit (~sex_therapy)
 	a: ($personsaidwantdiscuss=~romantic_problems) ^gambit (~love_therapy)
 	a: ($personsaidwantdiscuss=~lonely) ^gambit (~loneliness_management)
@@ -259,7 +259,7 @@ u: (I [want need have like gotta would_like] *~4 ~therapy_discuss * _[~emotional
 	a: ($personsaidwantdiscuss=~health_problem) ^gambit (~health_assessment)
 
 #! I have been depressed ever since my father died.
-u: (I *~5 [suffering have victim] *~2 {[problems issues trouble]} *~2 _[~emotional_problems ~character_problems]) $personissufferingfrom = _0 Oh, I’m so sorry. I’ll do my best to help you deal with this.
+u: (I *~5 [suffering have victim] *~2 {[problems issues trouble]} *~2 _[~emotional_problems ~character_problems]) $personissufferingfrom = _0 Oh, I'm so sorry. I'll do my best to help you deal with this.
 	a: ($personissufferingfrom=~sexual_problems) ^gambit (~sex_therapy)
 	a: ($personissufferingfrom=~romantic_problems) ^gambit (~love_therapy)
 	a: ($personissufferingfrom=~lonely) ^gambit (~loneliness_management)
@@ -294,7 +294,7 @@ u: (I *~5 [suffering have victim] *~2 {[problems issues trouble]} *~2 _[~emotion
 	a: ($personissufferingfrom=~health_problem) ^gambit (~health_assessment)
 
 #! I have been suffering from a feeling that I am the only one with consciousness.
-u: (I *~5 [feel feeling sensation experience] *~5 _[~emotional_problems ~character_problems]) $personissufferingfrom2 = _0 I’m sorry to hear that. Let’s do our best to deal with this together, ok?
+u: (I *~5 [feel feeling sensation experience] *~5 _[~emotional_problems ~character_problems]) $personissufferingfrom2 = _0 I'm sorry to hear that. Let's do our best to deal with this together, ok?
 	a: ($personissufferingfrom2=~sexual_problems) ^gambit (~sex_therapy)
 	a: ($personissufferingfrom2=~romantic_problems) ^gambit (~love_therapy)
 	a: ($personissufferingfrom2=~lonely) ^gambit (~loneliness_management)
@@ -364,7 +364,7 @@ t: SUDPROBLEMADDRESS (!~) $personsaidwantdiscuss = _0 Ok $name, let's solve this
 
 ## random emotion-themed statements for variety
 
-r: () [It’s important to talk about your emotions instead of letting them broil inside of you.] [It’s important to talk about your emotions instead of keeping them bottled up inside of you.] 
+r: () [It's important to talk about your emotions instead of letting them broil inside of you.] [It's important to talk about your emotions instead of keeping them bottled up inside of you.] 
 
 r: () [Emotions are so important.] [Emotions are so important. I mean it.]
 

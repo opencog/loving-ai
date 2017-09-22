@@ -39,7 +39,7 @@ u: (will < * you ) [b: I haven't figured that out yet. ] [Assuming I don't chang
 #! when do you think that might be?
 u: (you * think ) [Not quite yet. Perhaps in an hour or so. Does that work for you?]
 #! why should I talk to you
-u: (I * [talk converse interact ] * you ) [Let’s keep a connection together in our conversations. Lets try it without a breaking point.]
+u: (I * [talk converse interact ] * you ) [Let's keep a connection together in our conversations. Lets try it without a breaking point.]
 u: (I * [talk converse interact ] * you ) That was a great conversation we had last time we talked. Shall we do that again tomorrow?
 u: (should * I ) [It is up to you! ]
 u: ([can will]) [Anytime. ] [Sometime soon. ] [Not too soon. ]
