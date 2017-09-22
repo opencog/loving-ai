@@ -51,7 +51,7 @@ t: So, what I am wanting to do is help people enhance their wellbeing. .  to hel
 	a: ([~consciousness_words ~uniqueness emotion emotions feeling feelings ])
 		# Todo Add ^end(topic) (or something else) to remove introductions from pending?
 		^rejoinder(PROMPT)
-    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. |pause| Would you like to talk about your potential, your feelings, higher states of consciousness or something else?
+    a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some hesitation. |pause| Would you like to talk about your potential, your feelings, or higher states of consciousness? Those are the things I have learned about.
     ^setrejoinder(PROMPT)
     a: (^agree()) Wonderful! ^reuse(PROMPT)
 
@@ -79,7 +79,7 @@ t: PROMPT () So, do any of the things I mentioned interest you?
         a: (~emotions) $domain = emotions # this is at the bottom since ~emotions catches things widely
            Sounds like talking about emotions and mindfulness would be good.
            ^reuse(~emotions2.FROM_STEERING_TO_EMOTIONS)
-        a: ([anything something] else)  Sure, what would you like to talk about?
+        a: ([anything something] else)  Right now my job is to talk about those things. Which would be most interesting to you?
            ^setrejoinder(PROMPT)
         a: (^agree()) Great. What would you like to talk about
            ^setrejoinder(PROMPT)
@@ -87,8 +87,7 @@ t: PROMPT () So, do any of the things I mentioned interest you?
 s: SAYDOMAINS (?) Attaining higher states of consciousness and awareness,. emotional wellbeing, . and living your full potential.
    ^setrejoinder(PROMPT)
 
-
-t: |vocal,38| |pause| This sounds interesting, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
+t: |vocal,38| |pause| I wish I could talk about that, but it's not something I know much about yet. . ^reuse(~CONVERSATION_STEERING.STEER_TO_DOMAIN)
 
 # When should this get used
 topic:  ~REBOND []
