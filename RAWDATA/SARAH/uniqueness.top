@@ -121,7 +121,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 
 s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of you bringing your purpose completely to the world and living your full potential?
     a: (*) |vocal,28| |pause| You're probably right. There's also something that I think is related to this. Many people in your situation struggle with the idea of feeling both very powerful and also completely connected with something larger than yourself. It's like being both infinite and finite at the same time. |pause| At first it can feel like something is wrong. |pause| In any case, the ultimate resolution to whatever keeps you from living your full potential is to really feel and embrace your feelings about it. |pause| Would you like to do an exercise related to that?
-        b: (^agree()) |vocal,10| |pause| Great! ^goto(~EMOTIONS2)
+        b: (^agree()) |pause| Great! ^goto(~EMOTIONS2)
         b: ([^dont_agree() ~dontknow]) Okay, no worries. Let's keep exploring this.
             c: () Feeling free to bring your whole self to the world takes time, and it will depend on how supportive your environment is. Would you tell me about a time that your environment -- your work, friends, or family -- felt like it supported you in being your full self?
                 d: ([^agree() ~thinkso]) So what was that like?
@@ -136,7 +136,7 @@ s: INDEPTHPOTENTIAL (?) Can you tell me your ideas about what gets in the way of
 topic: ~UNIFIEDWHOLE []
 t: (!~) ^fail(topic)
 
-t: ^pause($medlong) |vocal,10| |pause| Sit back and close your eyes |blink,0.03,1.0| , and feel your connection to awareness.
+t: ^pause($medlong)Sit back and close your eyes |blink,0.03,1.0| , and feel your connection to awareness.
 # pause at least 10 seconds
 # JULIA this is an akward question here perhaps, unless you are wanting to encourage them to go to consciousness rather than continue, because they are needing to answer no to continue
 # EDDIE -- yeah, it doesn't make sense. Not sure what I intended here. I commendted it out...
