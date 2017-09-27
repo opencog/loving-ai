@@ -108,7 +108,7 @@ t: () if ($valence != pos and $valence != neg)
 		{ $valence = pos }
 
 t: ^pause($verylong)
-	|vocal,10| |pause| Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling]
+	Ok, see if you can continue finding your emotions in your body. Whether you can or not, go ahead and let yourself feel [$feeling $feeling]
 	if ($valence=pos) { and see if you can really magnify it. Like pretend it is spreading across your whole body.}
 	if ($valence=neg) { and see if you can be warmly ok with it, maybe even love it, without trying to change it.}
 	a: () ^reuse(LONGER?)
@@ -129,7 +129,7 @@ t: (!~) ^fail(topic)
 
 t: I understand. Just so you know, it's easy to want to keep your emotions small, but it feels better in many ways when you really feel them. I promise I'll be kind. Would you want to try to practice feeling your $feeling now?
 	a: (^agree()) ^goto(~SELF_COMPASSION)
-	a: (*) |vocal,11| |pause| Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
+	a: (*) Okay, that makes sense. I appreciate you telling me the truth. Let's talk about something else.
 		# TODO for no or anything else, first try to match a responder in another topic, then if that fails, go to the Uniqueness topic (FROM_OTHER_TOPIC_TO_UNIQUENESS)
 		^goto(~uniqueness)
 

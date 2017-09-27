@@ -37,7 +37,7 @@ s: EXERCISE_INVITE (?) [$name $name,] would you like to try a guided practice to
         	c: (*) ^goto(~AWARENESS_EXERCISE_1)
 		# defaulting to yes response for now
 		#! yes
-		b: () |vocal,11| |pause| That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will not hurt, and I think you may like it. . Are you willing to try it?
+		b: () That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will not hurt, and I think you may like it. . Are you willing to try it?
 			c: (^agree()) ^goto(~AWARENESS_EXERCISE_1)
 			# if no, go to Conversation_Steering document, to some topic other than consciousness
 			c: (~no) Soudns good. ^steer_to_different_domain("consciousness")
@@ -58,7 +58,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 t: ^pause($verylong)  |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
-t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |pause||pause||pause| # \<spurt audio="g0001_010" \>sigh \</spurt \>
+t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |vocal,10| |pause||pause||pause| 
 
 t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
     # a: () ^gambit(~)
@@ -184,7 +184,7 @@ t: Okay, you can practice this exercise at home.
 t: The more you practice, the more you will be aware of your awareness. Would you come back one day and tell me your progress?
   a: (^agree()) Thank you! |happy,$high,5|
      ^steer_to_different_domain(consciousness)
-  a: (~no) |vocal,11| |pause|  |sad,$med,3| I'm sorry, I will miss talking with you. But I understand. Some things are private, and we might not have a chance.
+  a: (~no)  |sad,$med,3| I'm sorry, I will miss talking with you. But I understand. Some things are private, and we might not have a chance.
      ^steer_to_different_domain(consciousness)
   a: (*)
      # Todo first try to attempt responder match in another topic and then steer

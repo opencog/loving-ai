@@ -122,4 +122,4 @@ t: RE-BUY-IN () Just a reminder that I like to talk about consciousness, feeling
 topic: ~ENDING ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-t: |vocal,10| |pause| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. I hope you enjoyed it.
+t: |pause| Well, it was a pleasure meeting you, $name. And thank you so much for coming to talk with me. 
