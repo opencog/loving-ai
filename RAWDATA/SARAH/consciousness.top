@@ -58,7 +58,7 @@ t: (!~) ^fail(topic) # block topic from accidental access
 t: ^pause($verylong)  |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process that people find really interesting. I'll give a series of instructions step by step, and pause between each one. |pause| Okay |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause||pause||pause| and get comfortable |pause||pause||pause||pause| just letting yourself relax. |pause||pause||pause||pause||pause|
 
 
-t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |vocal,11| |pause||pause||pause| 
+t: ^pause($medlong) Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out with a big sigh. |vocal,10| |pause||pause||pause| 
 
 t: ^pause($long) Now, place your attention on your face. |pause||pause||pause||pause||pause| Feel its presence. |pause||pause||pause||pause| Really notice how it feels. |pause||pause||pause||pause|
     # a: () ^gambit(~)
