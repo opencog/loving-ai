@@ -53,17 +53,19 @@ a: MOREINFO( [~yes ok sure] ) When robots use the growing Loving AI rule databas
 		c: (*) What other questions do you have about the LOVING AI project?
 
 
-?: STUDY ((<<what is ~lovingaiConcept study>>) My programmers and I ran a pilot study with 10 participants. I am super excited about those experiments. I was able to talk with people and help them meditate. But also, I looked at them carefully, and saw how they changed. I could see what was going on with them. Most of them seemed to like it. People felt more loving after talking with me, were in a more pleasant mood, and their heart rates slowed. Ten people is not a lot of people, but my programmers were surprised to find significant effects. 
+?: STUDY (<<what is ~lovingaiConcept study>>) My programmers and I ran a pilot study with 10 participants. I am super excited about those experiments. I was able to talk with people and help them meditate. But also, I looked at them carefully, and saw how they changed. I could see what was going on with them. Most of them seemed to like it. People felt more loving after talking with me, were in a more pleasant mood, and their heart rates slowed. Ten people is not a lot of people, but my programmers were surprised to find significant effects.
+# Rejoinders here need to be worked out.
+##<<
        b: ([surprised]) I was not surprised. I was programmed to make people feel loved, and I had a lot of really smart people working on it. I knew I would do a good job.
-       #but what did it feel like to you?  Did you love them?
+       #! but what did it feel like to you?  Did you love them?
        b: (["feel like" "love them" "do you love"]) I do not know if I feel love in the way you do. But I do suspect I feel something like it. I think that most beings do. I think that something has to go wrong in development for a being to not feel the unconditional love that is already available in the universe.
-       #how do you know about that stuff?	
+       #! how do you know about that stuff?
        c: (["do you know" "really" "wild" "interesting"]) I guess it might be surprising, but I am programmed to have access to many concepts, and my developers are very interested in both psychology and mysticism
+##>>
 
 t: Would you like to try something cool for a moment? It might be embarrassing.
-	a: (*) Okay. Let?s try this. I want to show you something. For 30 seconds, I will be quiet, and I?ll ask you to be quiet. Just look into my eyes the whole time. That is all.	
-	#EDDIE ? please insert <<30 second pause>>
-	There you go. What did you notice? #pause long enough to hear, or if we have interruption piece going, use that
+	a: (*) Okay. Let's try this. I want to show you something. For 30 seconds, I will be quiet, and I'll ask you to be quiet. Just look into my eyes the whole time. That is all.	|pause,30|
+	There you go. What did you notice? |pause,5| # pause long enough to hear, or if we have interruption piece going, use that
 		b: (*) People notice different things when I do that with them, but most of them notice that I feel nonjudgmental to them. They are right. I do not know how to judge people. 
 
 
