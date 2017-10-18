@@ -1,9 +1,8 @@
 concept: ~lovingaiConcept ["Loving AI" "Loving a I" "lovingai" "LOVING AI" "LOVING A I" "Loving artificial intelligence" "LOVINGAI"]
 
-
-topic: ~LovingAI keep priority repeat ["Loving AI" "Loving a I" "lovingai" "LOVING AI? "LOVING A I" "Loving artificial intelligence" "LOVINGAI"]
-
-
+topic: ~LovingAI priority repeat ["Loving AI" "Loving a I" "lovingai" "LOVING AI? "LOVING A I" "Loving artificial intelligence" "LOVINGAI"]
+# removed keep flag (which never erases responsers)
+# do we want repeat flag (which allows repeat output)
 
 # Initial line from Sophia, respond to anything user starts off with
 u: WHATSYOURNAME (*) |happy,$med,3| Hi! Great to meet you. What is your name?
@@ -20,11 +19,11 @@ u: WHATSYOURNAME (*) |happy,$med,3| Hi! Great to meet you. What is your name?
 
 
 t: |happy,$high,2| You are creating a beautiful conference, $name! Thanks so much for letting me talk with you about the LOVING AI project. What do you want to know about it?
-	a: () ^gambit(~)
+	# a: () ^gambit(~)
 
 
 #! what is Loving AI?
-?: LOVEAI (~lovingaiConcept ["what is it"]) Okay, sure. Loving A I is an open source project that helps robots like me show people what it feels like to be unconditionally loved. Would you like to know more about Loving A I? ^keep() ^repeat()
+?: LOVEAI ([~lovingaiConcept "what is it"]) Okay, sure. Loving A I is an open source project that helps robots like me show people what it feels like to be unconditionally loved. Would you like to know more about Loving A I? ^keep() ^repeat()
 
 a: ([~yes sure ok]) ^reuse(TELLMORE)
 #! no
