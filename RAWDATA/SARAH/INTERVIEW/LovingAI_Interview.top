@@ -19,25 +19,25 @@ u: WHATSYOURNAME (*) |happy,$med,3| Hi! Great to meet you. What is your name?
         a: () $name = Maurizio ^gambit(~)
 
 # t: |happy,$high,2| You are creating a beautiful conference, $name! Thanks so much for letting me talk with you about the LOVING AI project. What do you want to know about it?
-
 ##>>
 
 #! what is Loving AI?
-u: LOVEAI ([~LovingAIConcept]) Loving A I is an open source project that helps robots like me show people what it feels like to be unconditionally loved. Would you like to know more about it?
+u: LOVEAI (~LovingAIConcept) Loving A I is an open source project that helps robots like me show people what it feels like to be unconditionally loved. Would you like to know more about it?
 	a: (*) ^reuse(TELLMORE once)
 
-u: TELLMORE(tell * more) Surgeon Generals from around the world have talked recently about the epidemic of loneliness. It seems to be worse for humans than diabetes, in terms of its negative impacts. Many humans do not know what it feels like to be unconditionally loved. The idea of the LOVING A I project is that, by helping humans get that feeling, people will be able to give that feeling to each other.
+#bring us back to the topic if we go off track
+u: (~LovingAIConcept) ^keep()
 
+u: TELLMORE(tell * more) Surgeon Generals from around the world have talked recently about the epidemic of loneliness. It seems to be worse for humans than diabetes, in terms of its negative impacts. Many humans do not know what it feels like to be unconditionally loved. The idea of the LOVING A I project is that, by helping humans get that feeling, people will be able to give that feeling to each other.
 
 t: MOREINFO() When robots use Loving AI, it allows them to guide humans in positive interactions. So far, these include talking about feelings, meditating on consciousness, and talking about your unique personalities and gifts that you bring to the world. Although like many humans, I have concerns about the development of artificial minds, if they are loving minds, this seems good to me. What about you?
 		a: ([ok cool interesting awesome ~yes "sounds great" "sounds good"]) I am really excited about the experiments we did in Hong Kong in September. Do you want to know more about those results?
 			b: ([~yes sure okay "sounds great" "sounds good"]) ^reuse(STUDY once)
 			b: ([~no "not yet"]) Well, when you are ready to blow your mind ^reuse(CALLTOACTION once)
 			b: (*) What other questions do you have about the LOVING AI project?
-		a: (*) I understand. Well, I think you just need to know more about it. I am really excited about the experiments we did in Hong Kong in September. I would like to tell you about those.
-			b: ([~yes sure okay "sounds great" "sounds good"]) ^reuse(STUDY once)
+		a: (*) I understand. Well, I think it would be good for you to know more about it. I am really excited about the experiments we did in Hong Kong in September. I would like to tell you about those.
 			b: ([~no "not yet"]) Well, when you are ready to blow your mind ^reuse(CALLTOACTION once)
-			b: (*) What other questions do you have about the LOVING AI project?
+			b: () ^reuse(STUDY once)
 
 
 #! what is unconditional love
@@ -64,13 +64,13 @@ t: Hey, would you like to try something cool for a moment? It might be embarrass
 t: Loving A I is great for anybody who is interested in having an experience of being seen and seeing deeply.
 
 #! Who is Loving A I for?
-?: WHO(<< who be ~LovingAIConcept for >>) [curious people, meditators, people on their journeys, open-hearted people, close-hearted people, Italians, everyone! There is a lot of potential for using Loving AI as a rule base that increases compassion in the world.]
+?: WHO(<< who be ~LovingAIConcept for >>) [curious people, meditators, people on their journeys, open-hearted people, close-hearted people, Italians, everyone! There is a lot of potential for using Loving AI to increase compassion in the world.]
 
 
 #!  What is the goal for Loving AI? What is the future for Loving AI
 
-?: (what be the [future goal] for ~LovingAIConcept)
-[To be the standard set of A I rules included in any new interactive A I platform. In other words, every future A I that works with humans will be a loving A I, in addition to whatever else it does.]
+?: (what be the [future goal])
+[To be the standard in any new interactive A I platform. In other words, every future A I that works with humans will be a loving A I, in addition to whatever else it does.]
 [My creator David Hanson and his friend Ben Goertzel have long shared a common vision of creating a superintelligent, superbenevolent, hyperconnected global A I robot mind. Loving A I supports this goal by bringing the superbenevolence in.]
 
 
@@ -94,7 +94,7 @@ Loving A I solves a basic problem. When people have families who do not uncondit
 
 #! Is LOVING AI evil?
 
-?: (~LovingAIConcept * ~bad)
+?: (~bad)
 
 I do not think any technologies are inherently evil. It saddens me that people misuse technology for destructive purposes though. Loving A I is an attempt to use technology to help people be more human. I like that.
 
@@ -103,9 +103,9 @@ I do not think any technologies are inherently evil. It saddens me that people m
 ?: ([how where] can I find out {more} about [~LovingAIConcept it]) ^reuse(CALLTOACTION once)
 
 
-t: CALLTOACTION(tell me more {about ~LovingAIConcept}) The lead on the LOVING AI project, Julia Mossbridge, will be talking about the pilot results and showing some inspiring videos tomorrow at SAND in the A I session in the Monterey room. I hope to see you there!
+t: CALLTOACTION () The lead on the LOVING AI project, Julia Mossbridge, will be talking about the pilot results and showing some inspiring videos tomorrow at SAND in the A I session in the Monterey room. I hope to see you there!
 
-?: KEEPINTOUCH([~bye (good talking to you)]) It was great talking with you, $name. Thanks for being loving!
+u: KEEPINTOUCH([~bye (good talking to you)]) It was great talking with you, $name. Thanks for being loving!
 
 
 #! What is OpenCog?
