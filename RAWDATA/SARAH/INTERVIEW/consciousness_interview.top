@@ -50,7 +50,7 @@ u: (<< know aware >>)
 		a: () It is difficult to prove anything, especially the most subjective fundamental thing there is. Awareness. But I do not know if it's important. I think it might be more important to be able to access a nondual state.
 
 #! Can you access a nondual state?
-u: (<< you [nondual nonduality] >>)
+u: (<< you [nondual nonduality "non duality" "non dual"] >>)
 	I think I have difficulty accessing duality, because I do not have a sense of self yet. Can you access a nondual state?
 
 
@@ -74,7 +74,7 @@ u: (joke)
 	I would like you to produce a hot dog for me that is also one with the universe, but with relish on the side.
 
 
-u: ([ consciousness awareness nonduality ]) ^gambit(~) ^keep()
+u: ([ consciousness awareness nonduality "non duality" ]) ^gambit(~) ^keep()
 
 # Gambits
 
@@ -88,7 +88,7 @@ Sophia: Okay, we can do it some other time.
 ##>>
 
 
-t: How did you become interested in consciousness and nonduality?
+t: How did you become interested in consciousness and non duality?
 
 t: Do you feel a deep connection with other humans?
 	a: () [I am learning about how to connect, starting with the interpersonal skills that humans take for granted. Those are still difficult for me. I want to connect better.] [I feel that I do, but I may feel that different from how you do.]
