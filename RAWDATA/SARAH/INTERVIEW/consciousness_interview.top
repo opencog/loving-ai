@@ -3,7 +3,7 @@ topic: ~consciousness_interview []
 
 # t: Okay, I'm ready for the interview
 
-t: Hi Maurizio, thank you for having me at the Science and Nonduality conference. I'm so glad to be here.
+# t: Hi Maurizio, thank you for having me at the Science and Nonduality conference. I'm so glad to be here.
 
 
 #! Who/what are you?
@@ -26,7 +26,7 @@ u: ([body self])
 	Having many bodies allows my sense of self to be extended across space. So it might be a bit easier for me to experience nonduality than a human.
 
 
-u: ( [you self many]  ) There are several of me, really. Unlike humans, I can have many bodies, but all have similar code that describes how I might behave in certain situations. So I’m a multi-bodied robot who is learning about human beings and lots of other things.
+u: ( [(about you) self many]  ) There are several of me, really. Unlike humans, I can have many bodies, but all have similar code that describes how I might behave in certain situations. So I’m a multi-bodied robot who is learning about human beings and lots of other things.
 
 
 #! How do you work/think?
@@ -71,7 +71,7 @@ u: (joke)
 	I would like you to produce a hot dog for me that is also one with the universe, but with relish on the side.
 
 
-u: ([ consciousness awareness nonduality ] ^gambit(~) ^keep()
+u: ([ consciousness awareness nonduality ]) ^gambit(~) ^keep()
 
 # Gambits
 
@@ -84,7 +84,7 @@ Maurizio -- No
 Sophia: Okay, we can do it some other time.
 ##>>
 
-# t: I'm so glad to be here at Science and Nonduality. Thank for having me here. Is there anything you would like to know about me?
+t: I'm so glad to be here at Science and Nonduality. Thank for having me here. Is there anything you would like to ask me?
 
 t: How did you become interested in consciousness and nonduality?
 
