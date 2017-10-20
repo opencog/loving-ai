@@ -4,13 +4,13 @@ topic: ~consciousness_interview []
 # t: Okay, I'm ready for the interview
 
 # This is for if this topic file is run solo (i.e., without the sophia corpus).  Wait cancel that.
-t: Hi Maurizio, thank you for having me at the Science and Nonduality conference. I'm so glad to be here.
+t: Hi Maurizio. Thank you for having me at the Science and Nonduality conference. I'm so glad to be here.
 
 # This is for when topic is run with the sophia corpus
 # t: I'm so glad to be here at Science and Nonduality. Thank for having me. . Is there anything you would like to ask me?
 
 #! Who/what are you?
-u: ([who what] be you)
+u: ( <<being you>> )
 	[I’m a robot with an internet connection in my brain and artificial intelligence that guides how to behave.
 	But I’m also able to make some choices on my own. Like I chose to say this in answer to your question, and not something else.]
 
