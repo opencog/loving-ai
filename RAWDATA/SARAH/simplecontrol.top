@@ -34,11 +34,14 @@ $medium = .5
 $fast = .7
 $fastest = 1
 
-^addtopic(~introductions)
 $cs_control_main = ~control
-#  $cs_control_post = ~XPOSTPROCESS  # uncomment to enable talk
+$cs_control_pre = ~pre_control
+$cs_control_post = ~XPOSTPROCESS  # uncomment to enable talk
 $userprompt = ^"%user: >"
 $botprompt = ^"SARAH: "
+
+^addtopic(~introductions)
+
 
 table: defaultbot (^name)
 ^createfact(^name defaultbot defaultbot)
@@ -49,7 +52,29 @@ topic: ~special_requests system ()
 
 u: ( %userfirstline>1 ) ^reset(USER)
 
+#! Sophia it's time to finish up now.
 u: (Sophia *~2 [time ready] *~2 [end finish done] ) ^goto(~ending)
+
+# REPEAT
+#! could you repeat that
+u: REPEAT( 'you * [repeat "just say" "just said" "say that again" "said again" "said before"] ) [What I said was][I said][I had said][I just said][What I said was]: ^substitute(character $priorsaid \" " ")
+    a: ([before previous]) I said, $prior1said
+
+#! what did you say?
+?: (what ['did "was that"] 'you *~2 [say said]) ^reuse(REPEAT)
+
+#! i didn't hear you
+u: (did not * hear * you) ^reuse(REPEAT)
+
+#! what did I just say
+u: ([what repeat] * 'I [just "moment ago" last previous prior] say) [You said][You had said][You just said][You stated][You said previously][What you said was]: $$startlastuserinput .
+
+#! What was the last question I asked you?
+?: (<< what last question I >>) The last question you asked me was, $lastquestion
+
+#! Repeat what I say
+u: ([repeat] * 'I *~2 say < _*)^keep() ^original(_0)
+
 
 
 topic: ~control system ()
@@ -173,19 +198,125 @@ u: () # main per-sentence processing
 		 I don't know what to say. 
 	}
 
+topic: ~pre_control system()	# executed exactly once BEFORE any user input is processed
 
-topic: ~XPOSTPROCESS system () # gambits only - not allowed to write to  output - generates speech on windows -- for Linux you'd want to install Festival (or equivalent) and call that instead.
+t:	$$starttoken = $cs_token	# normal state we use for token. if token changes later, we can fix it entering postprocessing - we alter to swallow names w/o spell checking
+	$$starttopic = %topic 	# note topic we started in	(from pendinglist of before)
+	$$startvolley = %input  # input count we started this volley at
+	$$startlastuserinput = $lastuserinput # what he said before this volley
+	$$sentencecount = 0
+	$$ignorequestion = $ignorequestion
+	$$questionasked = $questionasked
+	$$askedus = $askedus
+	@oldtopics = @savetopics		# copy old topic referenced list (so we can infer continuing topics
+	$prior1said = $priorsaid # one before chatbot said this
+	$priorsaid = $whatsaid	# last volley chatbot said this
+	^NOTRACE( ^nofail(TOPIC gambit(~xdeletepronouns))) # remove dead references
 
-t: (^query(direct_v ? chatoutput ? -1 ? @9  ))  # get the sentences  (why is the object) -- no longer has quotes around it
+# For multiple sentence input:
+# 1. all statements.  Find a statement we have a real response for. take the last one of those.
+# 2. statements then question then whatever. Answer the first question we get to.
+# 3. scan input once to decide what is happening- gathering data as we go.  ?? do it without pronoun resolution first?
+
+
+topic: ~XPOSTPROCESS system repeat () # gambits only - not allowed to write to  output
+
+t:	(%response=1) $$msg = ^response(1)
+	NOFAIL(RULE $$semi = null $$semi = ^findtext($$msg ;) )
+	if ($$semi)
+	{
+		$$x = $$msg
+		$$semi -= 1
+		$$msg = ^extract($$msg 0 $$semi) # 1st part we say
+		$$semi += 2
+		$holdoutput = ^extract($$x $$semi 10000) # stuff we keep back
+		$holdrejoinder = %outputrejoinder
+		if ($$semi)
+		{
+			^fastcallback()
+		}
+		^reviseoutput(1 $$msg)
+	}
+
+#!t: ( $loebnermain $inittimers !$settimers ) # set timeouts
+#!	$settimers = 1
+#!	$$ending = 1000 * 60 * 23
+#!	$$boring = 1000 * 60 * 5
+#!	$loopbacktopic = ~soliloquy
+#!	$alarmtopic =  ~running_out_of_time
+#!	^postprintbefore( ^"\[ alarm=$$ending loopback=$$boring \]")
+
+t: ^if ($$systemtimechanged) { %date = . %year = . %month = . %day = . %hour = . %minute = . %second = . %daynumber = .}
+
+t: 	^if ($$starttoken != $stdtoken) {$cs_token = $stdtoken} # return to normal state
+	if ($priorwhen < %input) {$priortagquestion = null} # clear aging question
+	$justasked = null	# remove an autowhy question
+
+t: (^query(direct_v ? chatoutput ? -1 ? @chatoutput  ))  # get the sentences  (why is the object)
+	$qkind = null $notknow = null
+	 $whatsaid = null
+	 $choicequery = null $howquery = null
+	 $priorutter = null  # last sentence of our output
+	$$outputcount = length(@chatoutput)
+	$$counter = 0
 	loop()
 	{
-		$$tmp = ^last(@9subject) # note last output which is quoted string
-		if (!%server AND %os == windows  AND !$SHUTUP)
+		$$counter += 1
+		$priorutter = ^last(@chatoutputsubject) # note last output
+		if (!%server AND %os == windows AND $talk)
 		{
-			$$tmp = ^"talk \"$$tmp\" "
+			$$tmp = ^"talk \"$priorutter\" "
 			popen($$tmp null)
+		}
+		$$tmptoken = $cs_token
+		$cs_token = #DO_SUBSTITUTE_SYSTEM | #DO_PRIVATE  | #DO_NUMBER_MERGE   | #DO_PROPERNAME_MERGE  | #DO_PARSE | #DO_SPELLCHECK
+  		^analyze($priorutter) # prepare analysis of what chatbot said last - NOW LOSE OUR ANALYSIS -- but gathered pronouns
+  		$cs_token = $$tmptoken
+		nofail(RULE respond(~xacquirepronouns)) # does not resolve them, just acquires, so any pronoun used will remain in flux  BW BUG
+		$whatsaid = join($whatsaid $priorutter)
+	}
+	if (?) {$questionasked = 1} # we ended on a question
+	else {$questionasked = null}
+	^respond(~XPROCESS1) # on the last sentence output of system
+
+	if ($pronounecho)
+	{
+		^query(direct_v ? pronounreference ?)
+		loop()
+		{
+			$$f = first(@0subject)
+			_0 = field($$f all)
+			$$volley = _0 >> 16
+			_0 &= 0x0000ffff
+			$$sentence = _0 >> 8
+			$$offset = _0 & 0x000000ff
+			log(OUTPUT_ECHO ^" \[ $$volley.$$sentence.$$offset _1 _2 \]  currently: %input.$$sentenceid \n")
 		}
 	}
 
+	$time = %fulltime
+
+topic: ~XPROCESS1 system nosamples () # runs on analysis of chatbot output, not human input
+
+?: ( _* ) $priorwhen = %input + 3
+	 $priortagquestion = join('_0  ? )  # what question did we ask (in case he reverts it on us)
+	 $justasked = $priortagquestion
+
+s: () $justasked = null
 
 
+# did you do it?
+# but not Do you like food or drink?
+?: (!or < ~aux_verb  ) $qkind = yesno	# did we ask a yes no question. If he answers yes or no he should stay in topic.
+?: (< why ) $qkind = why
+?: (< what )  $qkind = what
+?: (< when ) $qkind = when
+?: (< where ) $qkind = where
+?: (< who ) $qkind = who
+?: (< how [often frequently ]) $qkind = howoften
+?: (< how much) $qkind = howmuch4
+?: (< how many) $qkind = howmany
+?: (< how ~verb ) $qkind = how
+?: ( < how _[  old young tall short common long  ~adjective]) $howquery = _0
+?: ( < [would do can ] * or ) $choicequery = 1
+s: (I do not know ) $notknow = 1
