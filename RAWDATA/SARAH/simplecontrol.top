@@ -90,7 +90,7 @@ u: (< alarm test) \[ alarm=5000 \] Alarm requested.
 u: () # main per-sentence processing
 
 	# ^respond(~special_requests)
-	if (%response == 0) { nofail(TOPIC ^respond(~special_requests) }
+	if (%response == 0) { nofail(TOPIC ^respond(~special_requests)) }
 
 	$$currenttopic = %topic		# get the current topic at start of volley
 
@@ -136,7 +136,7 @@ u: () # main per-sentence processing
 	if (%response == 0 AND ^marked($$currenttopic)) { nofail(TOPIC ^gambit($$currenttopic)) } # gambit current topic since keywords match current topic
 
 	# customization: Go back to our pending topics beyond just the current topic
-	if (%response == 0) { ^nofail (TOPIC ^gambit(pending) } # here or perhaps further above
+	if (%response == 0) { ^nofail (TOPIC ^gambit(pending)) } # here or perhaps further above
 
 	if (%response == 0) # gambit from ANY matching topic
 	{
