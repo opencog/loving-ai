@@ -75,6 +75,12 @@ t: (!~) ^fail(topic) # block topic from accidental access
 t: ()
 	a: CONTINUE_AFTER_PAUSE (*) ^gambit(~)
 
+# for use with conversation steering
+outputmacro: ^clear_avoided_domains()
+  $avoid_consciousness = 0
+  $avoid_emotions = 0
+  $avoid_uniqueness = 0
+  $all_domains_avoided = 0
 
 
 
