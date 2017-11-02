@@ -37,8 +37,7 @@ t: |happy,$high,2| Good to meet you, $name! Thanks so much for taking the time t
 	a: () ^gambit(~)
 
 t: |worry,$low,3|I know how busy people can be these days. So I really appreciate your time. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! # It's still a new experience for a lot of people.
-               What was that like?
+    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
     a: (~no)   |happy,$low,3|
                Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 

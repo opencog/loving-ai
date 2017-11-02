@@ -57,8 +57,14 @@ u: (Sophia *~2 [time ready] *~2 [end finish done] ) ^goto(~ending)
 
 # REPEAT
 #! could you repeat that
-u: REPEAT( 'you * [repeat "just say" "just said" "say that again" "said again" "said before"] ) [What I said was][I said][I had said][I just said][What I said was]: ^substitute(character $priorsaid \" " ")
-    a: ([before previous]) I said, $prior1said
+u: REPEAT( 'you * [repeat "just say" "just said" "say that again" "said again" "said before"] ) [What I said was][I said][I had said][I just said][What I said was]:
+	^substitute(character $priorsaid \" " ")
+	# $priorsaid
+
+	# set rejoinder to what it was before the repeat request
+	^setrejoinder(copy %inputrejoinder)
+
+    # a: ([before previous]) I said, $prior1said
 
 #! what did you say?
 ?: (what ['did "was that"] 'you *~2 [say said]) ^reuse(REPEAT)
