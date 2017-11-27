@@ -80,8 +80,9 @@ u: ([
 	(what * you * say)
 	~emomisunderstand
 	(what was that)
-	(did not [hear understand] * you) ])
-
+	(did not [hear understand] * you)
+	(< what >)
+])
 	^reuse(REPEAT)
 
 # Repeat what user said
