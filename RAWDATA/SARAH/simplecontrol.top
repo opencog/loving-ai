@@ -72,6 +72,19 @@ u: REPEAT( 'you * [repeat "just say" "just said" "say that again" "said again" "
 #! i didn't hear you
 u: (did not * hear * you) ^reuse(REPEAT)
 
+#! say that again
+# and other misc phrases
+u: ([
+	# (pardon me) # this is tricky, gets replaced with ~emoapology. perhaps can use %originalinput
+	(say that again)
+	(what * you * say)
+	~emomisunderstand
+	(what was that)
+	(did not [hear understand] * you) ])
+	
+	^reuse(REPEAT)
+
+# Repeat what user said
 #! what did I just say
 u: ([what repeat] * 'I [just "moment ago" last previous prior] say) [You said][You had said][You just said][You stated][You said previously][What you said was]: $$startlastuserinput .
 
