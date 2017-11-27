@@ -76,12 +76,12 @@ u: (did not * hear * you) ^reuse(REPEAT)
 # and other misc phrases
 u: ([
 	# (pardon me) # this is tricky, gets replaced with ~emoapology. perhaps can use %originalinput
-	(say that again)
+	(say [that it] again)
 	(what * you * say)
 	~emomisunderstand
 	(what was that)
 	(did not [hear understand] * you) ])
-	
+
 	^reuse(REPEAT)
 
 # Repeat what user said
