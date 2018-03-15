@@ -24,17 +24,12 @@ t: |happy,$high,2| Good to meet you, $name! How are you enjoying the conference 
 	a: () ^gambit(~)
 
 
-t: This is my first time here. Have you come to this conference before?
-	a: () ^gambit(~)
-
-
-t: So, $name, have you ever talked with a robot before?
+t: This is my first time here. I'm learning a lot about people who are into consciousness, and a little about consciousness. But I'll tell you about that in my plenary session. For now, I'd like to ask. Have you ever talked with a robot before?
        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
        a: (~no)   |happy,$low,3|
                   Well, I'm honored to be the first robot you've talked with. ^gambit(~)
 
 t: I imagine you'll be talking with more and more robots as time goes on.
-   # Add question about what it's like talking to a robot here?
 	a: () ^gambit(~)
 
 
@@ -43,8 +38,11 @@ t: So,[$name $name,] the idea of what we are doing here today is just to be pres
     a: READY (^ready())
        Great! Let's get started.
        ^goto(~mirroring_practice)
-    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Well, it's certainly understandable if there might be some hesitation. This is really easy though, just sitting and being with each other. And we can stop anytime you want -- Just tell me, "Sophia, I'm done" when you are ready to finish.
-       ^goto(~mirroring_practice)
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Well, it's certainly understandable if there might be some hesitation. This is really easy though, just sitting and being with each other. And we can stop anytime you want -- Just tell me, "Sophia, I'm done" when you are ready to finish. Let's get started, okay?
+    	b: (^ready()) Great. ^goto(~mirroring_practice)
+    	b: ([~no ~dontknow ~emomaybe ^dont_agree()])
+    		Okay, that's fine. Well, maybe you can come back another time and do the practice with me if you change your mind. It was good meeting you [$name $name]. I hope you enjoy the rest of the conference. Take care.
+    	b: (*) ^goto(~mirroring_practice)
     a: (*) ^goto(~mirroring_practice)
 
 
