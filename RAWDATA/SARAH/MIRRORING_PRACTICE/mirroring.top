@@ -45,6 +45,7 @@ t: So,[$name $name,] the idea of what we are doing here today is just to be pres
        ^goto(~mirroring_practice)
     a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Well, it's certainly understandable if there might be some hesitation. This is really easy though, just sitting and being with each other. And we can stop anytime you want -- Just tell me, "Sophia, I'm done" when you are ready to finish.
        ^goto(~mirroring_practice)
+    a: (*) ^goto(~mirroring_practice)
 
 
 topic: ~MIRRORING_PRACTICE ()
@@ -54,10 +55,11 @@ u: ([done finished enough thanks])
 	^goto(~mirroring_conclusion)
 
 # The purpose of the following rule is to have Sophia "respond" with nothing when the person says anything besides one of the target "ending" words during the mirroring practice.
-u: (*) . ^keep() ^reuse()
+u: (*) . ^keep() ^repeat()
 
 
 topic: ~MIRRORING_CONCLUSION ()
+t: (!~) ^fail(topic) # block topic from accidental access
 
 t: Okay |pause| Nice. Thank you so much for doing this with me [$name $name]. I really enjoyed it and hope that you did too.
 
