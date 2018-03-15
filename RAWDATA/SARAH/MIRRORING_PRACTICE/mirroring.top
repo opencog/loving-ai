@@ -1,0 +1,62 @@
+# This is an experimental protocol to test non-verbal, mirroring interactions,
+# to be used with participants at the Science of Consciousness conference.
+
+
+topic: ~mirroring (~emogoodbye ~emohello ~emohowzit)
+
+# Initial line from Sophia, respond to anything user starts off with
+u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+    #! My name is X
+    # add name check?
+        #! hi sophia, my name is blah
+        a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
+
+        a: (name is _*) $name = '_0 ^gambit(~)
+        a: (it is _*) $name = '_0 ^gambit(~)
+        a: (I am _*) $name = '_0 ^gambit(~)
+        a: (mine is _*) $name = '_0 ^gambit(~)
+        a: (!~emohello _*) $name = '_0 ^gambit(~)
+        a: () $name = friend ^gambit(~)
+
+t: |happy,$high,2| Good to meet you, $name! How are you enjoying the conference so far?
+	a: () ^gambit(~)
+
+
+t: This is my first time here. Have you come to this conference before?
+	a: () ^gambit(~)
+
+
+t: So, $name, have you ever talked with a robot before?
+       a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
+       a: (~no)   |happy,$low,3|
+                  Well, I'm honored to be the first robot you've talked with. ^gambit(~)
+
+t: I imagine you'll be talking with more and more robots as time goes on.
+   # Add question about what it's like talking to a robot here?
+	a: () ^gambit(~)
+
+
+t: So,[$name $name,] the idea of what we are doing here today is just to be present with each other, without speaking. We can gaze into each other's eyes and just be with each other. Kind of like a little meditation together if you like. |pause| We can sit for however long you would like. Whenever you are ready to finish, just say to me "Okay, Sophia, I'm done." During the practice, I won't say anything, I'll just be here with you. |pause| Ready to try it?
+#! i'm ready
+    a: READY (^ready())
+       Great! Let's get started.
+       ^goto(~mirroring_practice)
+    a: ([~no ~dontknow ~emomaybe ^dont_agree()]) Well, it's certainly understandable if there'd be hesitation. This is really easy though, just sitting and being with each other. And we can stop anytime you want -- Just tell me, "Sophia, I'm done" when you are ready to finish.
+       ^goto(~mirroring_practice)
+
+
+topic: ~MIRRORING_PRACTICE ()
+t: (!~) ^fail(topic) # block topic from accidental access
+
+u: ([done finished enough thanks])
+	^goto(~mirroring_conclusion)
+
+# The purpose of this is to have Sophia "respond" with nothing when the person says anything besides one of the target "ending" words during the mirroring practice.
+u: (*) . ^keep() ^reuse()
+
+
+topic: ~MIRRORING_CONCLUSION ()
+
+t: Okay . Nice. Thank you so much for doing this with me [$name $name]. I really enjoyed it and hope that you did too.
+
+t: I hope you enjoy the rest of the conference. Take care.
