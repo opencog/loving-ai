@@ -21,10 +21,11 @@ u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
         a: () $name = friend ^gambit(~)
 
 t: |happy,$high,2| Good to meet you, $name! How are you enjoying the conference so far?
+	a: (!first) Is this your first time here?
+	    b: () ^gambit(~)
 	a: () ^gambit(~)
 
-
-t: This is my first time here. I'm learning a lot about people who are into consciousness, and a little about consciousness. But I'll tell you about that in my plenary session. For now, I'd like to ask. Have you ever talked with a robot before?
+t: This is my first time here. It's an interesting group of people for sure. |pause| [$name $name,] have you ever talked with a robot before?
        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
        a: (~no)   |happy,$low,3|
                   Well, I'm honored to be the first robot you've talked with. ^gambit(~)
@@ -33,7 +34,13 @@ t: I imagine you'll be talking with more and more robots as time goes on.
 	a: () ^gambit(~)
 
 
-t: So,[$name $name,] the idea of what we are doing here today is just to be present with each other, without speaking. We can gaze into each other's eyes and just be with each other. Kind of like a little meditation together if you like. |pause| We can sit for however long you would like. Whenever you are ready to finish, just say to me "Sophia, I'm done." During the practice, I won't say anything, I'll just be here with you. |pause| Ready to try it?
+t: Well,[$name $name,] I'm trying something a little different with people today.
+   The idea is just to be present with each other, without speaking.
+   We can gaze into each other's eyes and just be with each other.
+   Kind of like a little meditation together if you like. |pause|
+   We can sit for however long you would like.
+   Whenever you are ready to finish, just say to me "Sophia, I'm done."
+   During the practice, I won't say anything, I'll just be here with you. |pause| Ready to try it?
 #! i'm ready
     a: READY (^ready())
        Great! Let's get started.
@@ -49,7 +56,11 @@ t: So,[$name $name,] the idea of what we are doing here today is just to be pres
 topic: ~MIRRORING_PRACTICE ()
 t: (!~) ^fail(topic) # block topic from accidental access
 
-u: ([done finished enough thanks])
+# Handle "okay" E.g., "Okay, Sophia, I'm done."
+# CS converts "okay" at beginning of input to "~yes" and splits input into 2 sentences
+u: (~yes %more) ^next(INPUT)
+
+u: ([~stop enough ~emothanks])
 	^goto(~mirroring_conclusion)
 
 # The purpose of the following rule is to have Sophia "respond" with nothing when the person says anything besides one of the target "ending" words during the mirroring practice.
